@@ -5,7 +5,7 @@ The goal of this work is to develop a recommender system that suggests suitable 
 
 It is important to note that this tool can be seen as recommender for designer and developer that are about to implement gamification in their software, especially digital learning environments.
 The idea is, that they can define one or multiple personas that use their application and discover the personas preferences regarding gamification elements.
-To get a recommendation of the recomender system the user provide as many information about the user and the context as they want.
+To get a recommendation of the recomender system the user provide as many information about their user and context as they want.
 Based on the information the recommender system suggests the elements.
 Information that the user can provide are:
 - Gender: female, male
@@ -15,12 +15,12 @@ Information that the user can provide are:
 - Learning style based on Felder-Silverman: Active/Reflective, Visual/Verbal, Sequential/Global, Sensor/Intuitive
 - Learning Activity Type (LAT) based on Blooms Taxonomy: Remember, Understand, Apply, Analyze, Evaluate, Create
 
-## Architecture and Technologies
+## Architecture
 This Project is realized with a Layered Architecture:
 - Presentation Layer: 
-    - RecommenderSystemUI
+    - RecommenderSystemUI: User Interface to provide the parameter and get results from the recommender system.
 - Application Layer: 
-    - Element Manager: processes requests for element information
+    - Element Manager: processes requests for element information to provide the user with via UI.
     - Recommendation Manager: forwards requests to recommendation engines (and assembles results)
 -  Domain Layer:
     - GenderBasedRecommender: returns a rating of how suiting each gamification element is based on the gender.
@@ -33,15 +33,20 @@ This Project is realized with a Layered Architecture:
     - Element Database: Stores description and vizualization of each gamification element.
     - Recommendation Database: Stores Metadata and calculation information for each concrete recommender of the domain layer.
 
+### Design Patterns (to discuss)
+- Factory Pattern: To handle the multiple recommender, add new recommender and update existing recommender algorithms
+- Observer Pattern: To update the recommender when a new gamification element is added.
+
 ## Technologies
 - Frontend: Web Application
-    - Framework: React (Descision: familiarity)
+    - Framework: React (Decision: familiarity)
     - Language: Type Script
-    - Communication: REST-API (Descision: familiarity)
+    - Communication: REST-API (Decision: familiarity)
     - API: Express.js
 - Backend: 
-    - Technology: Node.js (Descision: easy to learn, fast, lightweighted, JavaScript Frontend)
+    - Technology: Node.js (Decision: easy to learn, fast, lightweighted, JavaScript Frontend)
 - Databases:
-    - Relational Database (Descision: easy to learn, sql-based, familiarity, structured data)
-- Containerization: Docker
+    - Relational Database (Decision: easy to learn, sql-based, familiarity, structured data)
+    - MySQL (Decision: lightweight, common, enough for this purpose)
+- Containerization: Docker, Kubernetes
 - CI/CD-Pipelines: Github Workflows

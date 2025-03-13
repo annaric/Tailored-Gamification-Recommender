@@ -1,0 +1,23 @@
+name: updateUML
+
+# workflow triggers
+on:
+  #workflow_dispatch:
+  workflow_call:
+
+jobs:
+  updateUML:
+    name: runner / updateUML
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v3.13.0
+        with:
+            distribution: 'temurin'
+            java-version: '17'
+            check-latest: true
+            cache: 'maven'
+      - name: UML generation
+        run: java -jar umlet.jar -action=convert -format=pdf -filename=uml/*.uxf -output=.
+

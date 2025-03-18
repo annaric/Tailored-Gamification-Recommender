@@ -50,3 +50,4 @@ This Project is realized with a Layered Architecture:
     - MySQL (Decision: lightweight, common, enough for this purpose)
 - Containerization: Docker, Kubernetes
 - CI/CD-Pipelines: Github Workflows
+- Environment: Node.js

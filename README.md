@@ -40,13 +40,13 @@ This Project is realized with a Layered Architecture:
 ## Technologies
 - Frontend: Web Application
     - Framework: React (Decision: familiarity)
-    - Language: Type Script
+    - Language: TypeScript
     - Communication: REST-API (Decision: familiarity)
+- Backend:
     - API: Express.js
-- Backend: 
-    - Technology: Node.js (Decision: easy to learn, fast, lightweighted, JavaScript Frontend)
+    - Technology: Node.js (Decision: easy to learn, fast, lightweight, JavaScript Frontend)
 - Databases:
-    - Relational Database (Decision: easy to learn, sql-based, familiarity, structured data)
+    - Relational Database (Decision: easy to learn, SQL-based, familiarity, structured data)
     - MySQL (Decision: lightweight, common, enough for this purpose)
 - Containerization: Docker, Kubernetes
 - CI/CD-Pipelines: Github Workflows

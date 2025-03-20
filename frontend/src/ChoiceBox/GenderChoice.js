@@ -12,7 +12,7 @@ export default function GenderChoice({ onGenderSelect }) {
 
   const handleDisableChange = () => {
     setIsDisabled(!isDisabled);
-    setGender(""); 
+    setGender("");
     onGenderSelect("");
   };
 

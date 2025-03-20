@@ -1,9 +1,9 @@
-version: '3.8'
+version: "3.8"
 services:
   backend:
     build: ./backend
     ports:
-      - '3050:3050'
+      - "3050:3050"
     env_file:
       - ./backend/.env
   mysql:
@@ -13,4 +13,4 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: mydatabase
     ports:
-      - '3306:3306'
+      - "3306:3306"

@@ -1,21 +1,11 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  text-align: left;
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,15 +14,35 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.ChoiceSelection {
+  padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Recommendations {
+  text-align: left;
+  padding: 20px;
+}
+
+button {
+  background-color: #22c5be; /* Light turquoise */
+  color: white; /* White text */
+  font-size: 1.2rem; /* Bigger text */
+  padding: 12px 24px; /* Bigger button */
+  margin: 20px;
+  border: none; /* Remove default border */
+  border-radius: 12px; /* Rounded edges */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  cursor: pointer; /* Pointer cursor */
+  transition: all 0.3s ease-in-out;
+  align-self: center;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: #81d4d2; /* Slightly darker turquoise on hover */
+  box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.25); /* Stronger shadow */
+}
+
+button:active {
+  transform: scale(0.98); /* Slightly shrink on click */
 }

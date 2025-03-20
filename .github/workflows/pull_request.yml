@@ -2,9 +2,9 @@ name: Pull Request Checks
 
 # workflow triggers
 on:
-  #workflow_dispatch:
+  workflow_dispatch:
   workflow_call:
-  #pull_request:
+  pull_request:
 
 jobs:
   checkstyle:

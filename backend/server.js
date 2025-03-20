@@ -1,5 +1,7 @@
 const express = require('express');
+const RecommendationManager = require('./RecommenderSystem/RecommendationManager');
 const app = express();
+const recommendationManager = RecommendationManager();
 require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 
@@ -14,14 +16,14 @@ app.listen(PORT, () => {
 
 app.get('/recommendation', (req, res) => {
     const { input } = req.query;
+    console.log(input);
   
     if (!input) {
       return res.status(400).send('Input parameter is required');
     }
   
     // Example recommendation logic based on input and algorithm settings
-    const recommendation = `Recommendation for input ${input}`;
-    
+    const recommendation = recommendationManager.recommend(input);
     res.json({ recommendation });
 });
 

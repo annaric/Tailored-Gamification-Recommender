@@ -51,3 +51,8 @@ This Project is realized with a Layered Architecture:
 - Containerization: Docker, Kubernetes
 - CI/CD-Pipelines: Github Workflows
 - Package Manager: Node.js
+
+
+# Installation and Usage
+- npm start: starts the server (frontend or backend)
+- npm run build: Bundles the app into static files for production

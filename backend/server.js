@@ -1,12 +1,15 @@
 const express = require("express");
+const cors = require("cors"); // Import cors
 const RecommendationManager = require("./RecommenderSystem/RecommendationManager");
 const app = express();
-const recommendationManager = RecommendationManager();
 require("dotenv").config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3050;
 
 // Middleware to parse JSON
 app.use(express.json());
+app.use(cors()); // Enable CORS for all origins
+
+const recommendationManager = new RecommendationManager();
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
@@ -15,16 +18,18 @@ app.listen(PORT, () => {
 module.exports = app;
 
 app.get("/recommendation", (req, res) => {
-  const { input } = req.query;
+  console.log(req);
+  const { input } = req.query.input;
   console.log(input);
 
   if (!input) {
+    console.log("no input parameter");
     return res.status(400).send("Input parameter is required");
   }
 
   // Example recommendation logic based on input and algorithm settings
   const recommendation = recommendationManager.recommend(input);
-  res.json({ recommendation });
+  res.json({ recommendation: recommendation }); // Ensure the response includes the recommendation property
 });
 
 app.post("/update-algorithm", (req, res) => {
@@ -38,4 +43,18 @@ app.post("/update-algorithm", (req, res) => {
   algorithmSettings = { ...algorithmSettings, ...newSettings };
 
   res.json({ message: "Algorithm settings updated", algorithmSettings });
+});
+
+app.post("/recommendation", (req, res) => {
+  const { input } = req.body; // Extract input from the request body
+  console.log(input);
+
+  if (!input) {
+    console.log("no input parameter");
+    return res.status(400).send("Input parameter is required");
+  }
+
+  // Example recommendation logic based on input and algorithm settings
+  const recommendation = recommendationManager.recommend(input);
+  res.json({ recommendation: recommendation }); // Ensure the response includes the recommendation property
 });

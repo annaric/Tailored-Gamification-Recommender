@@ -14,3 +14,5 @@ class AbstractRecommender {
     throw new Error("Method 'updateAlgorithm()' must be implemented.");
   }
 }
+
+module.exports = AbstractRecommender;

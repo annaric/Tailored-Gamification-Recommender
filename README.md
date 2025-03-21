@@ -8,6 +8,7 @@ The idea is, that they can define one or multiple personas that use their applic
 To get a recommendation of the recomender system the user provide as many information about their user and context as they want.
 Based on the information the recommender system suggests the elements.
 Information that the user can provide are:
+
 - Gender: female, male
 - Age
 - Personality Type based on the Big5: Extraversion, Openess, Agreeableness, Conscientiousness, Neuroticism
@@ -16,43 +17,49 @@ Information that the user can provide are:
 - Learning Activity Type (LAT) based on Blooms Taxonomy: Remember, Understand, Apply, Analyze, Evaluate, Create
 
 ## Architecture
+
 This Project is realized with a Layered Architecture:
-- Presentation Layer: 
-    - RecommenderSystemUI: User Interface to provide the parameter and get results from the recommender system.
-- Application Layer: 
-    - Element Manager: processes requests for element information to provide the user with via UI.
-    - Recommendation Manager: forwards requests to recommendation engines (and assembles results)
--  Domain Layer:
-    - GenderBasedRecommender: returns a rating of how suiting each gamification element is based on the gender.
-    - AgeBasedRecommender: returns a rating of how suiting each gamification element is based on the age.
-    - PersonalityBasedRecommender: returns a rating of how suiting each gamification element is based on the personality.
-    - PlayerBasedRecommender: returns a rating of how suiting each gamification element is based on the player type.
-    - LearningBasedRecommender: returns a rating of how suiting each gamification element is based on the learning style.
-    - LATBasedRecommender: returns a rating of how suiting each gamification element is based on the task type.
+
+- Presentation Layer:
+  - RecommenderSystemUI: User Interface to provide the parameter and get results from the recommender system.
+- Application Layer:
+  - Element Manager: processes requests for element information to provide the user with via UI.
+  - Recommendation Manager: forwards requests to recommendation engines (and assembles results)
+- Domain Layer:
+  - GenderBasedRecommender: returns a rating of how suiting each gamification element is based on the gender.
+  - AgeBasedRecommender: returns a rating of how suiting each gamification element is based on the age.
+  - PersonalityBasedRecommender: returns a rating of how suiting each gamification element is based on the personality.
+  - PlayerBasedRecommender: returns a rating of how suiting each gamification element is based on the player type.
+  - LearningBasedRecommender: returns a rating of how suiting each gamification element is based on the learning style.
+  - LATBasedRecommender: returns a rating of how suiting each gamification element is based on the task type.
 - Data Layer:
-    - Element Database: Stores description and vizualization of each gamification element.
-    - Recommendation Database: Stores Metadata and calculation information for each concrete recommender of the domain layer.
+  - Element Database: Stores description and vizualization of each gamification element.
+  - Recommendation Database: Stores Metadata and calculation information for each concrete recommender of the domain layer.
 
 ### Design Patterns (to discuss)
+
 - Factory Pattern: To handle the multiple recommender, add new recommender and update existing recommender algorithms
 - Observer Pattern: To update the recommender when a new gamification element is added.
 
 ## Technologies
+
 - Frontend: Web Application
-    - Framework: React (Decision: familiarity)
-    - Language: TypeScript
-    - Communication: REST-API (Decision: familiarity)
+  - Framework: React (Decision: familiarity)
+  - Language: TypeScript
+  - Communication: REST-API (Decision: familiarity)
 - Backend:
-    - API: Express.js
-    - Technology: Node.js (Decision: easy to learn, fast, lightweight, JavaScript Frontend)
+  - API: Express.js
+  - Technology: Node.js (Decision: easy to learn, fast, lightweight, JavaScript Frontend)
 - Databases:
-    - Relational Database (Decision: easy to learn, SQL-based, familiarity, structured data)
-    - MySQL (Decision: lightweight, common, enough for this purpose)
+  - Relational Database (Decision: easy to learn, SQL-based, familiarity, structured data)
+  - MySQL (Decision: lightweight, common, enough for this purpose)
 - Containerization: Docker, Kubernetes
 - CI/CD-Pipelines: Github Workflows
 - Package Manager: Node.js
 
-
 # Installation and Usage
+
 - npm start: starts the server (frontend or backend)
 - npm run build: Bundles the app into static files for production
+- npx prettier . --write: Makes code pretty
+- npx prettier . --check: Checks if code is pretty

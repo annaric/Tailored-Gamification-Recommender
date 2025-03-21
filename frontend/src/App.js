@@ -18,7 +18,9 @@ function App() {
     })
       .then((response) => {
         if (!response.ok) {
-          setRecommendation("Could not get recommendation. Did you select a parameter?")
+          setRecommendation(
+            "Could not get recommendation. Did you select a parameter?",
+          );
           throw new Error("Network response was not ok");
         }
         return response.json();
@@ -39,7 +41,9 @@ function App() {
     })
       .then((response) => {
         if (!response.ok) {
-          setRecommendation("Could not get recommendation. Did you select a parameter?")
+          setRecommendation(
+            "Could not get recommendation. Did you select a parameter?",
+          );
           throw new Error("Network response was not ok");
         }
         return response.json();
@@ -50,7 +54,9 @@ function App() {
 
   return (
     <div className="App">
-      <div className="App-header">Recommender System of Gamification Elements</div>
+      <div className="App-header">
+        Recommender System of Gamification Elements
+      </div>
       <div className="ChoiceSelection">
         <GenderChoice onGenderSelect={setSelectedGender} />
       </div>

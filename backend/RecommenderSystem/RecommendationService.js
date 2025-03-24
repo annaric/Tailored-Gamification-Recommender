@@ -10,7 +10,7 @@ class RecommendationService {
   }
 
   getRecommender() {
-    console.log("not implemented yet");
+    console.log("getRecommender not implemented yet");
     return "not implemented yet";
   }
 }

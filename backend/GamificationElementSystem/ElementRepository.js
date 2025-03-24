@@ -1,6 +1,6 @@
 class ElementRepository {
   constructor() {
-    console.log("not implemented yet");
+    console.log("ElementRepository not implemented yet");
   }
 
   getAllElements() {

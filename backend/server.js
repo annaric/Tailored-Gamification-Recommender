@@ -33,19 +33,19 @@ app.post("/recommendation", (req, res) => {
 });
 
 app.get("/recommender", (req, res) => {
-  console.log("not implemented yet");
+  console.log("/recommender not implemented yet");
   const recommendation = recommendationService.getRecommender();
   res.status(501).send(recommendation);
 });
 
 app.get("/gamification-elements", (req, res) => {
-  console.log("not implemented yet");
+  console.log("/gamification-elements not implemented yet");
   const elements = elementRepository.getAllElements();
   res.status(501).send(elements);
 });
 
 app.get("/gamification-element", (req, res) => {
-  console.log("not implemented yet");
+  console.log("/gamification-element not implemented yet");
   const element = elementRepository.getElementById();
   res.status(501).send(element);
 });

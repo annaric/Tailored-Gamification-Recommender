@@ -2,8 +2,9 @@ class AbstractRecommender {
   constructor() {
     if (new.target === AbstractRecommender) {
       throw new Error("Cannot instantiate an abstract class directly");
+    } else {
+      this.updateAlgorithm();
     }
-    updateAlgorithm();
   }
 
   // Abstract method (must be implemented by derived classes)

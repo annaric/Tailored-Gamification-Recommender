@@ -1,22 +1,47 @@
-import './App.css';
-import React, { useEffect, useState } from 'react';
+import "./App.css";
+import React, { useState } from "react";
+import GenderChoice from "./ChoiceBox/GenderChoice";
 
 function App() {
-  const [recommendation, setRecommendation] = useState('');
+  const [recommendation, setRecommendation] = useState("");
+  const [selectedGender, setSelectedGender] = useState("");
 
-  useEffect(() => {
-    fetch('http://localhost:3050/recommendation')
-      .then(response => response.json())
-      .then(data => setRecommendation(data.recommendation))
-      .catch(error => console.log(error));
-  }, []);
+  const handleClick = () => {
+    const requestBody = { input: selectedGender };
+    fetch("http://localhost:3050/recommendation", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json", // Set the content type to JSON
+      },
+      body: JSON.stringify(requestBody), // Convert the JSON object to a string
+    })
+      .then((response) => {
+        if (!response.ok) {
+          setRecommendation(
+            "Could not get any recommendation. Did you select any parameter?",
+          );
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => setRecommendation(data.recommendation))
+      .catch((error) => console.log("Fetch error: ", error));
+  };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Recommendation</h1>
+      <div className="App-header">
+        Recommender System of Gamification Elements
+      </div>
+      <div className="ChoiceSelection">
+        <GenderChoice onGenderSelect={setSelectedGender} />
+      </div>
+      <button onClick={handleClick}>Recommend</button>
+      <div className="Recommendations">
+        <h1>Recommendations</h1>
         <p>{recommendation}</p>
-      </header>
+      </div>
     </div>
   );
 }

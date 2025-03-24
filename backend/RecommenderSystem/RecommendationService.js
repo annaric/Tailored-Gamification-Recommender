@@ -6,7 +6,7 @@ class RecommendationService {
   }
 
   recommend(input) {
-    return this.recommendationAssembler.assembleRecommendations(input); 
+    return this.recommendationAssembler.assembleRecommendations(input);
   }
 
   getRecommender() {

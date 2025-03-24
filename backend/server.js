@@ -29,23 +29,22 @@ app.post("/recommendation", (req, res) => {
   }
 
   const recommendation = recommendationService.recommend(input);
-  res.json({ recommendation: recommendation }); 
+  res.json({ recommendation: recommendation });
 });
 
-app.get("/recommender", (req, res) => {	 
+app.get("/recommender", (req, res) => {
   console.log("not implemented yet");
   const recommendation = recommendationService.getRecommender();
   res.status(501).send(recommendation);
 });
 
-
-app.get("/gamification-elements", (req, res) => {	 
+app.get("/gamification-elements", (req, res) => {
   console.log("not implemented yet");
   const elements = elementRepository.getAllElements();
   res.status(501).send(elements);
 });
 
-app.get("/gamification-element", (req, res) => {	 
+app.get("/gamification-element", (req, res) => {
   console.log("not implemented yet");
   const element = elementRepository.getElementById();
   res.status(501).send(element);

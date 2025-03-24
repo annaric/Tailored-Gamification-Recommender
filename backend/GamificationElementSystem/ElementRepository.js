@@ -1,4 +1,3 @@
-
 class ElementRepository {
   constructor() {
     console.log("not implemented yet");
@@ -11,7 +10,6 @@ class ElementRepository {
   getElementById() {
     return "not implemented yet";
   }
-
 }
 
 module.exports = ElementRepository;

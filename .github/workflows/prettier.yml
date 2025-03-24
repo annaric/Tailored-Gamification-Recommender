@@ -1,3 +1,4 @@
+# makes code look prettier in a constant way
 name: prettier
 
 # workflow triggers

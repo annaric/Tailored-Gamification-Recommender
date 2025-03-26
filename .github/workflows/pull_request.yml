@@ -11,5 +11,3 @@ jobs:
     uses: ./.github/workflows/prettier.yml
   lint:
     uses: ./.github/workflows/lint.yml
-  stylelint:
-    uses: ./.github/workflows/stylelint.yml

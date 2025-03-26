@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "./GenderChoice.css";
 
 export default function GenderChoice({ onGenderSelect }) {
@@ -57,3 +58,7 @@ export default function GenderChoice({ onGenderSelect }) {
     </div>
   );
 }
+
+GenderChoice.propTypes = {
+  onGenderSelect: PropTypes.func.isRequired,
+};

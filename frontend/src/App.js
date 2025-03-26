@@ -5,7 +5,6 @@ import GenderChoice from "./ChoiceBox/GenderChoice";
 function App() {
   const [recommendation, setRecommendation] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
-  const [deleteMe, setDeleteMe] = useState("");
 
   const handleClick = () => {
     const requestBody = { input: selectedGender };

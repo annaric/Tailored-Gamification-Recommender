@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd /backend
+      - run: ls
+      - run: cd backend
       - name: Install modules
         run: npm install
       - name: Run ESLint
@@ -20,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd /frontend
+      - run: cd frontend
       - name: Install modules
         run: npm install
       - name: Run ESLint

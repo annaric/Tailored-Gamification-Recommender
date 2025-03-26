@@ -15,10 +15,11 @@ jobs:
         with:
           # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
+      - run: cd frontent
+      - run: ls
       - name: Prettify code in frontend
         uses: creyD/prettier_action@v4.3
         with:
-          working_directory: frontend/
           commit_message: "Prettified frontent Code!"
       - name: Prettify code in backend
         uses: creyD/prettier_action@v4.3

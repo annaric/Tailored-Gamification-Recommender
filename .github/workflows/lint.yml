@@ -7,10 +7,20 @@ on:
   workflow_call:
 
 jobs:
-  eslint:
+  eslint-backend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: cd /backend
+      - name: Install modules
+        run: npm install
+      - name: Run ESLint
+        run: eslint . --ext .js,.jsx,.ts,.tsx
+  eslint-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd /frontend
       - name: Install modules
         run: npm install
       - name: Run ESLint

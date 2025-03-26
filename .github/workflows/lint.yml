@@ -11,18 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: ls
-      - run: cd backend
       - name: Install modules
-        run: npm install
+        run: npm install --prefix backend
       - name: Run ESLint
-        run: eslint . --ext .js,.jsx,.ts,.tsx
+        run: cd backend && npx eslint
   eslint-frontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd frontend
       - name: Install modules
-        run: npm install
+        run: npm install --prefix frontend
       - name: Run ESLint
-        run: eslint . --ext .js,.jsx,.ts,.tsx
+        run: cd frontend && npx eslint

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import "./GenderChoice.css";
 
-export default function GenderChoice({ onGenderSelect }) {
+interface GenderChoiceProps {
+  onGenderSelect: (gender: string) => void;
+}
+
+export default function GenderChoice({ onGenderSelect }: GenderChoiceProps) {
   const [gender, setGender] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const handleGenderChange = (selectedGender) => {
+  const handleGenderChange = (selectedGender: string) => {
     setGender(selectedGender);
     onGenderSelect(selectedGender);
   };
@@ -59,6 +62,3 @@ export default function GenderChoice({ onGenderSelect }) {
   );
 }
 
-GenderChoice.propTypes = {
-  onGenderSelect: PropTypes.func.isRequired,
-};

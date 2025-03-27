@@ -1,4 +1,4 @@
-class AbstractRecommender {
+abstract class AbstractRecommender {
   constructor() {
     if (new.target === AbstractRecommender) {
       throw new Error("Cannot instantiate an abstract class directly");
@@ -7,7 +7,6 @@ class AbstractRecommender {
     }
   }
 
-  // Abstract method (must be implemented by derived classes)
   recommend() {
     throw new Error("Method 'recommend()' must be implemented.");
   }
@@ -17,4 +16,4 @@ class AbstractRecommender {
   }
 }
 
-module.exports = AbstractRecommender;
+export default AbstractRecommender;

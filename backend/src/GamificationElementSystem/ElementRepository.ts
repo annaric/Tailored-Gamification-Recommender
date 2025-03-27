@@ -12,4 +12,4 @@ class ElementRepository {
   }
 }
 
-module.exports = ElementRepository;
+export default ElementRepository;

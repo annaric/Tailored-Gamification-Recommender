@@ -1,0 +1,10 @@
+{
+    "extends": "@tsconfig/node12/tsconfig.json",
+    "compilerOptions": {
+        "target": "esnext",
+        "lib": ["dom", "es2017"],
+        "outDir": "./dist",
+        "skipLibCheck": true
+    },
+    "exclude": ["node_modules"]
+}

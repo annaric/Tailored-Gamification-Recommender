@@ -60,7 +60,7 @@ This Project is realized with a Layered Architecture:
 # Installation and Usage
 
 - npm start: starts the server (frontend or backend)
-- npm run build: Bundles the app into static files for production
+- npm run build: Compiles Typescript to JavaScript 
 - npx prettier . --write: Makes code pretty
 - npx prettier . --check: Checks if code is pretty
 - npx eslint: Checks code for inconsistency and bugs

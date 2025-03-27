@@ -1,14 +1,13 @@
 import RecommendationAssembler from "./RecommendationAssembler";
 
-
 class RecommendationService {
   recommendationAssembler: RecommendationAssembler;
-  
+
   constructor() {
     this.recommendationAssembler = new RecommendationAssembler();
   }
 
-  recommend(input:any) {
+  recommend(input: any) {
     return this.recommendationAssembler.assembleRecommendations(input);
   }
 

@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import 'dotenv/config';
+import "dotenv/config";
 import RecommendationService from "./RecommenderSystem/RecommendationService";
 import ElementRepository from "./GamificationElementSystem/ElementRepository";
 
@@ -32,13 +32,13 @@ app.post("/recommendation", (req: any, res: any) => {
   res.json({ recommendation: recommendation });
 });
 
-app.get("/recommender", (req: any, res:any) => {
+app.get("/recommender", (req: any, res: any) => {
   console.log("/recommender not implemented yet");
   const recommendation = recommendationService.getRecommender();
   res.status(501).send(recommendation);
 });
 
-app.get("/gamification-elements", (req: any, res:any) => {
+app.get("/gamification-elements", (req: any, res: any) => {
   console.log("/gamification-elements not implemented yet");
   const elements = elementRepository.getAllElements();
   res.status(501).send(elements);

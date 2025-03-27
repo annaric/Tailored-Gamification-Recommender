@@ -6,7 +6,7 @@ class RecommendationAssembler {
     this.genderBasedRecommender = new GenderBasedRecommender();
   }
 
-  assembleRecommendations(input:any) {
+  assembleRecommendations(input: any) {
     return this.genderBasedRecommender.recommend(input);
   }
 }

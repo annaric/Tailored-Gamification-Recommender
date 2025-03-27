@@ -1,8 +1,8 @@
-.App {
+.app {
   text-align: left;
 }
 
-.App-header {
+.app-header {
   background-color: #282c34;
   min-height: 10vh;
   text-align: center;
@@ -14,35 +14,35 @@
   color: white;
 }
 
-.ChoiceSelection {
+.choice-selection {
   padding: 20px;
 }
 
-.Recommendations {
+.recommendations {
   text-align: left;
   padding: 20px;
 }
 
 button {
-  background-color: #22c5be; /* Light turquoise */
-  color: white; /* White text */
-  font-size: 1.2rem; /* Bigger text */
-  padding: 12px 24px; /* Bigger button */
+  background-color: #22c5be;
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px 24px;
   margin: 20px;
-  border: none; /* Remove default border */
-  border-radius: 12px; /* Rounded edges */
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
-  cursor: pointer; /* Pointer cursor */
+  border: none;
+  border-radius: 12px;
+  box-shadow: 3px 3px 10px rgb(0 0 0 / 20%);
+  cursor: pointer;
   transition: all 0.3s ease-in-out;
   align-self: center;
   justify-content: center;
 }
 
 button:hover {
-  background-color: #81d4d2; /* Slightly darker turquoise on hover */
-  box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.25); /* Stronger shadow */
+  background-color: #81d4d2;
+  box-shadow: 5px 5px 12px rgb(0 0 0 / 25%);
 }
 
 button:active {
-  transform: scale(0.98); /* Slightly shrink on click */
+  transform: scale(0.98);
 }

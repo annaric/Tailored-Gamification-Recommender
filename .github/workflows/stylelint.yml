@@ -1,0 +1,17 @@
+# checks css code
+name: stylelint
+
+# workflow triggers
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  stylelint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: npm install --prefix frontend
+      - name: Run StyleLint
+        run: cd frontend && npx stylelint "**/*.css"

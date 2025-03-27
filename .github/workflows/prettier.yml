@@ -1,3 +1,4 @@
+# makes code look prettier in a constant way
 name: prettier
 
 # workflow triggers
@@ -7,6 +8,7 @@ on:
 
 jobs:
   prettier:
+    name: Prettier Check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,5 +19,4 @@ jobs:
       - name: Prettify code
         uses: creyD/prettier_action@v4.3
         with:
-          # This part is also where you can pass other options, for example:
-          prettier_options: --write **/*.{js,md}
+          prettier_options: . --write

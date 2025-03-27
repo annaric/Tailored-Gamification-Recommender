@@ -63,3 +63,6 @@ This Project is realized with a Layered Architecture:
 - npm run build: Bundles the app into static files for production
 - npx prettier . --write: Makes code pretty
 - npx prettier . --check: Checks if code is pretty
+- npx eslint: Checks code for inconsistency and bugs
+- npx stylelint "\*_/_.css": Checks .css files for consistency and code style
+- --fix: fixes .css file inconsistency

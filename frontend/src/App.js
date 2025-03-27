@@ -30,15 +30,15 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div className="App-header">
+    <div className="app">
+      <div className="app-header">
         Recommender System of Gamification Elements
       </div>
-      <div className="ChoiceSelection">
+      <div className="choice-selection">
         <GenderChoice onGenderSelect={setSelectedGender} />
       </div>
       <button onClick={handleClick}>Recommend</button>
-      <div className="Recommendations">
+      <div className="recommendations">
         <h1>Recommendations</h1>
         <p>{recommendation}</p>
       </div>

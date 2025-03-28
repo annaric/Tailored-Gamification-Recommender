@@ -1,3 +1,4 @@
+import { RecommendationObject } from "./RecommendationObject";
 import GenderBasedRecommender from "./Recommender/GenderBasedRecommender";
 
 class RecommendationAssembler {
@@ -6,7 +7,7 @@ class RecommendationAssembler {
     this.genderBasedRecommender = new GenderBasedRecommender();
   }
 
-  assembleRecommendations(input: any) {
+  assembleRecommendations(input: RecommendationObject) {
     return this.genderBasedRecommender.recommend(input);
   }
 }

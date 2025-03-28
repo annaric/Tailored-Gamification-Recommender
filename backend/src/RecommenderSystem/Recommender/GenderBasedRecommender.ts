@@ -1,3 +1,4 @@
+import { RecommendationObject } from "../RecommendationObject";
 import AbstractRecommender from "./AbstractRecommender";
 let CompetitionDictonary: { female: number; male: number };
 
@@ -6,9 +7,9 @@ class GenderBasedRecommender extends AbstractRecommender {
     super();
   }
 
-  recommend(...input: string[]): number {
-    if (input[0] === "female" || input[0] === "male") {
-      return CompetitionDictonary[input[0]];
+  recommend(input: RecommendationObject): number {
+    if (input.gender === "female" || input.gender === "male") {
+      return CompetitionDictonary[input.gender];
     }
     throw new Error("Invalid input");
   }

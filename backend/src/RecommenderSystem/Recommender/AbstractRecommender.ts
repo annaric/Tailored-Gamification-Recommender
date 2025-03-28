@@ -1,3 +1,5 @@
+import { RecommendationObject } from "../RecommendationObject";
+
 abstract class AbstractRecommender {
   constructor() {
     if (new.target === AbstractRecommender) {
@@ -7,13 +9,9 @@ abstract class AbstractRecommender {
     }
   }
 
-  recommend() {
-    throw new Error("Method 'recommend()' must be implemented.");
-  }
+  abstract recommend(input: RecommendationObject): number;
 
-  updateAlgorithm() {
-    throw new Error("Method 'updateAlgorithm()' must be implemented.");
-  }
+  abstract updateAlgorithm(): void;
 }
 
 export default AbstractRecommender;

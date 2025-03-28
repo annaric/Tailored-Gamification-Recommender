@@ -7,7 +7,7 @@ function App() {
   const [selectedGender, setSelectedGender] = useState<string>(""); // Add type annotation
 
   const handleClick = () => {
-    const requestBody = { input: selectedGender };
+    const requestBody = { gender: selectedGender };
     fetch("http://localhost:3050/recommendation", {
       method: "POST",
       headers: {

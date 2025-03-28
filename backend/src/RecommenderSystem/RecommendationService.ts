@@ -1,11 +1,14 @@
-const RecommendationAssembler = require("./RecommendationAssembler");
+import RecommendationAssembler from "./RecommendationAssembler";
+import { RecommendationObject } from "./RecommendationObject";
 
 class RecommendationService {
+  recommendationAssembler: RecommendationAssembler;
+
   constructor() {
     this.recommendationAssembler = new RecommendationAssembler();
   }
 
-  recommend(input) {
+  recommend(input: RecommendationObject) {
     return this.recommendationAssembler.assembleRecommendations(input);
   }
 
@@ -15,4 +18,4 @@ class RecommendationService {
   }
 }
 
-module.exports = RecommendationService;
+export default RecommendationService;

@@ -1,10 +1,12 @@
-const express = require("express");
-const cors = require("cors");
-const RecommendationService = require("./RecommenderSystem/RecommendationService");
-const ElementRepository = require("./GamificationElementSystem/ElementRepository");
+import express, { Request, Response } from "express";
+import cors from "cors";
+import "dotenv/config";
+import RecommendationService from "./RecommenderSystem/RecommendationService";
+import ElementRepository from "./GamificationElementSystem/ElementRepository";
+import { RecommendationObject } from "./RecommenderSystem/RecommendationObject"; 
+
 const app = express();
-require("dotenv").config();
-const PORT = process.env.PORT || 3050;
+const PORT: number = parseInt(process.env.PORT || "3050", 10);
 
 // Middleware to parse JSON
 app.use(express.json());
@@ -17,10 +19,9 @@ app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
 
-module.exports = app;
-
-app.post("/recommendation", (req, res) => {
-  const { input } = req.body; // Extract input from the request body
+app.post("/recommendation", (req: Request<object, object, RecommendationObject>, res: Response) => {
+  console.log(req.body);
+  const input = req.body;
   console.log(input);
 
   if (!input) {
@@ -32,20 +33,25 @@ app.post("/recommendation", (req, res) => {
   res.json({ recommendation: recommendation });
 });
 
-app.get("/recommender", (req, res) => {
+app.get("/recommender", (req: Request, res: Response) => {
   console.log("/recommender not implemented yet");
+  console.log(req.body);
   const recommendation = recommendationService.getRecommender();
   res.status(501).send(recommendation);
 });
 
-app.get("/gamification-elements", (req, res) => {
+app.get("/gamification-elements", (req: Request, res: Response) => {
   console.log("/gamification-elements not implemented yet");
+  console.log(req.body);
   const elements = elementRepository.getAllElements();
   res.status(501).send(elements);
 });
 
-app.get("/gamification-element", (req, res) => {
+app.get("/gamification-element", (req: Request, res: Response) => {
   console.log("/gamification-element not implemented yet");
+  console.log(req.body);
   const element = elementRepository.getElementById();
   res.status(501).send(element);
 });
+
+export default app;

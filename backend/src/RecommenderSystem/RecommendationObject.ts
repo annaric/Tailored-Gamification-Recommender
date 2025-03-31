@@ -1,7 +1,7 @@
 export class RecommendationObject {
-    gender: string;
+  gender: string;
 
-    constructor(gender: string) {
-        this.gender = gender;
-    }
+  constructor(gender: string) {
+    this.gender = gender;
+  }
 }

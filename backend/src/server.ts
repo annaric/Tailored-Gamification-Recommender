@@ -31,11 +31,6 @@ app.post("/recommendation", (req: Request, res: Response) => {
   res.json({ recommendation: recommendation });
 });
 
-app.post("/test", (req: Request, res: Response) => {
-  console.log(req.body);
-  console.log(res);
-});
-
 app.get("/recommender", (req: Request, res: Response) => {
   console.log("/recommender not implemented yet");
   console.log(req.body);

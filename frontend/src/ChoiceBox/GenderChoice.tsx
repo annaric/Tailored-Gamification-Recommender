@@ -5,7 +5,7 @@ interface GenderChoiceProps {
   onGenderSelect: (gender: string) => void;
 }
 
-export default function GenderChoice({ onGenderSelect }: GenderChoiceProps) {
+function GenderChoice({ onGenderSelect }: GenderChoiceProps) {
   const [gender, setGender] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -61,3 +61,5 @@ export default function GenderChoice({ onGenderSelect }: GenderChoiceProps) {
     </div>
   );
 }
+
+export default GenderChoice;

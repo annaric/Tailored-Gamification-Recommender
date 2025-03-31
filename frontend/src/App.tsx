@@ -1,13 +1,13 @@
 import "./App.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import GenderChoice from "./ChoiceBox/GenderChoice";
 
 function App() {
-  const [recommendation, setRecommendation] = useState("");
-  const [selectedGender, setSelectedGender] = useState("");
+  const [recommendation, setRecommendation] = useState<string>(""); // Add type annotation
+  const [selectedGender, setSelectedGender] = useState<string>(""); // Add type annotation
 
   const handleClick = () => {
-    const requestBody = { input: selectedGender };
+    const requestBody = { gender: selectedGender };
     fetch("http://localhost:3050/recommendation", {
       method: "POST",
       headers: {
@@ -23,7 +23,7 @@ function App() {
           );
           throw new Error("Network response was not ok");
         }
-        return response.json();
+        return response.json() as Promise<{ recommendation: string }>; // Add type assertion
       })
       .then((data) => setRecommendation(data.recommendation))
       .catch((error) => console.log("Fetch error: ", error));

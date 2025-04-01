@@ -1,4 +1,7 @@
-import { RecommendationObject, RecommendationResult } from "./RecommendationObjectTypes";
+import {
+  RecommendationObject,
+  RecommendationResult,
+} from "./RecommendationObjectTypes";
 import GenderBasedRecommender from "./Recommender/GenderBasedRecommender";
 
 class RecommendationAssembler {
@@ -8,7 +11,8 @@ class RecommendationAssembler {
   }
 
   assembleRecommendations(input: RecommendationObject): RecommendationResult {
-    const genderBasedRecommendation = this.genderBasedRecommender.recommend(input);
+    const genderBasedRecommendation =
+      this.genderBasedRecommender.recommend(input);
     const result = new RecommendationResult();
     result.elements = result.elements.map((element) => {
       const recommendationPercentage = genderBasedRecommendation;
@@ -17,7 +21,7 @@ class RecommendationAssembler {
     });
     result.elements = result.elements.sort((a, b) => {
       return b.percentages.overallPercentage - a.percentages.overallPercentage;
-    })
+    });
     for (let i = 0; i < result.elements.length; i++) {
       const element = result.elements[i];
       element.ranking = i + 1;

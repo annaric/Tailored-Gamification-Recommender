@@ -3,9 +3,9 @@ import "./ElementDisplay.css"; // Add styles for the component
 
 export interface ElementDisplayProps {
   rank: number;
-  imageSrc: string; 
+  imageSrc: string;
   elementName: string;
-  percentages: {overallPercentage: number};
+  percentages: { overallPercentage: number };
   details: string;
 }
 

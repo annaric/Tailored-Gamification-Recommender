@@ -1,5 +1,8 @@
 import RecommendationAssembler from "./RecommendationAssembler";
-import { RecommendationObject, RecommendationResult } from "./RecommendationObjectTypes";
+import {
+  RecommendationObject,
+  RecommendationResult,
+} from "./RecommendationObjectTypes";
 
 class RecommendationService {
   recommendationAssembler: RecommendationAssembler;

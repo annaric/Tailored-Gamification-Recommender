@@ -2,7 +2,10 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import "dotenv/config";
 import RecommendationService from "./RecommenderSystem/RecommendationService";
-import { RecommendationObject, RecommendationResult } from "./RecommenderSystem/RecommendationObjectTypes";
+import {
+  RecommendationObject,
+  RecommendationResult,
+} from "./RecommenderSystem/RecommendationObjectTypes";
 
 const app = express();
 const PORT: number = parseInt(process.env.PORT || "3050", 10);
@@ -25,7 +28,8 @@ app.post("/recommendation", (req: Request, res: Response) => {
     res.status(400).send("Input parameter is required");
   }
 
-  const recommendation: RecommendationResult = recommendationService.recommend(input);
+  const recommendation: RecommendationResult =
+    recommendationService.recommend(input);
   console.log("recommendation: ", recommendation);
   res.json({ recommendation: recommendation });
 });

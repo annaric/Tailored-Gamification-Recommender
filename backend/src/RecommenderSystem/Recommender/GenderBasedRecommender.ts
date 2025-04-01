@@ -1,4 +1,4 @@
-import { RecommendationObject } from "../RecommendationObject";
+import { RecommendationObject } from "../RecommendationObjectTypes";
 import AbstractRecommender from "./AbstractRecommender";
 let CompetitionDictonary: { female: number; male: number };
 

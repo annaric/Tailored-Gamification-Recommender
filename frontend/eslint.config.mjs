@@ -39,5 +39,11 @@ export default defineConfig([
       "react/jsx-uses-react": "off",
     },
   },
-  globalIgnores(["*.config.*", "dist/*", "node_modules/*", "coverage/*", "build/*", ])
+  globalIgnores([
+    "*.config.*",
+    "dist/*",
+    "node_modules/*",
+    "coverage/*",
+    "build/*",
+  ]),
 ]);

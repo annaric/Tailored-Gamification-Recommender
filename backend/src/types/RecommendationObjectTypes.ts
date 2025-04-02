@@ -2,10 +2,20 @@ import {
   GamificationElementObject,
   GamificationElements,
   GamificationElementDetails,
-} from "../GamificationElementSystem/GamificationElementRepository";
+} from "./GamificationElementRepository";
 
 export enum Recommender {
   Gender = "Gender",
+}
+
+export class RecommenderValueObject {
+  male: number;
+  female: number;
+
+  constructor(male: number, female: number) {
+    this.male = male;
+    this.female = female;
+  }
 }
 
 export class RecommendationObject {

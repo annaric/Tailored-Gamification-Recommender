@@ -1,4 +1,4 @@
-import { RecommendationObject } from "../RecommendationObjectTypes";
+import { RecommendationObject } from "../../types/RecommendationObjectTypes";
 
 abstract class AbstractRecommender {
   constructor() {

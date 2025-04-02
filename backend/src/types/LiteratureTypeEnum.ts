@@ -1,5 +1,5 @@
 export enum LiteratureResultTypeEnum {
-    PositiveNumber = "PositiveNumber",
-    Correlation = "Correlation",
-    Binary = "Binary",
+  PositiveNumber = "PositiveNumber",
+  Correlation = "Correlation",
+  Binary = "Binary",
 }

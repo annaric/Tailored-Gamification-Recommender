@@ -2,7 +2,7 @@ import RecommendationAssembler from "./RecommendationAssembler";
 import {
   RecommendationObject,
   RecommendationResult,
-} from "./RecommendationObjectTypes";
+} from "../types/RecommendationObjectTypes";
 
 class RecommendationService {
   recommendationAssembler: RecommendationAssembler;

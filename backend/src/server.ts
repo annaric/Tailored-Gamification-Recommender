@@ -5,7 +5,7 @@ import RecommendationService from "./RecommenderSystem/RecommendationService";
 import {
   RecommendationObject,
   RecommendationResult,
-} from "./RecommenderSystem/RecommendationObjectTypes";
+} from "./types/RecommendationObjectTypes";
 
 const app = express();
 const PORT: number = parseInt(process.env.PORT || "3050", 10);
@@ -30,7 +30,6 @@ app.post("/recommendation", (req: Request, res: Response) => {
 
   const recommendation: RecommendationResult =
     recommendationService.recommend(input);
-  console.log("recommendation: ", recommendation);
   res.json({ recommendation: recommendation });
 });
 

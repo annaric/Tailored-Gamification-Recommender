@@ -33,7 +33,7 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
           onClick={togglePopup}
         />
         <span className="element-name">{elementName}</span>
-        <span className="percentage">{percentages.overallPercentage}%</span>
+        <span className="percentage">Score: {percentages.overallPercentage.toFixed(3)}</span>
         <button className="dropdown-button" onClick={toggleDetails}>
           {isExpanded ? "▲" : "▼"}
         </button>

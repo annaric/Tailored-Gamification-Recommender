@@ -1,0 +1,75 @@
+{
+    "literature": [
+        {
+            "title": "Tailored gamification: A review of literature",
+            "author": "Klock et. all",
+            "paperType": "Review",
+            "resultType": "PositiveNumber",
+            "bestValue": 12,
+            "minValue": 0,
+            "maxValue": 12,
+            "result": {
+                "Incentive": {
+                    "male": 2,
+                    "female": 4
+                }
+            }
+        },
+        {
+            "title": "Elements of Gameful Design Emerging from User Preferences",
+            "author": "Tondello et. all",
+            "resultType": "Correlation",
+            "bestValue": 1,
+            "minValue": -1,
+            "maxValue": 1,
+            "result": {
+                "Incentive": {
+                    "male": -0.112,
+                    "female": 0.233
+                }
+            }
+        },
+        {
+            "title": "Investigation of the Persuasiveness of Social Influence in Persuasive Technology and the Effect of Age and Gender",
+            "author": "Oyibo et. all",
+            "resultType": "PositiveNumber",
+            "bestValue": 9,
+            "minValue": 0,
+            "maxValue": 9,
+            "result": {
+                "Incentive": {
+                    "male": 7.03,
+                    "female": 6.44
+                }
+            }
+        },
+        {
+            "title": "Using Gamification to Enhance User Motivation: The Influence of Gender and Age",
+            "author": "Jent et. all",
+            "resultType": "PositiveNumber",
+            "bestValue": 1,
+            "minValue": 1,
+            "maxValue": 5,
+            "result": {
+                "Incentive": {
+                    "male": 3.16,
+                    "female": 3.19
+                }
+            }
+        },
+        {
+            "title": "Tailored Gamification to Educational Technologies",
+            "author": "Oliveira et. all",
+            "resultType": "Binary",
+            "bestValue": 1,
+            "minValue": 0,
+            "maxValue": 1,
+            "result": {
+                "Incentive": {
+                    "male": 0,
+                    "female": 1
+                }
+            }
+        }
+    ]
+}

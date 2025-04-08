@@ -1,19 +1,31 @@
 import {
-  RecommendationObject,
+  RecommendationInputObject,
   RecommenderValueObject,
 } from "../../types/RecommendationObjectTypes";
 import AbstractRecommender from "./AbstractRecommender";
-let IncentiveDictonary: RecommenderValueObject;
 import fs from "fs";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import { LiteratureResultTypeEnum } from "../../types/LiteratureTypeEnum";
+
+export interface IncentiveDictonaryProps {
+  male: {
+    score: number;
+    standardDeviation: number;
+  };
+  female: {
+    score: number;
+    standardDeviation: number;
+  };
+}
+
+let IncentiveDictonary: IncentiveDictonaryProps;
 
 class GenderBasedRecommender extends AbstractRecommender {
   constructor() {
     super();
   }
 
-  recommend(input: RecommendationObject): number {
+  recommend(input: RecommendationInputObject) {
     if (
       input.gender &&
       (input.gender === "female" || input.gender === "male")
@@ -59,14 +71,14 @@ class GenderBasedRecommender extends AbstractRecommender {
     return resultArray;
   }
 
-  assembleData(resultArray: RecommenderValueObject[]): RecommenderValueObject {
+  assembleData(resultArray: RecommenderValueObject[]): IncentiveDictonaryProps {
     const maleResultArray: number[] = [];
     const femaleResultArray: number[] = [];
     resultArray.forEach((element) => {
       maleResultArray.push(element.male);
       femaleResultArray.push(element.female);
     });
-    // Calculate the standard deviation of maleResultArray
+    // Calculate the mean and standard deviation of maleResultArray
     const maleMean =
       maleResultArray.reduce((sum, value) => sum + value, 0) /
       maleResultArray.length;
@@ -77,7 +89,7 @@ class GenderBasedRecommender extends AbstractRecommender {
       ) / maleResultArray.length,
     );
 
-    // Calculate the standard deviation of femaleResultArray
+    // Calculate the mean and standard deviation of femaleResultArray
     const femaleMean =
       femaleResultArray.reduce((sum, value) => sum + value, 0) /
       femaleResultArray.length;
@@ -88,12 +100,9 @@ class GenderBasedRecommender extends AbstractRecommender {
       ) / femaleResultArray.length,
     );
 
-    console.log("Male Standard Deviation:", maleStdDev);
-    console.log("Female Standard Deviation:", femaleStdDev);
-    //calculate average of the arrays
     const assembledResult = {
-      male: maleMean,
-      female: femaleMean,
+      male: { score: maleMean, standardDeviation: maleStdDev },
+      female: { score: femaleMean, standardDeviation: femaleStdDev },
     };
     return assembledResult;
   }

@@ -18,7 +18,7 @@ export class RecommenderValueObject {
   }
 }
 
-export class RecommendationObject {
+export class RecommendationInputObject {
   gender: string;
 
   constructor(gender: string) {
@@ -26,13 +26,20 @@ export class RecommendationObject {
   }
 }
 
-export class RecommendationPercentageObject {
+export class RecommendationScoreObject {
   //später wird es ein number array, wenn andere recommender hinzukommen
-  //percentagePerRecommender: number[];
-  overallPercentage: number;
+  overallScore: number;
 
-  constructor(overallPercentage: number = 0) {
-    this.overallPercentage = overallPercentage;
+  constructor(overallScore: number = 0) {
+    this.overallScore = overallScore;
+  }
+}
+
+export class RecommendationStandardDeviationObject {
+  overallStandardDeviation: number;
+
+  constructor(overallStandardDeviation: number = 0) {
+    this.overallStandardDeviation = overallStandardDeviation;
   }
 }
 
@@ -45,7 +52,7 @@ export class RecommendationResult {
     >;
     this.elements = keys.map((element) => {
       return new GamificationElementObject(
-        `${GamificationElements[element]}.png`, // imageSrc
+        `${element}.png`, // imageSrc
         element, // elementName
         GamificationElementDetails[element], // details
       );

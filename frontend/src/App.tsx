@@ -60,7 +60,8 @@ function App() {
               rank={index + 1}
               imageSrc={element.imageSrc}
               elementName={element.elementName}
-              percentages={element.percentages}
+              scores={element.scores}
+              standardDeviations={element.standardDeviations}
               details={element.details}
             />
           ))

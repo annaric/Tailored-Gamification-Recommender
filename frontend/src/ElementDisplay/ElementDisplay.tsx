@@ -6,7 +6,7 @@ export interface ElementDisplayProps {
   imageSrc: string;
   elementName: string;
   scores: { overallScore: number };
-  standardDeviations: {overallStandardDeviation: number};
+  standardDeviations: { overallStandardDeviation: number };
   details: string;
 }
 
@@ -40,7 +40,8 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
             Overall Score: {scores.overallScore.toFixed(3)}
           </span>
           <span className="standard-deviation">
-            Mean Standard deviation: {standardDeviations.overallStandardDeviation.toFixed(3)}
+            Mean Standard deviation:{" "}
+            {standardDeviations.overallStandardDeviation.toFixed(3)}
           </span>
         </div>
         <button className="dropdown-button" onClick={toggleDetails}>

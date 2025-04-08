@@ -10,21 +10,24 @@ class RecommendationAssembler {
     this.genderBasedRecommender = new GenderBasedRecommender();
   }
 
-  assembleRecommendations(input: RecommendationInputObject): RecommendationResult {
+  assembleRecommendations(
+    input: RecommendationInputObject,
+  ): RecommendationResult {
     const genderBasedRecommendation =
       this.genderBasedRecommender.recommend(input);
     const result = new RecommendationResult();
 
     result.elements = result.elements.map((element) => {
       element.scores.overallScore = genderBasedRecommendation.score;
-      element.standardDeviations.overallStandardDeviation = genderBasedRecommendation.standardDeviation;
+      element.standardDeviations.overallStandardDeviation =
+        genderBasedRecommendation.standardDeviation;
       return element;
     });
 
     result.elements = result.elements.sort((a, b) => {
       return b.scores.overallScore - a.scores.overallScore;
     });
-    
+
     return result;
   }
 }

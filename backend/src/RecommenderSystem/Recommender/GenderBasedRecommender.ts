@@ -9,15 +9,16 @@ import { LiteratureResultTypeEnum } from "../../types/LiteratureTypeEnum";
 
 export interface IncentiveDictonaryProps {
   male: {
-    score: number, 
-    standardDeviation: number
-  }, 
+    score: number;
+    standardDeviation: number;
+  };
   female: {
-    score: number, 
-    standardDeviation: number}
+    score: number;
+    standardDeviation: number;
+  };
 }
 
-let IncentiveDictonary: IncentiveDictonaryProps
+let IncentiveDictonary: IncentiveDictonaryProps;
 
 class GenderBasedRecommender extends AbstractRecommender {
   constructor() {
@@ -100,8 +101,8 @@ class GenderBasedRecommender extends AbstractRecommender {
     );
 
     const assembledResult = {
-      male: {score: maleMean, standardDeviation: maleStdDev},
-      female: {score: femaleMean, standardDeviation: femaleStdDev},
+      male: { score: maleMean, standardDeviation: maleStdDev },
+      female: { score: femaleMean, standardDeviation: femaleStdDev },
     };
     return assembledResult;
   }

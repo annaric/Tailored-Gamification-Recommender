@@ -1,4 +1,7 @@
-import { RecommendationScoreObject, RecommendationStandardDeviationObject } from "./RecommendationObjectTypes";
+import {
+  RecommendationScoreObject,
+  RecommendationStandardDeviationObject,
+} from "./RecommendationObjectTypes";
 
 export enum GamificationElements {
   //Altruism = 'Altruism',
@@ -9,8 +12,8 @@ export enum GamificationElements {
   //Customization = 'Customization',
   //Feedback = 'Feedback',
   //Guild = 'Guild',
-  //Immersion = 'Immersion', 
-  Incentive = 'Incentive',
+  //Immersion = 'Immersion',
+  Incentive = "Incentive",
   //Progression = 'Progression',
   //TimePressure = 'TimePressure',
   //VirtualEconomy = 'VirtualEconomy',

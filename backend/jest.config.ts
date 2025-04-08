@@ -10,11 +10,16 @@ module.exports = {
   },
   coveragePathIgnorePatterns: [
     "/node_modules/",
-    "/coverage",
+    "/coverage/",
+    "dist/",
     "package.json",
     "package-lock.json",
     "reportWebVitals.ts",
     "setupTests.ts",
     "index.tsx",
+  ],
+  testPathIgnorePatterns: [
+    "/node_modules/",
+    "/dist/",
   ],
 };

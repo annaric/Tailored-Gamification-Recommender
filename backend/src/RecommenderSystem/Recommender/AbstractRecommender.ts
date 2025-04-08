@@ -1,4 +1,4 @@
-import { RecommendationObject } from "../../types/RecommendationObjectTypes";
+import { RecommendationInputObject } from "../../types/RecommendationObjectTypes";
 
 abstract class AbstractRecommender {
   constructor() {
@@ -9,7 +9,7 @@ abstract class AbstractRecommender {
     }
   }
 
-  abstract recommend(input: RecommendationObject): number;
+  abstract recommend(input: RecommendationInputObject): unknown;
 
   abstract updateAlgorithm(): void;
 }

@@ -5,7 +5,8 @@ export interface ElementDisplayProps {
   rank: number;
   imageSrc: string;
   elementName: string;
-  percentages: { overallPercentage: number };
+  scores: { overallScore: number };
+  standardDeviations: {overallStandardDeviation: number};
   details: string;
 }
 
@@ -13,7 +14,8 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
   rank,
   imageSrc: imageSrc,
   elementName,
-  percentages,
+  scores,
+  standardDeviations,
   details,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -33,9 +35,14 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
           onClick={togglePopup}
         />
         <span className="element-name">{elementName}</span>
-        <span className="percentage">
-          Score: {percentages.overallPercentage.toFixed(3)}
-        </span>
+        <div className="score-group">
+          <span className="score">
+            Overall Score: {scores.overallScore.toFixed(3)}
+          </span>
+          <span className="standard-deviation">
+            Mean Standard deviation: {standardDeviations.overallStandardDeviation.toFixed(3)}
+          </span>
+        </div>
         <button className="dropdown-button" onClick={toggleDetails}>
           {isExpanded ? "▲" : "▼"}
         </button>

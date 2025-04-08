@@ -3,7 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import RecommendationService from "./RecommenderSystem/RecommendationService";
 import {
-  RecommendationObject,
+  RecommendationInputObject,
   RecommendationResult,
 } from "./types/RecommendationObjectTypes";
 
@@ -21,7 +21,7 @@ app.listen(PORT, () => {
 });
 
 app.post("/recommendation", (req: Request, res: Response) => {
-  const input: RecommendationObject = req.body;
+  const input: RecommendationInputObject = req.body;
 
   if (!input) {
     console.log("no input parameter");

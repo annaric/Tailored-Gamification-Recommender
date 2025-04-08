@@ -5,9 +5,9 @@
       "author": "Klock et. all",
       "paperType": "Review",
       "resultType": "PositiveNumber",
-      "bestValue": 12,
+      "bestValue": 7,
       "minValue": 0,
-      "maxValue": 12,
+      "maxValue": 7,
       "result": {
         "Incentive": {
           "male": 2,
@@ -32,7 +32,7 @@
     {
       "title": "Investigation of the Persuasiveness of Social Influence in Persuasive Technology and the Effect of Age and Gender",
       "author": "Oyibo et. all",
-      "resultType": "PositiveNumber",
+      "resultType": "Scale",
       "bestValue": 9,
       "minValue": 0,
       "maxValue": 9,
@@ -46,7 +46,7 @@
     {
       "title": "Using Gamification to Enhance User Motivation: The Influence of Gender and Age",
       "author": "Jent et. all",
-      "resultType": "PositiveNumber",
+      "resultType": "Scale",
       "bestValue": 1,
       "minValue": 1,
       "maxValue": 5,

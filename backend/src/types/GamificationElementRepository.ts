@@ -1,4 +1,4 @@
-import { RecommendationPercentageObject } from "../RecommenderSystem/RecommendationObjectTypes";
+import { RecommendationPercentageObject } from "./RecommendationObjectTypes";
 
 export enum GamificationElements {
   //Altruism = 'Altruism',

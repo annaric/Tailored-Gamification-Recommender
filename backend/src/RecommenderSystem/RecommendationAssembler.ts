@@ -1,7 +1,7 @@
 import {
   RecommendationObject,
   RecommendationResult,
-} from "./RecommendationObjectTypes";
+} from "../types/RecommendationObjectTypes";
 import GenderBasedRecommender from "./Recommender/GenderBasedRecommender";
 
 class RecommendationAssembler {

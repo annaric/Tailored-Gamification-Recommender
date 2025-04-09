@@ -36,20 +36,29 @@ class GenderBasedRecommender extends AbstractRecommender {
   }
 
   updateAlgorithm() {
-    const genderBasedRecommenderData: LiteratureElementObject[] = this.readJsonFile("./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json");
+    const genderBasedRecommenderData: LiteratureElementObject[] =
+      this.readJsonFile(
+        "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
+      );
     const resultArray = this.normalizeData(genderBasedRecommenderData);
     IncentiveDictonary = this.assembleData(resultArray);
   }
 
   readJsonFile(src: string): LiteratureElementObject[] {
     const result: LiteratureElementObject[] = JSON.parse(
-      fs.readFileSync(
-        src,
-        "utf-8",
-      ),
+      fs.readFileSync(src, "utf-8"),
     ).literature;
-    if (!Array.isArray(result) || !("resultType" in result[0]) || !("bestValue" in result[0]) || !("minValue" in result[0]) || !("maxValue" in result[0]) || !("result" in result[0])) {
-      throw new Error("Invalid data format: genderBasedRecommenderData must be an array of LiteratureElementObject");
+    if (
+      !Array.isArray(result) ||
+      !("resultType" in result[0]) ||
+      !("bestValue" in result[0]) ||
+      !("minValue" in result[0]) ||
+      !("maxValue" in result[0]) ||
+      !("result" in result[0])
+    ) {
+      throw new Error(
+        "Invalid data format: genderBasedRecommenderData must be an array of LiteratureElementObject",
+      );
     }
     return result;
   }

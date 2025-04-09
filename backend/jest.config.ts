@@ -18,8 +18,5 @@ module.exports = {
     "setupTests.ts",
     "index.tsx",
   ],
-  testPathIgnorePatterns: [
-    "/node_modules/",
-    "/dist/",
-  ],
+  testPathIgnorePatterns: ["/node_modules/", "/dist/"],
 };

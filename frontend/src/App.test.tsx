@@ -15,7 +15,7 @@ describe("App Component", () => {
     render(<App />);
     const genderSelect = screen.getByText("Select Gender");
     const maleSelection = screen.getByText("Male");
-    const femaleSelection = screen.getByText("Female")
+    const femaleSelection = screen.getByText("Female");
     expect(genderSelect).not.toBeNull();
     expect(maleSelection).not.toBeNull();
     expect(femaleSelection).not.toBeNull();
@@ -26,7 +26,11 @@ describe("App Component", () => {
 
   test("checks that Element Ranking is not rendered yet", () => {
     render(<App />);
-    expect(screen.getByText("Could not get any recommendation. Did you select any parameter?")).not.toBeNull();
+    expect(
+      screen.getByText(
+        "Could not get any recommendation. Did you select any parameter?",
+      ),
+    ).not.toBeNull();
     expect(screen.queryByText("Incentive")).toBeNull();
   });
 });

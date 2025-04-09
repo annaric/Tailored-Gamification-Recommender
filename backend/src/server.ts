@@ -23,7 +23,7 @@ app.listen(PORT, () => {
 app.post("/recommendation", (req: Request, res: Response) => {
   const input: RecommendationInputObject = req.body;
 
-  if (!input) {
+  if (!input || Object.keys(input).length === 0) {
     console.log("no input parameter");
     res.status(400).send("Input parameter is required");
   }

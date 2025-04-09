@@ -1,7 +1,7 @@
 module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
-  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
+  setupFilesAfterEnv: ["<rootDir>/test/setupTests.ts"],
   collectCoverage: true,
   collectCoverageFrom: ["src/**/*.{ts,tsx}", "!src/**/*.d.ts", "!**/vendor/**"],
   coverageDirectory: "coverage",
@@ -10,11 +10,13 @@ module.exports = {
   },
   coveragePathIgnorePatterns: [
     "/node_modules/",
-    "/coverage",
+    "/coverage/",
+    "dist/",
     "package.json",
     "package-lock.json",
     "reportWebVitals.ts",
     "setupTests.ts",
     "index.tsx",
   ],
+  testPathIgnorePatterns: ["/node_modules/", "/dist/"],
 };

@@ -5,7 +5,7 @@ export class LiteratureElementObject {
   title: string;
   author: string;
   paperType: string;
-  resultType: LiteratureResultTypeEnum;
+  resultType: LiteratureResultTypeEnum | string;
   bestValue: number;
   minValue: number;
   maxValue: number;

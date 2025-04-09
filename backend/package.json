@@ -1,6 +1,6 @@
 {
   "name": "tailored-gamification-recommender",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A recommender for tailored gamification",
   "main": "index.js",
   "scripts": {

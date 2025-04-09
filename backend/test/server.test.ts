@@ -1,5 +1,5 @@
 import request from "supertest";
-import app from "./server"; // Adjust the path to your Express app
+import app from "../src/server"; // Adjust the path to your Express app
 
 describe("API Endpoints", () => {
   it("should return a recommendation with all properties needed in the frontend", async () => {
@@ -19,7 +19,7 @@ describe("API Endpoints", () => {
     expect(response.body.recommendation.elements[0].standardDeviations).toHaveProperty("overallStandardDeviation");
   });
 
-  it("should return a 400 error if input parameter is missing", async () => {
+  it("should return a 400 error if input parameter is missing or empty", async () => {
     const response = await request(app).post("/recommendation").send({});
 
     expect(response.status).toBe(400);

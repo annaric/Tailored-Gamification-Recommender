@@ -39,7 +39,6 @@ class GenderBasedRecommender extends AbstractRecommender {
     const genderBasedRecommenderData: LiteratureElementObject[] = this.readJsonFile("./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json");
     const resultArray = this.normalizeData(genderBasedRecommenderData);
     IncentiveDictonary = this.assembleData(resultArray);
-    console.log("IncentiveDictonary", IncentiveDictonary);
   }
 
   readJsonFile(src: string): LiteratureElementObject[] {
@@ -75,7 +74,7 @@ class GenderBasedRecommender extends AbstractRecommender {
           throw new Error("Invalid result type");
       }
     });
-    console.log("resultArray", resultArray);
+    //console.log("resultArray", resultArray);
     return resultArray;
   }
 

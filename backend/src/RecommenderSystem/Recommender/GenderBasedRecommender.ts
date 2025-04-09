@@ -1,13 +1,19 @@
 import {
   RecommendationInputObject,
-  RecommenderValueObject,
+  RecommenderResults,
 } from "../../types/RecommendationObjectTypes";
 import AbstractRecommender from "./AbstractRecommender";
 import fs from "fs";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import { LiteratureResultTypeEnum } from "../../types/LiteratureTypeEnum";
+import { GamificationElementArray, GamificationElements } from "../../types/GamificationElementRepository";
 
-export interface IncentiveDictonaryProps {
+export enum GenderValues {
+  female = "female",
+  male = "male"
+}
+
+export interface GenderDictonaryElementProps {
   male: {
     score: number;
     standardDeviation: number;
@@ -18,21 +24,33 @@ export interface IncentiveDictonaryProps {
   };
 }
 
-let IncentiveDictonary: IncentiveDictonaryProps;
+export type ResultDictonary = {[key in GamificationElements]?: GenderDictonaryElementProps}
+const ResultDictonary: ResultDictonary = {};
 
 class GenderBasedRecommender extends AbstractRecommender {
+
   constructor() {
     super();
   }
 
-  recommend(input: RecommendationInputObject) {
-    if (
-      input.gender &&
-      (input.gender === "female" || input.gender === "male")
-    ) {
-      return IncentiveDictonary[input.gender];
+  recommend(input: RecommendationInputObject): RecommenderResults | undefined{
+    if (!input.gender && input.gender === undefined) {
+      return undefined;
     }
-    throw new Error("Invalid input");
+    if (input.gender === "female" || input.gender === "male") {
+      const result: RecommenderResults = {};
+      GamificationElementArray.forEach(key => {
+        if (ResultDictonary[key] && ResultDictonary[key][input.gender as "male" | "female"]) {
+          result[key] = {
+            score: ResultDictonary[key][input.gender as "male" | "female"].score,
+            standardDeviation: ResultDictonary[key][input.gender as "male" | "female"].standardDeviation
+          };
+        }
+      });
+      console.log(result);
+      return result;
+    }
+    throw new Error("Invalid input");  
   }
 
   updateAlgorithm() {
@@ -40,8 +58,13 @@ class GenderBasedRecommender extends AbstractRecommender {
       this.readJsonFile(
         "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
       );
-    const resultArray = this.normalizeData(genderBasedRecommenderData);
-    IncentiveDictonary = this.assembleData(resultArray);
+    GamificationElementArray.forEach(key => {
+      const resultArrayForOneElement = this.normalizeData(genderBasedRecommenderData, GamificationElements[key]);
+      if (resultArrayForOneElement.length != 0) {
+        ResultDictonary[key] = this.assembleData(resultArrayForOneElement)
+      }
+    });
+    console.log("ResultDictonary", ResultDictonary);
   }
 
   readJsonFile(src: string): LiteratureElementObject[] {
@@ -63,36 +86,40 @@ class GenderBasedRecommender extends AbstractRecommender {
     return result;
   }
 
-  normalizeData(input: LiteratureElementObject[]) {
-    const resultArray: RecommenderValueObject[] = [];
+  normalizeData(input: LiteratureElementObject[], key: GamificationElements) {
+    const resultArray: {[key in GenderValues]?:number} [] = [];
     input.forEach((element) => {
-      switch (element.resultType) {
-        case LiteratureResultTypeEnum["PositiveNumber"]:
-          resultArray.push(this.normalizePositiveDataPaper(element));
-          break;
-        case LiteratureResultTypeEnum["Scale"]:
-          resultArray.push(this.normalizeScaleDataPaper(element));
-          break;
-        case LiteratureResultTypeEnum["Correlation"]:
-          resultArray.push(this.normalizeCorrelationDataPaper(element));
-          break;
-        case LiteratureResultTypeEnum["Binary"]:
-          resultArray.push(this.normalizeBinaryDataPaper(element));
-          break;
-        default:
-          throw new Error("Invalid result type");
-      }
+      if (element.result && element.result[key] && element.result[key].male && element.result[key].female) {
+        const male = element.result[key].male;
+        const female = element.result[key].female;
+        switch (element.resultType) {
+          case LiteratureResultTypeEnum["PositiveNumber"]:
+            resultArray.push(this.normalizePositiveDataPaper(male, female));
+            break;
+          case LiteratureResultTypeEnum["Scale"]:
+            resultArray.push(this.normalizeScaleDataPaper(male, female, element.bestValue, element.minValue, element.maxValue));
+            break;
+          case LiteratureResultTypeEnum["Correlation"]:
+            resultArray.push(this.normalizeCorrelationDataPaper(male, female));
+            break;
+          case LiteratureResultTypeEnum["Binary"]:
+            resultArray.push(this.normalizeBinaryDataPaper(male, female));
+            break;
+          default:
+            throw new Error("Invalid result type");
+        }
+    }
     });
-    //console.log("resultArray", resultArray);
+    console.log("resultArray", resultArray);
     return resultArray;
   }
 
-  assembleData(resultArray: RecommenderValueObject[]): IncentiveDictonaryProps {
+  assembleData(resultArray: {[key in GenderValues]?:number}[]): GenderDictonaryElementProps {
     const maleResultArray: number[] = [];
     const femaleResultArray: number[] = [];
     resultArray.forEach((element) => {
-      maleResultArray.push(element.male);
-      femaleResultArray.push(element.female);
+      if (element["male"]) { maleResultArray.push(element["male"])}
+      if (element["female"]) { femaleResultArray.push(element["female"])}
     });
     // Calculate the mean and standard deviation of maleResultArray
     const maleMean =
@@ -124,58 +151,52 @@ class GenderBasedRecommender extends AbstractRecommender {
   }
 
   normalizePositiveDataPaper(
-    input: LiteratureElementObject,
-  ): RecommenderValueObject {
+    male: number,
+    female: number
+  ): {[key in GenderValues]?:number} {
     // Normiere zwischen 0.5 und 1, wobei 1 der beste Wert ist.
     // Sinnvoll bei Review Paper, die nur positive "Korrelationen" zurückgeben.
     // Unterschied zu anderen Normalisierungen: der maxValue sorgt dafür, dass es mit den anderen möglichen Werten in Beziehung gesetzt wird
-    const maxValue =
-      input.result.Incentive.male + input.result.Incentive.female;
+    const maxValue = male + female;
     const resultElement = { male: 0, female: 0 };
-    resultElement.male = 0.5 + (input.result.Incentive.male / maxValue) * 0.5;
+    resultElement.male = 0.5 + (male / maxValue) * 0.5;
     resultElement.female =
-      0.5 + (input.result.Incentive.female / maxValue) * 0.5;
+      0.5 + (female/ maxValue) * 0.5;
     return resultElement;
   }
 
   normalizeScaleDataPaper(
-    input: LiteratureElementObject,
-  ): RecommenderValueObject {
+    male: number,
+    female:number,
+    bestValue: number,
+    minValue: number,
+    maxValue: number,
+  ): {[key in GenderValues]?:number} {
     //Normieren zwischen 0 und 1 und schauen, dass 1 der beste Wert ist.
     // Sinnvoll bei Scalen Paper, die den User nach Bewertung fragen zwischen mag ich garnicht und mag ich sehr.
     const resultElement = { male: 0, female: 0 };
-    if (input.bestValue == input.minValue) {
-      resultElement.male =
-        1 -
-        (input.result.Incentive.male - input.minValue) /
-          (input.maxValue - input.minValue);
-      resultElement.female =
-        1 -
-        (input.result.Incentive.female - input.minValue) /
-          (input.maxValue - input.minValue);
+    if (bestValue == minValue) {
+      resultElement.male = 1 - (male - minValue) / (maxValue - minValue);
+      resultElement.female =1 - (female - minValue) / (maxValue - minValue);
     } else {
-      resultElement.male =
-        (input.result.Incentive.male - input.minValue) /
-        (input.maxValue - input.minValue);
-      resultElement.female =
-        (input.result.Incentive.female - input.minValue) /
-        (input.maxValue - input.minValue);
+      resultElement.male = (male - minValue) / (maxValue - minValue);
+      resultElement.female = (female - minValue) / (maxValue - minValue);
     }
     return resultElement;
   }
 
-  normalizeCorrelationDataPaper(input: LiteratureElementObject) {
+  normalizeCorrelationDataPaper(male: number, female: number): {[key in GenderValues]?:number} {
     //Normieren zwischen 0 und 1 statt -1 und 1
     const resultElement = { male: 0, female: 0 };
-    resultElement.male = (input.result.Incentive.male + 1) / 2;
-    resultElement.female = (input.result.Incentive.female + 1) / 2;
+    resultElement.male = (male + 1) / 2;
+    resultElement.female = (female + 1) / 2;
     return resultElement;
   }
 
-  normalizeBinaryDataPaper(input: LiteratureElementObject) {
+  normalizeBinaryDataPaper(male: number, female: number): {[key in GenderValues]?:number} {
     const resultElement = { male: 0, female: 0 };
-    resultElement.female = input.result.Incentive.female === 1 ? 0.75 : 0.25;
-    resultElement.male = input.result.Incentive.male === 1 ? 0.75 : 0.25;
+    resultElement.female = female === 1 ? 0.75 : 0.25;
+    resultElement.male = male === 1 ? 0.75 : 0.25;
     return resultElement;
   }
 }

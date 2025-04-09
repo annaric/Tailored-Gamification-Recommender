@@ -1,5 +1,5 @@
+import { GamificationElements } from "./GamificationElementRepository";
 import { LiteratureResultTypeEnum } from "./LiteratureTypeEnum";
-import { RecommenderValueObject } from "./RecommendationObjectTypes";
 
 export class LiteratureElementObject {
   title: string;
@@ -32,10 +32,4 @@ export class LiteratureElementObject {
   }
 }
 
-export class LiteratureResultObject {
-  Incentive: RecommenderValueObject;
-
-  constructor(Incentive: RecommenderValueObject) {
-    this.Incentive = Incentive;
-  }
-}
+export type LiteratureResultObject = {[key in GamificationElements]?: {male: number, female: number}}

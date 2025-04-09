@@ -8,26 +8,20 @@ export enum Recommender {
   Gender = "Gender",
 }
 
-export class RecommenderValueObject {
-  male: number;
-  female: number;
+// Result type of each Recommender
+export type RecommenderResults = {[key in GamificationElements]?: {
+  score: number;
+  standardDeviation: number;
+}}
 
-  constructor(male: number, female: number) {
-    this.male = male;
-    this.female = female;
-  }
-}
-
-export class RecommendationInputObject {
-  gender: string;
-
-  constructor(gender: string) {
-    this.gender = gender;
-  }
+//Input type we are getting from the frontend
+export type RecommendationInputObject = {
+  // hier kommen andere Recommender typen hin später
+  gender?: "male" | "female" | undefined;
 }
 
 export class RecommendationScoreObject {
-  //später wird es ein number array, wenn andere recommender hinzukommen
+  //später wird es noch ein number array mit den einzelnen Ergebnissen jedes Recommender geben, wenn andere recommender hinzukommen
   overallScore: number;
 
   constructor(overallScore: number = 0) {
@@ -36,6 +30,7 @@ export class RecommendationScoreObject {
 }
 
 export class RecommendationStandardDeviationObject {
+  //später wird es noch ein number array mit den einzelnen Ergebnissen jedes Recommender geben, wenn andere recommender hinzukommen
   overallStandardDeviation: number;
 
   constructor(overallStandardDeviation: number = 0) {
@@ -43,7 +38,7 @@ export class RecommendationStandardDeviationObject {
   }
 }
 
-export class RecommendationResult {
+export class RecommendationEndResult {
   elements: GamificationElementObject[] = [];
 
   constructor() {

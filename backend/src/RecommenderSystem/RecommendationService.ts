@@ -1,7 +1,7 @@
 import RecommendationAssembler from "./RecommendationAssembler";
 import {
   RecommendationInputObject,
-  RecommendationResult,
+  RecommendationEndResult,
 } from "../types/RecommendationObjectTypes";
 
 class RecommendationService {
@@ -11,7 +11,7 @@ class RecommendationService {
     this.recommendationAssembler = new RecommendationAssembler();
   }
 
-  recommend(input: RecommendationInputObject): RecommendationResult {
+  recommend(input: RecommendationInputObject): RecommendationEndResult {
     return this.recommendationAssembler.assembleRecommendations(input);
   }
 

@@ -4,7 +4,7 @@ import "dotenv/config";
 import RecommendationService from "./RecommenderSystem/RecommendationService";
 import {
   RecommendationInputObject,
-  RecommendationResult,
+  RecommendationEndResult,
 } from "./types/RecommendationObjectTypes";
 
 const app = express();
@@ -28,7 +28,7 @@ app.post("/recommendation", (req: Request, res: Response) => {
     res.status(400).send("Input parameter is required");
   }
 
-  const recommendation: RecommendationResult =
+  const recommendation: RecommendationEndResult =
     recommendationService.recommend(input);
   res.json({ recommendation: recommendation });
 });

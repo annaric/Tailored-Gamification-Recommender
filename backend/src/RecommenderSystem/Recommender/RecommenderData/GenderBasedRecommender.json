@@ -12,6 +12,50 @@
         "Incentive": {
           "male": 2,
           "female": 4
+        },
+        "Progression": {
+          "male": 2,
+          "female": 5
+        },
+        "Feedback": {
+          "male": 2,
+          "female": 2
+        },
+        "Customization": {
+          "male": 2,
+          "female": 3
+        },
+        "Immersion": {
+          "male": 1,
+          "female": 1
+        },
+        "Competition": {
+          "male": 4,
+          "female": 5
+        },
+        "Guild": {
+          "male": 4,
+          "female": 2
+        },
+        "VirtualEconomy": {
+          "male": 2,
+          "female": 2
+        },
+        "Assistance": {
+          "male": 0,
+          "female": 1
+        },
+        "Challenge": {
+          "male": 1,
+          "female": 1
+        },
+        "Chance": {
+          "male": 0,
+          "female": 1
+        },
+        "Altruism": {
+          "male": 2,
+          "female": 2
         }
       }
     },
@@ -26,6 +70,73 @@
         "Incentive": {
           "male": -0.112,
           "female": 0.233
+        },
+        "Progression": {
+          "male": -0.073,
+          "female": 0.165
+        },
+        "Customization": {
+          "male": -0.136,
+          "female": 0.311
+        },
+        "Immersion": {
+          "male": -0.076,
+          "female": 0.369
+        },
+        "Competition": {
+          "male": 0.205,
+          "female": -0.366
+        },
+        "Guild": {
+          "male": 0.205,
+          "female": -0.366
+        },
+        "Assistance": {
+          "male": -0.287,
+          "female": 0.628
+        },
+        "Challenge": {
+          "male": -0.016,
+          "female": 0.02
+        },
+        "Chance": {
+          "male": -0.016,
+          "female": 0.02
+        },
+        "Altruism": {
+          "male": 0.13,
+          "female": -0.246
+        }
+      }
+    },
+    {
+      "title": "Automating Gamification Personalization to the User and Beyond",
+      "author": "Rodrigues et. all",
+      "paperType": "Descision Tree",
+      "resultType": "Binary",
+      "bestValue": 1,
+      "minValue": 0,
+      "maxValue": 1,
+      "result": {
+        "Feedback": {
+          "male": 1,
+          "female": 1
+        },
+        "Immersion": {
+          "male": 1,
+          "female": 0
+        },
+        "Competition": {
+          "male": 1,
+          "female": 1
+        },
+        "Guild": {
+          "male": 1,
+          "female": 0
+        },
+        "Altruism": {
+          "male": 1,
+          "female": 0
         }
       }
     },
@@ -40,6 +151,14 @@
         "Incentive": {
           "male": 7.03,
           "female": 6.44
+        },
+        "Competition": {
+          "male": 5.91,
+          "female": 5.43
+        },
+        "Guild": {
+          "male": 5.56,
+          "female": 5.44
         }
       }
     },
@@ -52,22 +171,46 @@
       "maxValue": 5,
       "result": {
         "Incentive": {
-          "male": 3.16,
+          "male": 3.06,
           "female": 3.19
+        },
+        "Progression": {
+          "male": 2.59,
+          "female": 2.68
+        },
+        "Immersion": {
+          "male": 2.72,
+          "female": 2.77
+        },
+        "Competition": {
+          "male": 3.04,
+          "female": 3.14
         }
       }
     },
     {
       "title": "Tailored Gamification to Educational Technologies",
       "author": "Oliveira et. all",
-      "resultType": "Binary",
-      "bestValue": 1,
+      "resultType": "PositiveNumber",
+      "bestValue": 2,
       "minValue": 0,
       "maxValue": 1,
       "result": {
         "Incentive": {
           "male": 0,
           "female": 1
+        },
+        "Progression": {
+          "male": 3,
+          "female": 2
+        },
+        "Customization": {
+          "male": 2,
+          "female": 1
+        },
+        "Competition": {
+          "male": 1,
+          "female": 2
         }
       }
     }

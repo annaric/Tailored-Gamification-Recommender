@@ -75,9 +75,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
     expect(normalizePositiveDataPaperSpy).toHaveBeenCalledTimes(1);
-    expect(assembleDataSpy).toHaveReturnedWith(
-      expectedResultDictonaryValues,
-    );
+    expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
   it("should correctly update the ResultDictonary with Correlation number literature", () => {
@@ -138,9 +136,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
     expect(normalizeCorrelationDataPaperSpy).toHaveBeenCalledTimes(1);
-    expect(assembleDataSpy).toHaveReturnedWith(
-      expectedResultDictonaryValues,
-    );
+    expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
   it("should correctly update the ResultDictonary with Binary number literature", () => {
@@ -201,9 +197,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
     expect(normalizeBinaryDataPaperSpy).toHaveBeenCalledTimes(1);
-    expect(assembleDataSpy).toHaveReturnedWith(
-      expectedResultDictonaryValues,
-    );
+    expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
   it("should correctly update the ResultDictonary with Scale number literature where best value is min", () => {
@@ -264,9 +258,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
     expect(normalizeScaleDataPaperSpy).toHaveBeenCalledTimes(1);
-    expect(assembleDataSpy).toHaveReturnedWith(
-      expectedResultDictonaryValues,
-    );
+    expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
   it("should correctly update the ResultDictonary with Scale number literature where best value is max", () => {
@@ -327,9 +319,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
     expect(normalizeScaleDataPaperSpy).toHaveBeenCalledTimes(1);
-    expect(assembleDataSpy).toHaveReturnedWith(
-      expectedResultDictonaryValues,
-    );
+    expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
   it("should correctly update the ResultDictonary with multiple elements and multiple results", () => {
@@ -388,7 +378,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
         );
         return mockReadJsonFileReturnValue.literature;
       });
-    
+
     const recommendSpy = jest.spyOn(recommender, "recommend");
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
@@ -408,28 +398,68 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     expect(normalizeBinaryDataPaper).toHaveBeenCalledTimes(2);
 
     //Assert that recommend gives back the correct values for male
-    const maleResult = recommender.recommend({gender: "male"});
+    const maleResult = recommender.recommend({ gender: "male" });
     expect(recommendSpy).toHaveBeenCalledTimes(1);
-    const expectedMaleAltruismScore = ((3.6/8) + 0.75) / 2
-    const expectedMaleTimePressureScore = ((0.8/8) + 0.5) / 2
-    const expectedMaleAltruismStdDev = Math.sqrt((Math.pow(3.6/8 - expectedMaleAltruismScore, 2) + Math.pow(0.75 - expectedMaleAltruismScore, 2)) / 2);
-    const expectedMaleTimePressureStdDev = Math.sqrt((Math.pow(0.8/8 - expectedMaleTimePressureScore, 2) + Math.pow(0.5 - expectedMaleTimePressureScore, 2)) / 2);
-    expect(maleResult?.Altruism?.score).toBeCloseTo(expectedMaleAltruismScore, 5);
-    expect(maleResult?.Altruism?.standardDeviation).toBeCloseTo(expectedMaleAltruismStdDev, 5);
-    expect(maleResult?.TimePressure?.score).toBeCloseTo(expectedMaleTimePressureScore, 5);
-    expect(maleResult?.TimePressure?.standardDeviation).toBeCloseTo(expectedMaleTimePressureStdDev, 5);
+    const expectedMaleAltruismScore = (3.6 / 8 + 0.75) / 2;
+    const expectedMaleTimePressureScore = (0.8 / 8 + 0.5) / 2;
+    const expectedMaleAltruismStdDev = Math.sqrt(
+      (Math.pow(3.6 / 8 - expectedMaleAltruismScore, 2) +
+        Math.pow(0.75 - expectedMaleAltruismScore, 2)) /
+        2,
+    );
+    const expectedMaleTimePressureStdDev = Math.sqrt(
+      (Math.pow(0.8 / 8 - expectedMaleTimePressureScore, 2) +
+        Math.pow(0.5 - expectedMaleTimePressureScore, 2)) /
+        2,
+    );
+    expect(maleResult?.Altruism?.score).toBeCloseTo(
+      expectedMaleAltruismScore,
+      5,
+    );
+    expect(maleResult?.Altruism?.standardDeviation).toBeCloseTo(
+      expectedMaleAltruismStdDev,
+      5,
+    );
+    expect(maleResult?.TimePressure?.score).toBeCloseTo(
+      expectedMaleTimePressureScore,
+      5,
+    );
+    expect(maleResult?.TimePressure?.standardDeviation).toBeCloseTo(
+      expectedMaleTimePressureStdDev,
+      5,
+    );
 
     //Assert that recommend gives back the correct values for female
-    const femaleResult = recommender.recommend({gender: "female"});
+    const femaleResult = recommender.recommend({ gender: "female" });
     expect(recommendSpy).toHaveBeenCalledTimes(2);
-    const expectedFemaleAltruismScore = ((1.3/8) + 0.5) / 2
-    const expectedFemaleTimePressureScore = ((6.4/8) + 0.75) / 2
-    const expectedFemaleAltruismStdDev = Math.sqrt((Math.pow(1.3/8 - expectedFemaleAltruismScore, 2) + Math.pow(0.5 - expectedFemaleAltruismScore, 2)) / 2);
-    const expectedFemaleTimePressureStdDev = Math.sqrt((Math.pow(6.4/8 - expectedFemaleTimePressureScore, 2) + Math.pow(0.75 - expectedFemaleTimePressureScore, 2)) / 2);
-    expect(femaleResult?.Altruism?.score).toBeCloseTo(expectedFemaleAltruismScore, 5);
-    expect(femaleResult?.Altruism?.standardDeviation).toBeCloseTo(expectedFemaleAltruismStdDev, 5);
-    expect(femaleResult?.TimePressure?.score).toBeCloseTo(expectedFemaleTimePressureScore, 5);
-    expect(femaleResult?.TimePressure?.standardDeviation).toBeCloseTo(expectedFemaleTimePressureStdDev, 5);
+    const expectedFemaleAltruismScore = (1.3 / 8 + 0.5) / 2;
+    const expectedFemaleTimePressureScore = (6.4 / 8 + 0.75) / 2;
+    const expectedFemaleAltruismStdDev = Math.sqrt(
+      (Math.pow(1.3 / 8 - expectedFemaleAltruismScore, 2) +
+        Math.pow(0.5 - expectedFemaleAltruismScore, 2)) /
+        2,
+    );
+    const expectedFemaleTimePressureStdDev = Math.sqrt(
+      (Math.pow(6.4 / 8 - expectedFemaleTimePressureScore, 2) +
+        Math.pow(0.75 - expectedFemaleTimePressureScore, 2)) /
+        2,
+    );
+    expect(femaleResult?.Altruism?.score).toBeCloseTo(
+      expectedFemaleAltruismScore,
+      5,
+    );
+    expect(femaleResult?.Altruism?.standardDeviation).toBeCloseTo(
+      expectedFemaleAltruismStdDev,
+      5,
+    );
+    expect(femaleResult?.TimePressure?.score).toBeCloseTo(
+      expectedFemaleTimePressureScore,
+      5,
+    );
+    expect(femaleResult?.TimePressure?.standardDeviation).toBeCloseTo(
+      expectedFemaleTimePressureStdDev,
+      5,
+    );
   });
 
   it("should throw an Error when result type is invalid", () => {

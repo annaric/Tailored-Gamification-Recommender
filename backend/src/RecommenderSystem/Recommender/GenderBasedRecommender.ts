@@ -57,7 +57,7 @@ class GenderBasedRecommender extends AbstractRecommender {
           };
         }
       });
-      console.log(result);
+      //console.log(result);
       return result;
     }
     throw new Error("Invalid input");
@@ -77,7 +77,7 @@ class GenderBasedRecommender extends AbstractRecommender {
         ResultDictonary[key] = this.assembleData(resultArrayForOneElement);
       }
     });
-    console.log("ResultDictonary", ResultDictonary);
+    //console.log("ResultDictonary", ResultDictonary);
   }
 
   readJsonFile(src: string): LiteratureElementObject[] {
@@ -141,7 +141,7 @@ class GenderBasedRecommender extends AbstractRecommender {
         }
       }
     });
-    console.log("resultArray", resultArray);
+    //console.log("resultArray", resultArray);
     return resultArray;
   }
 

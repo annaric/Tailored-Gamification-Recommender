@@ -17,7 +17,7 @@ class RecommendationAssembler {
     const genderBasedRecommendation =
       this.genderBasedRecommender.recommend(input);
     const result = new RecommendationEndResult();
-    console.log("genderBasedRecommendation", genderBasedRecommendation);
+    //console.log("genderBasedRecommendation", genderBasedRecommendation);
 
     result.elements = result.elements.map((element) => {
       const elementKey =

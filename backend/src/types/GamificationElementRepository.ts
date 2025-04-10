@@ -4,19 +4,19 @@ import {
 } from "./RecommendationObjectTypes";
 
 export enum GamificationElements {
-  Altruism = 'Altruism',
-  Assistance = 'Assistance',
-  Challenge = 'Challenge',
-  Chance = 'Chance',
-  Competition = 'Competition',
-  Customization = 'Customization',
-  Feedback = 'Feedback',
-  Guild = 'Guild',
-  Immersion = 'Immersion',
+  Altruism = "Altruism",
+  Assistance = "Assistance",
+  Challenge = "Challenge",
+  Chance = "Chance",
+  Competition = "Competition",
+  Customization = "Customization",
+  Feedback = "Feedback",
+  Guild = "Guild",
+  Immersion = "Immersion",
   Incentive = "Incentive",
-  Progression = 'Progression',
-  TimePressure = 'TimePressure',
-  VirtualEconomy = 'VirtualEconomy',
+  Progression = "Progression",
+  TimePressure = "TimePressure",
+  VirtualEconomy = "VirtualEconomy",
 }
 
 export enum GamificationElementDetails {
@@ -31,11 +31,15 @@ export enum GamificationElementDetails {
   Immersion = "Immersion gives tasks meaning through storytelling, narrative, exploration, and choices.",
   Incentive = "Rewards or incentives are elements like badges, achievements, collectibles, or points that you receive, for example, for completing tasks",
   Progression = "Progression displays your current overall or specific progress through for example levels, milestones, progress bars, or concept maps.",
-  TimePressure = 'Time Pressure aims to motivate you through time pressure, with elements such as a time limit or a given deadline.',
-  VirtualEconomy = "Virtual economy allows you to buy, trade, or gift virtual items using virtually earned currency."
+  TimePressure = "Time Pressure aims to motivate you through time pressure, with elements such as a time limit or a given deadline.",
+  VirtualEconomy = "Virtual economy allows you to buy, trade, or gift virtual items using virtually earned currency.",
 }
 
-export const GamificationElementArray: Array<keyof typeof GamificationElements> = Object.keys(GamificationElements) as Array<keyof typeof GamificationElements>;
+export const GamificationElementArray: Array<
+  keyof typeof GamificationElements
+> = Object.keys(GamificationElements) as Array<
+  keyof typeof GamificationElements
+>;
 
 export class GamificationElementObject {
   imageSrc: string;

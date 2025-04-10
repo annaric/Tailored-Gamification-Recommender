@@ -32,4 +32,6 @@ export class LiteratureElementObject {
   }
 }
 
-export type LiteratureResultObject = {[key in GamificationElements]?: {male: number, female: number}}
+export type LiteratureResultObject = {
+  [key in GamificationElements]?: { male: number; female: number };
+};

@@ -9,16 +9,18 @@ export enum Recommender {
 }
 
 // Result type of each Recommender
-export type RecommenderResults = {[key in GamificationElements]?: {
-  score: number;
-  standardDeviation: number;
-}}
+export type RecommenderResults = {
+  [key in GamificationElements]?: {
+    score: number;
+    standardDeviation: number;
+  };
+};
 
 //Input type we are getting from the frontend
 export type RecommendationInputObject = {
   // hier kommen andere Recommender typen hin später
   gender?: "male" | "female" | undefined;
-}
+};
 
 export class RecommendationScoreObject {
   //später wird es noch ein number array mit den einzelnen Ergebnissen jedes Recommender geben, wenn andere recommender hinzukommen

@@ -20,10 +20,16 @@ class RecommendationAssembler {
     console.log("genderBasedRecommendation", genderBasedRecommendation);
 
     result.elements = result.elements.map((element) => {
-      const elementKey = element.elementName as keyof typeof GamificationElements;
-      if (!(genderBasedRecommendation === undefined) && genderBasedRecommendation[elementKey]) {
-        element.scores.overallScore = genderBasedRecommendation[elementKey].score;
-        element.standardDeviations.overallStandardDeviation = genderBasedRecommendation[elementKey].standardDeviation;
+      const elementKey =
+        element.elementName as keyof typeof GamificationElements;
+      if (
+        !(genderBasedRecommendation === undefined) &&
+        genderBasedRecommendation[elementKey]
+      ) {
+        element.scores.overallScore =
+          genderBasedRecommendation[elementKey].score;
+        element.standardDeviations.overallStandardDeviation =
+          genderBasedRecommendation[elementKey].standardDeviation;
         return element;
       } else {
         element.scores.overallScore = 0;

@@ -97,14 +97,14 @@
         },
         "Challenge": {
           "male": -0.016,
-          "female": 0.020
+          "female": 0.02
         },
         "Chance": {
           "male": -0.016,
-          "female": 0.020
+          "female": 0.02
         },
         "Altruism": {
-          "male": 0.130,
+          "male": 0.13,
           "female": -0.246
         }
       }

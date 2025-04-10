@@ -59,8 +59,8 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     recommender.updateAlgorithm();
 
-    const expectedMaleScore = 0.5 + (2 / 6) * 0.5;
-    const expectedFemaleScore = 0.5 + (4 / 6) * 0.5;
+    const expectedMaleScore = 0.5 + (2 / 7) * 0.5;
+    const expectedFemaleScore = 0.5 + (4 / 7) * 0.5;
 
     const expectedIncentiveDictonaryValues = {
       male: {
@@ -185,7 +185,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     recommender.updateAlgorithm();
 
-    const expectedMaleScore = 0.25;
+    const expectedMaleScore = 0.5;
     const expectedFemaleScore = 0.75;
 
     const expectedIncentiveDictonaryValues = {

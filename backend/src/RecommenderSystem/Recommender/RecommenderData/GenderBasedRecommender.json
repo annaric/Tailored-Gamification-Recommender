@@ -84,20 +84,59 @@
           "female": 0.369
         },
         "Competition": {
-          "male": -0.366,
-          "female": 0.205
+          "male": 0.205,
+          "female": -0.366
         },
         "Guild": {
-          "male": -0.366,
-          "female": 0.205
+          "male": 0.205,
+          "female": -0.366
         },
         "Assistance": {
           "male": -0.287,
           "female": 0.628
         },
+        "Challenge": {
+          "male": -0.016,
+          "female": 0.020
+        },
+        "Chance": {
+          "male": -0.016,
+          "female": 0.020
+        },
         "Altruism": {
           "male": 0.130,
           "female": -0.246
+        }
+      }
+    },
+    {
+      "title": "Automating Gamification Personalization to the User and Beyond",
+      "author": "Rodrigues et. all",
+      "paperType": "Descision Tree",
+      "resultType": "Binary",
+      "bestValue": 1,
+      "minValue": 0,
+      "maxValue": 1,
+      "result": {
+        "Feedback": {
+          "male": 1,
+          "female": 1
+        },
+        "Immersion": {
+          "male": 1,
+          "female": 0
+        },
+        "Competition": {
+          "male": 1,
+          "female": 1
+        },
+        "Guild": {
+          "male": 1,
+          "female": 0
+        },
+        "Altruism": {
+          "male": 1,
+          "female": 0
         }
       }
     },
@@ -114,7 +153,7 @@
           "female": 6.44
         },
         "Competition": {
-          "male": 5.865,
+          "male": 5.91,
           "female": 5.43
         },
         "Guild": {
@@ -132,12 +171,12 @@
       "maxValue": 5,
       "result": {
         "Incentive": {
-          "male": 3.16,
+          "male": 3.06,
           "female": 3.19
         },
         "Progression": {
-          "male": 2.56,
-          "female": 2.66
+          "male": 2.59,
+          "female": 2.68
         },
         "Immersion": {
           "male": 2.72,

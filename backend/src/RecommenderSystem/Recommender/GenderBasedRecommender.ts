@@ -59,9 +59,9 @@ class GenderBasedRecommender extends AbstractRecommender {
         "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
       );
     GamificationElementArray.forEach(key => {
-      const resultArrayForOneElement = this.normalizeData(genderBasedRecommenderData, GamificationElements[key]);
+      const resultArrayForOneElement = this.normalizeLiteratureData(genderBasedRecommenderData, GamificationElements[key]);
       if (resultArrayForOneElement.length != 0) {
-        ResultDictonary[key] = this.assembleData(resultArrayForOneElement)
+        ResultDictonary[key] = this.assembleData(resultArrayForOneElement);
       }
     });
     console.log("ResultDictonary", ResultDictonary);
@@ -86,15 +86,15 @@ class GenderBasedRecommender extends AbstractRecommender {
     return result;
   }
 
-  normalizeData(input: LiteratureElementObject[], key: GamificationElements) {
+  normalizeLiteratureData(input: LiteratureElementObject[], key: GamificationElements) {
     const resultArray: {[key in GenderValues]?:number} [] = [];
     input.forEach((element) => {
-      if (element.result && element.result[key] && element.result[key].male && element.result[key].female) {
+      if (element.result && element.result[key] && !(element.result[key].male === undefined) && !(element.result[key].female=== undefined)) {
         const male = element.result[key].male;
         const female = element.result[key].female;
         switch (element.resultType) {
           case LiteratureResultTypeEnum["PositiveNumber"]:
-            resultArray.push(this.normalizePositiveDataPaper(male, female));
+            resultArray.push(this.normalizePositiveDataPaper(male, female, element.bestValue));
             break;
           case LiteratureResultTypeEnum["Scale"]:
             resultArray.push(this.normalizeScaleDataPaper(male, female, element.bestValue, element.minValue, element.maxValue));
@@ -118,8 +118,8 @@ class GenderBasedRecommender extends AbstractRecommender {
     const maleResultArray: number[] = [];
     const femaleResultArray: number[] = [];
     resultArray.forEach((element) => {
-      if (element["male"]) { maleResultArray.push(element["male"])}
-      if (element["female"]) { femaleResultArray.push(element["female"])}
+      if (!(element["male"]=== undefined)) { maleResultArray.push(element["male"])}
+      if (!(element["female"] === undefined)) { femaleResultArray.push(element["female"])}
     });
     // Calculate the mean and standard deviation of maleResultArray
     const maleMean =
@@ -152,16 +152,15 @@ class GenderBasedRecommender extends AbstractRecommender {
 
   normalizePositiveDataPaper(
     male: number,
-    female: number
+    female: number,
+    bestValue: number,
   ): {[key in GenderValues]?:number} {
     // Normiere zwischen 0.5 und 1, wobei 1 der beste Wert ist.
     // Sinnvoll bei Review Paper, die nur positive "Korrelationen" zurückgeben.
-    // Unterschied zu anderen Normalisierungen: der maxValue sorgt dafür, dass es mit den anderen möglichen Werten in Beziehung gesetzt wird
-    const maxValue = male + female;
+    // Unterschied zu anderen Normalisierungen: der bestValue ist die Anzahl der Paper die sagen können, dass das Element gut ist für gender x
     const resultElement = { male: 0, female: 0 };
-    resultElement.male = 0.5 + (male / maxValue) * 0.5;
-    resultElement.female =
-      0.5 + (female/ maxValue) * 0.5;
+    resultElement.male = (male > bestValue) ? 1: 0.5 + (male / bestValue) * 0.5;
+    resultElement.female = (female > bestValue) ? 1: 0.5 + (female/ bestValue) * 0.5;
     return resultElement;
   }
 
@@ -177,7 +176,7 @@ class GenderBasedRecommender extends AbstractRecommender {
     const resultElement = { male: 0, female: 0 };
     if (bestValue == minValue) {
       resultElement.male = 1 - (male - minValue) / (maxValue - minValue);
-      resultElement.female =1 - (female - minValue) / (maxValue - minValue);
+      resultElement.female = 1 - (female - minValue) / (maxValue - minValue);
     } else {
       resultElement.male = (male - minValue) / (maxValue - minValue);
       resultElement.female = (female - minValue) / (maxValue - minValue);
@@ -195,8 +194,8 @@ class GenderBasedRecommender extends AbstractRecommender {
 
   normalizeBinaryDataPaper(male: number, female: number): {[key in GenderValues]?:number} {
     const resultElement = { male: 0, female: 0 };
-    resultElement.female = female === 1 ? 0.75 : 0.25;
-    resultElement.male = male === 1 ? 0.75 : 0.25;
+    resultElement.female = female === 1 ? 0.75 : 0.5;
+    resultElement.male = male === 1 ? 0.75 : 0.5;
     return resultElement;
   }
 }

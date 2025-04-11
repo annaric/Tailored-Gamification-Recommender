@@ -1,5 +1,6 @@
 import { GamificationElements } from "./GamificationElementRepository";
 import { LiteratureResultTypeEnum } from "./LiteratureTypeEnum";
+import { RecommenderDependendLiteratureResults } from "./RecommenderObjectTypes";
 
 export class LiteratureElementObject {
   title: string;
@@ -33,5 +34,5 @@ export class LiteratureElementObject {
 }
 
 export type LiteratureResultObject = {
-  [key in GamificationElements]?: { male: number; female: number };
+  [key in GamificationElements]?: RecommenderDependendLiteratureResults;
 };

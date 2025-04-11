@@ -4,10 +4,6 @@ import {
   GamificationElementDetails,
 } from "./GamificationElementRepository";
 
-export enum Recommender {
-  Gender = "Gender",
-}
-
 // Result type of each Recommender
 export type RecommenderResults = {
   [key in GamificationElements]?: {

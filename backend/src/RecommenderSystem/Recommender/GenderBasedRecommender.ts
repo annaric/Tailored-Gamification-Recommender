@@ -3,18 +3,14 @@ import {
   RecommenderResults,
 } from "../../types/RecommendationObjectTypes";
 import AbstractRecommender from "./AbstractRecommender";
-import fs from "fs";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
-import { LiteratureResultTypeEnum } from "../../types/LiteratureTypeEnum";
 import {
   GamificationElementArray,
   GamificationElements,
 } from "../../types/GamificationElementRepository";
-
-export enum GenderValues {
-  female = "female",
-  male = "male",
-}
+import { GenderValues, RecommenderValues } from "../../types/RecommenderObjectTypes";
+import DataNormalizer from "../Helper/DataNormalizer";
+import JsonFileReader from "../Helper/JsonFileReader";
 
 export interface GenderDictonaryElementProps {
   male: {
@@ -64,14 +60,18 @@ class GenderBasedRecommender extends AbstractRecommender {
   }
 
   updateAlgorithm() {
+    const jsonFileReader = new JsonFileReader();
+    const dataNormalizer = new DataNormalizer();
     const genderBasedRecommenderData: LiteratureElementObject[] =
-      this.readJsonFile(
+      jsonFileReader.readJsonFile(
         "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
       );
+    
     GamificationElementArray.forEach((key) => {
-      const resultArrayForOneElement = this.normalizeLiteratureData(
+      const resultArrayForOneElement = dataNormalizer.normalizeLiteratureData(
         genderBasedRecommenderData,
         GamificationElements[key],
+        Object.keys(GenderValues) as RecommenderValues[],
       );
       if (resultArrayForOneElement.length != 0) {
         ResultDictonary[key] = this.assembleData(resultArrayForOneElement);
@@ -80,70 +80,7 @@ class GenderBasedRecommender extends AbstractRecommender {
     //console.log("ResultDictonary", ResultDictonary);
   }
 
-  readJsonFile(src: string): LiteratureElementObject[] {
-    const result: LiteratureElementObject[] = JSON.parse(
-      fs.readFileSync(src, "utf-8"),
-    ).literature;
-    if (
-      !Array.isArray(result) ||
-      !("resultType" in result[0]) ||
-      !("bestValue" in result[0]) ||
-      !("minValue" in result[0]) ||
-      !("maxValue" in result[0]) ||
-      !("result" in result[0])
-    ) {
-      throw new Error(
-        "Invalid data format: genderBasedRecommenderData must be an array of LiteratureElementObject",
-      );
-    }
-    return result;
-  }
-
-  normalizeLiteratureData(
-    input: LiteratureElementObject[],
-    key: GamificationElements,
-  ) {
-    const resultArray: { [key in GenderValues]?: number }[] = [];
-    input.forEach((element) => {
-      if (
-        element.result &&
-        element.result[key] &&
-        !(element.result[key].male === undefined) &&
-        !(element.result[key].female === undefined)
-      ) {
-        const male = element.result[key].male;
-        const female = element.result[key].female;
-        switch (element.resultType) {
-          case LiteratureResultTypeEnum["PositiveNumber"]:
-            resultArray.push(
-              this.normalizePositiveDataPaper(male, female, element.bestValue),
-            );
-            break;
-          case LiteratureResultTypeEnum["Scale"]:
-            resultArray.push(
-              this.normalizeScaleDataPaper(
-                male,
-                female,
-                element.bestValue,
-                element.minValue,
-                element.maxValue,
-              ),
-            );
-            break;
-          case LiteratureResultTypeEnum["Correlation"]:
-            resultArray.push(this.normalizeCorrelationDataPaper(male, female));
-            break;
-          case LiteratureResultTypeEnum["Binary"]:
-            resultArray.push(this.normalizeBinaryDataPaper(male, female));
-            break;
-          default:
-            throw new Error("Invalid result type");
-        }
-      }
-    });
-    //console.log("resultArray", resultArray);
-    return resultArray;
-  }
+  
 
   assembleData(
     resultArray: { [key in GenderValues]?: number }[],
@@ -187,61 +124,6 @@ class GenderBasedRecommender extends AbstractRecommender {
     return assembledResult;
   }
 
-  normalizePositiveDataPaper(
-    male: number,
-    female: number,
-    bestValue: number,
-  ): { [key in GenderValues]?: number } {
-    // Normiere zwischen 0.5 und 1, wobei 1 der beste Wert ist.
-    // Sinnvoll bei Review Paper, die nur positive "Korrelationen" zurückgeben.
-    // Unterschied zu anderen Normalisierungen: der bestValue ist die Anzahl der Paper die sagen können, dass das Element gut ist für gender x
-    const resultElement = { male: 0, female: 0 };
-    resultElement.male = male > bestValue ? 1 : 0.5 + (male / bestValue) * 0.5;
-    resultElement.female =
-      female > bestValue ? 1 : 0.5 + (female / bestValue) * 0.5;
-    return resultElement;
-  }
-
-  normalizeScaleDataPaper(
-    male: number,
-    female: number,
-    bestValue: number,
-    minValue: number,
-    maxValue: number,
-  ): { [key in GenderValues]?: number } {
-    //Normieren zwischen 0 und 1 und schauen, dass 1 der beste Wert ist.
-    // Sinnvoll bei Scalen Paper, die den User nach Bewertung fragen zwischen mag ich garnicht und mag ich sehr.
-    const resultElement = { male: 0, female: 0 };
-    if (bestValue == minValue) {
-      resultElement.male = 1 - (male - minValue) / (maxValue - minValue);
-      resultElement.female = 1 - (female - minValue) / (maxValue - minValue);
-    } else {
-      resultElement.male = (male - minValue) / (maxValue - minValue);
-      resultElement.female = (female - minValue) / (maxValue - minValue);
-    }
-    return resultElement;
-  }
-
-  normalizeCorrelationDataPaper(
-    male: number,
-    female: number,
-  ): { [key in GenderValues]?: number } {
-    //Normieren zwischen 0 und 1 statt -1 und 1
-    const resultElement = { male: 0, female: 0 };
-    resultElement.male = (male + 1) / 2;
-    resultElement.female = (female + 1) / 2;
-    return resultElement;
-  }
-
-  normalizeBinaryDataPaper(
-    male: number,
-    female: number,
-  ): { [key in GenderValues]?: number } {
-    const resultElement = { male: 0, female: 0 };
-    resultElement.female = female === 1 ? 0.75 : 0.5;
-    resultElement.male = male === 1 ? 0.75 : 0.5;
-    return resultElement;
-  }
 }
 
 export default GenderBasedRecommender;

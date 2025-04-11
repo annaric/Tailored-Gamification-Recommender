@@ -1,4 +1,3 @@
-
 export enum Recommender {
     Gender = "Gender",
 }
@@ -19,7 +18,7 @@ export enum PlayerValues {
 
 export type RecommenderValues = GenderValues | PlayerValues;
 
-export type RecommenderDependendLiteratureResults = GenderLiteratureResult | PlayerLiteratureResult;
+export type RecommenderDependendLiteratureResults = GenderLiteratureResult & PlayerLiteratureResult;
 
 export type GenderLiteratureResult = {
     female?: number,

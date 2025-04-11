@@ -1,5 +1,5 @@
 import { GamificationElements } from "../../types/GamificationElementRepository";
-import { LiteratureElementObject, LiteratureResultObject } from "../../types/LiteratureElementObject";
+import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import { LiteratureResultTypeEnum } from "../../types/LiteratureTypeEnum";
 import { RecommenderDependendLiteratureResults, RecommenderValues } from "../../types/RecommenderObjectTypes";
 
@@ -18,7 +18,6 @@ export default class DataNormalizer {
             resultKeys.every((resultKey) => resultKey in (element.result[key] ?? {}))
         ) {
             const resultInputs = element.result[key] as RecommenderDependendLiteratureResults
-
             switch (element.resultType) {
             case LiteratureResultTypeEnum["PositiveNumber"]:
                 resultArray.push(
@@ -41,7 +40,6 @@ export default class DataNormalizer {
             }
         }
         });
-        //console.log("resultArray", resultArray);
         return resultArray;
     }
 
@@ -56,7 +54,7 @@ export default class DataNormalizer {
     if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
       keys.forEach(key => {
-        if (key in result[key]){
+        if (result[key] !== undefined) {
           resultElement[key] = result[key]> bestValue ? 1 : 0.5 + (result[key] / bestValue) * 0.5;
         }
       });
@@ -79,11 +77,15 @@ export default class DataNormalizer {
       const resultElement: RecommenderDependendLiteratureResults = {};
       if (bestValue == minValue) {
         keys.forEach(key => {
-          resultElement[key] = 1 - (result[key] - minValue) / (maxValue - minValue);
+          if (result[key] !== undefined) {
+            resultElement[key] = 1 - (result[key] - minValue) / (maxValue - minValue);
+          }
         });
       } else {
         keys.forEach(key => {
-          resultElement[key] = (result[key] - minValue) / (maxValue - minValue);
+          if (result[key] !== undefined) {
+            resultElement[key] = (result[key] - minValue) / (maxValue - minValue);
+          }
         });
       }
       return resultElement;
@@ -100,7 +102,9 @@ export default class DataNormalizer {
     if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
       keys.forEach(key => {
-        resultElement[key] = (result[key] + 1) / 2;
+        if (result[key] !== undefined) {
+          resultElement[key] = (result[key] + 1) / 2;
+        }
       });
       return resultElement;
     } else {
@@ -115,7 +119,9 @@ export default class DataNormalizer {
     if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
       keys.forEach(key => {
-        resultElement[key] = result[key] === 1 ? 0.75 : 0.5;
+        if (result[key] !== undefined) {
+          resultElement[key] = result[key] === 1 ? 0.75 : 0.5;
+        }
       });
       return resultElement;
     } else {

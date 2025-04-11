@@ -15,7 +15,7 @@ export default class JsonFileReader {
           !("result" in result[0])
         ) {
           throw new Error(
-            "Invalid data format: genderBasedRecommenderData must be an array of LiteratureElementObject",
+            "Invalid data format: data must be an array of LiteratureElementObject",
           );
         }
         return result;

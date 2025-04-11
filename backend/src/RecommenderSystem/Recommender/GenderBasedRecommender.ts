@@ -11,6 +11,7 @@ import {
 import { GenderValues, RecommenderValues } from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
 import JsonFileReader from "../Helper/JsonFileReader";
+import MeanCalculator from "../Helper/MeanCalculator";
 
 export interface GenderDictonaryElementProps {
   male: {
@@ -53,7 +54,6 @@ class GenderBasedRecommender extends AbstractRecommender {
           };
         }
       });
-      //console.log(result);
       return result;
     }
     throw new Error("Invalid input");
@@ -79,11 +79,10 @@ class GenderBasedRecommender extends AbstractRecommender {
         GamificationElements[key],
         genderKeys as Array<RecommenderValues>
       );
-      if (resultArrayForOneElement.length != 0) {
+      if (resultArrayForOneElement.length !== 0) {
         ResultDictonary[key] = this.assembleData(resultArrayForOneElement);
       }
     });
-    //console.log("ResultDictonary", ResultDictonary);
   }
 
   
@@ -101,31 +100,11 @@ class GenderBasedRecommender extends AbstractRecommender {
         femaleResultArray.push(element["female"]);
       }
     });
-    // Calculate the mean and standard deviation of maleResultArray
-    const maleMean =
-      maleResultArray.reduce((sum, value) => sum + value, 0) /
-      maleResultArray.length;
-    const maleStdDev = Math.sqrt(
-      maleResultArray.reduce(
-        (sum, value) => sum + Math.pow(value - maleMean, 2),
-        0,
-      ) / maleResultArray.length,
-    );
-
-    // Calculate the mean and standard deviation of femaleResultArray
-    const femaleMean =
-      femaleResultArray.reduce((sum, value) => sum + value, 0) /
-      femaleResultArray.length;
-    const femaleStdDev = Math.sqrt(
-      femaleResultArray.reduce(
-        (sum, value) => sum + Math.pow(value - femaleMean, 2),
-        0,
-      ) / femaleResultArray.length,
-    );
+    const meanCalculator = new MeanCalculator();
 
     const assembledResult = {
-      male: { score: maleMean, standardDeviation: maleStdDev },
-      female: { score: femaleMean, standardDeviation: femaleStdDev },
+      male: meanCalculator.calculateMeanAndStdDev(maleResultArray),
+      female: meanCalculator.calculateMeanAndStdDev(femaleResultArray),
     };
     return assembledResult;
   }

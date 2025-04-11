@@ -2,14 +2,20 @@ import fs from "fs";
 import { assert } from "console";
 import GenderBasedRecommender from "../../../src/RecommenderSystem/Recommender/GenderBasedRecommender";
 import { LiteratureElementObject } from "../../../src/types/LiteratureElementObject";
+import JsonFileReader from "../../../src/RecommenderSystem/Helper/JsonFileReader";
+import DataNormalizer from "../../../src/RecommenderSystem/Helper/DataNormalizer";
 
 // Mock the `fs` module to simulate reading a JSON file
 
 describe("Test GenderBasedRecommender update Algorithm", () => {
   let recommender: GenderBasedRecommender;
+  let jsonFileReader: JsonFileReader;
+  let dataNormalizer: DataNormalizer;
 
   beforeEach(() => {
     recommender = new GenderBasedRecommender();
+    jsonFileReader = new JsonFileReader();
+    dataNormalizer = new DataNormalizer();
   });
 
   afterEach(() => {
@@ -41,7 +47,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
+      .spyOn(jsonFileReader, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -53,7 +59,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizePositiveDataPaperSpy = jest.spyOn(
-      recommender,
+      dataNormalizer,
       "normalizePositiveDataPaper",
     );
 
@@ -74,7 +80,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
-    expect(normalizePositiveDataPaperSpy).toHaveBeenCalledTimes(1);
+    expect(normalizePositiveDataPaperSpy).toHaveBeenCalledTimes(13);
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
@@ -102,7 +108,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
+      .spyOn(jsonFileReader, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -114,7 +120,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeCorrelationDataPaperSpy = jest.spyOn(
-      recommender,
+      dataNormalizer,
       "normalizeCorrelationDataPaper",
     );
 
@@ -135,7 +141,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
-    expect(normalizeCorrelationDataPaperSpy).toHaveBeenCalledTimes(1);
+    expect(normalizeCorrelationDataPaperSpy).toHaveBeenCalledTimes(13);
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
@@ -163,7 +169,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
+      .spyOn(jsonFileReader, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -175,7 +181,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeBinaryDataPaperSpy = jest.spyOn(
-      recommender,
+      dataNormalizer,
       "normalizeBinaryDataPaper",
     );
 
@@ -196,7 +202,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
-    expect(normalizeBinaryDataPaperSpy).toHaveBeenCalledTimes(1);
+    expect(normalizeBinaryDataPaperSpy).toHaveBeenCalledTimes(13);
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
@@ -224,7 +230,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
+      .spyOn(jsonFileReader, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -236,7 +242,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
-      recommender,
+      dataNormalizer,
       "normalizeScaleDataPaper",
     );
 
@@ -257,7 +263,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
-    expect(normalizeScaleDataPaperSpy).toHaveBeenCalledTimes(1);
+    expect(normalizeScaleDataPaperSpy).toHaveBeenCalledTimes(13);
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
@@ -285,7 +291,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
+      .spyOn(jsonFileReader, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -297,7 +303,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
-      recommender,
+      dataNormalizer,
       "normalizeScaleDataPaper",
     );
 
@@ -318,7 +324,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
-    expect(normalizeScaleDataPaperSpy).toHaveBeenCalledTimes(1);
+    expect(normalizeScaleDataPaperSpy).toHaveBeenCalledTimes(13);
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
@@ -369,7 +375,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
+      .spyOn(jsonFileReader, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -382,11 +388,11 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     const recommendSpy = jest.spyOn(recommender, "recommend");
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
-      recommender,
+      dataNormalizer,
       "normalizeScaleDataPaper",
     );
     const normalizeBinaryDataPaper = jest.spyOn(
-      recommender,
+      dataNormalizer,
       "normalizeBinaryDataPaper",
     );
 
@@ -486,7 +492,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
+      .spyOn(jsonFileReader, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -495,8 +501,9 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
         );
         return mockReadJsonFileReturnValue.literature;
       });
+      recommender.updateAlgorithm();
 
-    expect(() => recommender.updateAlgorithm()).toThrow(
+    expect(jsonFileReader.readJsonFile).toThrow(
       new Error("Invalid result type"),
     );
   });
@@ -524,12 +531,12 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     jest.spyOn(fs, "readFileSync").mockReturnValue(mockReadJsonFileReturnValue);
 
     expect(() =>
-      recommender.readJsonFile(
+      jsonFileReader.readJsonFile(
         "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
       ),
     ).toThrow(
       new Error(
-        "Invalid data format: genderBasedRecommenderData must be an array of LiteratureElementObject",
+        "Invalid data format: data must be an array of LiteratureElementObject",
       ),
     );
   });

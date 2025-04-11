@@ -1,7 +1,7 @@
 import { GamificationElements } from "../../types/GamificationElementRepository";
 import { LiteratureElementObject, LiteratureResultObject } from "../../types/LiteratureElementObject";
 import { LiteratureResultTypeEnum } from "../../types/LiteratureTypeEnum";
-import { RecommenderValues } from "../../types/RecommenderObjectTypes";
+import { RecommenderDependendLiteratureResults, RecommenderValues } from "../../types/RecommenderObjectTypes";
 
 export default class DataNormalizer {
 
@@ -17,7 +17,7 @@ export default class DataNormalizer {
             element.result[key] &&
             resultKeys.every((resultKey) => resultKey in (element.result[key] ?? {}))
         ) {
-            const resultInputs = element.result[key] as LiteratureResultObject
+            const resultInputs = element.result[key] as RecommenderDependendLiteratureResults
 
             switch (element.resultType) {
             case LiteratureResultTypeEnum["PositiveNumber"]:
@@ -46,7 +46,7 @@ export default class DataNormalizer {
     }
 
   normalizePositiveDataPaper(
-    result: LiteratureResultObject,
+    result: RecommenderDependendLiteratureResults,
     bestValue: number,
     keys: RecommenderValues[],
   ): { [key in RecommenderValues]?: number } {
@@ -54,7 +54,7 @@ export default class DataNormalizer {
     // Sinnvoll bei Review Paper, die nur positive "Korrelationen" zurückgeben.
     // Unterschied zu anderen Normalisierungen: der bestValue ist die Anzahl der Paper die sagen können, dass das Element gut ist für gender x
     if (keys.length !== 0) {
-      const resultElement: { [key in RecommenderValues]?: number } = {};
+      const resultElement: RecommenderDependendLiteratureResults = {};
       keys.forEach(key => {
         if (key in result[key]){
           resultElement[key] = result[key]> bestValue ? 1 : 0.5 + (result[key] / bestValue) * 0.5;
@@ -67,7 +67,7 @@ export default class DataNormalizer {
   }
 
   normalizeScaleDataPaper(
-    result: LiteratureResultObject,
+    result: RecommenderDependendLiteratureResults,
     bestValue: number,
     minValue: number,
     maxValue: number,
@@ -76,7 +76,7 @@ export default class DataNormalizer {
     //Normieren zwischen 0 und 1 und schauen, dass 1 der beste Wert ist.
     // Sinnvoll bei Scalen Paper, die den User nach Bewertung fragen zwischen mag ich garnicht und mag ich sehr.
     if (keys.length !== 0) {
-      const resultElement: { [key in RecommenderValues]?: number } = {};
+      const resultElement: RecommenderDependendLiteratureResults = {};
       if (bestValue == minValue) {
         keys.forEach(key => {
           resultElement[key] = 1 - (result[key] - minValue) / (maxValue - minValue);
@@ -93,12 +93,12 @@ export default class DataNormalizer {
   }
 
   normalizeCorrelationDataPaper(
-    result: LiteratureResultObject,
+    result: RecommenderDependendLiteratureResults,
     keys: RecommenderValues[],
   ): { [key in RecommenderValues]?: number } {
     //Normieren zwischen 0 und 1 statt -1 und 1
     if (keys.length !== 0) {
-      const resultElement: { [key in RecommenderValues]?: number } = {};
+      const resultElement: RecommenderDependendLiteratureResults = {};
       keys.forEach(key => {
         resultElement[key] = (result[key] + 1) / 2;
       });
@@ -109,11 +109,11 @@ export default class DataNormalizer {
   }
 
   normalizeBinaryDataPaper(
-    result: LiteratureResultObject,
+    result: RecommenderDependendLiteratureResults,
     keys: RecommenderValues[],
   ): { [key in RecommenderValues]?: number } {
     if (keys.length !== 0) {
-      const resultElement: { [key in RecommenderValues]?: number } = {};
+      const resultElement: RecommenderDependendLiteratureResults = {};
       keys.forEach(key => {
         resultElement[key] = result[key] === 1 ? 0.75 : 0.5;
       });

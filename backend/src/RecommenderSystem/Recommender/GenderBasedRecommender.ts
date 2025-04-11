@@ -66,12 +66,18 @@ class GenderBasedRecommender extends AbstractRecommender {
       jsonFileReader.readJsonFile(
         "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
       );
+
+    const genderKeys: Array<
+    keyof typeof GenderValues
+  > = Object.keys(GenderValues) as Array<
+    keyof typeof GenderValues
+  >;
     
     GamificationElementArray.forEach((key) => {
       const resultArrayForOneElement = dataNormalizer.normalizeLiteratureData(
         genderBasedRecommenderData,
         GamificationElements[key],
-        Object.keys(GenderValues) as RecommenderValues[],
+        genderKeys as Array<RecommenderValues>
       );
       if (resultArrayForOneElement.length != 0) {
         ResultDictonary[key] = this.assembleData(resultArrayForOneElement);

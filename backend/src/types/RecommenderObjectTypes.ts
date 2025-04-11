@@ -22,15 +22,15 @@ export type RecommenderValues = GenderValues | PlayerValues;
 export type RecommenderDependendLiteratureResults = GenderLiteratureResult | PlayerLiteratureResult;
 
 export type GenderLiteratureResult = {
-    female: number,
-    male: number,
+    female?: number,
+    male?: number,
 }
 
 export type PlayerLiteratureResult = {
-    achiever: number,
-    disruptor: number,
-    freeSpirit: number,
-    philantropist: number,
-    player: number,
-    socializer: number,
+    achiever?: number,
+    disruptor?: number,
+    freeSpirit?: number,
+    philantropist?: number,
+    player?: number,
+    socializer?: number,
 }

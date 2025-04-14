@@ -13,3 +13,7 @@ jobs:
     uses: ./.github/workflows/lint.yml
   stylelint:
     uses: ./.github/workflows/stylelint.yml
+  test:
+    uses: ./.github/workflows/test.yml
+  coverage:
+    uses: ./.github/workflows/coverage.yml

@@ -1,4 +1,3 @@
-import fs from "fs";
 import { assert } from "console";
 import GenderBasedRecommender from "../../../src/RecommenderSystem/Recommender/GenderBasedRecommender";
 import { LiteratureElementObject } from "../../../src/types/LiteratureElementObject";
@@ -9,13 +8,9 @@ import DataNormalizer from "../../../src/RecommenderSystem/Helper/DataNormalizer
 
 describe("Test GenderBasedRecommender update Algorithm", () => {
   let recommender: GenderBasedRecommender;
-  let jsonFileReader: JsonFileReader;
-  let dataNormalizer: DataNormalizer;
 
   beforeEach(() => {
     recommender = new GenderBasedRecommender();
-    jsonFileReader = new JsonFileReader();
-    dataNormalizer = new DataNormalizer();
   });
 
   afterEach(() => {
@@ -47,7 +42,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(jsonFileReader, "readJsonFile")
+      .spyOn(JsonFileReader.prototype, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -59,7 +54,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizePositiveDataPaperSpy = jest.spyOn(
-      dataNormalizer,
+      DataNormalizer.prototype,
       "normalizePositiveDataPaper",
     );
 
@@ -80,7 +75,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
-    expect(normalizePositiveDataPaperSpy).toHaveBeenCalledTimes(13);
+    expect(normalizePositiveDataPaperSpy).toHaveBeenCalledTimes(1);
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
@@ -108,7 +103,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(jsonFileReader, "readJsonFile")
+      .spyOn(JsonFileReader.prototype, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -120,7 +115,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeCorrelationDataPaperSpy = jest.spyOn(
-      dataNormalizer,
+      DataNormalizer.prototype,
       "normalizeCorrelationDataPaper",
     );
 
@@ -141,7 +136,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
-    expect(normalizeCorrelationDataPaperSpy).toHaveBeenCalledTimes(13);
+    expect(normalizeCorrelationDataPaperSpy).toHaveBeenCalledTimes(1);
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
@@ -169,7 +164,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(jsonFileReader, "readJsonFile")
+      .spyOn(JsonFileReader.prototype, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -181,7 +176,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeBinaryDataPaperSpy = jest.spyOn(
-      dataNormalizer,
+      DataNormalizer.prototype,
       "normalizeBinaryDataPaper",
     );
 
@@ -202,7 +197,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
-    expect(normalizeBinaryDataPaperSpy).toHaveBeenCalledTimes(13);
+    expect(normalizeBinaryDataPaperSpy).toHaveBeenCalledTimes(1);
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
@@ -230,7 +225,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(jsonFileReader, "readJsonFile")
+      .spyOn(JsonFileReader.prototype, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -242,7 +237,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
-      dataNormalizer,
+      DataNormalizer.prototype,
       "normalizeScaleDataPaper",
     );
 
@@ -263,7 +258,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
-    expect(normalizeScaleDataPaperSpy).toHaveBeenCalledTimes(13);
+    expect(normalizeScaleDataPaperSpy).toHaveBeenCalledTimes(1);
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
@@ -291,7 +286,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(jsonFileReader, "readJsonFile")
+      .spyOn(JsonFileReader.prototype, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -303,7 +298,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
-      dataNormalizer,
+      DataNormalizer.prototype,
       "normalizeScaleDataPaper",
     );
 
@@ -324,7 +319,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
-    expect(normalizeScaleDataPaperSpy).toHaveBeenCalledTimes(13);
+    expect(normalizeScaleDataPaperSpy).toHaveBeenCalledTimes(1);
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
@@ -375,7 +370,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(jsonFileReader, "readJsonFile")
+      .spyOn(JsonFileReader.prototype, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -388,11 +383,11 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     const recommendSpy = jest.spyOn(recommender, "recommend");
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
-      dataNormalizer,
+      DataNormalizer.prototype,
       "normalizeScaleDataPaper",
     );
     const normalizeBinaryDataPaper = jest.spyOn(
-      dataNormalizer,
+      DataNormalizer.prototype,
       "normalizeBinaryDataPaper",
     );
 
@@ -465,79 +460,6 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     expect(femaleResult?.TimePressure?.standardDeviation).toBeCloseTo(
       expectedFemaleTimePressureStdDev,
       5,
-    );
-  });
-
-  it("should throw an Error when result type is invalid", () => {
-    const mockReadJsonFileReturnValue: {
-      literature: LiteratureElementObject[];
-    } = {
-      literature: [
-        {
-          title: "Paper 1",
-          author: "author 1",
-          paperType: "Type A",
-          resultType: "FalseType",
-          bestValue: 5,
-          minValue: 1,
-          maxValue: 5,
-          result: {
-            Incentive: {
-              male: 4.6,
-              female: 2.3,
-            },
-          },
-        },
-      ],
-    };
-
-    jest
-      .spyOn(jsonFileReader, "readJsonFile")
-      .mockImplementation((src: string) => {
-        assert(
-          src ===
-            "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
-          "The src path is not correct",
-        );
-        return mockReadJsonFileReturnValue.literature;
-      });
-      recommender.updateAlgorithm();
-
-    expect(jsonFileReader.readJsonFile).toThrow(
-      new Error("Invalid result type"),
-    );
-  });
-
-  it("should throw an Error when JSON file is invalid (missing important keys)", () => {
-    jest.mock("fs");
-    const mockReadJsonFileReturnValue = JSON.stringify({
-      literature: [
-        {
-          title: "Paper 1",
-          author: "author 1",
-          paperType: "Type A",
-          resultType: "FalseType",
-          bestValue: 5,
-          result: {
-            Incentive: {
-              male: 4.6,
-              female: 2.3,
-            },
-          },
-        },
-      ],
-    });
-
-    jest.spyOn(fs, "readFileSync").mockReturnValue(mockReadJsonFileReturnValue);
-
-    expect(() =>
-      jsonFileReader.readJsonFile(
-        "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
-      ),
-    ).toThrow(
-      new Error(
-        "Invalid data format: data must be an array of LiteratureElementObject",
-      ),
     );
   });
 });

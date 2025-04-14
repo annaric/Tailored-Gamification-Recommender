@@ -1,10 +1,7 @@
 import { GamificationElements } from "../../types/GamificationElementRepository";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import { LiteratureResultTypeEnum } from "../../types/LiteratureTypeEnum";
-import {
-  RecommenderDependendLiteratureResults,
-  RecommenderValues,
-} from "../../types/RecommenderObjectTypes";
+import {RecommenderDependendLiteratureResults, RecommenderValues,} from "../../types/RecommenderObjectTypes";
 
 export default class DataNormalizer {
   normalizeLiteratureData(

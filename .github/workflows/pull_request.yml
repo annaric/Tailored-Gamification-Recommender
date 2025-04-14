@@ -7,11 +7,8 @@ on:
   pull_request:
 
 jobs:
+  checkCode:
+    uses: ./.github/workflows/checkCode.yml
   prettier:
+    needs: checkCode
     uses: ./.github/workflows/prettier.yml
-  lint:
-    uses: ./.github/workflows/lint.yml
-  stylelint:
-    uses: ./.github/workflows/stylelint.yml
-  test:
-    uses: ./.github/workflows/test.yml

@@ -1,3 +1,7 @@
+export const RecommenderAndValues = {
+  gender: ["male", "female"]
+}
+
 export enum Recommender {
   Gender = "Gender",
 }

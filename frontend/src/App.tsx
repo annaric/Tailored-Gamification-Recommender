@@ -1,6 +1,6 @@
 import "./App.css";
-import { useState } from "react";
-import GenderChoice from "./ChoiceBox/GenderChoice";
+import { useEffect, useState } from "react";
+import RsParameterChoice from "./ChoiceBox/RsParameterChoice";
 import ElementDisplay, {
   ElementDisplayProps,
 } from "./ElementDisplay/ElementDisplay";
@@ -11,10 +11,44 @@ function App() {
   }>(); // Add type annotation
   const [validRecommendation, setValidRecommendation] =
     useState<boolean>(false); // Add type annotation
-  const [selectedGender, setSelectedGender] = useState<string>(""); // Add type annotation
+  const [selectedParameters, setSelectedParameters] = useState<{
+    [key: string]: string;
+  }>({});
+  const [recommenderData, setRecommenderData] = useState<{
+    [key: string]: string[];
+  } | null>(null);
 
-  const handleClick = () => {
-    const requestBody = { gender: selectedGender };
+
+  // Fetch recommender data on first render
+  useEffect(() => {
+    fetch("http://localhost:3050/recommender", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch recommender data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Recommender Data:", data);
+        setRecommenderData(data.recommender);
+      })
+      .catch((error) => console.error("Error fetching recommender data:", error));
+    }, []);
+
+  const handleParameterChange = (paramType: string, value: string) => {
+    setSelectedParameters((prev) => ({
+      ...prev,
+      [paramType]: value,
+    }));
+  };
+
+  const handleRecommendClick = () => {
+    const requestBody = selectedParameters;
     fetch("http://localhost:3050/recommendation", {
       method: "POST",
       headers: {
@@ -48,9 +82,20 @@ function App() {
         Recommender System of Gamification Elements
       </div>
       <div className="choice-selection">
-        <GenderChoice onGenderSelect={setSelectedGender} />
+        {recommenderData ? (
+          Object.entries(recommenderData).map(([paramType, paramValues]) => (
+            <RsParameterChoice
+              key={paramType}
+              onRsParamSelect={(value) => handleParameterChange(paramType, value)}
+              paramType={paramType}
+              paramValues={paramValues}
+            />
+          ))
+        ) : (
+          <p>Loading parameters...</p>
+        )}
       </div>
-      <button onClick={handleClick}>Recommend</button>
+      <button onClick={handleRecommendClick}>Recommend</button>
       <div className="recommendations">
         <h1>Recommendations</h1>
         {validRecommendation ? (

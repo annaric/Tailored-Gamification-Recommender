@@ -1,4 +1,4 @@
-.gender-box {
+.genrs-parameter-selection-box {
   padding: 1rem;
   background-color: white;
   box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
@@ -6,7 +6,7 @@
   width: 90vw;
 }
 
-.gender-header {
+.rs-choice-header {
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
@@ -18,24 +18,24 @@
   height: 1rem;
 }
 
-.gender-options {
+.rs-choice-options {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.gender-label {
+.rs-choice-label {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.gender-input {
+.rs-input {
   width: 1rem;
   height: 1rem;
 }
 
-.gender-selected {
+.rs-selected {
   margin-top: 0.75rem;
   font-size: 0.875rem;
   color: gray;

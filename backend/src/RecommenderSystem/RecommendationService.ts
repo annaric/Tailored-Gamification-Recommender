@@ -3,6 +3,7 @@ import {
   RecommendationInputObject,
   RecommendationEndResult,
 } from "../types/RecommendationObjectTypes";
+import {RecommenderAndValues} from "../types/RecommenderObjectTypes";
 
 class RecommendationService {
   recommendationAssembler: RecommendationAssembler;
@@ -16,8 +17,7 @@ class RecommendationService {
   }
 
   getRecommender() {
-    console.log("getRecommender not implemented yet");
-    return "not implemented yet";
+    return RecommenderAndValues;
   }
 }
 

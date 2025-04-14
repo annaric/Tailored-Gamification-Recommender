@@ -15,4 +15,11 @@ jobs:
               run: npm install --prefix frontend
             - name: Test Frontend
               run: npm test --prefix frontend
-            - uses: ArtiomTr/jest-coverage-report-action@v2
+            - name: Jest Coverage Comment Backend
+              uses: ArtiomTr/jest-coverage-report-action@v2
+              with:
+                  working-directory: backend/
+            - name: Jest Coverage Comment Frontend
+              uses: ArtiomTr/jest-coverage-report-action@v2
+              with:
+                  working-directory: frontend/

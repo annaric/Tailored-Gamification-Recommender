@@ -20,7 +20,7 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           prettier_options: . --write
-          working_directory: backend
+          working_directory: backend/
   frontendPrettier:
     needs: backendPrettier
     name: Prettier Frontend Check
@@ -35,4 +35,4 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           prettier_options: . --write
-          working_directory: frontend
+          working_directory: frontend/

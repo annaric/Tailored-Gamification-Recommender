@@ -8,7 +8,7 @@ import ElementDisplay, {
 function App() {
   const [recommendation, setRecommendation] = useState<{
     elements: ElementDisplayProps[];
-  }>(); 
+  }>();
   const [validRecommendation, setValidRecommendation] =
     useState<boolean>(false);
   const [selectedParameters, setSelectedParameters] = useState<{
@@ -17,7 +17,6 @@ function App() {
   const [recommenderData, setRecommenderData] = useState<{
     [key: string]: string[];
   } | null>(null);
-
 
   // Fetch recommender data on first render
   useEffect(() => {
@@ -36,8 +35,10 @@ function App() {
       .then((data) => {
         setRecommenderData(data.recommender);
       })
-      .catch((error) => console.error("Error fetching recommender data:", error));
-    }, []);
+      .catch((error) =>
+        console.error("Error fetching recommender data:", error),
+      );
+  }, []);
 
   const handleParameterChange = (paramType: string, value: string) => {
     setSelectedParameters((prev) => ({
@@ -52,9 +53,9 @@ function App() {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json", 
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(requestBody), 
+      body: JSON.stringify(requestBody),
     })
       .then((response) => {
         if (!response.ok) {
@@ -82,7 +83,9 @@ function App() {
           Object.entries(recommenderData).map(([paramType, paramValues]) => (
             <RsParameterChoice
               key={paramType}
-              onRsParamSelect={(value) => handleParameterChange(paramType, value)}
+              onRsParamSelect={(value) =>
+                handleParameterChange(paramType, value)
+              }
               paramType={paramType}
               paramValues={paramValues}
             />

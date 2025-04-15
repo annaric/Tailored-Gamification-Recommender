@@ -3,7 +3,7 @@ import {
   RecommendationInputObject,
   RecommendationEndResult,
 } from "../types/RecommendationObjectTypes";
-import {RecommenderAndValues} from "../types/RecommenderObjectTypes";
+import { RecommenderAndValues } from "../types/RecommenderObjectTypes";
 
 class RecommendationService {
   recommendationAssembler: RecommendationAssembler;

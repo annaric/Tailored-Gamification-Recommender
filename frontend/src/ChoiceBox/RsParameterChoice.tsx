@@ -7,7 +7,11 @@ interface GenderChoiceProps {
   paramValues: string[];
 }
 
-function RsParameterChoice({ onRsParamSelect: onRsParamSelect, paramType: paramType, paramValues: paramValues}: GenderChoiceProps) {
+function RsParameterChoice({
+  onRsParamSelect: onRsParamSelect,
+  paramType: paramType,
+  paramValues: paramValues,
+}: GenderChoiceProps) {
   const [rsParameter, setRsParameter] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -34,22 +38,20 @@ function RsParameterChoice({ onRsParamSelect: onRsParamSelect, paramType: paramT
         <h2>Select {paramType} </h2>
       </div>
       <div className="rs-choice-options">
-        {
-          paramValues?.map((param, index) => (
-            <label className="rs-choice-label" key={index}>
-              <input
-                type="radio"
-                name={paramType}
-                value={param}
-                checked={rsParameter === param}
-                onChange={() => handleChoiceChange(param)}
-                disabled={isDisabled}
-                className="rs-input"
-              />
-              <span>{param}</span>
-            </label>
-          ))
-        }
+        {paramValues?.map((param, index) => (
+          <label className="rs-choice-label" key={index}>
+            <input
+              type="radio"
+              name={paramType}
+              value={param}
+              checked={rsParameter === param}
+              onChange={() => handleChoiceChange(param)}
+              disabled={isDisabled}
+              className="rs-input"
+            />
+            <span>{param}</span>
+          </label>
+        ))}
       </div>
       <p className="rs-selected">Selected: {rsParameter || "None"}</p>
     </div>

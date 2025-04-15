@@ -5,14 +5,16 @@ import "@testing-library/jest-dom";
 
 describe("App Component", () => {
   beforeEach(() => {
-     const mockData = { recommender: {
-      gender: ["male", "female"]
-    }};
+    const mockData = {
+      recommender: {
+        gender: ["male", "female"],
+      },
+    };
     //mockData.recommender = {gender: ["male", "female"]}
-     global.fetch = jest.fn().mockResolvedValueOnce({
+    global.fetch = jest.fn().mockResolvedValueOnce({
       ok: true,
-      json: () => Promise.resolve(mockData)
-     });
+      json: () => Promise.resolve(mockData),
+    });
   });
 
   test("renders recommend button and shows Loading screen at the beginning", () => {
@@ -56,25 +58,28 @@ describe("App Component", () => {
     await act(async () => {
       render(<App />);
     });
-    const mockRecommendationData = {recommendation: { elements:
-      [{
-        imageSrc: "Incentive.png",
-        elementName: "Incentive",
-        details: "detail text",
-        scores: {
-          overallScore: 0.5,
-        },
-        standardDeviations: {
-          overallStandardDeviation: 0.1,
-        }
+    const mockRecommendationData = {
+      recommendation: {
+        elements: [
+          {
+            imageSrc: "Incentive.png",
+            elementName: "Incentive",
+            details: "detail text",
+            scores: {
+              overallScore: 0.5,
+            },
+            standardDeviations: {
+              overallStandardDeviation: 0.1,
+            },
+          },
+        ],
       },
-      ]
-    }};
+    };
     global.fetch = jest.fn().mockResolvedValueOnce({
       ok: true,
-      json: () => Promise.resolve(mockRecommendationData)
+      json: () => Promise.resolve(mockRecommendationData),
     });
-    await act(async () => { 
+    await act(async () => {
       screen.getByText("Recommend").click();
     });
     expect(
@@ -82,20 +87,20 @@ describe("App Component", () => {
         "Could not get any recommendation. Did you select any parameter?",
       ),
     ).toBeNull();
-    expect(screen.queryByText("Incentive")).not.toBeNull(); 
-    expect(screen.queryByText("Incentive")).toBeTruthy(); 
-    expect(screen.queryByText("1")).not.toBeNull(); 
-    expect(screen.queryByText("1")).toBeTruthy(); 
-    expect(screen.queryByText("Overall Score: 0.500")).not.toBeNull(); 
-    expect(screen.queryByText("Overall Score: 0.500")).toBeTruthy(); 
-    expect(screen.queryByText("Mean Standard deviation: 0.100")).not.toBeNull(); 
+    expect(screen.queryByText("Incentive")).not.toBeNull();
+    expect(screen.queryByText("Incentive")).toBeTruthy();
+    expect(screen.queryByText("1")).not.toBeNull();
+    expect(screen.queryByText("1")).toBeTruthy();
+    expect(screen.queryByText("Overall Score: 0.500")).not.toBeNull();
+    expect(screen.queryByText("Overall Score: 0.500")).toBeTruthy();
+    expect(screen.queryByText("Mean Standard deviation: 0.100")).not.toBeNull();
     expect(screen.queryByText("Mean Standard deviation: 0.100")).toBeTruthy();
     expect(screen.queryByText("▼")).not.toBeNull();
-    await act(async () => { 
+    await act(async () => {
       screen.getByText("▼").click();
     });
-    expect(screen.queryByText("detail text")).not.toBeNull(); 
-    expect(screen.queryByText("detail text")).toBeTruthy(); 
+    expect(screen.queryByText("detail text")).not.toBeNull();
+    expect(screen.queryByText("detail text")).toBeTruthy();
   });
 });
 
@@ -106,16 +111,14 @@ describe("Error Handling", () => {
       json: () => Promise.resolve({}),
     });
     const consoleSpy = jest
-    .spyOn(console, 'error')
-    .mockImplementation(() => {});
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
     await act(async () => {
       render(<App />);
     });
-    
+
     expect(consoleSpy).toHaveBeenCalled();
-    expect(
-      screen.getByText("Loading parameters..."),
-    ).not.toBeNull();
+    expect(screen.getByText("Loading parameters...")).not.toBeNull();
   });
 
   test("handles recommendation fetch response not ok", async () => {
@@ -124,16 +127,16 @@ describe("Error Handling", () => {
       json: () => Promise.resolve({}),
     });
     const consoleSpy = jest
-    .spyOn(console, 'error')
-    .mockImplementation(() => {});
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
     await act(async () => {
       render(<App />);
     });
     global.fetch = jest.fn().mockResolvedValueOnce({
       ok: false,
-      json: () => Promise.resolve({})
+      json: () => Promise.resolve({}),
     });
-    await act(async () => { 
+    await act(async () => {
       screen.getByText("Recommend").click();
     });
     expect(consoleSpy).toHaveBeenCalled();
@@ -143,4 +146,4 @@ describe("Error Handling", () => {
       ),
     ).not.toBeNull();
   });
-})
+});

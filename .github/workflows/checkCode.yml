@@ -1,0 +1,14 @@
+name: checkCode
+
+# workflow triggers
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+  lint:
+    uses: ./.github/workflows/lint.yml
+  stylelint:
+    uses: ./.github/workflows/stylelint.yml

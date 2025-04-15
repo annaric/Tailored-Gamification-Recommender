@@ -1,0 +1,21 @@
+name: test
+on:
+  workflow_dispatch:
+  workflow_call:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Backend
+        run: npm install --prefix backend
+      - name: Install Frontend
+        run: npm install --prefix frontend
+      - name: Jest Coverage Comment Backend
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          working-directory: backend/
+      - name: Jest Coverage Comment Frontend
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          working-directory: frontend/

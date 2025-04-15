@@ -34,10 +34,9 @@ app.post("/recommendation", (req: Request, res: Response) => {
 });
 
 app.get("/recommender", (req: Request, res: Response) => {
-  console.log("/recommender not implemented yet");
   console.log(req.body);
-  const recommendation = recommendationService.getRecommender();
-  res.status(501).send(recommendation);
+  const recommender = recommendationService.getRecommender();
+  res.json({ recommender });
 });
 
 export default app;

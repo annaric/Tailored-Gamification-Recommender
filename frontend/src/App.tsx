@@ -1,6 +1,6 @@
 import "./App.css";
-import { useState } from "react";
-import GenderChoice from "./ChoiceBox/GenderChoice";
+import { useEffect, useState } from "react";
+import RsParameterChoice from "./ChoiceBox/RsParameterChoice";
 import ElementDisplay, {
   ElementDisplayProps,
 } from "./ElementDisplay/ElementDisplay";
@@ -8,25 +8,58 @@ import ElementDisplay, {
 function App() {
   const [recommendation, setRecommendation] = useState<{
     elements: ElementDisplayProps[];
-  }>(); // Add type annotation
+  }>();
   const [validRecommendation, setValidRecommendation] =
-    useState<boolean>(false); // Add type annotation
-  const [selectedGender, setSelectedGender] = useState<string>(""); // Add type annotation
+    useState<boolean>(false);
+  const [selectedParameters, setSelectedParameters] = useState<{
+    [key: string]: string;
+  }>({});
+  const [recommenderData, setRecommenderData] = useState<{
+    [key: string]: string[];
+  } | null>(null);
 
-  const handleClick = () => {
-    const requestBody = { gender: selectedGender };
+  // Fetch recommender data on first render
+  useEffect(() => {
+    fetch("http://localhost:3050/recommender", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch recommender data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setRecommenderData(data.recommender);
+      })
+      .catch((error) =>
+        console.error("Error fetching recommender data:", error),
+      );
+  }, []);
+
+  const handleParameterChange = (paramType: string, value: string) => {
+    setSelectedParameters((prev) => ({
+      ...prev,
+      [paramType]: value,
+    }));
+  };
+
+  const handleRecommendClick = () => {
+    const requestBody = selectedParameters;
     fetch("http://localhost:3050/recommendation", {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json", // Set the content type to JSON
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(requestBody), // Convert the JSON object to a string
+      body: JSON.stringify(requestBody),
     })
       .then((response) => {
         if (!response.ok) {
           setValidRecommendation(false);
-          //"Could not get any recommendation. Did you select any parameter?"
           throw new Error("Network response was not ok");
         }
         return response.json() as Promise<{
@@ -34,10 +67,8 @@ function App() {
         }>;
       })
       .then((data) => {
-        console.log(data.recommendation);
-        setRecommendation(data.recommendation); // Set the recommendation first
-        console.log("Recommendation: ", recommendation); // Log the recommendation
-        setValidRecommendation(true); // Then mark the recommendation as valid
+        setRecommendation(data.recommendation);
+        setValidRecommendation(true);
       })
       .catch((error) => console.log("Fetch error: ", error));
   };
@@ -48,9 +79,22 @@ function App() {
         Recommender System of Gamification Elements
       </div>
       <div className="choice-selection">
-        <GenderChoice onGenderSelect={setSelectedGender} />
+        {recommenderData ? (
+          Object.entries(recommenderData).map(([paramType, paramValues]) => (
+            <RsParameterChoice
+              key={paramType}
+              onRsParamSelect={(value) =>
+                handleParameterChange(paramType, value)
+              }
+              paramType={paramType}
+              paramValues={paramValues}
+            />
+          ))
+        ) : (
+          <p>Loading parameters...</p>
+        )}
       </div>
-      <button onClick={handleClick}>Recommend</button>
+      <button onClick={handleRecommendClick}>Recommend</button>
       <div className="recommendations">
         <h1>Recommendations</h1>
         {validRecommendation ? (

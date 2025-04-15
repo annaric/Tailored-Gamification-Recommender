@@ -1,7 +1,8 @@
-import fs from "fs";
 import { assert } from "console";
 import GenderBasedRecommender from "../../../src/RecommenderSystem/Recommender/GenderBasedRecommender";
 import { LiteratureElementObject } from "../../../src/types/LiteratureElementObject";
+import JsonFileReader from "../../../src/RecommenderSystem/Helper/JsonFileReader";
+import DataNormalizer from "../../../src/RecommenderSystem/Helper/DataNormalizer";
 
 // Mock the `fs` module to simulate reading a JSON file
 
@@ -41,7 +42,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
+      .spyOn(JsonFileReader.prototype, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -53,7 +54,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizePositiveDataPaperSpy = jest.spyOn(
-      recommender,
+      DataNormalizer.prototype,
       "normalizePositiveDataPaper",
     );
 
@@ -102,7 +103,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
+      .spyOn(JsonFileReader.prototype, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -114,7 +115,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeCorrelationDataPaperSpy = jest.spyOn(
-      recommender,
+      DataNormalizer.prototype,
       "normalizeCorrelationDataPaper",
     );
 
@@ -163,7 +164,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
+      .spyOn(JsonFileReader.prototype, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -175,7 +176,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeBinaryDataPaperSpy = jest.spyOn(
-      recommender,
+      DataNormalizer.prototype,
       "normalizeBinaryDataPaper",
     );
 
@@ -224,7 +225,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
+      .spyOn(JsonFileReader.prototype, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -236,7 +237,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
-      recommender,
+      DataNormalizer.prototype,
       "normalizeScaleDataPaper",
     );
 
@@ -285,7 +286,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
+      .spyOn(JsonFileReader.prototype, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -297,7 +298,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
-      recommender,
+      DataNormalizer.prototype,
       "normalizeScaleDataPaper",
     );
 
@@ -369,7 +370,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
 
     jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
+      .spyOn(JsonFileReader.prototype, "readJsonFile")
       .mockImplementation((src: string) => {
         assert(
           src ===
@@ -382,11 +383,11 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     const recommendSpy = jest.spyOn(recommender, "recommend");
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
-      recommender,
+      DataNormalizer.prototype,
       "normalizeScaleDataPaper",
     );
     const normalizeBinaryDataPaper = jest.spyOn(
-      recommender,
+      DataNormalizer.prototype,
       "normalizeBinaryDataPaper",
     );
 
@@ -459,78 +460,6 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     expect(femaleResult?.TimePressure?.standardDeviation).toBeCloseTo(
       expectedFemaleTimePressureStdDev,
       5,
-    );
-  });
-
-  it("should throw an Error when result type is invalid", () => {
-    const mockReadJsonFileReturnValue: {
-      literature: LiteratureElementObject[];
-    } = {
-      literature: [
-        {
-          title: "Paper 1",
-          author: "author 1",
-          paperType: "Type A",
-          resultType: "FalseType",
-          bestValue: 5,
-          minValue: 1,
-          maxValue: 5,
-          result: {
-            Incentive: {
-              male: 4.6,
-              female: 2.3,
-            },
-          },
-        },
-      ],
-    };
-
-    jest
-      .spyOn(GenderBasedRecommender.prototype, "readJsonFile")
-      .mockImplementation((src: string) => {
-        assert(
-          src ===
-            "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
-          "The src path is not correct",
-        );
-        return mockReadJsonFileReturnValue.literature;
-      });
-
-    expect(() => recommender.updateAlgorithm()).toThrow(
-      new Error("Invalid result type"),
-    );
-  });
-
-  it("should throw an Error when JSON file is invalid (missing important keys)", () => {
-    jest.mock("fs");
-    const mockReadJsonFileReturnValue = JSON.stringify({
-      literature: [
-        {
-          title: "Paper 1",
-          author: "author 1",
-          paperType: "Type A",
-          resultType: "FalseType",
-          bestValue: 5,
-          result: {
-            Incentive: {
-              male: 4.6,
-              female: 2.3,
-            },
-          },
-        },
-      ],
-    });
-
-    jest.spyOn(fs, "readFileSync").mockReturnValue(mockReadJsonFileReturnValue);
-
-    expect(() =>
-      recommender.readJsonFile(
-        "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
-      ),
-    ).toThrow(
-      new Error(
-        "Invalid data format: genderBasedRecommenderData must be an array of LiteratureElementObject",
-      ),
     );
   });
 });

@@ -8,9 +8,9 @@ import ElementDisplay, {
 function App() {
   const [recommendation, setRecommendation] = useState<{
     elements: ElementDisplayProps[];
-  }>(); // Add type annotation
+  }>(); 
   const [validRecommendation, setValidRecommendation] =
-    useState<boolean>(false); // Add type annotation
+    useState<boolean>(false);
   const [selectedParameters, setSelectedParameters] = useState<{
     [key: string]: string;
   }>({});
@@ -34,7 +34,6 @@ function App() {
         return response.json();
       })
       .then((data) => {
-        console.log("Recommender Data:", data);
         setRecommenderData(data.recommender);
       })
       .catch((error) => console.error("Error fetching recommender data:", error));
@@ -53,14 +52,13 @@ function App() {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json", // Set the content type to JSON
+        "Content-Type": "application/json", 
       },
-      body: JSON.stringify(requestBody), // Convert the JSON object to a string
+      body: JSON.stringify(requestBody), 
     })
       .then((response) => {
         if (!response.ok) {
           setValidRecommendation(false);
-          //"Could not get any recommendation. Did you select any parameter?"
           throw new Error("Network response was not ok");
         }
         return response.json() as Promise<{
@@ -68,10 +66,8 @@ function App() {
         }>;
       })
       .then((data) => {
-        console.log(data.recommendation);
-        setRecommendation(data.recommendation); // Set the recommendation first
-        console.log("Recommendation: ", recommendation); // Log the recommendation
-        setValidRecommendation(true); // Then mark the recommendation as valid
+        setRecommendation(data.recommendation);
+        setValidRecommendation(true);
       })
       .catch((error) => console.log("Fetch error: ", error));
   };

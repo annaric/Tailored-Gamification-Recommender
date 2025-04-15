@@ -34,6 +34,7 @@ app.post("/recommendation", (req: Request, res: Response) => {
 });
 
 app.get("/recommender", (req: Request, res: Response) => {
+  console.log(req.body);
   const recommender = recommendationService.getRecommender();
   res.json({ recommender });
 });

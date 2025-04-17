@@ -85,26 +85,21 @@ class PlayerBasedRecommender extends AbstractRecommender {
       jsonFileReader.readJsonFile(
         "./src/RecommenderSystem/Recommender/RecommenderData/PlayerBasedRecommender.json",
       );
-    console.log("in player based recommender")
     const playerKeys: Array<keyof typeof PlayerValues> = Object.keys(
       PlayerValues,
     ) as Array<keyof typeof PlayerValues>;
 
     GamificationElementArray.forEach((key) => {
-      console.log("key: ", key);
       const resultArrayForOneElement = dataNormalizer.normalizeLiteratureData(
         playerBasedRecommenderData,
         GamificationElements[key],
         playerKeys as Array<RecommenderValues>,
       );
-      console.log("resultArrayForOneElement: ", resultArrayForOneElement);
       if (resultArrayForOneElement.length !== 0) {
         const assembledData = this.assembleData(resultArrayForOneElement);
-        console.log("assembledData: ")
         ResultDictonary[key] = assembledData;
       }
     });
-    console.log("ResultDictonary", ResultDictonary);
   }
 
   assembleData(

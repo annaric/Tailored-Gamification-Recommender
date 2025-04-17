@@ -36,7 +36,7 @@ class RecommendationAssembler {
           genderBasedRecommendation[elementKey].score;
         element.standardDeviation.standardDeviations.gender =
           genderBasedRecommendation[elementKey].standardDeviation;
-      } 
+      }
       if (
         !(playerBasedRecommendation === undefined) &&
         playerBasedRecommendation[elementKey]
@@ -45,12 +45,21 @@ class RecommendationAssembler {
           playerBasedRecommendation[elementKey].score;
         element.standardDeviation.standardDeviations.player =
           playerBasedRecommendation[elementKey].standardDeviation;
-      } 
-      if (!(Object.keys(element.standardDeviation.standardDeviations).length === 0)){
-        element.standardDeviation.meanStandardDeviation = meanCalculator.calculateMeanAndStdDev(Object.values(element.standardDeviation.standardDeviations)).score;
       }
-      if (!(Object.keys(element.score.scores).length === 0)){
-        const overallCalculation = meanCalculator.calculateMeanAndStdDev(Object.values(element.score.scores));
+      if (
+        !(
+          Object.keys(element.standardDeviation.standardDeviations).length === 0
+        )
+      ) {
+        element.standardDeviation.meanStandardDeviation =
+          meanCalculator.calculateMeanAndStdDev(
+            Object.values(element.standardDeviation.standardDeviations),
+          ).score;
+      }
+      if (!(Object.keys(element.score.scores).length === 0)) {
+        const overallCalculation = meanCalculator.calculateMeanAndStdDev(
+          Object.values(element.score.scores),
+        );
         element.score.overallScore = overallCalculation.score;
         element.standardDeviation.overallStandardDeviation =
           overallCalculation.standardDeviation;

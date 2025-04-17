@@ -62,14 +62,37 @@ class PlayerBasedRecommender extends AbstractRecommender {
       GamificationElementArray.forEach((key) => {
         if (
           ResultDictonary[key] &&
-          ResultDictonary[key][input.player as "achiever" | "disruptor" | "freeSpirit" | "philanthropist" | "player" | "socializer"]
+          ResultDictonary[key][
+            input.player as
+              | "achiever"
+              | "disruptor"
+              | "freeSpirit"
+              | "philanthropist"
+              | "player"
+              | "socializer"
+          ]
         ) {
           result[key] = {
             score:
-              ResultDictonary[key][input.player as "achiever" | "disruptor" | "freeSpirit" | "philanthropist" | "player" | "socializer"].score,
+              ResultDictonary[key][
+                input.player as
+                  | "achiever"
+                  | "disruptor"
+                  | "freeSpirit"
+                  | "philanthropist"
+                  | "player"
+                  | "socializer"
+              ].score,
             standardDeviation:
-              ResultDictonary[key][input.player as "achiever" | "disruptor" | "freeSpirit" | "philanthropist" | "player" | "socializer"]
-                .standardDeviation,
+              ResultDictonary[key][
+                input.player as
+                  | "achiever"
+                  | "disruptor"
+                  | "freeSpirit"
+                  | "philanthropist"
+                  | "player"
+                  | "socializer"
+              ].standardDeviation,
           };
         }
       });
@@ -137,7 +160,9 @@ class PlayerBasedRecommender extends AbstractRecommender {
       achiever: meanCalculator.calculateMeanAndStdDev(achieverResultArray),
       disruptor: meanCalculator.calculateMeanAndStdDev(disruptorResultArray),
       freeSpirit: meanCalculator.calculateMeanAndStdDev(freeSpiritResultArray),
-      philanthropist: meanCalculator.calculateMeanAndStdDev(philanthropistResultArray),
+      philanthropist: meanCalculator.calculateMeanAndStdDev(
+        philanthropistResultArray,
+      ),
       player: meanCalculator.calculateMeanAndStdDev(playerResultArray),
       socializer: meanCalculator.calculateMeanAndStdDev(socializerResultArray),
     };

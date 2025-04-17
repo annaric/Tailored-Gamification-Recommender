@@ -38,7 +38,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
               freeSpirit: 4,
               philanthropist: 4,
               player: 2,
-              socializer: 4
+              socializer: 4,
             },
           },
         },
@@ -438,7 +438,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
           maxValue: 9,
           result: {
             Altruism: {
-              achiever: 4.6,//male 1
+              achiever: 4.6, //male 1
               disruptor: 4.6,
               freeSpirit: 2.3,
               philanthropist: 2.3,
@@ -446,7 +446,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
               socializer: 2.3,
             },
             TimePressure: {
-              achiever: 1.8,//male 1
+              achiever: 1.8, //male 1
               disruptor: 1.8,
               freeSpirit: 7.4,
               philanthropist: 7.4,
@@ -465,7 +465,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
           maxValue: 1,
           result: {
             Altruism: {
-              achiever: 1,//male 1
+              achiever: 1, //male 1
               disruptor: 1,
               freeSpirit: 0,
               philanthropist: 0,
@@ -473,7 +473,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
               socializer: 0,
             },
             TimePressure: {
-              achiever: 0,//male 0
+              achiever: 0, //male 0
               disruptor: 0,
               freeSpirit: 1,
               philanthropist: 1,
@@ -547,7 +547,9 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
     );
 
     //Assert that recommend gives back the correct values for philanthropist
-    const philanthropistResult = recommender.recommend({ player: "philanthropist" });
+    const philanthropistResult = recommender.recommend({
+      player: "philanthropist",
+    });
     expect(recommendSpy).toHaveBeenCalledTimes(2);
     const expectedPhilanthropistAltruismScore = (1.3 / 8 + 0.5) / 2;
     const expectedPhilanthropistTimePressureScore = (6.4 / 8 + 0.75) / 2;

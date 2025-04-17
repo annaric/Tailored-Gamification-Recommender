@@ -6,7 +6,10 @@ export interface ElementDisplayProps {
   imageSrc: string;
   elementName: string;
   score: { overallScore: number };
-  standardDeviation: { overallStandardDeviation: number, meanStandardDeviation: number };
+  standardDeviation: {
+    overallStandardDeviation: number;
+    meanStandardDeviation: number;
+  };
   details: string;
 }
 

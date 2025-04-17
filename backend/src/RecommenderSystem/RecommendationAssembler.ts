@@ -46,6 +46,9 @@ class RecommendationAssembler {
         element.standardDeviation.standardDeviations.player =
           playerBasedRecommendation[elementKey].standardDeviation;
       } 
+      if (!(Object.keys(element.standardDeviation.standardDeviations).length === 0)){
+        element.standardDeviation.meanStandardDeviation = meanCalculator.calculateMeanAndStdDev(Object.values(element.standardDeviation.standardDeviations)).score;
+      }
       if (!(Object.keys(element.score.scores).length === 0)){
         const overallCalculation = meanCalculator.calculateMeanAndStdDev(Object.values(element.score.scores));
         element.score.overallScore = overallCalculation.score;

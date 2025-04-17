@@ -79,7 +79,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
-  it("should correctly update the ResultDictonary with Correlation number literature", () => {
+  it("should correctly update the ResultDictonary with Coefficient number literature", () => {
     const mockReadJsonFileReturnValue: {
       literature: LiteratureElementObject[];
     } = {
@@ -88,7 +88,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
           title: "Paper 1",
           author: "author 1",
           paperType: "Type A",
-          resultType: "Correlation",
+          resultType: "Coefficient",
           bestValue: 1,
           minValue: -1,
           maxValue: 1,
@@ -114,9 +114,9 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
       });
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
-    const normalizeCorrelationDataPaperSpy = jest.spyOn(
+    const normalizeCoefficientDataPaperSpy = jest.spyOn(
       DataNormalizer.prototype,
-      "normalizeCorrelationDataPaper",
+      "normalizeCoefficientDataPaper",
     );
 
     recommender.updateAlgorithm();
@@ -136,7 +136,7 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
     };
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
-    expect(normalizeCorrelationDataPaperSpy).toHaveBeenCalledTimes(1);
+    expect(normalizeCoefficientDataPaperSpy).toHaveBeenCalledTimes(1);
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 

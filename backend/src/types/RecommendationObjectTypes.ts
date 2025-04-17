@@ -39,10 +39,12 @@ export class RecommendationStandardDeviationObject {
   //später wird es noch ein number array mit den einzelnen Ergebnissen jedes Recommender geben, wenn andere recommender hinzukommen
   standardDeviations: NumberPerRecommenderObject = {};
   overallStandardDeviation: number;
+  meanStandardDeviation: number;
 
-  constructor(overallStandardDeviation: number = 0, standardDeviations: NumberPerRecommenderObject = {}) {
+  constructor(overallStandardDeviation: number = 0, standardDeviations: NumberPerRecommenderObject = {}, meanStandardDeviation: number = 0) {
     this.standardDeviations = standardDeviations;
     this.overallStandardDeviation = overallStandardDeviation;
+    this.meanStandardDeviation = meanStandardDeviation;
   }
 }
 

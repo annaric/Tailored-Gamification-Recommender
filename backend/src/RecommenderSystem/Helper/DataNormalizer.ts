@@ -45,9 +45,9 @@ export default class DataNormalizer {
               ),
             );
             break;
-          case LiteratureResultTypeEnum["Correlation"]:
+          case LiteratureResultTypeEnum["Coefficient"]:
             resultArray.push(
-              this.normalizeCorrelationDataPaper(resultInputs, resultKeys),
+              this.normalizeCoefficientDataPaper(resultInputs, resultKeys),
             );
             break;
           case LiteratureResultTypeEnum["Binary"]:
@@ -117,7 +117,7 @@ export default class DataNormalizer {
     }
   }
 
-  normalizeCorrelationDataPaper(
+  normalizeCoefficientDataPaper(
     result: RecommenderDependendLiteratureResults,
     keys: RecommenderValues[],
   ): { [key in RecommenderValues]?: number } {

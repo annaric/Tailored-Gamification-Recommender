@@ -99,7 +99,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
-  it("should correctly update the ResultDictonary with Correlation number literature", () => {
+  it("should correctly update the ResultDictonary with Coefficient number literature", () => {
     const mockReadJsonFileReturnValue: {
       literature: LiteratureElementObject[];
     } = {
@@ -108,7 +108,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
           title: "Paper 1",
           author: "author 1",
           paperType: "Type A",
-          resultType: "Correlation",
+          resultType: "Coefficient",
           bestValue: 1,
           minValue: -1,
           maxValue: 1,
@@ -138,9 +138,9 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       });
 
     const assembleDataSpy = jest.spyOn(recommender, "assembleData");
-    const normalizeCorrelationDataPaperSpy = jest.spyOn(
+    const normalizeCoefficientDataPaperSpy = jest.spyOn(
       DataNormalizer.prototype,
-      "normalizeCorrelationDataPaper",
+      "normalizeCoefficientDataPaper",
     );
 
     recommender.updateAlgorithm();
@@ -176,7 +176,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
     };
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(1);
-    expect(normalizeCorrelationDataPaperSpy).toHaveBeenCalledTimes(1);
+    expect(normalizeCoefficientDataPaperSpy).toHaveBeenCalledTimes(1);
     expect(assembleDataSpy).toHaveReturnedWith(expectedResultDictonaryValues);
   });
 
@@ -546,35 +546,35 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       5,
     );
 
-    //Assert that recommend gives back the correct values for player
-    const playerResult = recommender.recommend({ player: "player" });
+    //Assert that recommend gives back the correct values for philanthropist
+    const philanthropistResult = recommender.recommend({ player: "philanthropist" });
     expect(recommendSpy).toHaveBeenCalledTimes(2);
-    const expectedPlayerAltruismScore = (1.3 / 8 + 0.5) / 2;
-    const expectedPlayerTimePressureScore = (6.4 / 8 + 0.75) / 2;
-    const expectedPlayerAltruismStdDev = Math.sqrt(
-      (Math.pow(1.3 / 8 - expectedPlayerAltruismScore, 2) +
-        Math.pow(0.5 - expectedPlayerAltruismScore, 2)) /
+    const expectedPhilanthropistAltruismScore = (1.3 / 8 + 0.5) / 2;
+    const expectedPhilanthropistTimePressureScore = (6.4 / 8 + 0.75) / 2;
+    const expectedPhilanthropistAltruismStdDev = Math.sqrt(
+      (Math.pow(1.3 / 8 - expectedPhilanthropistAltruismScore, 2) +
+        Math.pow(0.5 - expectedPhilanthropistAltruismScore, 2)) /
         2,
     );
-    const expectedPlayerTimePressureStdDev = Math.sqrt(
-      (Math.pow(6.4 / 8 - expectedPlayerTimePressureScore, 2) +
-        Math.pow(0.75 - expectedPlayerTimePressureScore, 2)) /
+    const expectedPhilanthropistTimePressureStdDev = Math.sqrt(
+      (Math.pow(6.4 / 8 - expectedPhilanthropistTimePressureScore, 2) +
+        Math.pow(0.75 - expectedPhilanthropistTimePressureScore, 2)) /
         2,
     );
-    expect(playerResult?.Altruism?.score).toBeCloseTo(
-      expectedPlayerAltruismScore,
+    expect(philanthropistResult?.Altruism?.score).toBeCloseTo(
+      expectedPhilanthropistAltruismScore,
       5,
     );
-    expect(playerResult?.Altruism?.standardDeviation).toBeCloseTo(
-      expectedPlayerAltruismStdDev,
+    expect(philanthropistResult?.Altruism?.standardDeviation).toBeCloseTo(
+      expectedPhilanthropistAltruismStdDev,
       5,
     );
-    expect(playerResult?.TimePressure?.score).toBeCloseTo(
-      expectedPlayerTimePressureScore,
+    expect(philanthropistResult?.TimePressure?.score).toBeCloseTo(
+      expectedPhilanthropistTimePressureScore,
       5,
     );
-    expect(playerResult?.TimePressure?.standardDeviation).toBeCloseTo(
-      expectedPlayerTimePressureStdDev,
+    expect(philanthropistResult?.TimePressure?.standardDeviation).toBeCloseTo(
+      expectedPhilanthropistTimePressureStdDev,
       5,
     );
   });

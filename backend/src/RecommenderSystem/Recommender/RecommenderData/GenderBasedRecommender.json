@@ -62,7 +62,7 @@
     {
       "title": "Elements of Gameful Design Emerging from User Preferences",
       "author": "Tondello et. all",
-      "resultType": "Correlation",
+      "resultType": "Coefficient",
       "bestValue": 1,
       "minValue": -1,
       "maxValue": 1,

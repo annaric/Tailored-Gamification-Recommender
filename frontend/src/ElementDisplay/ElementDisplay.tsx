@@ -5,8 +5,8 @@ export interface ElementDisplayProps {
   rank: number;
   imageSrc: string;
   elementName: string;
-  scores: { overallScore: number };
-  standardDeviations: { overallStandardDeviation: number };
+  score: { overallScore: number };
+  standardDeviation: { overallStandardDeviation: number };
   details: string;
 }
 
@@ -14,8 +14,8 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
   rank,
   imageSrc: imageSrc,
   elementName,
-  scores,
-  standardDeviations,
+  score,
+  standardDeviation,
   details,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -37,11 +37,11 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
         <span className="element-name">{elementName}</span>
         <div className="score-group">
           <span className="score">
-            Overall Score: {scores.overallScore.toFixed(3)}
+            Overall Score: {score.overallScore.toFixed(3)}
           </span>
           <span className="standard-deviation">
             Mean Standard deviation:{" "}
-            {standardDeviations.overallStandardDeviation.toFixed(3)}
+            {standardDeviation.overallStandardDeviation.toFixed(3)}
           </span>
         </div>
         <button className="dropdown-button" onClick={toggleDetails}>

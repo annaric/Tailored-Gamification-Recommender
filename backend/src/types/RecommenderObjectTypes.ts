@@ -1,9 +1,18 @@
 export const RecommenderAndValues = {
   gender: ["male", "female"],
+  player: [
+    "achiever",
+    "disruptor",
+    "freeSpirit",
+    "philanthropist",
+    "player",
+    "socializer",
+  ],
 };
 
 export enum Recommender {
   Gender = "Gender",
+  Player = "Player",
 }
 
 export enum GenderValues {
@@ -15,7 +24,7 @@ export enum PlayerValues {
   achiever = "achiever",
   disruptor = "disruptor",
   freeSpirit = "freeSpirit",
-  philantropist = "philantropist",
+  philanthropist = "philanthropist",
   player = "player",
   socializer = "socializer",
 }
@@ -34,7 +43,7 @@ export type PlayerLiteratureResult = {
   achiever?: number;
   disruptor?: number;
   freeSpirit?: number;
-  philantropist?: number;
+  philanthropist?: number;
   player?: number;
   socializer?: number;
 };

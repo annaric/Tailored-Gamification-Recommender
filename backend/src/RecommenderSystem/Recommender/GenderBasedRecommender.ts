@@ -38,10 +38,10 @@ class GenderBasedRecommender extends AbstractRecommender {
   }
 
   recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (!input.gender && input.gender === undefined) {
+    if (!input.gender || !(input.gender in GenderValues)) {
       return undefined;
     }
-    if (input.gender === "female" || input.gender === "male") {
+    if (input.gender && input.gender === "female" || input.gender === "male") {
       const result: RecommenderResults = {};
       GamificationElementArray.forEach((key) => {
         if (

@@ -45,20 +45,20 @@ export class GamificationElementObject {
   imageSrc: string;
   elementName: string;
   details: string;
-  scores: RecommendationScoreObject;
-  standardDeviations: RecommendationStandardDeviationObject;
+  score: RecommendationScoreObject;
+  standardDeviation: RecommendationStandardDeviationObject;
 
   constructor(
     imageSrc: string,
     elementName: string,
     details: string,
-    scores: RecommendationScoreObject = new RecommendationScoreObject(),
-    standardDeviations: RecommendationStandardDeviationObject = new RecommendationStandardDeviationObject(),
+    score: RecommendationScoreObject = new RecommendationScoreObject(),
+    standardDeviation: RecommendationStandardDeviationObject = new RecommendationStandardDeviationObject(),
   ) {
     this.imageSrc = imageSrc;
     this.elementName = elementName;
     this.details = details;
-    this.scores = scores;
-    this.standardDeviations = standardDeviations;
+    this.score = score;
+    this.standardDeviation = standardDeviation;
   }
 }

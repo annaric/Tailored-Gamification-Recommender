@@ -12,7 +12,7 @@ Information that the user can provide are:
 - Gender: female, male
 - Age
 - Personality Type based on the Big5: Extraversion, Openess, Agreeableness, Conscientiousness, Neuroticism
-- Player Type based on the HEXAD types: Achiever, Disruptor, Player, Free Spirit, Philantropist, Socialiser
+- Player Type based on the HEXAD types: Achiever, Disruptor, Player, Free Spirit, Philanthropist, Socialiser
 - Learning style based on Felder-Silverman: Active/Reflective, Visual/Verbal, Sequential/Global, Sensor/Intuitive
 - Learning Activity Type (LAT) based on Blooms Taxonomy: Remember, Understand, Apply, Analyze, Evaluate, Create
 

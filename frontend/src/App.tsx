@@ -104,8 +104,8 @@ function App() {
               rank={index + 1}
               imageSrc={element.imageSrc}
               elementName={element.elementName}
-              scores={element.scores}
-              standardDeviations={element.standardDeviations}
+              score={element.score}
+              standardDeviation={element.standardDeviation}
               details={element.details}
             />
           ))

@@ -12,7 +12,7 @@ Information that the user can provide are:
 - Gender: female, male
 - Age
 - Personality Type based on the Big5: Extraversion, Openess, Agreeableness, Conscientiousness, Neuroticism
-- Player Type based on the HEXAD types: Achiever, Disruptor, Player, Free Spirit, Philantropist, Socialiser
+- Player Type based on the HEXAD types: Achiever, Disruptor, Player, Free Spirit, Philanthropist, Socialiser
 - Learning style based on Felder-Silverman: Active/Reflective, Visual/Verbal, Sequential/Global, Sensor/Intuitive
 - Learning Activity Type (LAT) based on Blooms Taxonomy: Remember, Understand, Apply, Analyze, Evaluate, Create
 
@@ -66,3 +66,17 @@ This Project is realized with a Layered Architecture:
 - npx eslint: Checks code for inconsistency and bugs
 - npx stylelint "\*_/_.css": Checks .css files for consistency and code style
 - --fix: fixes .css file inconsistency
+
+## Adding a Recommender
+
+To add a Recommender that handles parameter {ParameterName} you need to follow the following steps:
+In the backend:
+
+1. In RecommenderSystem/Recommender add your Recommender with the name "{ParameterName}+Based+Recommender". Copy another Recommender and adapt it to your needs. It needs to extend the abstractRecommender.
+2. In RecommenderSystem/Recommender/RecommenderData add your csv file with your literature data in the format like the other .csv file you see in the folder. Name the .csv File "{ParameterName}BasedRecommender.csv".
+3. execute the following command in the folder RecommenderSystem/Recommender/RecommenderData: python readCSV.py {ParameterName}BasedRecommender.csv {ParameterName}BasedRecommender.json.
+4. Add your recommender to the RecommendationAssembler so it is included in the end result.
+5. Add your Recommender Information in the /types folder to the RecommenderObjectTypes.ts and RecommendationObjectTypes.ts accordingly
+6. Write tests for your Recommender.
+
+If everything runs smothly the frontend does not need to be adapted.

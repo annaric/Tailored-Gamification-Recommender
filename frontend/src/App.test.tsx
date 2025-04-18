@@ -65,11 +65,12 @@ describe("App Component", () => {
             imageSrc: "Incentive.png",
             elementName: "Incentive",
             details: "detail text",
-            scores: {
+            score: {
               overallScore: 0.5,
             },
-            standardDeviations: {
-              overallStandardDeviation: 0.1,
+            standardDeviation: {
+              overallStandardDeviation: 0.0,
+              meanStandardDeviation: 0.1,
             },
           },
         ],
@@ -95,6 +96,12 @@ describe("App Component", () => {
     expect(screen.queryByText("Overall Score: 0.500")).toBeTruthy();
     expect(screen.queryByText("Mean Standard deviation: 0.100")).not.toBeNull();
     expect(screen.queryByText("Mean Standard deviation: 0.100")).toBeTruthy();
+    expect(
+      screen.queryByText("Recommender based Standard deviation: 0.000"),
+    ).not.toBeNull();
+    expect(
+      screen.queryByText("Recommender based Standard deviation: 0.000"),
+    ).toBeTruthy();
     expect(screen.queryByText("▼")).not.toBeNull();
     await act(async () => {
       screen.getByText("▼").click();

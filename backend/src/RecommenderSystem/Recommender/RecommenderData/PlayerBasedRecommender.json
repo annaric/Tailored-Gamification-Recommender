@@ -1,0 +1,652 @@
+{
+  "literature": [
+    {
+      "title": "Elements of Gameful Design Emerging from User Preferences",
+      "author": "Tondello",
+      "paperType": "Bivariate Correlation",
+      "resultType": "Coefficient",
+      "bestValue": 1.0,
+      "minValue": -1.0,
+      "maxValue": 1.0,
+      "result": {
+        "Incentive": {
+          "achiever": 0.056,
+          "disruptor": 0.003,
+          "freeSpirit": 0.03,
+          "philanthropist": 0.024,
+          "player": 0.351,
+          "socializer": 0.103
+        },
+        "Progression": {
+          "achiever": 0.186,
+          "disruptor": 0.084,
+          "freeSpirit": 0.013,
+          "philanthropist": 0.17,
+          "player": 0.104,
+          "socializer": 0.072
+        },
+        "Customization": {
+          "achiever": -0.07,
+          "disruptor": 0.006,
+          "freeSpirit": 0.117,
+          "philanthropist": -0.019,
+          "player": 0.13,
+          "socializer": -0.069
+        },
+        "Immersion": {
+          "achiever": 0.394,
+          "disruptor": 0.165,
+          "freeSpirit": 0.406,
+          "philanthropist": 0.17,
+          "player": 0.053,
+          "socializer": 0.1
+        },
+        "Competition": {
+          "achiever": 0.238,
+          "disruptor": 0.125,
+          "freeSpirit": 0.003,
+          "philanthropist": 0.104,
+          "player": 0.263,
+          "socializer": 0.48
+        },
+        "Guild": {
+          "achiever": 0.238,
+          "disruptor": 0.125,
+          "freeSpirit": 0.003,
+          "philanthropist": 0.104,
+          "player": 0.263,
+          "socializer": 0.48
+        },
+        "Assistance": {
+          "achiever": -0.015,
+          "disruptor": 0.025,
+          "freeSpirit": 0.126,
+          "philanthropist": 0.112,
+          "player": -0.016,
+          "socializer": 0.19
+        },
+        "Challenge": {
+          "achiever": 0.361,
+          "disruptor": 0.183,
+          "freeSpirit": 0.12,
+          "philanthropist": 0.084,
+          "player": 0.247,
+          "socializer": 0.026
+        },
+        "Chance": {
+          "achiever": 0.361,
+          "disruptor": 0.183,
+          "freeSpirit": 0.12,
+          "philanthropist": 0.084,
+          "player": 0.247,
+          "socializer": 0.026
+        },
+        "Altruism": {
+          "achiever": 0.179,
+          "disruptor": 0.093,
+          "freeSpirit": 0.149,
+          "philanthropist": 0.377,
+          "player": 0.143,
+          "socializer": 0.227
+        }
+      }
+    },
+    {
+      "title": "Factors to Consider for Tailored Gamification",
+      "author": "Hallifax",
+      "paperType": "PLS Path Coefficients ",
+      "resultType": "Coefficient",
+      "bestValue": 1.0,
+      "minValue": -1.0,
+      "maxValue": 1.0,
+      "result": {
+        "TimePressure": {
+          "achiever": 0.08,
+          "disruptor": -0.01,
+          "freeSpirit": -0.11,
+          "philanthropist": 0.02,
+          "player": 0.025,
+          "socializer": -0.07
+        },
+        "Incentive": {
+          "achiever": -0.013333333,
+          "disruptor": -0.026666667,
+          "freeSpirit": 0.063333333,
+          "philanthropist": -0.036666667,
+          "player": -0.016666667,
+          "socializer": -0.066666667
+        },
+        "Progression": {
+          "achiever": -0.06,
+          "disruptor": 0.17,
+          "freeSpirit": -0.11,
+          "philanthropist": -0.07,
+          "player": 0.07,
+          "socializer": -0.16
+        },
+        "Immersion": {
+          "achiever": 0.095,
+          "disruptor": -0.05,
+          "freeSpirit": 0.05,
+          "philanthropist": 0.125,
+          "player": -0.045,
+          "socializer": -0.55
+        },
+        "Competition": {
+          "achiever": 0.08,
+          "disruptor": 0.16,
+          "freeSpirit": -0.14,
+          "philanthropist": 0.02,
+          "player": 0.08,
+          "socializer": -0.14
+        },
+        "Guild": {
+          "achiever": -0.105,
+          "disruptor": -0.07,
+          "freeSpirit": 0.07,
+          "philanthropist": -0.035,
+          "player": 0.01,
+          "socializer": 0.29
+        },
+        "VirtualEconomy": {
+          "achiever": 0.03,
+          "disruptor": -0.01,
+          "freeSpirit": 0.05,
+          "philanthropist": -0.06,
+          "player": -0.06,
+          "socializer": 0.26
+        }
+      }
+    },
+    {
+      "title": "Tailored gamification: A review of literature",
+      "author": "Klock",
+      "paperType": "Review",
+      "resultType": "PositiveNumber",
+      "bestValue": 6.0,
+      "minValue": 0.0,
+      "maxValue": 6.0,
+      "result": {
+        "Incentive": {
+          "achiever": 1.0,
+          "disruptor": 1.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 6.0,
+          "socializer": 2.0
+        },
+        "Progression": {
+          "achiever": 5.0,
+          "disruptor": 1.0,
+          "freeSpirit": 1.0,
+          "philanthropist": 1.0,
+          "player": 5.0,
+          "socializer": 1.0
+        },
+        "Feedback": {
+          "achiever": 3.0,
+          "disruptor": 1.0,
+          "freeSpirit": 3.0,
+          "philanthropist": 1.0,
+          "player": 3.0,
+          "socializer": 3.0
+        },
+        "Customization": {
+          "achiever": 1.0,
+          "disruptor": 3.0,
+          "freeSpirit": 4.0,
+          "philanthropist": 1.0,
+          "player": 1.0,
+          "socializer": 2.0
+        },
+        "Immersion": {
+          "achiever": 8.0,
+          "disruptor": 6.0,
+          "freeSpirit": 13.0,
+          "philanthropist": 6.0,
+          "player": 4.0,
+          "socializer": 3.0
+        },
+        "Competition": {
+          "achiever": 6.0,
+          "disruptor": 2.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 2.0,
+          "player": 11.0,
+          "socializer": 8.0
+        },
+        "Guild": {
+          "achiever": 3.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 3.0,
+          "player": 4.0,
+          "socializer": 9.0
+        },
+        "VirtualEconomy": {
+          "achiever": 3.0,
+          "disruptor": 1.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 4.0,
+          "player": 7.0,
+          "socializer": 1.0
+        },
+        "Assistance": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 1.0
+        },
+        "Challenge": {
+          "achiever": 5.0,
+          "disruptor": 2.0,
+          "freeSpirit": 2.0,
+          "philanthropist": 2.0,
+          "player": 2.0,
+          "socializer": 1.0
+        },
+        "Chance": {
+          "achiever": 1.0,
+          "disruptor": 1.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 1.0,
+          "socializer": 1.0
+        },
+        "Altruism": {
+          "achiever": 1.0,
+          "disruptor": 2.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 1.0,
+          "player": 1.0,
+          "socializer": 1.0
+        }
+      }
+    },
+    {
+      "title": "The Gamification User Types Hexad Scale ",
+      "author": "Tondello",
+      "paperType": "Kendals Correlation",
+      "resultType": "Coefficient",
+      "bestValue": 1.0,
+      "minValue": -1.0,
+      "maxValue": 1.0,
+      "result": {
+        "Incentive": {
+          "achiever": 0.194,
+          "disruptor": 0.0,
+          "freeSpirit": 0.18,
+          "philanthropist": 0.0,
+          "player": 0.26475,
+          "socializer": 0.158
+        },
+        "Progression": {
+          "achiever": 0.239,
+          "disruptor": 0.0,
+          "freeSpirit": 0.204,
+          "philanthropist": 0.0,
+          "player": 0.302,
+          "socializer": 0.17
+        },
+        "Feedback": {
+          "achiever": 0.215,
+          "disruptor": 0.0,
+          "freeSpirit": 0.391,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 0.0
+        },
+        "Customization": {
+          "achiever": 0.0,
+          "disruptor": 0.194,
+          "freeSpirit": 0.214,
+          "philanthropist": 0.0,
+          "player": 0.162,
+          "socializer": 0.0
+        },
+        "Immersion": {
+          "achiever": 0.0,
+          "disruptor": 0.2105,
+          "freeSpirit": 0.2658,
+          "philanthropist": 0.152666667,
+          "player": 0.154333333,
+          "socializer": 0.137
+        },
+        "Competition": {
+          "achiever": 0.161,
+          "disruptor": 0.289666667,
+          "freeSpirit": 0.249,
+          "philanthropist": 0.0,
+          "player": 0.251333333,
+          "socializer": 0.189
+        },
+        "Guild": {
+          "achiever": 0.0,
+          "disruptor": 0.181666667,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.184,
+          "socializer": 0.178
+        },
+        "VirtualEconomy": {
+          "achiever": 0.172,
+          "disruptor": 0.0,
+          "freeSpirit": 0.148,
+          "philanthropist": 0.0,
+          "player": 0.246333333,
+          "socializer": 0.158
+        },
+        "Challenge": {
+          "achiever": 0.3645,
+          "disruptor": 0.207,
+          "freeSpirit": 0.324,
+          "philanthropist": 0.212,
+          "player": 0.281,
+          "socializer": 0.0
+        },
+        "Chance": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.19,
+          "socializer": 0.148
+        },
+        "Altruism": {
+          "achiever": 0.0,
+          "disruptor": 0.2396,
+          "freeSpirit": 0.138,
+          "philanthropist": 0.0,
+          "player": 0.16975,
+          "socializer": 0.184
+        }
+      }
+    },
+    {
+      "title": "The Gamification User Types Hexad Scale - Marczewskis Results",
+      "author": "Tondello",
+      "paperType": "Marczewskis Kendals Correlation",
+      "resultType": "Coefficient",
+      "bestValue": 1.0,
+      "minValue": -1.0,
+      "maxValue": 1.0,
+      "result": {
+        "Incentive": {
+          "achiever": 0.347,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.383,
+          "socializer": 0.0
+        },
+        "Progression": {
+          "achiever": 0.347,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 0.0
+        },
+        "Feedback": {
+          "achiever": 0.347,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 0.0
+        },
+        "Customization": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.341,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 0.0
+        },
+        "Immersion": {
+          "achiever": 0.0,
+          "disruptor": 0.326,
+          "freeSpirit": 0.341,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 0.0
+        },
+        "Competition": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.383,
+          "socializer": 0.257
+        },
+        "Guild": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 0.257
+        },
+        "VirtualEconomy": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.039,
+          "player": 0.383,
+          "socializer": 0.0
+        },
+        "Challenge": {
+          "achiever": 0.347,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 0.0
+        },
+        "Chance": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.383,
+          "socializer": 0.0
+        },
+        "Altruism": {
+          "achiever": 0.0,
+          "disruptor": 0.326,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.039,
+          "player": 0.0,
+          "socializer": 0.0
+        }
+      }
+    },
+    {
+      "title": "The quest for a better tailoring of gameful design: An analysis of player type preferences",
+      "author": "Mora",
+      "paperType": "Kendall's Bivariate Correlation",
+      "resultType": "Coefficient",
+      "bestValue": 1.0,
+      "minValue": -1.0,
+      "maxValue": 1.0,
+      "result": {
+        "Immersion": {
+          "achiever": 0.07,
+          "disruptor": 0.02,
+          "freeSpirit": 0.12,
+          "philanthropist": 0.16,
+          "player": 0.14,
+          "socializer": 0.28
+        },
+        "Competition": {
+          "achiever": 0.035,
+          "disruptor": 0.095,
+          "freeSpirit": 0.04,
+          "philanthropist": -0.02,
+          "player": 0.235,
+          "socializer": 0.05
+        },
+        "Guild": {
+          "achiever": 0.135,
+          "disruptor": 0.025,
+          "freeSpirit": 0.125,
+          "philanthropist": 0.19,
+          "player": 0.05,
+          "socializer": 0.255
+        },
+        "Challenge": {
+          "achiever": 0.146666667,
+          "disruptor": 0.036666667,
+          "freeSpirit": 0.16,
+          "philanthropist": 0.203333333,
+          "player": 0.133333333,
+          "socializer": 0.21
+        },
+        "Altruism": {
+          "achiever": 0.1475,
+          "disruptor": 0.0625,
+          "freeSpirit": 0.1625,
+          "philanthropist": 0.19,
+          "player": 0.1375,
+          "socializer": 0.155
+        }
+      }
+    },
+    {
+      "title": "The relationship between user types and gamification designs",
+      "author": "Santos",
+      "paperType": "Regression Coefficient (nur aus dem Text) mit geclusterten \"Elementen\"",
+      "resultType": "Coefficient",
+      "bestValue": 1.0,
+      "minValue": -1.0,
+      "maxValue": 1.0,
+      "result": {
+        "TimePressure": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.162,
+          "socializer": 0.0
+        },
+        "Progression": {
+          "achiever": 0.295,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": -0.165
+        },
+        "Immersion": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.165,
+          "socializer": 0.2305
+        },
+        "Competition": {
+          "achiever": 0.238,
+          "disruptor": 0.15,
+          "freeSpirit": -0.15,
+          "philanthropist": 0.0,
+          "player": 0.0065,
+          "socializer": 0.3395
+        },
+        "Guild": {
+          "achiever": 0.238,
+          "disruptor": 0.15,
+          "freeSpirit": -0.15,
+          "philanthropist": 0.0,
+          "player": 0.0065,
+          "socializer": 0.3395
+        },
+        "VirtualEconomy": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.162,
+          "socializer": 0.0
+        },
+        "Assistance": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.165,
+          "socializer": 0.154
+        },
+        "Challenge": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.165,
+          "socializer": 0.154
+        },
+        "Chance": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.162,
+          "socializer": 0.0
+        }
+      }
+    },
+    {
+      "title": "To Tailor or Not to Tailor Gamification?  An Analysis of the Impact of Tailored Game Elements on Learners\u0092 Behaviours and Motivation",
+      "author": "Stuart",
+      "paperType": "Affinity Matrix (Vector kann auf Schwere des Playtypes berechnet werden (also auch sekund\u00e4r etc..))",
+      "resultType": "Scale",
+      "bestValue": 1.772,
+      "minValue": -1.233,
+      "maxValue": 1.772,
+      "result": {
+        "TimePressure": {
+          "achiever": 1.772,
+          "disruptor": 0.398,
+          "freeSpirit": 0.53,
+          "philanthropist": -1.125,
+          "player": 0.0,
+          "socializer": 0.439
+        },
+        "Incentive": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": -1.233,
+          "philanthropist": 1.229,
+          "player": 0.0,
+          "socializer": -0.548
+        },
+        "Progression": {
+          "achiever": -0.011,
+          "disruptor": -0.061,
+          "freeSpirit": 0.0,
+          "philanthropist": -0.694,
+          "player": 0.49,
+          "socializer": -0.399
+        },
+        "Customization": {
+          "achiever": -0.356,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.396,
+          "player": 0.87,
+          "socializer": -0.521
+        },
+        "Competition": {
+          "achiever": 0.0,
+          "disruptor": -0.87,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": -0.459
+        }
+      }
+    }
+  ]
+}

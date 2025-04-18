@@ -15,24 +15,50 @@ export type RecommenderResults = {
 //Input type we are getting from the frontend
 export type RecommendationInputObject = {
   // hier kommen andere Recommender typen hin später
-  gender?: "male" | "female" | undefined;
+  gender?: "male" | "female" | "";
+  player?:
+    | "achiever"
+    | "disruptor"
+    | "freeSpirit"
+    | "philanthropist"
+    | "player"
+    | "socializer"
+    | "";
+};
+
+export type NumberPerRecommenderObject = {
+  gender?: number;
+  player?: number;
 };
 
 export class RecommendationScoreObject {
   //später wird es noch ein number array mit den einzelnen Ergebnissen jedes Recommender geben, wenn andere recommender hinzukommen
+  scores: NumberPerRecommenderObject = {};
   overallScore: number;
 
-  constructor(overallScore: number = 0) {
+  constructor(
+    overallScore: number = 0,
+    scores: NumberPerRecommenderObject = {},
+  ) {
+    this.scores = scores;
     this.overallScore = overallScore;
   }
 }
 
 export class RecommendationStandardDeviationObject {
   //später wird es noch ein number array mit den einzelnen Ergebnissen jedes Recommender geben, wenn andere recommender hinzukommen
+  standardDeviations: NumberPerRecommenderObject = {};
   overallStandardDeviation: number;
+  meanStandardDeviation: number;
 
-  constructor(overallStandardDeviation: number = 0) {
+  constructor(
+    overallStandardDeviation: number = 0,
+    standardDeviations: NumberPerRecommenderObject = {},
+    meanStandardDeviation: number = 0,
+  ) {
+    this.standardDeviations = standardDeviations;
     this.overallStandardDeviation = overallStandardDeviation;
+    this.meanStandardDeviation = meanStandardDeviation;
   }
 }
 

@@ -22,6 +22,7 @@ app.listen(PORT, () => {
 
 app.post("/recommendation", (req: Request, res: Response) => {
   const input: RecommendationInputObject = req.body;
+  console.log("input", input);
 
   if (!input || Object.keys(input).length === 0) {
     console.log("no input parameter");

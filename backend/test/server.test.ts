@@ -15,15 +15,15 @@ describe("API Endpoints", () => {
       "elementName",
     );
     expect(response.body.recommendation.elements[0]).toHaveProperty("imageSrc");
-    expect(response.body.recommendation.elements[0]).toHaveProperty("scores");
+    expect(response.body.recommendation.elements[0]).toHaveProperty("score");
     expect(response.body.recommendation.elements[0]).toHaveProperty(
-      "standardDeviations",
+      "standardDeviation",
     );
-    expect(response.body.recommendation.elements[0].scores).toHaveProperty(
+    expect(response.body.recommendation.elements[0].score).toHaveProperty(
       "overallScore",
     );
     expect(
-      response.body.recommendation.elements[0].standardDeviations,
+      response.body.recommendation.elements[0].standardDeviation,
     ).toHaveProperty("overallStandardDeviation");
   });
 

@@ -59,6 +59,13 @@
   align-items: center;
 }
 
+.details-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .dropdown-button {
   background: #22c5be;
   border: none;
@@ -71,6 +78,17 @@
   padding: 10px;
   background-color: #e9e9e9;
   border-radius: 5px;
+  display: flex; /* Flexbox aktivieren */
+  flex-direction: column;
+  justify-content: center; /* Horizontal zentrieren */
+  align-items: center; /* Vertikal zentrieren */
+}
+
+.details-text {
+  margin: auto;
+  align-self: center;
+  justify-content: center;
+  justify-self: center;
 }
 
 /* Popup styles */

@@ -14,7 +14,6 @@ export type ResultDictonary = {
 };
 
 abstract class AbstractRecommender {
-  ResultDictonary: unknown = {};
 
   constructor() {
     this.updateAlgorithm();

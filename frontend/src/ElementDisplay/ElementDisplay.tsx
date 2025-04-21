@@ -43,17 +43,20 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
         />
         <span className="element-name">{elementName}</span>
         <div className="score-group">
+        {!(score.overallScore === undefined) &&
           <span className="score">
             Overall Score: {score.overallScore.toFixed(3)}
-          </span>
+          </span>}
+          {!(standardDeviation.overallStandardDeviation === undefined) &&
           <span className="standard-deviation">
             Recommender based Standard deviation:{" "}
             {standardDeviation.overallStandardDeviation.toFixed(3)}
-          </span>
+          </span>}
+          {!(standardDeviation.meanStandardDeviation === undefined) &&
           <span className="standard-deviation">
             Mean Standard deviation:{" "}
             {standardDeviation.meanStandardDeviation.toFixed(3)}
-          </span>
+          </span>}
         </div>
         <button className="dropdown-button" onClick={toggleDetails}>
           {isExpanded ? "▲" : "▼"}
@@ -64,7 +67,7 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
           <span className="details-text">{details}</span>
           <hr></hr>
           <div className="details-content">
-          {Object.keys(score.scores).map((key, index) => (
+          {score.scores && Object.keys(score.scores).map((key, index) => (
             <div className="score-group" key={index}>
               <span className="score">{key}:</span>
               <span className="standard-deviation">Score: {score.scores[key].toFixed(3) || 0}</span>

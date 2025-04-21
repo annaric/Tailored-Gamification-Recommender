@@ -2,28 +2,29 @@ import {
   RecommendationInputObject,
   RecommenderResults,
 } from "../../types/RecommendationObjectTypes";
-import AbstractRecommender, { ResultDictonary } from "./AbstractRecommender";
+import AbstractRecommender, {ResultDictonary} from "./AbstractRecommender";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import {
   GamificationElementArray,
   GamificationElements,
 } from "../../types/GamificationElementRepository";
 import {
-  PlayerValues,
+  PersonalityValues,
+
 } from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
-import JsonFileReader from "../Helper/JsonFileReader";
+import JsonFileReader from "../Helper/JsonFileReader"
 import DataAssembler from "../Helper/DataAssembler";
 
 const ResultDictonary: ResultDictonary = {};
 
-class PlayerBasedRecommender extends AbstractRecommender {
+class PersonalityBasedRecommender extends AbstractRecommender {
   constructor() {
     super();
   }
 
   recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (!input.player || !(PlayerValues.includes(input.player))) {
+    if (!input.personality || !(PersonalityValues.includes(input.personality))) {
       return undefined;
     }
     if (ResultDictonary === undefined) {
@@ -33,35 +34,36 @@ class PlayerBasedRecommender extends AbstractRecommender {
     GamificationElementArray.forEach((key) => {
       if (
         ResultDictonary[key] &&
-        ResultDictonary[key][input.player!]
+        ResultDictonary[key][
+          input.personality!]
       ) {
         result[key] = {
           score:
             ResultDictonary[key][
-              input.player!]!.score,
+              input.personality!]!.score,
           standardDeviation:
             ResultDictonary[key][
-              input.player!]!.standardDeviation,
+              input.personality!]!.standardDeviation,
         };
       }
     });
     return result;
-  }
+    }
 
   updateAlgorithm() {
     const jsonFileReader = new JsonFileReader();
     const dataNormalizer = new DataNormalizer();
     const dataAssembler = new DataAssembler();
-    const playerBasedRecommenderData: LiteratureElementObject[] =
+    const personalityBasedRecommenderData: LiteratureElementObject[] =
       jsonFileReader.readJsonFile(
-        "./src/RecommenderSystem/Recommender/RecommenderData/PlayerBasedRecommender.json",
+        "./src/RecommenderSystem/Recommender/RecommenderData/PersonalityBasedRecommender.json",
       );
 
     GamificationElementArray.forEach((key) => {
       const resultArrayForOneElement = dataNormalizer.normalizeLiteratureData(
-        playerBasedRecommenderData,
+        personalityBasedRecommenderData,
         GamificationElements[key],
-        PlayerValues,
+        PersonalityValues
       );
       if (resultArrayForOneElement.length !== 0) {
         ResultDictonary[key] = dataAssembler.assembleData(resultArrayForOneElement);
@@ -70,4 +72,4 @@ class PlayerBasedRecommender extends AbstractRecommender {
   }
 }
 
-export default PlayerBasedRecommender;
+export default PersonalityBasedRecommender;

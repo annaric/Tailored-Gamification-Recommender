@@ -1,7 +1,9 @@
 export enum Recommender {
   gender = "gender",
   player = "player",
-  personality = "personality"
+  personality = "personality",
+  lat = "lat",
+  learningStyle = "learningStyle",
 }
 
 export const GenderValues = [
@@ -26,12 +28,34 @@ export const PersonalityValues = [
   "neuroticism",
 ]
 
-export const RecommenderValues = [...GenderValues, ...PlayerValues, ...PersonalityValues];
+export const LATValues = [
+  "remember",
+  "understand",
+  "apply",
+  "analyze",
+  "evaluate",
+  "create",
+]
+
+export const LearningStyleValues = [
+  "active",	
+  "reflective",
+  "visual",
+  "verbal",
+  "sequential",
+  "global",
+  "sensor",
+  "intuitive",  
+]
+
+export const RecommenderValues = [...GenderValues, ...PlayerValues, ...PersonalityValues, ...LATValues, ...LearningStyleValues];
 
 export const RecommenderAndValues = {
   gender: GenderValues,
   player: PlayerValues,
-  personality: PersonalityValues
+  personality: PersonalityValues,
+  lat: LATValues,
+  learningStyle: LearningStyleValues,
 };
 
 export type RecommenderDependendLiteratureResults = { [key in (typeof RecommenderValues)[number]]?: number }

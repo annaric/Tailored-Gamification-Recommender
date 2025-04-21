@@ -72,7 +72,7 @@ This Project is realized with a Layered Architecture:
 To add a Recommender that handles parameter {ParameterName} you need to follow the following steps:
 In the backend:
 
-1. In RecommenderSystem/Recommender add your Recommender with the name "{ParameterName}+Based+Recommender". Copy another Recommender and adapt it to your needs. It needs to extend the abstractRecommender.
+1. In RecommenderSystem/Recommender add your Recommender with the name "{ParameterName}+Based+Recommender.ts". Copy another Recommender and adapt it to your needs. It needs to extend the abstractRecommender.
 2. In RecommenderSystem/Recommender/RecommenderData add your csv file with your literature data in the format like the other .csv file you see in the folder. Name the .csv File "{ParameterName}BasedRecommender.csv".
 3. execute the following command in the folder RecommenderSystem/Recommender/RecommenderData: python readCSV.py {ParameterName}BasedRecommender.csv {ParameterName}BasedRecommender.json.
 4. Add your recommender to the RecommendationAssembler so it is included in the end result.

@@ -3,7 +3,7 @@ import {
   GamificationElements,
   GamificationElementDetails,
 } from "./GamificationElementRepository";
-import { GenderValues, PersonalityValues, PlayerValues, RecommenderValues } from "./RecommenderObjectTypes";
+import { GenderValues, LATValues, LearningStyleValues, PersonalityValues, PlayerValues, RecommenderValues } from "./RecommenderObjectTypes";
 
 // Result type of each Recommender
 export type RecommenderResults = {
@@ -19,6 +19,8 @@ export type RecommendationInputObject = {
   gender?: (typeof GenderValues)[number]
   player?: (typeof PlayerValues)[number]
   personality?: (typeof PersonalityValues)[number]
+  lat?: (typeof LATValues)[number]
+  learningStyle?: (typeof LearningStyleValues)[number]
 };
 
 export type NumberPerRecommenderObject = { [key in (typeof RecommenderValues)[number]]?: number };

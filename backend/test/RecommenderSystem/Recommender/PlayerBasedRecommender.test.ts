@@ -3,6 +3,7 @@ import PlayerBasedRecommender from "../../../src/RecommenderSystem/Recommender/P
 import { LiteratureElementObject } from "../../../src/types/LiteratureElementObject";
 import JsonFileReader from "../../../src/RecommenderSystem/Helper/JsonFileReader";
 import DataNormalizer from "../../../src/RecommenderSystem/Helper/DataNormalizer";
+import DataAssembler from "../../../src/RecommenderSystem/Helper/DataAssembler";
 
 // Mock the `fs` module to simulate reading a JSON file
 
@@ -56,7 +57,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
         return mockReadJsonFileReturnValue.literature;
       });
 
-    const assembleDataSpy = jest.spyOn(recommender, "assembleData");
+    const assembleDataSpy = jest.spyOn(DataAssembler.prototype, "assembleData");
     const normalizePositiveDataPaperSpy = jest.spyOn(
       DataNormalizer.prototype,
       "normalizePositiveDataPaper",
@@ -137,7 +138,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
         return mockReadJsonFileReturnValue.literature;
       });
 
-    const assembleDataSpy = jest.spyOn(recommender, "assembleData");
+    const assembleDataSpy = jest.spyOn(DataAssembler.prototype, "assembleData");
     const normalizeCoefficientDataPaperSpy = jest.spyOn(
       DataNormalizer.prototype,
       "normalizeCoefficientDataPaper",
@@ -218,7 +219,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
         return mockReadJsonFileReturnValue.literature;
       });
 
-    const assembleDataSpy = jest.spyOn(recommender, "assembleData");
+    const assembleDataSpy = jest.spyOn(DataAssembler.prototype, "assembleData");
     const normalizeBinaryDataPaperSpy = jest.spyOn(
       DataNormalizer.prototype,
       "normalizeBinaryDataPaper",
@@ -299,7 +300,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
         return mockReadJsonFileReturnValue.literature;
       });
 
-    const assembleDataSpy = jest.spyOn(recommender, "assembleData");
+    const assembleDataSpy = jest.spyOn(DataAssembler.prototype, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
       DataNormalizer.prototype,
       "normalizeScaleDataPaper",
@@ -380,7 +381,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
         return mockReadJsonFileReturnValue.literature;
       });
 
-    const assembleDataSpy = jest.spyOn(recommender, "assembleData");
+    const assembleDataSpy = jest.spyOn(DataAssembler.prototype, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
       DataNormalizer.prototype,
       "normalizeScaleDataPaper",
@@ -497,7 +498,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       });
 
     const recommendSpy = jest.spyOn(recommender, "recommend");
-    const assembleDataSpy = jest.spyOn(recommender, "assembleData");
+    const assembleDataSpy = jest.spyOn(DataAssembler.prototype, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
       DataNormalizer.prototype,
       "normalizeScaleDataPaper",

@@ -2,7 +2,7 @@ import {
   RecommendationInputObject,
   RecommenderResults,
 } from "../../types/RecommendationObjectTypes";
-import AbstractRecommender from "./AbstractRecommender";
+import AbstractRecommender, {ResultElementProps, ResultDictonary} from "./AbstractRecommender";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import {
   GamificationElementArray,
@@ -10,26 +10,11 @@ import {
 } from "../../types/GamificationElementRepository";
 import {
   GenderValues,
-  RecommenderValues,
 } from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
 import JsonFileReader from "../Helper/JsonFileReader";
 import MeanCalculator from "../Helper/MeanCalculator";
 
-export interface GenderDictonaryElementProps {
-  male: {
-    score: number;
-    standardDeviation: number;
-  };
-  female: {
-    score: number;
-    standardDeviation: number;
-  };
-}
-
-export type ResultDictonary = {
-  [key in GamificationElements]?: GenderDictonaryElementProps;
-};
 const ResultDictonary: ResultDictonary = {};
 
 class GenderBasedRecommender extends AbstractRecommender {
@@ -38,32 +23,29 @@ class GenderBasedRecommender extends AbstractRecommender {
   }
 
   recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (!input.gender || !(input.gender in GenderValues)) {
+    if (!input.gender || !(GenderValues.includes(input.gender))) {
       return undefined;
     }
-    if (
-      (input.gender && input.gender === "female") ||
-      input.gender === "male"
-    ) {
-      const result: RecommenderResults = {};
-      GamificationElementArray.forEach((key) => {
-        if (
-          ResultDictonary[key] &&
-          ResultDictonary[key][input.gender as "male" | "female"]
-        ) {
-          result[key] = {
-            score:
-              ResultDictonary[key][input.gender as "male" | "female"].score,
-            standardDeviation:
-              ResultDictonary[key][input.gender as "male" | "female"]
-                .standardDeviation,
-          };
-        }
+    if (ResultDictonary === undefined) {
+      throw new Error("Result dictionary is not defined");
+    }
+    const result: RecommenderResults = {};
+    GamificationElementArray.forEach((key) => {
+      if (
+        ResultDictonary[key] &&
+        ResultDictonary[key][input.gender!]
+      ) {
+        result[key] = {
+          score:
+            ResultDictonary[key][input.gender!]!.score,
+          standardDeviation:
+            ResultDictonary[key][input.gender!]!
+              .standardDeviation,
+        };
+      }
       });
       return result;
     }
-    throw new Error("Invalid input");
-  }
 
   updateAlgorithm() {
     const jsonFileReader = new JsonFileReader();
@@ -73,15 +55,11 @@ class GenderBasedRecommender extends AbstractRecommender {
         "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
       );
 
-    const genderKeys: Array<keyof typeof GenderValues> = Object.keys(
-      GenderValues,
-    ) as Array<keyof typeof GenderValues>;
-
     GamificationElementArray.forEach((key) => {
       const resultArrayForOneElement = dataNormalizer.normalizeLiteratureData(
         genderBasedRecommenderData,
         GamificationElements[key],
-        genderKeys as Array<RecommenderValues>,
+        GenderValues,
       );
       if (resultArrayForOneElement.length !== 0) {
         ResultDictonary[key] = this.assembleData(resultArrayForOneElement);
@@ -90,8 +68,8 @@ class GenderBasedRecommender extends AbstractRecommender {
   }
 
   assembleData(
-    resultArray: { [key in GenderValues]?: number }[],
-  ): GenderDictonaryElementProps {
+    resultArray:  { [key in (typeof GenderValues)[number]]?: number }[],
+  ): ResultElementProps {
     const maleResultArray: number[] = [];
     const femaleResultArray: number[] = [];
     resultArray.forEach((element) => {

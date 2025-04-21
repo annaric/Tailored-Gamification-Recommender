@@ -2,7 +2,7 @@ import {
   RecommendationInputObject,
   RecommenderResults,
 } from "../../types/RecommendationObjectTypes";
-import AbstractRecommender from "./AbstractRecommender";
+import AbstractRecommender, { ResultElementProps, ResultDictonary } from "./AbstractRecommender";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import {
   GamificationElementArray,
@@ -10,42 +10,11 @@ import {
 } from "../../types/GamificationElementRepository";
 import {
   PlayerValues,
-  RecommenderValues,
 } from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
 import JsonFileReader from "../Helper/JsonFileReader";
 import MeanCalculator from "../Helper/MeanCalculator";
 
-export interface PlayerDictonaryElementProps {
-  achiever: {
-    score: number;
-    standardDeviation: number;
-  };
-  disruptor: {
-    score: number;
-    standardDeviation: number;
-  };
-  freeSpirit: {
-    score: number;
-    standardDeviation: number;
-  };
-  philanthropist: {
-    score: number;
-    standardDeviation: number;
-  };
-  player: {
-    score: number;
-    standardDeviation: number;
-  };
-  socializer: {
-    score: number;
-    standardDeviation: number;
-  };
-}
-
-export type ResultDictonary = {
-  [key in GamificationElements]?: PlayerDictonaryElementProps;
-};
 const ResultDictonary: ResultDictonary = {};
 
 class PlayerBasedRecommender extends AbstractRecommender {
@@ -54,51 +23,29 @@ class PlayerBasedRecommender extends AbstractRecommender {
   }
 
   recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (!input.player || !(input.player in PlayerValues)) {
+    if (!input.player || !(PlayerValues.includes(input.player))) {
       return undefined;
     }
-    if (input.player && input.player in PlayerValues) {
-      const result: RecommenderResults = {};
-      GamificationElementArray.forEach((key) => {
-        if (
-          ResultDictonary[key] &&
-          ResultDictonary[key][
-            input.player as
-              | "achiever"
-              | "disruptor"
-              | "freeSpirit"
-              | "philanthropist"
-              | "player"
-              | "socializer"
-          ]
-        ) {
-          result[key] = {
-            score:
-              ResultDictonary[key][
-                input.player as
-                  | "achiever"
-                  | "disruptor"
-                  | "freeSpirit"
-                  | "philanthropist"
-                  | "player"
-                  | "socializer"
-              ].score,
-            standardDeviation:
-              ResultDictonary[key][
-                input.player as
-                  | "achiever"
-                  | "disruptor"
-                  | "freeSpirit"
-                  | "philanthropist"
-                  | "player"
-                  | "socializer"
-              ].standardDeviation,
-          };
-        }
-      });
-      return result;
+    if (ResultDictonary === undefined) {
+      throw new Error("Result dictionary is not defined");
     }
-    throw new Error("Invalid input");
+    const result: RecommenderResults = {};
+    GamificationElementArray.forEach((key) => {
+      if (
+        ResultDictonary[key] &&
+        ResultDictonary[key][input.player!]
+      ) {
+        result[key] = {
+          score:
+            ResultDictonary[key][
+              input.player!]!.score,
+          standardDeviation:
+            ResultDictonary[key][
+              input.player!]!.standardDeviation,
+        };
+      }
+    });
+    return result;
   }
 
   updateAlgorithm() {
@@ -108,15 +55,12 @@ class PlayerBasedRecommender extends AbstractRecommender {
       jsonFileReader.readJsonFile(
         "./src/RecommenderSystem/Recommender/RecommenderData/PlayerBasedRecommender.json",
       );
-    const playerKeys: Array<keyof typeof PlayerValues> = Object.keys(
-      PlayerValues,
-    ) as Array<keyof typeof PlayerValues>;
 
     GamificationElementArray.forEach((key) => {
       const resultArrayForOneElement = dataNormalizer.normalizeLiteratureData(
         playerBasedRecommenderData,
         GamificationElements[key],
-        playerKeys as Array<RecommenderValues>,
+        PlayerValues,
       );
       if (resultArrayForOneElement.length !== 0) {
         const assembledData = this.assembleData(resultArrayForOneElement);
@@ -126,8 +70,8 @@ class PlayerBasedRecommender extends AbstractRecommender {
   }
 
   assembleData(
-    resultArray: { [key in PlayerValues]?: number }[],
-  ): PlayerDictonaryElementProps {
+    resultArray: { [key in (typeof PlayerValues)[number]]?: number }[],
+  ): ResultElementProps {
     const achieverResultArray: number[] = [];
     const disruptorResultArray: number[] = [];
     const freeSpiritResultArray: number[] = [];

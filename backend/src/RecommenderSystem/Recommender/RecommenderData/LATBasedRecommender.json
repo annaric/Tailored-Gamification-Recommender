@@ -1,0 +1,146 @@
+{
+  "literature": [
+    {
+      "title": "Automating Gamification Personalization to the User and Beyond",
+      "author": "Rodrigues et al.",
+      "paperType": "Tabelle 4 Auswertung (First = 1. Second = 2. Third Option = 3); 21 Elemente insgesammt im Paper. maxZahl hier:13 (wenn keine Bewertung dann 6.5)",
+      "resultType": "Scale",
+      "bestValue": 1.0,
+      "minValue": 1.0,
+      "maxValue": 13.0,
+      "result": {
+        "Incentive": {
+          "analyze": 1.3,
+          "apply": 1.0,
+          "create": 6.5,
+          "evaluate": 1.0,
+          "remember": 1.0,
+          "understand": 6.5
+        },
+        "Progression": {
+          "analyze": 2.0,
+          "apply": 2.3,
+          "create": 1.3,
+          "evaluate": 2.3,
+          "remember": 2.3,
+          "understand": 2.3
+        },
+        "Customization": {
+          "analyze": 6.5,
+          "apply": 6.5,
+          "create": 6.5,
+          "evaluate": 6.5,
+          "remember": 6.5,
+          "understand": 1.0
+        }
+      }
+    },
+    {
+      "title": "Mapping learning and game mechanics for serious games analysis: Mapping learning and game mechanics",
+      "author": "Arnab et al.",
+      "paperType": "Tabelle mit Game bzw Learning mechanics (eher serious games aber weitgehende \u00fcbertragung)",
+      "resultType": "Binary",
+      "bestValue": 1.0,
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "result": {
+        "TimePressure": {
+          "analyze": 0.0,
+          "apply": 1.0,
+          "create": 0.0,
+          "evaluate": 1.0,
+          "remember": 0.0,
+          "understand": 1.0
+        },
+        "Incentive": {
+          "analyze": 0.0,
+          "apply": 0.0,
+          "create": 0.0,
+          "evaluate": 1.0,
+          "remember": 0.0,
+          "understand": 0.0
+        },
+        "Progression": {
+          "analyze": 0.0,
+          "apply": 1.0,
+          "create": 0.0,
+          "evaluate": 0.0,
+          "remember": 0.0,
+          "understand": 0.0
+        },
+        "Feedback": {
+          "analyze": 1.0,
+          "apply": 0.0,
+          "create": 1.0,
+          "evaluate": 1.0,
+          "remember": 1.0,
+          "understand": 0.0
+        },
+        "Customization": {
+          "analyze": 0.0,
+          "apply": 0.0,
+          "create": 1.0,
+          "evaluate": 0.0,
+          "remember": 0.0,
+          "understand": 0.0
+        },
+        "Immersion": {
+          "analyze": 1.0,
+          "apply": 1.0,
+          "create": 1.0,
+          "evaluate": 0.0,
+          "remember": 1.0,
+          "understand": 1.0
+        },
+        "Competition": {
+          "analyze": 0.0,
+          "apply": 1.0,
+          "create": 0.0,
+          "evaluate": 0.0,
+          "remember": 0.0,
+          "understand": 0.0
+        },
+        "Guild": {
+          "analyze": 1.0,
+          "apply": 1.0,
+          "create": 0.0,
+          "evaluate": 1.0,
+          "remember": 1.0,
+          "understand": 0.0
+        },
+        "VirtualEconomy": {
+          "analyze": 0.0,
+          "apply": 1.0,
+          "create": 1.0,
+          "evaluate": 1.0,
+          "remember": 1.0,
+          "understand": 0.0
+        },
+        "Assistance": {
+          "analyze": 0.0,
+          "apply": 0.0,
+          "create": 0.0,
+          "evaluate": 0.0,
+          "remember": 0.0,
+          "understand": 1.0
+        },
+        "Challenge": {
+          "analyze": 0.0,
+          "apply": 0.0,
+          "create": 1.0,
+          "evaluate": 0.0,
+          "remember": 0.0,
+          "understand": 0.0
+        },
+        "Altruism": {
+          "analyze": 0.0,
+          "apply": 0.0,
+          "create": 1.0,
+          "evaluate": 0.0,
+          "remember": 0.0,
+          "understand": 0.0
+        }
+      }
+    }
+  ]
+}

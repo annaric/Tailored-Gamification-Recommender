@@ -53,12 +53,16 @@ class RecommendationAssembler {
       ) {
         element.standardDeviation.meanStandardDeviation =
           meanCalculator.calculateMeanAndStdDev(
-            Object.values(element.standardDeviation.standardDeviations),
+            Object.values(element.standardDeviation.standardDeviations).filter(
+              (value): value is number => value !== undefined
+            ),
           ).score;
       }
       if (!(Object.keys(element.score.scores).length === 0)) {
         const overallCalculation = meanCalculator.calculateMeanAndStdDev(
-          Object.values(element.score.scores),
+          Object.values(element.score.scores).filter(
+            (value): value is number => value !== undefined
+          ),
         );
         element.score.overallScore = overallCalculation.score;
         element.standardDeviation.overallStandardDeviation =

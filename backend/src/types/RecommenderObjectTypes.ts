@@ -4,9 +4,12 @@ export enum Recommender {
   personality = "personality",
   lat = "lat",
   learningStyle = "learningStyle",
+  age = "age",
 }
 
 export const GenderValues = ["female", "male"];
+
+export const AgeValues = ["20-29", "30-39", "<20", ">39"];
 
 export const PlayerValues = [
   "achiever",
@@ -51,6 +54,7 @@ export const RecommenderValues = [
   ...PersonalityValues,
   ...LATValues,
   ...LearningStyleValues,
+  ...AgeValues,
 ];
 
 export const RecommenderAndValues = {
@@ -59,6 +63,7 @@ export const RecommenderAndValues = {
   personality: PersonalityValues,
   lat: LATValues,
   learningStyle: LearningStyleValues,
+  age: AgeValues,
 };
 
 export type RecommenderDependendLiteratureResults = {

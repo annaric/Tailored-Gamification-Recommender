@@ -4,6 +4,7 @@ import {
   GamificationElementDetails,
 } from "./GamificationElementRepository";
 import {
+  AgeValues,
   GenderValues,
   LATValues,
   LearningStyleValues,
@@ -28,6 +29,7 @@ export type RecommendationInputObject = {
   personality?: (typeof PersonalityValues)[number];
   lat?: (typeof LATValues)[number];
   learningStyle?: (typeof LearningStyleValues)[number];
+  age?: (typeof AgeValues)[number];
 };
 
 export type NumberPerRecommenderObject = {

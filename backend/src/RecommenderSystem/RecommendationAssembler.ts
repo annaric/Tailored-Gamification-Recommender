@@ -13,6 +13,7 @@ import LATBasedRecommender from "./Recommender/LATBasedRecommender";
 import PersonalityBasedRecommender from "./Recommender/PersonalityBasedRecommender";
 import LearningStyleBasedRecommender from "./Recommender/LearningStyleBasedRecommender";
 import PlayerBasedRecommender from "./Recommender/PlayerBasedRecommender";
+import AgeBasedRecommender from "./Recommender/AgeBasedRecommender";
 
 class RecommendationAssembler {
   genderBasedRecommender: GenderBasedRecommender;
@@ -20,6 +21,7 @@ class RecommendationAssembler {
   personalityBasedRecommender: PersonalityBasedRecommender;
   latBasedRecommender: LATBasedRecommender;
   learningStyleBasedRecommender: LearningStyleBasedRecommender;
+  ageBasedRecommender: AgeBasedRecommender;
   meanCalculator: MeanCalculator;
 
   constructor() {
@@ -28,6 +30,7 @@ class RecommendationAssembler {
     this.personalityBasedRecommender = new PersonalityBasedRecommender();
     this.latBasedRecommender = new LATBasedRecommender();
     this.learningStyleBasedRecommender = new LearningStyleBasedRecommender();
+    this.ageBasedRecommender = new AgeBasedRecommender();
     this.meanCalculator = new MeanCalculator();
   }
 
@@ -43,6 +46,7 @@ class RecommendationAssembler {
     const latBasedRecommendation = this.latBasedRecommender.recommend(input);
     const learningStyleBasedRecommendation =
       this.learningStyleBasedRecommender.recommend(input);
+    const ageBasedRecommendation = this.ageBasedRecommender.recommend(input);
     const result = new RecommendationEndResult();
 
     result.elements = result.elements.map((element) => {
@@ -70,6 +74,11 @@ class RecommendationAssembler {
         element,
         learningStyleBasedRecommendation,
         "learningStyle",
+      );
+      element = this.addRecommenderScorestoResult(
+        element,
+        ageBasedRecommendation,
+        "age",
       );
       element = this.calculateMeanStandardDeviation(element);
       element = this.setOverallScoreAndStandardDeviation(element);

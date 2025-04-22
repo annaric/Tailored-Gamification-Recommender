@@ -8,9 +8,7 @@ import {
   GamificationElementArray,
   GamificationElements,
 } from "../../types/GamificationElementRepository";
-import {
-  PlayerValues,
-} from "../../types/RecommenderObjectTypes";
+import { PlayerValues } from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
 import JsonFileReader from "../Helper/JsonFileReader";
 import DataAssembler from "../Helper/DataAssembler";
@@ -23,7 +21,7 @@ class PlayerBasedRecommender extends AbstractRecommender {
   }
 
   recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (!input.player || !(PlayerValues.includes(input.player))) {
+    if (!input.player || !PlayerValues.includes(input.player)) {
       return undefined;
     }
     if (ResultDictonary === undefined) {
@@ -31,17 +29,11 @@ class PlayerBasedRecommender extends AbstractRecommender {
     }
     const result: RecommenderResults = {};
     GamificationElementArray.forEach((key) => {
-      if (
-        ResultDictonary[key] &&
-        ResultDictonary[key][input.player!]
-      ) {
+      if (ResultDictonary[key] && ResultDictonary[key][input.player!]) {
         result[key] = {
-          score:
-            ResultDictonary[key][
-              input.player!]!.score,
+          score: ResultDictonary[key][input.player!]!.score,
           standardDeviation:
-            ResultDictonary[key][
-              input.player!]!.standardDeviation,
+            ResultDictonary[key][input.player!]!.standardDeviation,
         };
       }
     });
@@ -64,7 +56,9 @@ class PlayerBasedRecommender extends AbstractRecommender {
         PlayerValues,
       );
       if (resultArrayForOneElement.length !== 0) {
-        ResultDictonary[key] = dataAssembler.assembleData(resultArrayForOneElement);
+        ResultDictonary[key] = dataAssembler.assembleData(
+          resultArrayForOneElement,
+        );
       }
     });
   }

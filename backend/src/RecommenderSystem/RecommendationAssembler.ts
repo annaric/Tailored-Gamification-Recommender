@@ -1,4 +1,7 @@
-import { GamificationElementObject, GamificationElements } from "../types/GamificationElementRepository";
+import {
+  GamificationElementObject,
+  GamificationElements,
+} from "../types/GamificationElementRepository";
 import {
   RecommendationInputObject,
   RecommendationEndResult,
@@ -16,7 +19,7 @@ class RecommendationAssembler {
   playerBasedRecommender: PlayerBasedRecommender;
   personalityBasedRecommender: PersonalityBasedRecommender;
   latBasedRecommender: LATBasedRecommender;
-  learningStyleBasedRecommender: LearningStyleBasedRecommender
+  learningStyleBasedRecommender: LearningStyleBasedRecommender;
   meanCalculator: MeanCalculator;
 
   constructor() {
@@ -37,18 +40,37 @@ class RecommendationAssembler {
       this.playerBasedRecommender.recommend(input);
     const personalityBasedRecommendation =
       this.personalityBasedRecommender.recommend(input);
-    const latBasedRecommendation =
-      this.latBasedRecommender.recommend(input);
+    const latBasedRecommendation = this.latBasedRecommender.recommend(input);
     const learningStyleBasedRecommendation =
       this.learningStyleBasedRecommender.recommend(input);
     const result = new RecommendationEndResult();
 
     result.elements = result.elements.map((element) => {
-      element = this.addRecommenderScorestoResult(element, genderBasedRecommendation, "gender");
-      element = this.addRecommenderScorestoResult(element, playerBasedRecommendation, "player");
-      element = this.addRecommenderScorestoResult(element, personalityBasedRecommendation, "personality");
-      element = this.addRecommenderScorestoResult(element, latBasedRecommendation, "lat");
-      element = this.addRecommenderScorestoResult(element, learningStyleBasedRecommendation, "learningStyle");
+      element = this.addRecommenderScorestoResult(
+        element,
+        genderBasedRecommendation,
+        "gender",
+      );
+      element = this.addRecommenderScorestoResult(
+        element,
+        playerBasedRecommendation,
+        "player",
+      );
+      element = this.addRecommenderScorestoResult(
+        element,
+        personalityBasedRecommendation,
+        "personality",
+      );
+      element = this.addRecommenderScorestoResult(
+        element,
+        latBasedRecommendation,
+        "lat",
+      );
+      element = this.addRecommenderScorestoResult(
+        element,
+        learningStyleBasedRecommendation,
+        "learningStyle",
+      );
       element = this.calculateMeanStandardDeviation(element);
       element = this.setOverallScoreAndStandardDeviation(element);
       return element;
@@ -61,19 +83,19 @@ class RecommendationAssembler {
     return result;
   }
 
-  addRecommenderScorestoResult(element: GamificationElementObject, recommendation: RecommenderResults | undefined, key: string) {
+  addRecommenderScorestoResult(
+    element: GamificationElementObject,
+    recommendation: RecommenderResults | undefined,
+    key: string,
+  ) {
     if (!key) {
       throw new Error("Key is undefined");
     }
     const adaptedElement = element;
     const elementKey =
       adaptedElement.elementName as keyof typeof GamificationElements;
-    if (
-      !(recommendation === undefined) &&
-      recommendation[elementKey]
-    ) {
-      adaptedElement.score.scores[key] =
-        recommendation[elementKey].score;
+    if (!(recommendation === undefined) && recommendation[elementKey]) {
+      adaptedElement.score.scores[key] = recommendation[elementKey].score;
       adaptedElement.standardDeviation.standardDeviations[key] =
         recommendation[elementKey].standardDeviation;
     }
@@ -84,25 +106,26 @@ class RecommendationAssembler {
     const adaptedElement = element;
     if (
       !(
-        Object.keys(adaptedElement.standardDeviation.standardDeviations).length === 0
+        Object.keys(adaptedElement.standardDeviation.standardDeviations)
+          .length === 0
       )
     ) {
       adaptedElement.standardDeviation.meanStandardDeviation =
         this.meanCalculator.calculateMeanAndStdDev(
-          Object.values(adaptedElement.standardDeviation.standardDeviations).filter(
-            (value): value is number => value !== undefined
-          ),
+          Object.values(
+            adaptedElement.standardDeviation.standardDeviations,
+          ).filter((value): value is number => value !== undefined),
         ).score;
     }
     return adaptedElement;
   }
 
-  setOverallScoreAndStandardDeviation(element: GamificationElementObject){
+  setOverallScoreAndStandardDeviation(element: GamificationElementObject) {
     const adaptedElement = element;
     if (!(Object.keys(adaptedElement.score.scores).length === 0)) {
       const overallCalculation = this.meanCalculator.calculateMeanAndStdDev(
         Object.values(adaptedElement.score.scores).filter(
-          (value): value is number => value !== undefined
+          (value): value is number => value !== undefined,
         ),
       );
       adaptedElement.score.overallScore = overallCalculation.score;
@@ -114,7 +137,6 @@ class RecommendationAssembler {
     }
     return adaptedElement;
   }
-
 }
 
 export default RecommendationAssembler;

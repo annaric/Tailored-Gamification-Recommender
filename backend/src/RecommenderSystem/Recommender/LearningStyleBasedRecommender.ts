@@ -2,18 +2,15 @@ import {
   RecommendationInputObject,
   RecommenderResults,
 } from "../../types/RecommendationObjectTypes";
-import AbstractRecommender, {ResultDictonary} from "./AbstractRecommender";
+import AbstractRecommender, { ResultDictonary } from "./AbstractRecommender";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import {
   GamificationElementArray,
   GamificationElements,
 } from "../../types/GamificationElementRepository";
-import {
-  LearningStyleValues,
-
-} from "../../types/RecommenderObjectTypes";
+import { LearningStyleValues } from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
-import JsonFileReader from "../Helper/JsonFileReader"
+import JsonFileReader from "../Helper/JsonFileReader";
 import DataAssembler from "../Helper/DataAssembler";
 
 const ResultDictonary: ResultDictonary = {};
@@ -24,7 +21,10 @@ class LearningStyleBasedRecommender extends AbstractRecommender {
   }
 
   recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (!input.learningStyle || !(LearningStyleValues.includes(input.learningStyle))) {
+    if (
+      !input.learningStyle ||
+      !LearningStyleValues.includes(input.learningStyle)
+    ) {
       return undefined;
     }
     if (ResultDictonary === undefined) {
@@ -32,23 +32,16 @@ class LearningStyleBasedRecommender extends AbstractRecommender {
     }
     const result: RecommenderResults = {};
     GamificationElementArray.forEach((key) => {
-      if (
-        ResultDictonary[key] &&
-        ResultDictonary[key][
-          input.learningStyle!]
-      ) {
+      if (ResultDictonary[key] && ResultDictonary[key][input.learningStyle!]) {
         result[key] = {
-          score:
-            ResultDictonary[key][
-              input.learningStyle!]!.score,
+          score: ResultDictonary[key][input.learningStyle!]!.score,
           standardDeviation:
-            ResultDictonary[key][
-              input.learningStyle!]!.standardDeviation,
+            ResultDictonary[key][input.learningStyle!]!.standardDeviation,
         };
       }
     });
     return result;
-    }
+  }
 
   updateAlgorithm() {
     const jsonFileReader = new JsonFileReader();
@@ -63,10 +56,12 @@ class LearningStyleBasedRecommender extends AbstractRecommender {
       const resultArrayForOneElement = dataNormalizer.normalizeLiteratureData(
         learningStyleBasedRecommenderData,
         GamificationElements[key],
-        LearningStyleValues
+        LearningStyleValues,
       );
       if (resultArrayForOneElement.length !== 0) {
-        ResultDictonary[key] = dataAssembler.assembleData(resultArrayForOneElement);
+        ResultDictonary[key] = dataAssembler.assembleData(
+          resultArrayForOneElement,
+        );
       }
     });
   }

@@ -6,15 +6,14 @@ export type ResultElementProps = {
   [key in (typeof RecommenderValues)[number]]?: {
     score: number;
     standardDeviation: number;
-  }
-}
+  };
+};
 
 export type ResultDictonary = {
   [key in GamificationElements]?: ResultElementProps;
 };
 
 abstract class AbstractRecommender {
-
   constructor() {
     this.updateAlgorithm();
   }

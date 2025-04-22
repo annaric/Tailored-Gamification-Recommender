@@ -2,18 +2,15 @@ import {
   RecommendationInputObject,
   RecommenderResults,
 } from "../../types/RecommendationObjectTypes";
-import AbstractRecommender, {ResultDictonary} from "./AbstractRecommender";
+import AbstractRecommender, { ResultDictonary } from "./AbstractRecommender";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import {
   GamificationElementArray,
   GamificationElements,
 } from "../../types/GamificationElementRepository";
-import {
-  PersonalityValues,
-
-} from "../../types/RecommenderObjectTypes";
+import { PersonalityValues } from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
-import JsonFileReader from "../Helper/JsonFileReader"
+import JsonFileReader from "../Helper/JsonFileReader";
 import DataAssembler from "../Helper/DataAssembler";
 
 const ResultDictonary: ResultDictonary = {};
@@ -24,7 +21,7 @@ class PersonalityBasedRecommender extends AbstractRecommender {
   }
 
   recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (!input.personality || !(PersonalityValues.includes(input.personality))) {
+    if (!input.personality || !PersonalityValues.includes(input.personality)) {
       return undefined;
     }
     if (ResultDictonary === undefined) {
@@ -32,23 +29,16 @@ class PersonalityBasedRecommender extends AbstractRecommender {
     }
     const result: RecommenderResults = {};
     GamificationElementArray.forEach((key) => {
-      if (
-        ResultDictonary[key] &&
-        ResultDictonary[key][
-          input.personality!]
-      ) {
+      if (ResultDictonary[key] && ResultDictonary[key][input.personality!]) {
         result[key] = {
-          score:
-            ResultDictonary[key][
-              input.personality!]!.score,
+          score: ResultDictonary[key][input.personality!]!.score,
           standardDeviation:
-            ResultDictonary[key][
-              input.personality!]!.standardDeviation,
+            ResultDictonary[key][input.personality!]!.standardDeviation,
         };
       }
     });
     return result;
-    }
+  }
 
   updateAlgorithm() {
     const jsonFileReader = new JsonFileReader();
@@ -63,10 +53,12 @@ class PersonalityBasedRecommender extends AbstractRecommender {
       const resultArrayForOneElement = dataNormalizer.normalizeLiteratureData(
         personalityBasedRecommenderData,
         GamificationElements[key],
-        PersonalityValues
+        PersonalityValues,
       );
       if (resultArrayForOneElement.length !== 0) {
-        ResultDictonary[key] = dataAssembler.assembleData(resultArrayForOneElement);
+        ResultDictonary[key] = dataAssembler.assembleData(
+          resultArrayForOneElement,
+        );
       }
     });
   }

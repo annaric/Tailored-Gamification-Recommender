@@ -12,7 +12,9 @@ export default class DataNormalizer {
     key: GamificationElements,
     resultKeys: (typeof RecommenderValues)[number][],
   ) {
-    const resultArray: { [key in (typeof RecommenderValues)[number]]?: number }[] = [];
+    const resultArray: {
+      [key in (typeof RecommenderValues)[number]]?: number;
+    }[] = [];
     input.forEach((element) => {
       if (
         element.result &&

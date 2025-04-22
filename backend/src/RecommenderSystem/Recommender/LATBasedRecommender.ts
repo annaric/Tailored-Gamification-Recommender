@@ -2,18 +2,15 @@ import {
   RecommendationInputObject,
   RecommenderResults,
 } from "../../types/RecommendationObjectTypes";
-import AbstractRecommender, {ResultDictonary} from "./AbstractRecommender";
+import AbstractRecommender, { ResultDictonary } from "./AbstractRecommender";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import {
   GamificationElementArray,
   GamificationElements,
 } from "../../types/GamificationElementRepository";
-import {
-  LATValues,
-
-} from "../../types/RecommenderObjectTypes";
+import { LATValues } from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
-import JsonFileReader from "../Helper/JsonFileReader"
+import JsonFileReader from "../Helper/JsonFileReader";
 import DataAssembler from "../Helper/DataAssembler";
 
 const ResultDictonary: ResultDictonary = {};
@@ -24,7 +21,7 @@ class LATBasedRecommender extends AbstractRecommender {
   }
 
   recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (!input.lat || !(LATValues.includes(input.lat))) {
+    if (!input.lat || !LATValues.includes(input.lat)) {
       return undefined;
     }
     if (ResultDictonary === undefined) {
@@ -32,23 +29,16 @@ class LATBasedRecommender extends AbstractRecommender {
     }
     const result: RecommenderResults = {};
     GamificationElementArray.forEach((key) => {
-      if (
-        ResultDictonary[key] &&
-        ResultDictonary[key][
-          input.lat!]
-      ) {
+      if (ResultDictonary[key] && ResultDictonary[key][input.lat!]) {
         result[key] = {
-          score:
-            ResultDictonary[key][
-              input.lat!]!.score,
+          score: ResultDictonary[key][input.lat!]!.score,
           standardDeviation:
-            ResultDictonary[key][
-              input.lat!]!.standardDeviation,
+            ResultDictonary[key][input.lat!]!.standardDeviation,
         };
       }
     });
     return result;
-    }
+  }
 
   updateAlgorithm() {
     const jsonFileReader = new JsonFileReader();
@@ -63,10 +53,12 @@ class LATBasedRecommender extends AbstractRecommender {
       const resultArrayForOneElement = dataNormalizer.normalizeLiteratureData(
         latBasedRecommenderData,
         GamificationElements[key],
-        LATValues
+        LATValues,
       );
       if (resultArrayForOneElement.length !== 0) {
-        ResultDictonary[key] = dataAssembler.assembleData(resultArrayForOneElement);
+        ResultDictonary[key] = dataAssembler.assembleData(
+          resultArrayForOneElement,
+        );
       }
     });
   }

@@ -2,15 +2,13 @@ import {
   RecommendationInputObject,
   RecommenderResults,
 } from "../../types/RecommendationObjectTypes";
-import AbstractRecommender, {ResultDictonary} from "./AbstractRecommender";
+import AbstractRecommender, { ResultDictonary } from "./AbstractRecommender";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import {
   GamificationElementArray,
   GamificationElements,
 } from "../../types/GamificationElementRepository";
-import {
-  GenderValues,
-} from "../../types/RecommenderObjectTypes";
+import { GenderValues } from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
 import JsonFileReader from "../Helper/JsonFileReader";
 import DataAssembler from "../Helper/DataAssembler";
@@ -23,7 +21,7 @@ class GenderBasedRecommender extends AbstractRecommender {
   }
 
   recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (!input.gender || !(GenderValues.includes(input.gender))) {
+    if (!input.gender || !GenderValues.includes(input.gender)) {
       return undefined;
     }
     if (ResultDictonary === undefined) {
@@ -31,21 +29,16 @@ class GenderBasedRecommender extends AbstractRecommender {
     }
     const result: RecommenderResults = {};
     GamificationElementArray.forEach((key) => {
-      if (
-        ResultDictonary[key] &&
-        ResultDictonary[key][input.gender!]
-      ) {
+      if (ResultDictonary[key] && ResultDictonary[key][input.gender!]) {
         result[key] = {
-          score:
-            ResultDictonary[key][input.gender!]!.score,
+          score: ResultDictonary[key][input.gender!]!.score,
           standardDeviation:
-            ResultDictonary[key][input.gender!]!
-              .standardDeviation,
+            ResultDictonary[key][input.gender!]!.standardDeviation,
         };
       }
-      });
-      return result;
-    }
+    });
+    return result;
+  }
 
   updateAlgorithm() {
     const jsonFileReader = new JsonFileReader();
@@ -63,7 +56,9 @@ class GenderBasedRecommender extends AbstractRecommender {
         GenderValues,
       );
       if (resultArrayForOneElement.length !== 0) {
-        ResultDictonary[key] = dataAssembler.assembleData(resultArrayForOneElement);
+        ResultDictonary[key] = dataAssembler.assembleData(
+          resultArrayForOneElement,
+        );
       }
     });
   }

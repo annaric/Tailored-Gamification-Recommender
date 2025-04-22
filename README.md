@@ -79,7 +79,7 @@ In the backend:
     - Entries in the resultType column have to be from the type LiteratureTypeEnum. This value defines how the data is normalized. For more details see the helper class DataNormalizer.
     - Pay attention to upper and lower case. It could be a reason why your data is not used properly. 
 3. **execute** the following **command** in the folder RecommenderSystem/Recommender/RecommenderData: 
-  ````python readCSV.py {ParameterName}BasedRecommender.csv {ParameterName}BasedRecommender.json.````
+  ````python readCSV.py {ParameterName}BasedRecommender.csv {ParameterName}BasedRecommender.json````
 
 4. **Add** your recommender **to the RecommendationAssembler** so it is included in the end result.
 5. **Add** your Recommender Information **in the /types** folder to the RecommenderObjectTypes.ts and RecommendationObjectTypes.ts accordingly

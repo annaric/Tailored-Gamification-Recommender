@@ -61,11 +61,13 @@ This Project is realized with a Layered Architecture:
 - --fix: fixes .css file inconsistency
 
 ## Pull Request
+
 At every pull request a github workflow pipeline is started to check your code. That includes the following:
+
 - The frontend and backend will be **tested** (Jest) and the current code coverage will be postet in the pull request. I
 - **Eslint** will do a static code analysis of the fronted and backend on the TypeScript code.
 - **Stylelint** will check the .css files for errors and violations against style conventions.
-- If the aforementioned checks were succesful, the **Prettier** action is executed. It formats the code to keep it uniform on the main branch. If this check has something to change it will create a new commit for those formate changes. 
+- If the aforementioned checks were succesful, the **Prettier** action is executed. It formats the code to keep it uniform on the main branch. If this check has something to change it will create a new commit for those formate changes.
 
 ## Adding a Recommender
 
@@ -73,13 +75,13 @@ To add a Recommender that handles parameter {ParameterName} you need to follow t
 In the backend:
 
 1. In RecommenderSystem/Recommender **add your Recommender** with the name "{ParameterName}+Based+Recommender.ts". Copy another Recommender and adapt it to your needs. It needs to extend the abstractRecommender.
-2. In RecommenderSystem/Recommender/RecommenderData **add your csv file** with your literature data in the format like the other .csv file you see in the folder. To keep the naming convention, name the .csv File "{ParameterName}BasedRecommender.csv". Some **conventions** you should be aware of in the csv file: 
-    -  For each literature there will be multiple lines, one line for each parameter value (e.g. 2 for gender)
-    - In the titel, author and paperType column you can decide freely what to write, its best keep it the same for one literature as only one line will appear in the json. Those line are solely for better readability of the files and will not be processed further.
-    - Entries in the resultType column have to be from the type LiteratureTypeEnum. This value defines how the data is normalized. For more details see the helper class DataNormalizer.
-    - Pay attention to upper and lower case. It could be a reason why your data is not used properly. 
-3. **execute** the following **command** in the folder RecommenderSystem/Recommender/RecommenderData: 
-  ````python readCSV.py {ParameterName}BasedRecommender.csv {ParameterName}BasedRecommender.json````
+2. In RecommenderSystem/Recommender/RecommenderData **add your csv file** with your literature data in the format like the other .csv file you see in the folder. To keep the naming convention, name the .csv File "{ParameterName}BasedRecommender.csv". Some **conventions** you should be aware of in the csv file:
+   - For each literature there will be multiple lines, one line for each parameter value (e.g. 2 for gender)
+   - In the titel, author and paperType column you can decide freely what to write, its best keep it the same for one literature as only one line will appear in the json. Those line are solely for better readability of the files and will not be processed further.
+   - Entries in the resultType column have to be from the type LiteratureTypeEnum. This value defines how the data is normalized. For more details see the helper class DataNormalizer.
+   - Pay attention to upper and lower case. It could be a reason why your data is not used properly.
+3. **execute** the following **command** in the folder RecommenderSystem/Recommender/RecommenderData:
+   `python readCSV.py {ParameterName}BasedRecommender.csv {ParameterName}BasedRecommender.json`
 
 4. **Add** your recommender **to the RecommendationAssembler** so it is included in the end result.
 5. **Add** your Recommender Information **in the /types** folder to the RecommenderObjectTypes.ts and RecommendationObjectTypes.ts accordingly
@@ -88,10 +90,13 @@ In the backend:
 If everything runs smothly the frontend does not need to be adapted.
 
 ## Adding an Element
+
 To add an Element you have to make two small adaptions to the frontend and backend. But be aware that **the recommendation scores for this element will stay 0 as long as you do not adapt the csv and json files of the recommender accordingly**. For that you also need literature that discusses the influence of this element.
 
 In the **backend**:
+
 - in the src/types folder **add** the gamification element **to the GamificationElementRepository** accordingly.
 
 In the **frontend**:
+
 - **add an image** that represents the gamification element to the **public/imgs** folder and name in the format like the other images are named. If you do not have a portrait image it will be distorted. Try to orientate your image (and style) to the other images.

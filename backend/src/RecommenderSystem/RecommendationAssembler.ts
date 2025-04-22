@@ -76,8 +76,8 @@ class RecommendationAssembler {
         "learningStyle",
       );
       element = this.addRecommenderScorestoResult(
-        element, 
-        ageBasedRecommendation, 
+        element,
+        ageBasedRecommendation,
         "age",
       );
       element = this.calculateMeanStandardDeviation(element);

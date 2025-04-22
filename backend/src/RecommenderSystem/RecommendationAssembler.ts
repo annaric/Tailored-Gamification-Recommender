@@ -7,7 +7,7 @@ import {
 import MeanCalculator from "./Helper/MeanCalculator";
 import GenderBasedRecommender from "./Recommender/GenderBasedRecommender";
 import LATBasedRecommender from "./Recommender/LATBasedRecommender";
-import PersonalityBasedRecommender from "./Recommender/LATBasedRecommender";
+import PersonalityBasedRecommender from "./Recommender/PersonalityBasedRecommender";
 import LearningStyleBasedRecommender from "./Recommender/LearningStyleBasedRecommender";
 import PlayerBasedRecommender from "./Recommender/PlayerBasedRecommender";
 

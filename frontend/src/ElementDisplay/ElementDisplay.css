@@ -86,9 +86,8 @@
 
 .details-text {
   margin: auto;
-  align-self: center;
+  place-self: center center;
   justify-content: center;
-  justify-self: center;
 }
 
 /* Popup styles */

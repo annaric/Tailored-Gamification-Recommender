@@ -2,34 +2,17 @@ import {
   RecommendationInputObject,
   RecommenderResults,
 } from "../../types/RecommendationObjectTypes";
-import AbstractRecommender from "./AbstractRecommender";
+import AbstractRecommender, { ResultDictonary } from "./AbstractRecommender";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import {
   GamificationElementArray,
   GamificationElements,
 } from "../../types/GamificationElementRepository";
-import {
-  GenderValues,
-  RecommenderValues,
-} from "../../types/RecommenderObjectTypes";
+import { GenderValues } from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
 import JsonFileReader from "../Helper/JsonFileReader";
-import MeanCalculator from "../Helper/MeanCalculator";
+import DataAssembler from "../Helper/DataAssembler";
 
-export interface GenderDictonaryElementProps {
-  male: {
-    score: number;
-    standardDeviation: number;
-  };
-  female: {
-    score: number;
-    standardDeviation: number;
-  };
-}
-
-export type ResultDictonary = {
-  [key in GamificationElements]?: GenderDictonaryElementProps;
-};
 const ResultDictonary: ResultDictonary = {};
 
 class GenderBasedRecommender extends AbstractRecommender {
@@ -38,77 +21,46 @@ class GenderBasedRecommender extends AbstractRecommender {
   }
 
   recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (!input.gender || !(input.gender in GenderValues)) {
+    if (!input.gender || !GenderValues.includes(input.gender)) {
       return undefined;
     }
-    if (
-      (input.gender && input.gender === "female") ||
-      input.gender === "male"
-    ) {
-      const result: RecommenderResults = {};
-      GamificationElementArray.forEach((key) => {
-        if (
-          ResultDictonary[key] &&
-          ResultDictonary[key][input.gender as "male" | "female"]
-        ) {
-          result[key] = {
-            score:
-              ResultDictonary[key][input.gender as "male" | "female"].score,
-            standardDeviation:
-              ResultDictonary[key][input.gender as "male" | "female"]
-                .standardDeviation,
-          };
-        }
-      });
-      return result;
+    if (ResultDictonary === undefined) {
+      throw new Error("Result dictionary is not defined");
     }
-    throw new Error("Invalid input");
+    const result: RecommenderResults = {};
+    GamificationElementArray.forEach((key) => {
+      if (ResultDictonary[key] && ResultDictonary[key][input.gender!]) {
+        result[key] = {
+          score: ResultDictonary[key][input.gender!]!.score,
+          standardDeviation:
+            ResultDictonary[key][input.gender!]!.standardDeviation,
+        };
+      }
+    });
+    return result;
   }
 
   updateAlgorithm() {
     const jsonFileReader = new JsonFileReader();
     const dataNormalizer = new DataNormalizer();
+    const dataAssembler = new DataAssembler();
     const genderBasedRecommenderData: LiteratureElementObject[] =
       jsonFileReader.readJsonFile(
         "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
       );
 
-    const genderKeys: Array<keyof typeof GenderValues> = Object.keys(
-      GenderValues,
-    ) as Array<keyof typeof GenderValues>;
-
     GamificationElementArray.forEach((key) => {
       const resultArrayForOneElement = dataNormalizer.normalizeLiteratureData(
         genderBasedRecommenderData,
         GamificationElements[key],
-        genderKeys as Array<RecommenderValues>,
+        GenderValues,
       );
       if (resultArrayForOneElement.length !== 0) {
-        ResultDictonary[key] = this.assembleData(resultArrayForOneElement);
+        ResultDictonary[key] = dataAssembler.assembleData(
+          resultArrayForOneElement,
+        );
       }
     });
-  }
-
-  assembleData(
-    resultArray: { [key in GenderValues]?: number }[],
-  ): GenderDictonaryElementProps {
-    const maleResultArray: number[] = [];
-    const femaleResultArray: number[] = [];
-    resultArray.forEach((element) => {
-      if (!(element["male"] === undefined)) {
-        maleResultArray.push(element["male"]);
-      }
-      if (!(element["female"] === undefined)) {
-        femaleResultArray.push(element["female"]);
-      }
-    });
-    const meanCalculator = new MeanCalculator();
-
-    const assembledResult = {
-      male: meanCalculator.calculateMeanAndStdDev(maleResultArray),
-      female: meanCalculator.calculateMeanAndStdDev(femaleResultArray),
-    };
-    return assembledResult;
   }
 }
 

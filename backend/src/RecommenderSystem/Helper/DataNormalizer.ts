@@ -10,9 +10,11 @@ export default class DataNormalizer {
   normalizeLiteratureData(
     input: LiteratureElementObject[],
     key: GamificationElements,
-    resultKeys: RecommenderValues[],
+    resultKeys: (typeof RecommenderValues)[number][],
   ) {
-    const resultArray: { [key in RecommenderValues]?: number }[] = [];
+    const resultArray: {
+      [key in (typeof RecommenderValues)[number]]?: number;
+    }[] = [];
     input.forEach((element) => {
       if (
         element.result &&
@@ -66,8 +68,8 @@ export default class DataNormalizer {
   normalizePositiveDataPaper(
     result: RecommenderDependendLiteratureResults,
     bestValue: number,
-    keys: RecommenderValues[],
-  ): { [key in RecommenderValues]?: number } {
+    keys: (typeof RecommenderValues)[number][],
+  ): { [key in (typeof RecommenderValues)[number]]?: number } {
     // Normiere zwischen 0.5 und 1, wobei 1 der beste Wert ist.
     // Sinnvoll bei Review Paper, die nur positive "Korrelationen" zurückgeben.
     // Unterschied zu anderen Normalisierungen: der bestValue ist die Anzahl der Paper die sagen können, dass das Element gut ist für gender x
@@ -90,8 +92,8 @@ export default class DataNormalizer {
     bestValue: number,
     minValue: number,
     maxValue: number,
-    keys: RecommenderValues[],
-  ): { [key in RecommenderValues]?: number } {
+    keys: (typeof RecommenderValues)[number][],
+  ): { [key in (typeof RecommenderValues)[number]]?: number } {
     //Normieren zwischen 0 und 1 und schauen, dass 1 der beste Wert ist.
     // Sinnvoll bei Scalen Paper, die den User nach Bewertung fragen zwischen mag ich garnicht und mag ich sehr.
     if (keys.length !== 0) {
@@ -119,8 +121,8 @@ export default class DataNormalizer {
 
   normalizeCoefficientDataPaper(
     result: RecommenderDependendLiteratureResults,
-    keys: RecommenderValues[],
-  ): { [key in RecommenderValues]?: number } {
+    keys: (typeof RecommenderValues)[number][],
+  ): { [key in (typeof RecommenderValues)[number]]?: number } {
     //Normieren zwischen 0 und 1 statt -1 und 1
     if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
@@ -137,8 +139,8 @@ export default class DataNormalizer {
 
   normalizeBinaryDataPaper(
     result: RecommenderDependendLiteratureResults,
-    keys: RecommenderValues[],
-  ): { [key in RecommenderValues]?: number } {
+    keys: (typeof RecommenderValues)[number][],
+  ): { [key in (typeof RecommenderValues)[number]]?: number } {
     if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
       keys.forEach((key) => {

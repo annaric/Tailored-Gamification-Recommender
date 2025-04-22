@@ -8,20 +8,23 @@ import {
   GamificationElementArray,
   GamificationElements,
 } from "../../types/GamificationElementRepository";
-import { PlayerValues } from "../../types/RecommenderObjectTypes";
+import { LearningStyleValues } from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
 import JsonFileReader from "../Helper/JsonFileReader";
 import DataAssembler from "../Helper/DataAssembler";
 
 const ResultDictonary: ResultDictonary = {};
 
-class PlayerBasedRecommender extends AbstractRecommender {
+class LearningStyleBasedRecommender extends AbstractRecommender {
   constructor() {
     super();
   }
 
   recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (!input.player || !PlayerValues.includes(input.player)) {
+    if (
+      !input.learningStyle ||
+      !LearningStyleValues.includes(input.learningStyle)
+    ) {
       return undefined;
     }
     if (ResultDictonary === undefined) {
@@ -29,11 +32,11 @@ class PlayerBasedRecommender extends AbstractRecommender {
     }
     const result: RecommenderResults = {};
     GamificationElementArray.forEach((key) => {
-      if (ResultDictonary[key] && ResultDictonary[key][input.player!]) {
+      if (ResultDictonary[key] && ResultDictonary[key][input.learningStyle!]) {
         result[key] = {
-          score: ResultDictonary[key][input.player!]!.score,
+          score: ResultDictonary[key][input.learningStyle!]!.score,
           standardDeviation:
-            ResultDictonary[key][input.player!]!.standardDeviation,
+            ResultDictonary[key][input.learningStyle!]!.standardDeviation,
         };
       }
     });
@@ -44,16 +47,16 @@ class PlayerBasedRecommender extends AbstractRecommender {
     const jsonFileReader = new JsonFileReader();
     const dataNormalizer = new DataNormalizer();
     const dataAssembler = new DataAssembler();
-    const playerBasedRecommenderData: LiteratureElementObject[] =
+    const learningStyleBasedRecommenderData: LiteratureElementObject[] =
       jsonFileReader.readJsonFile(
-        "./src/RecommenderSystem/Recommender/RecommenderData/PlayerBasedRecommender.json",
+        "./src/RecommenderSystem/Recommender/RecommenderData/LearningStyleBasedRecommender.json",
       );
 
     GamificationElementArray.forEach((key) => {
       const resultArrayForOneElement = dataNormalizer.normalizeLiteratureData(
-        playerBasedRecommenderData,
+        learningStyleBasedRecommenderData,
         GamificationElements[key],
-        PlayerValues,
+        LearningStyleValues,
       );
       if (resultArrayForOneElement.length !== 0) {
         ResultDictonary[key] = dataAssembler.assembleData(
@@ -64,4 +67,4 @@ class PlayerBasedRecommender extends AbstractRecommender {
   }
 }
 
-export default PlayerBasedRecommender;
+export default LearningStyleBasedRecommender;

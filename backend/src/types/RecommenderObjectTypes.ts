@@ -1,49 +1,66 @@
-export const RecommenderAndValues = {
-  gender: ["male", "female"],
-  player: [
-    "achiever",
-    "disruptor",
-    "freeSpirit",
-    "philanthropist",
-    "player",
-    "socializer",
-  ],
-};
-
 export enum Recommender {
-  Gender = "Gender",
-  Player = "Player",
-}
-
-export enum GenderValues {
-  female = "female",
-  male = "male",
-}
-
-export enum PlayerValues {
-  achiever = "achiever",
-  disruptor = "disruptor",
-  freeSpirit = "freeSpirit",
-  philanthropist = "philanthropist",
+  gender = "gender",
   player = "player",
-  socializer = "socializer",
+  personality = "personality",
+  lat = "lat",
+  learningStyle = "learningStyle",
 }
 
-export type RecommenderValues = GenderValues | PlayerValues;
+export const GenderValues = ["female", "male"];
 
-export type RecommenderDependendLiteratureResults = GenderLiteratureResult &
-  PlayerLiteratureResult;
+export const PlayerValues = [
+  "achiever",
+  "disruptor",
+  "freeSpirit",
+  "philanthropist",
+  "player",
+  "socializer",
+];
 
-export type GenderLiteratureResult = {
-  female?: number;
-  male?: number;
+export const PersonalityValues = [
+  "openness",
+  "conscientiousness",
+  "agreeableness",
+  "extraversion",
+  "neuroticism",
+];
+
+export const LATValues = [
+  "remember",
+  "understand",
+  "apply",
+  "analyze",
+  "evaluate",
+  "create",
+];
+
+export const LearningStyleValues = [
+  "active",
+  "reflective",
+  "visual",
+  "verbal",
+  "sequential",
+  "global",
+  "sensor",
+  "intuitive",
+];
+
+export const RecommenderValues = [
+  ...GenderValues,
+  ...PlayerValues,
+  ...PersonalityValues,
+  ...LATValues,
+  ...LearningStyleValues,
+];
+
+export const RecommenderAndValues = {
+  gender: GenderValues,
+  player: PlayerValues,
+  personality: PersonalityValues,
+  lat: LATValues,
+  learningStyle: LearningStyleValues,
 };
 
-export type PlayerLiteratureResult = {
-  achiever?: number;
-  disruptor?: number;
-  freeSpirit?: number;
-  philanthropist?: number;
-  player?: number;
-  socializer?: number;
+export type RecommenderDependendLiteratureResults = {
+  [key in (typeof RecommenderValues)[number]]?: number;
 };

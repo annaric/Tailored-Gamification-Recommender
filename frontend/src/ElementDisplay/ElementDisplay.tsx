@@ -5,10 +5,14 @@ export interface ElementDisplayProps {
   rank: number;
   imageSrc: string;
   elementName: string;
-  score: { overallScore: number };
+  score: {
+    overallScore: number;
+    scores: { [key: string]: number };
+  };
   standardDeviation: {
     overallStandardDeviation: number;
     meanStandardDeviation: number;
+    standardDeviations: { [key: string]: number };
   };
   details: string;
 }
@@ -39,17 +43,23 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
         />
         <span className="element-name">{elementName}</span>
         <div className="score-group">
-          <span className="score">
-            Overall Score: {score.overallScore.toFixed(3)}
-          </span>
-          <span className="standard-deviation">
-            Recommender based Standard deviation:{" "}
-            {standardDeviation.overallStandardDeviation.toFixed(3)}
-          </span>
-          <span className="standard-deviation">
-            Mean Standard deviation:{" "}
-            {standardDeviation.meanStandardDeviation.toFixed(3)}
-          </span>
+          {!(score.overallScore === undefined) && (
+            <span className="score">
+              Overall Score: {score.overallScore.toFixed(3)}
+            </span>
+          )}
+          {!(standardDeviation.overallStandardDeviation === undefined) && (
+            <span className="standard-deviation">
+              Recommender based Standard deviation:{" "}
+              {standardDeviation.overallStandardDeviation.toFixed(3)}
+            </span>
+          )}
+          {!(standardDeviation.meanStandardDeviation === undefined) && (
+            <span className="standard-deviation">
+              Mean Standard deviation:{" "}
+              {standardDeviation.meanStandardDeviation.toFixed(3)}
+            </span>
+          )}
         </div>
         <button className="dropdown-button" onClick={toggleDetails}>
           {isExpanded ? "▲" : "▼"}
@@ -57,7 +67,23 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
       </div>
       {isExpanded && (
         <div className="element-details">
-          <p>{details}</p>
+          <span className="details-text">{details}</span>
+          <hr></hr>
+          <div className="details-content">
+            {score.scores &&
+              Object.keys(score.scores).map((key, index) => (
+                <div className="score-group" key={index}>
+                  <span className="score">{key}:</span>
+                  <span className="standard-deviation">
+                    Score: {score.scores[key].toFixed(3) || 0}
+                  </span>
+                  <span className="standard-deviation">
+                    Standard Deviation:
+                    {standardDeviation.standardDeviations[key].toFixed(3) || 0}
+                  </span>
+                </div>
+              ))}
+          </div>
         </div>
       )}
       {isPopupVisible && (

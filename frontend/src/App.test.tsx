@@ -54,7 +54,7 @@ describe("App Component", () => {
     expect(screen.queryByText("Incentive")).toBeNull();
   });
 
-  test("renders Gamification Elements when recommendation is called", async () => {
+  test("renders Gamification Elements when recommendation is called without score.scores", async () => {
     await act(async () => {
       render(<App />);
     });

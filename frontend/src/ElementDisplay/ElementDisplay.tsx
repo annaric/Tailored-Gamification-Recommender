@@ -73,7 +73,7 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
             {score.scores &&
               Object.keys(score.scores).map((key, index) => (
                 <div className="score-group" key={index}>
-                  <span className="score">{key}:</span>
+                  <span className="score">{key[0].toUpperCase() + key.slice(1)}:</span>
                   <span className="standard-deviation">
                     Score: {score.scores[key].toFixed(3) || 0}
                   </span>

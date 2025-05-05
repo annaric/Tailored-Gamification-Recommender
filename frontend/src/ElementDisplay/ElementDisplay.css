@@ -88,6 +88,8 @@
   margin: auto;
   place-self: center center;
   justify-content: center;
+  font-size: large;
+  font-style: italic;
 }
 
 /* Popup styles */

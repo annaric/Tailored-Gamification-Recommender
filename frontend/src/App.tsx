@@ -111,7 +111,7 @@ function App() {
           ))
         ) : (
           <p className="error-message">
-            Could not get any recommendation. Did you select any parameter?
+            Make your first recommendation by selecting parameters above.
           </p>
         )}
       </div>

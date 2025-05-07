@@ -18,8 +18,7 @@
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: flex-start;
+  place-content: flex-start space-between;
 }
 
 .choice-selection > * {

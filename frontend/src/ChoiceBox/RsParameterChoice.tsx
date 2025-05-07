@@ -35,7 +35,10 @@ function RsParameterChoice({
           onChange={handleDisableChange}
           className="disable-checkbox"
         />
-        <div className="recommender-title">{paramType[0].toUpperCase() + paramType.slice(1).replace(/([A-Z])/g, " $1")} </div>
+        <div className="recommender-title">
+          {paramType[0].toUpperCase() +
+            paramType.slice(1).replace(/([A-Z])/g, " $1")}{" "}
+        </div>
       </div>
       <div className="rs-choice-options">
         {paramValues?.map((param, index) => (

@@ -67,8 +67,8 @@
 }
 
 .details-content > * {
-  flex: 1 1 calc(30% - 20px); 
-  margin: 5px; 
+  flex: 1 1 calc(30% - 20px);
+  margin: 5px;
 }
 
 .dropdown-button {

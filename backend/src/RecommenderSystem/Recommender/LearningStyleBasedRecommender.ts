@@ -8,7 +8,10 @@ import {
   GamificationElementArray,
   GamificationElements,
 } from "../../types/GamificationElementRepository";
-import { LearningStyleKeys, LearningStyleValues } from "../../types/RecommenderObjectTypes";
+import {
+  LearningStyleKeys,
+  LearningStyleValues,
+} from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
 import JsonFileReader from "../Helper/JsonFileReader";
 import DataAssembler from "../Helper/DataAssembler";
@@ -24,11 +27,15 @@ class LearningStyleBasedRecommender extends AbstractRecommender {
     super();
   }
 
-  recommend(input: RecommendationInputObject): LearningStyleRecommendationResult | undefined {
+  recommend(
+    input: RecommendationInputObject,
+  ): LearningStyleRecommendationResult | undefined {
     if (ResultDictonary === undefined) {
       throw new Error("Result dictionary is not defined");
     }
-    const learningStyleKeys = Object.keys(LearningStyleKeys) as Array<keyof typeof LearningStyleKeys>;
+    const learningStyleKeys = Object.keys(LearningStyleKeys) as Array<
+      keyof typeof LearningStyleKeys
+    >;
     const result: LearningStyleRecommendationResult = {};
     learningStyleKeys.forEach((learningStyle) => {
       if (learningStyle === undefined) {
@@ -41,17 +48,20 @@ class LearningStyleBasedRecommender extends AbstractRecommender {
       ) {
         result[learningStyle] = undefined;
       } else {
-          GamificationElementArray.forEach((key) => {
-            if (ResultDictonary[key] && ResultDictonary[key][input[learningStyle]!]) {
-              result[learningStyle] = result[learningStyle] || {};
-              result[learningStyle][key] = {
-                score: ResultDictonary[key][input[learningStyle]!]!.score,
-                standardDeviation:
-                  ResultDictonary[key][input[learningStyle]!]!.standardDeviation,
-          };
-        }
-      });
-    }
+        GamificationElementArray.forEach((key) => {
+          if (
+            ResultDictonary[key] &&
+            ResultDictonary[key][input[learningStyle]!]
+          ) {
+            result[learningStyle] = result[learningStyle] || {};
+            result[learningStyle][key] = {
+              score: ResultDictonary[key][input[learningStyle]!]!.score,
+              standardDeviation:
+                ResultDictonary[key][input[learningStyle]!]!.standardDeviation,
+            };
+          }
+        });
+      }
     });
     return result;
   }

@@ -77,7 +77,9 @@ class RecommendationAssembler {
         "learningActivityTask",
       );
       if (!(learningStyleBasedRecommendation === undefined)) {
-        const learningStyleKeys = Object.keys(LearningStyleKeys) as Array<keyof typeof LearningStyleKeys>;
+        const learningStyleKeys = Object.keys(LearningStyleKeys) as Array<
+          keyof typeof LearningStyleKeys
+        >;
         learningStyleKeys.forEach((learningStyle) => {
           element = this.addRecommenderScorestoResult(
             element,

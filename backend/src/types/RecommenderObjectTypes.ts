@@ -53,20 +53,11 @@ export const LearningStyleValuesInformationProcessing = [
   "reflective",
 ];
 
-export const LearningStyleValuesIntuitivity = [
-  "sensor",
-  "intuitive",
-];
+export const LearningStyleValuesIntuitivity = ["sensor", "intuitive"];
 
-export const LearningStyleValuesPerception = [
-  "visual",
-  "verbal",
-];
+export const LearningStyleValuesPerception = ["visual", "verbal"];
 
-export const LearningStyleValuesUnderstanding = [
-  "sequential",
-  "global",
-];
+export const LearningStyleValuesUnderstanding = ["sequential", "global"];
 
 export enum LearningStyleKeys {
   learningStyleOfProcessingInformation = "learningStyleOfProcessingInformation",
@@ -90,7 +81,8 @@ export const RecommenderAndValues = {
   age: AgeValues,
   gender: GenderValues,
   learningActivityTask: LearningActivityTaskValues,
-  learningStyleOfProcessingInformation: LearningStyleValuesInformationProcessing,
+  learningStyleOfProcessingInformation:
+    LearningStyleValuesInformationProcessing,
   learningStyleOfIntuitivity: LearningStyleValuesIntuitivity,
   learningStyleOfPerception: LearningStyleValuesPerception,
   learningStyleOfUnderstanding: LearningStyleValuesUnderstanding,

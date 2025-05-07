@@ -21,7 +21,10 @@ class LearningActivityTaskBasedRecommender extends AbstractRecommender {
   }
 
   recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (!input.learningActivityTask || !LearningActivityTaskValues.includes(input.learningActivityTask)) {
+    if (
+      !input.learningActivityTask ||
+      !LearningActivityTaskValues.includes(input.learningActivityTask)
+    ) {
       return undefined;
     }
     if (ResultDictonary === undefined) {
@@ -29,11 +32,15 @@ class LearningActivityTaskBasedRecommender extends AbstractRecommender {
     }
     const result: RecommenderResults = {};
     GamificationElementArray.forEach((key) => {
-      if (ResultDictonary[key] && ResultDictonary[key][input.learningActivityTask!]) {
+      if (
+        ResultDictonary[key] &&
+        ResultDictonary[key][input.learningActivityTask!]
+      ) {
         result[key] = {
           score: ResultDictonary[key][input.learningActivityTask!]!.score,
           standardDeviation:
-            ResultDictonary[key][input.learningActivityTask!]!.standardDeviation,
+            ResultDictonary[key][input.learningActivityTask!]!
+              .standardDeviation,
         };
       }
     });

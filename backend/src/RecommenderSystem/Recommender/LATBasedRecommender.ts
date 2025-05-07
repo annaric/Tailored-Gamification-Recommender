@@ -8,20 +8,20 @@ import {
   GamificationElementArray,
   GamificationElements,
 } from "../../types/GamificationElementRepository";
-import { LATValues } from "../../types/RecommenderObjectTypes";
+import { LearningActivityTaskValues } from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
 import JsonFileReader from "../Helper/JsonFileReader";
 import DataAssembler from "../Helper/DataAssembler";
 
 const ResultDictonary: ResultDictonary = {};
 
-class LATBasedRecommender extends AbstractRecommender {
+class LearningActivityTaskBasedRecommender extends AbstractRecommender {
   constructor() {
     super();
   }
 
   recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (!input.lat || !LATValues.includes(input.lat)) {
+    if (!input.learningActivityTask || !LearningActivityTaskValues.includes(input.learningActivityTask)) {
       return undefined;
     }
     if (ResultDictonary === undefined) {
@@ -29,11 +29,11 @@ class LATBasedRecommender extends AbstractRecommender {
     }
     const result: RecommenderResults = {};
     GamificationElementArray.forEach((key) => {
-      if (ResultDictonary[key] && ResultDictonary[key][input.lat!]) {
+      if (ResultDictonary[key] && ResultDictonary[key][input.learningActivityTask!]) {
         result[key] = {
-          score: ResultDictonary[key][input.lat!]!.score,
+          score: ResultDictonary[key][input.learningActivityTask!]!.score,
           standardDeviation:
-            ResultDictonary[key][input.lat!]!.standardDeviation,
+            ResultDictonary[key][input.learningActivityTask!]!.standardDeviation,
         };
       }
     });
@@ -44,16 +44,16 @@ class LATBasedRecommender extends AbstractRecommender {
     const jsonFileReader = new JsonFileReader();
     const dataNormalizer = new DataNormalizer();
     const dataAssembler = new DataAssembler();
-    const latBasedRecommenderData: LiteratureElementObject[] =
+    const learningActivityTaskBasedRecommenderData: LiteratureElementObject[] =
       jsonFileReader.readJsonFile(
         "./src/RecommenderSystem/Recommender/RecommenderData/LATBasedRecommender.json",
       );
 
     GamificationElementArray.forEach((key) => {
       const resultArrayForOneElement = dataNormalizer.normalizeLiteratureData(
-        latBasedRecommenderData,
+        learningActivityTaskBasedRecommenderData,
         GamificationElements[key],
-        LATValues,
+        LearningActivityTaskValues,
       );
       if (resultArrayForOneElement.length !== 0) {
         ResultDictonary[key] = dataAssembler.assembleData(
@@ -64,4 +64,4 @@ class LATBasedRecommender extends AbstractRecommender {
   }
 }
 
-export default LATBasedRecommender;
+export default LearningActivityTaskBasedRecommender;

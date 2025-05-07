@@ -1,6 +1,6 @@
 .rs-parameter-selection-box {
   padding: 1rem;
-  margin-left: 10px;
+  margin: 10px;
   background-color: white;
   box-shadow: 1px 1px 4px 6px rgb(0 0 0 / 10%);
   border-radius: 8px;
@@ -9,8 +9,17 @@
 
 .rs-choice-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 0.5rem;
+}
+.disable-checkbox {
+  margin-top: 0.4rem;
+}
+
+.recommender-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
 }
 
 .disable-checkbox {

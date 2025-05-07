@@ -42,9 +42,9 @@
 }
 
 .score {
-  font-weight: 600;
+  font-weight: 500;
   margin-right: 10px;
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .standard-deviation {
@@ -64,6 +64,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.details-content > * {
+  flex: 1 1 calc(30% - 20px); 
+  margin: 5px; 
 }
 
 .dropdown-button {

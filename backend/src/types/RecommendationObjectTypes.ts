@@ -6,8 +6,11 @@ import {
 import {
   AgeValues,
   GenderValues,
-  LATValues,
-  LearningStyleValues,
+  LearningActivityTaskValues,
+  LearningStyleValuesInformationProcessing,
+  LearningStyleValuesIntuitivity,
+  LearningStyleValuesPerception,
+  LearningStyleValuesUnderstanding,
   PersonalityValues,
   PlayerValues,
   RecommenderValues,
@@ -27,9 +30,12 @@ export type RecommendationInputObject = {
   gender?: (typeof GenderValues)[number];
   player?: (typeof PlayerValues)[number];
   personality?: (typeof PersonalityValues)[number];
-  lat?: (typeof LATValues)[number];
-  learningStyle?: (typeof LearningStyleValues)[number];
   age?: (typeof AgeValues)[number];
+  learningActivityTask?: (typeof LearningActivityTaskValues)[number];
+  learningStyleOfProcessingInformation?: (typeof LearningStyleValuesInformationProcessing)[number];
+  learningStyleOfIntuitivity?: (typeof LearningStyleValuesIntuitivity)[number];
+  learningStyleOfPerception?: (typeof LearningStyleValuesPerception)[number];
+  learningStyleOfUnderstanding?: (typeof LearningStyleValuesUnderstanding)[number];
 };
 
 export type NumberPerRecommenderObject = {

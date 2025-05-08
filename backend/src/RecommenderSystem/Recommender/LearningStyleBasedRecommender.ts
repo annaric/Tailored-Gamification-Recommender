@@ -8,36 +8,59 @@ import {
   GamificationElementArray,
   GamificationElements,
 } from "../../types/GamificationElementRepository";
-import { LearningStyleValues } from "../../types/RecommenderObjectTypes";
+import {
+  LearningStyleKeys,
+  LearningStyleValues,
+} from "../../types/RecommenderObjectTypes";
 import DataNormalizer from "../Helper/DataNormalizer";
 import JsonFileReader from "../Helper/JsonFileReader";
 import DataAssembler from "../Helper/DataAssembler";
 
 const ResultDictonary: ResultDictonary = {};
 
+export type LearningStyleRecommendationResult = {
+  [key in LearningStyleKeys]?: RecommenderResults | undefined;
+};
+
 class LearningStyleBasedRecommender extends AbstractRecommender {
   constructor() {
     super();
   }
 
-  recommend(input: RecommendationInputObject): RecommenderResults | undefined {
-    if (
-      !input.learningStyle ||
-      !LearningStyleValues.includes(input.learningStyle)
-    ) {
-      return undefined;
-    }
+  recommend(
+    input: RecommendationInputObject,
+  ): LearningStyleRecommendationResult | undefined {
     if (ResultDictonary === undefined) {
       throw new Error("Result dictionary is not defined");
     }
-    const result: RecommenderResults = {};
-    GamificationElementArray.forEach((key) => {
-      if (ResultDictonary[key] && ResultDictonary[key][input.learningStyle!]) {
-        result[key] = {
-          score: ResultDictonary[key][input.learningStyle!]!.score,
-          standardDeviation:
-            ResultDictonary[key][input.learningStyle!]!.standardDeviation,
-        };
+    const learningStyleKeys = Object.keys(LearningStyleKeys) as Array<
+      keyof typeof LearningStyleKeys
+    >;
+    const result: LearningStyleRecommendationResult = {};
+    learningStyleKeys.forEach((learningStyle) => {
+      if (learningStyle === undefined) {
+        throw new Error("Learning style is undefined");
+      }
+      if (
+        !input ||
+        !input[learningStyle] ||
+        !LearningStyleValues.includes(input[learningStyle])
+      ) {
+        result[learningStyle] = undefined;
+      } else {
+        GamificationElementArray.forEach((key) => {
+          if (
+            ResultDictonary[key] &&
+            ResultDictonary[key][input[learningStyle]!]
+          ) {
+            result[learningStyle] = result[learningStyle] || {};
+            result[learningStyle][key] = {
+              score: ResultDictonary[key][input[learningStyle]!]!.score,
+              standardDeviation:
+                ResultDictonary[key][input[learningStyle]!]!.standardDeviation,
+            };
+          }
+        });
       }
     });
     return result;

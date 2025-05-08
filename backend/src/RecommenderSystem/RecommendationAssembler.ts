@@ -9,17 +9,18 @@ import {
 } from "../types/RecommendationObjectTypes";
 import MeanCalculator from "./Helper/MeanCalculator";
 import GenderBasedRecommender from "./Recommender/GenderBasedRecommender";
-import LATBasedRecommender from "./Recommender/LATBasedRecommender";
+import LearningActivityTaskBasedRecommender from "./Recommender/LATBasedRecommender";
 import PersonalityBasedRecommender from "./Recommender/PersonalityBasedRecommender";
 import LearningStyleBasedRecommender from "./Recommender/LearningStyleBasedRecommender";
 import PlayerBasedRecommender from "./Recommender/PlayerBasedRecommender";
 import AgeBasedRecommender from "./Recommender/AgeBasedRecommender";
+import { LearningStyleKeys } from "../types/RecommenderObjectTypes";
 
 class RecommendationAssembler {
   genderBasedRecommender: GenderBasedRecommender;
   playerBasedRecommender: PlayerBasedRecommender;
   personalityBasedRecommender: PersonalityBasedRecommender;
-  latBasedRecommender: LATBasedRecommender;
+  latBasedRecommender: LearningActivityTaskBasedRecommender;
   learningStyleBasedRecommender: LearningStyleBasedRecommender;
   ageBasedRecommender: AgeBasedRecommender;
   meanCalculator: MeanCalculator;
@@ -28,7 +29,7 @@ class RecommendationAssembler {
     this.genderBasedRecommender = new GenderBasedRecommender();
     this.playerBasedRecommender = new PlayerBasedRecommender();
     this.personalityBasedRecommender = new PersonalityBasedRecommender();
-    this.latBasedRecommender = new LATBasedRecommender();
+    this.latBasedRecommender = new LearningActivityTaskBasedRecommender();
     this.learningStyleBasedRecommender = new LearningStyleBasedRecommender();
     this.ageBasedRecommender = new AgeBasedRecommender();
     this.meanCalculator = new MeanCalculator();
@@ -67,19 +68,26 @@ class RecommendationAssembler {
       );
       element = this.addRecommenderScorestoResult(
         element,
-        latBasedRecommendation,
-        "lat",
-      );
-      element = this.addRecommenderScorestoResult(
-        element,
-        learningStyleBasedRecommendation,
-        "learningStyle",
-      );
-      element = this.addRecommenderScorestoResult(
-        element,
         ageBasedRecommendation,
         "age",
       );
+      element = this.addRecommenderScorestoResult(
+        element,
+        latBasedRecommendation,
+        "learningActivityTask",
+      );
+      if (!(learningStyleBasedRecommendation === undefined)) {
+        const learningStyleKeys = Object.keys(LearningStyleKeys) as Array<
+          keyof typeof LearningStyleKeys
+        >;
+        learningStyleKeys.forEach((learningStyle) => {
+          element = this.addRecommenderScorestoResult(
+            element,
+            learningStyleBasedRecommendation[learningStyle],
+            learningStyle,
+          );
+        });
+      }
       element = this.calculateMeanStandardDeviation(element);
       element = this.setOverallScoreAndStandardDeviation(element);
       return element;

@@ -13,7 +13,7 @@ function RsParameterChoice({
   paramValues: paramValues,
 }: GenderChoiceProps) {
   const [rsParameter, setRsParameter] = useState("");
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const handleChoiceChange = (selectedParamValue: string) => {
     setRsParameter(selectedParamValue);
@@ -31,11 +31,14 @@ function RsParameterChoice({
       <div className="rs-choice-header">
         <input
           type="checkbox"
-          checked={isDisabled}
+          checked={!isDisabled}
           onChange={handleDisableChange}
           className="disable-checkbox"
         />
-        <h2>Select {paramType} </h2>
+        <div className="recommender-title">
+          {paramType[0].toUpperCase() +
+            paramType.slice(1).replace(/([A-Z])/g, " $1")}{" "}
+        </div>
       </div>
       <div className="rs-choice-options">
         {paramValues?.map((param, index) => (

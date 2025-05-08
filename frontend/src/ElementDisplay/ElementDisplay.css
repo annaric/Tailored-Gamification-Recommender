@@ -42,9 +42,9 @@
 }
 
 .score {
-  font-weight: 600;
+  font-weight: 500;
   margin-right: 10px;
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .standard-deviation {
@@ -61,9 +61,14 @@
 
 .details-content {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-evenly;
+}
+
+.details-content > * {
+  flex: 1 1 calc(30% - 20px);
+  margin: 5px;
 }
 
 .dropdown-button {
@@ -88,6 +93,8 @@
   margin: auto;
   place-self: center center;
   justify-content: center;
+  font-size: large;
+  font-style: italic;
 }
 
 /* Popup styles */

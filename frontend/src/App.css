@@ -16,6 +16,14 @@
 
 .choice-selection {
   padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  place-content: flex-start space-between;
+}
+
+.choice-selection > * {
+  flex: 1 1 calc(15% - 20px); /* 25% width minus some spacing */
+  margin: 5px; /* Add spacing between items */
 }
 
 .recommendations {

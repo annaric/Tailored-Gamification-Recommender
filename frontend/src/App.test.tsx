@@ -48,7 +48,7 @@ describe("App Component", () => {
     render(<App />);
     expect(
       screen.getByText(
-        "Could not get any recommendation. Did you select any parameter?",
+        "Make your first recommendation by selecting parameters above.",
       ),
     ).not.toBeNull();
     expect(screen.queryByText("Incentive")).toBeNull();
@@ -85,7 +85,7 @@ describe("App Component", () => {
     });
     expect(
       screen.queryByText(
-        "Could not get any recommendation. Did you select any parameter?",
+        "Make your first recommendation by selecting parameters above.",
       ),
     ).toBeNull();
     expect(screen.queryByText("Incentive")).not.toBeNull();
@@ -149,7 +149,7 @@ describe("Error Handling", () => {
     expect(consoleSpy).toHaveBeenCalled();
     expect(
       screen.queryByText(
-        "Could not get any recommendation. Did you select any parameter?",
+        "Make your first recommendation by selecting parameters above.",
       ),
     ).not.toBeNull();
   });

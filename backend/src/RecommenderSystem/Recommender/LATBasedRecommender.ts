@@ -41,6 +41,8 @@ class LearningActivityTaskBasedRecommender extends AbstractRecommender {
           standardDeviation:
             ResultDictonary[key][input.learningActivityTask!]!
               .standardDeviation,
+          scoreWeight:
+            ResultDictonary[key][input.learningActivityTask!]!.scoreWeight,
         };
       }
     });

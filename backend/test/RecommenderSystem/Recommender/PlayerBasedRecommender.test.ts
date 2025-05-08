@@ -72,26 +72,32 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       achiever: {
         score: expected2Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       disruptor: {
         score: expected2Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       freeSpirit: {
         score: expected4Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       philanthropist: {
         score: expected4Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       player: {
         score: expected2Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       socializer: {
         score: expected4Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
     };
     // Assert that the correct functions were called and with the expected returns
@@ -153,26 +159,32 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       achiever: {
         score: expectedNegativeScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       disruptor: {
         score: expectedNegativeScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       freeSpirit: {
         score: expectedPositiveScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       philanthropist: {
         score: expectedPositiveScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       player: {
         score: expectedNegativeScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       socializer: {
         score: expectedPositiveScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
     };
     // Assert that the correct functions were called and with the expected returns
@@ -234,26 +246,32 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       achiever: {
         score: expectedZeroScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       disruptor: {
         score: expectedOneScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       freeSpirit: {
         score: expectedZeroScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       philanthropist: {
         score: expectedOneScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       player: {
         score: expectedOneScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       socializer: {
         score: expectedZeroScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
     };
     // Assert that the correct functions were called and with the expected returns
@@ -315,26 +333,32 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       achiever: {
         score: expected4Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       disruptor: {
         score: expected4Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       freeSpirit: {
         score: expected2Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       philanthropist: {
         score: expected2Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       player: {
         score: expected4Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       socializer: {
         score: expected2Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
     };
     // Assert that the correct functions were called and with the expected returns
@@ -396,26 +420,32 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       achiever: {
         score: expected4Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       disruptor: {
         score: expected4Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       freeSpirit: {
         score: expected2Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       philanthropist: {
         score: expected2Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       player: {
         score: expected4Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       socializer: {
         score: expected2Score,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
     };
     // Assert that the correct functions were called and with the expected returns

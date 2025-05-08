@@ -9,6 +9,9 @@ export default class DataAssembler {
     const resultArrayObject: {
       [key in (typeof RecommenderValues)[number]]: number[];
     } = {};
+    const scoreWeightsObject: {
+      [key in (typeof RecommenderValues)[number]]: number;
+    } = {};
     resultArray.forEach((element) => {
       Object.keys(element).forEach((key) => {
         if (resultArrayObject[key] === undefined) {
@@ -16,6 +19,7 @@ export default class DataAssembler {
         }
         if (!(element[key] === undefined)) {
           resultArrayObject[key].push(element[key]);
+          scoreWeightsObject[key] = scoreWeightsObject[key]? scoreWeightsObject[key] + 1: 1;
         }
       });
     });
@@ -25,6 +29,7 @@ export default class DataAssembler {
       [key in (typeof RecommenderValues)[number]]?: {
         score: number;
         standardDeviation: number;
+        scoreWeight?: number;
       };
     } = {};
 
@@ -32,6 +37,9 @@ export default class DataAssembler {
       assembledResult[key] = meanCalculator.calculateMeanAndStdDev(
         resultArrayObject[key],
       );
+      if (scoreWeightsObject[key] !== undefined) {
+        assembledResult[key]!.scoreWeight = scoreWeightsObject[key];
+      }
     });
     return assembledResult;
   }

@@ -19,7 +19,9 @@ export default class DataAssembler {
         }
         if (!(element[key] === undefined)) {
           resultArrayObject[key].push(element[key]);
-          scoreWeightsObject[key] = scoreWeightsObject[key]? scoreWeightsObject[key] + 1: 1;
+          scoreWeightsObject[key] = scoreWeightsObject[key]
+            ? scoreWeightsObject[key] + 1
+            : 1;
         }
       });
     });

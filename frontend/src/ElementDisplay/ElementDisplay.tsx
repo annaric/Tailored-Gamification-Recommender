@@ -65,10 +65,9 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
               {standardDeviation.meanStandardDeviation.toFixed(3)}
             </span>
           )}
-          {(scoreWeight && !(scoreWeight.sumOfWeights === undefined)) && (
+          {scoreWeight && !(scoreWeight.sumOfWeights === undefined) && (
             <span className="standard-deviation">
-              Number of Papers:{" "}
-              {scoreWeight.sumOfWeights}
+              Number of Papers: {scoreWeight.sumOfWeights}
             </span>
           )}
         </div>
@@ -97,8 +96,7 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
                     {standardDeviation.standardDeviations[key].toFixed(3) || 0}
                   </span>
                   <span className="standard-deviation">
-                    Number of Papers:{" "}
-                    {scoreWeight.weights[key] || 0}
+                    Number of Papers: {scoreWeight.weights[key] || 0}
                   </span>
                 </div>
               ))}

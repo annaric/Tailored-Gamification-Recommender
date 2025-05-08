@@ -18,7 +18,10 @@ export default class MeanCalculator {
     return { score: mean, standardDeviation: stdDev };
   }
 
-  calculateWeightedMeanAndStdDev(data: number[], weights: number[]): {
+  calculateWeightedMeanAndStdDev(
+    data: number[],
+    weights: number[],
+  ): {
     score: number;
     standardDeviation: number;
     sumOfWeights: number;
@@ -50,7 +53,11 @@ export default class MeanCalculator {
           data.length,
       );
     }
-    
-    return { score: mean, standardDeviation: stdDev, sumOfWeights: sumOfWeights };
+
+    return {
+      score: mean,
+      standardDeviation: stdDev,
+      sumOfWeights: sumOfWeights,
+    };
   }
 }

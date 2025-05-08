@@ -34,8 +34,7 @@ class GenderBasedRecommender extends AbstractRecommender {
           score: ResultDictonary[key][input.gender!]!.score,
           standardDeviation:
             ResultDictonary[key][input.gender!]!.standardDeviation,
-          scoreWeight:
-            ResultDictonary[key][input.gender!]!.scoreWeight,
+          scoreWeight: ResultDictonary[key][input.gender!]!.scoreWeight,
         };
       }
     });

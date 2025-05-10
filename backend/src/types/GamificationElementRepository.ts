@@ -1,5 +1,6 @@
 import {
   RecommendationScoreObject,
+  RecommendationScoreWeightObject,
   RecommendationStandardDeviationObject,
 } from "./RecommendationObjectTypes";
 
@@ -47,6 +48,7 @@ export class GamificationElementObject {
   details: string;
   score: RecommendationScoreObject;
   standardDeviation: RecommendationStandardDeviationObject;
+  scoreWeight: RecommendationScoreWeightObject;
 
   constructor(
     imageSrc: string,
@@ -54,11 +56,13 @@ export class GamificationElementObject {
     details: string,
     score: RecommendationScoreObject = new RecommendationScoreObject(),
     standardDeviation: RecommendationStandardDeviationObject = new RecommendationStandardDeviationObject(),
+    scoreWeight: RecommendationScoreWeightObject = new RecommendationScoreWeightObject(),
   ) {
     this.imageSrc = imageSrc;
     this.elementName = elementName;
     this.details = details;
     this.score = score;
     this.standardDeviation = standardDeviation;
+    this.scoreWeight = scoreWeight;
   }
 }

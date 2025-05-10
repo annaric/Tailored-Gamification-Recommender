@@ -58,6 +58,8 @@ class LearningStyleBasedRecommender extends AbstractRecommender {
               score: ResultDictonary[key][input[learningStyle]!]!.score,
               standardDeviation:
                 ResultDictonary[key][input[learningStyle]!]!.standardDeviation,
+              scoreWeight:
+                ResultDictonary[key][input[learningStyle]!]!.scoreWeight,
             };
           }
         });

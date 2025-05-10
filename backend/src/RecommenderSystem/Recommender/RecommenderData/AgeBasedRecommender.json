@@ -1,47 +1,6 @@
 {
   "literature": [
     {
-      "title": "Dynamic Personalization of Gameful Interactive Systems ",
-      "author": "Tondello",
-      "paperType": "Tabelle Seite 86; nur younger people beschrieben",
-      "resultType": "Binary",
-      "bestValue": 1,
-      "minValue": 0,
-      "maxValue": 1,
-      "result": {
-        "Incentive": {
-          "20-29": 1.0,
-          "30-39": 0.0,
-          "<20": 1.0,
-          ">39": 0.0
-        },
-        "Customization": {
-          "20-29": 1.0,
-          "30-39": 0.0,
-          "<20": 1.0,
-          ">39": 0.0
-        },
-        "Challenge": {
-          "20-29": 1.0,
-          "30-39": 0.0,
-          "<20": 1.0,
-          ">39": 0.0
-        },
-        "Chance": {
-          "20-29": 1.0,
-          "30-39": 0.0,
-          "<20": 1.0,
-          ">39": 0.0
-        },
-        "Altruism": {
-          "20-29": 1.0,
-          "30-39": 0.0,
-          "<20": 1.0,
-          ">39": 0.0
-        }
-      }
-    },
-    {
       "title": "Elements of Gameful Design Emerging from User Preferences",
       "author": "Tondello",
       "paperType": "Bivariate correlations between the groups of gameful design elements and age (* p < .05); artificially adaptet to fit in age group (multiplied the correlation with 0.25.0.5. 0.5 or 1 depending on the age)",
@@ -122,16 +81,16 @@
       "maxValue": 10,
       "result": {
         "Incentive": {
-          "20-29": 2.6,
-          "30-39": 3.6,
-          "<20": 3.4,
-          ">39": 3.6
+          "20-29": 2.56,
+          "30-39": 3.56,
+          "<20": 2.34,
+          ">39": 3.56
         },
         "Progression": {
-          "20-29": 1.45,
-          "30-39": 1.25,
-          "<20": 1.25,
-          ">39": 1.25
+          "20-29": 1.4,
+          "30-39": 1.2,
+          "<20": 1.5,
+          ">39": 1.2
         },
         "Feedback": {
           "20-29": 3.0,
@@ -204,16 +163,16 @@
       "maxValue": 5,
       "result": {
         "Incentive": {
-          "20-29": 2.85,
-          "30-39": 2.95,
+          "20-29": 2.63,
+          "30-39": 2.78,
           "<20": 2.5,
-          ">39": 3.425
+          ">39": 3.001666667
         },
         "Progression": {
-          "20-29": 2.465,
-          "30-39": 2.57,
+          "20-29": 2.52,
+          "30-39": 2.53,
           "<20": 2.5,
-          ">39": 2.73
+          ">39": 2.67
         },
         "Immersion": {
           "20-29": 2.69,

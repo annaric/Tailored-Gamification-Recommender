@@ -6,6 +6,7 @@ export type ResultElementProps = {
   [key in (typeof RecommenderValues)[number]]?: {
     score: number;
     standardDeviation: number;
+    scoreWeight?: number;
   };
 };
 

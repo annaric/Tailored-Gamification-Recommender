@@ -107,6 +107,7 @@ function App() {
               score={element.score}
               standardDeviation={element.standardDeviation}
               details={element.details}
+              scoreWeight={element.scoreWeight}
             />
           ))
         ) : (

@@ -34,6 +34,7 @@ class PersonalityBasedRecommender extends AbstractRecommender {
           score: ResultDictonary[key][input.personality!]!.score,
           standardDeviation:
             ResultDictonary[key][input.personality!]!.standardDeviation,
+          scoreWeight: ResultDictonary[key][input.personality!]!.scoreWeight,
         };
       }
     });

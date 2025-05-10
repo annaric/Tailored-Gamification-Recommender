@@ -21,6 +21,7 @@ export type RecommenderResults = {
   [key in GamificationElements]?: {
     score: number;
     standardDeviation: number;
+    scoreWeight?: number;
   };
 };
 
@@ -43,7 +44,6 @@ export type NumberPerRecommenderObject = {
 };
 
 export class RecommendationScoreObject {
-  //später wird es noch ein number array mit den einzelnen Ergebnissen jedes Recommender geben, wenn andere recommender hinzukommen
   scores: NumberPerRecommenderObject = {};
   overallScore: number;
 
@@ -56,8 +56,20 @@ export class RecommendationScoreObject {
   }
 }
 
+export class RecommendationScoreWeightObject {
+  weights: NumberPerRecommenderObject = {};
+  sumOfWeights: number;
+
+  constructor(
+    sumOfWeights: number = 1,
+    weights: NumberPerRecommenderObject = {},
+  ) {
+    this.weights = weights;
+    this.sumOfWeights = sumOfWeights;
+  }
+}
+
 export class RecommendationStandardDeviationObject {
-  //später wird es noch ein number array mit den einzelnen Ergebnissen jedes Recommender geben, wenn andere recommender hinzukommen
   standardDeviations: NumberPerRecommenderObject = {};
   overallStandardDeviation: number;
   meanStandardDeviation: number;

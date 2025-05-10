@@ -5,9 +5,9 @@
       "author": "Aljabali et al.",
       "paperType": "Textuell bzw Graphischer Vorschlag von game elementen (Durch literatur review)",
       "resultType": "PositiveNumber",
-      "bestValue": 2.0,
-      "minValue": 0.0,
-      "maxValue": 2.0,
+      "bestValue": 2,
+      "minValue": 0,
+      "maxValue": 2,
       "result": {
         "Incentive": {
           "active": 1.0,
@@ -16,7 +16,7 @@
           "reflective": 0.0,
           "sensor": 1.0,
           "sequential": 0.0,
-          "verbal": 0.0,
+          "verbal": 1.0,
           "visual": 1.0
         },
         "Progression": {
@@ -26,7 +26,7 @@
           "reflective": 0.0,
           "sensor": 1.0,
           "sequential": 2.0,
-          "verbal": 1.0,
+          "verbal": 0.0,
           "visual": 1.0
         },
         "Customization": {
@@ -76,9 +76,9 @@
       "author": "Zaric et al.",
       "paperType": "Game elements that can make a positive impact on a specific learning style (Felder Silverman) - based on literatur research",
       "resultType": "PositiveNumber",
-      "bestValue": 3.0,
-      "minValue": 0.0,
-      "maxValue": 3.0,
+      "bestValue": 3,
+      "minValue": 0,
+      "maxValue": 3,
       "result": {
         "TimePressure": {
           "active": 1.0,
@@ -91,24 +91,24 @@
           "visual": 1.0
         },
         "Incentive": {
-          "active": 1.0,
-          "global": 1.0,
-          "intuitive": 1.0,
-          "reflective": 1.0,
-          "sensor": 1.0,
-          "sequential": 1.0,
-          "verbal": 0.0,
-          "visual": 1.0
-        },
-        "Progression": {
-          "active": 3.0,
+          "active": 2.0,
           "global": 2.0,
           "intuitive": 1.0,
+          "reflective": 1.0,
+          "sensor": 2.0,
+          "sequential": 2.0,
+          "verbal": 0.0,
+          "visual": 2.0
+        },
+        "Progression": {
+          "active": 2.0,
+          "global": 1.0,
+          "intuitive": 1.0,
           "reflective": 2.0,
-          "sensor": 3.0,
-          "sequential": 3.0,
+          "sensor": 2.0,
+          "sequential": 2.0,
           "verbal": 1.0,
-          "visual": 3.0
+          "visual": 2.0
         },
         "Feedback": {
           "active": 1.0,

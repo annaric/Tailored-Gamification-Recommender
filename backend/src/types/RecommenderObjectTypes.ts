@@ -1,10 +1,36 @@
-export enum Recommender {
-  gender = "gender",
-  player = "player",
-  personality = "personality",
-  learningActivityTask = "learningActivityTask",
-  learningStyle = "learningStyle",
-  age = "age",
+export const RecommenderValuesObject = {
+  gender: ["female", "male"],
+  age: ["<20", "20-29", "30-39",  ">39"],
+  player: [
+    "achiever",
+    "disruptor",
+    "freeSpirit",
+    "philanthropist",
+    "player",
+    "socializer",
+  ],
+  personality: [
+    "openness",
+    "conscientiousness",
+    "agreeableness",
+    "extraversion",
+    "neuroticism",
+  ],
+  learningActivityTask: [
+    "remember",
+    "understand",
+    "apply",
+    "analyze",
+    "evaluate",
+    "create",
+  ],
+  learningStyleOfProcessingInformation: [
+    "active",
+    "reflective",
+  ],
+  learningStyleOfIntuitivity: ["sensor", "intuitive"],
+  learningStyleOfPerception: ["visual", "verbal"],  
+  learningStyleOfUnderstanding: ["sequential", "global"],
 }
 
 export const GenderValues = ["female", "male"];

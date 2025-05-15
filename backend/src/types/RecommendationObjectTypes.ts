@@ -4,16 +4,8 @@ import {
   GamificationElementDetails,
 } from "./GamificationElementRepository";
 import {
-  AgeValues,
-  GenderValues,
-  LearningActivityTaskValues,
-  LearningStyleValuesInformationProcessing,
-  LearningStyleValuesIntuitivity,
-  LearningStyleValuesPerception,
-  LearningStyleValuesUnderstanding,
-  PersonalityValues,
-  PlayerValues,
   RecommenderValues,
+  RecommenderValuesObject,
 } from "./RecommenderObjectTypes";
 
 // Result type of each Recommender
@@ -27,16 +19,7 @@ export type RecommenderResults = {
 
 //Input type we are getting from the frontend
 export type RecommendationInputObject = {
-  // hier kommen andere Recommender typen hin später
-  gender?: (typeof GenderValues)[number];
-  player?: (typeof PlayerValues)[number];
-  personality?: (typeof PersonalityValues)[number];
-  age?: (typeof AgeValues)[number];
-  learningActivityTask?: (typeof LearningActivityTaskValues)[number];
-  learningStyleOfProcessingInformation?: (typeof LearningStyleValuesInformationProcessing)[number];
-  learningStyleOfIntuitivity?: (typeof LearningStyleValuesIntuitivity)[number];
-  learningStyleOfPerception?: (typeof LearningStyleValuesPerception)[number];
-  learningStyleOfUnderstanding?: (typeof LearningStyleValuesUnderstanding)[number];
+  [key in keyof typeof RecommenderValuesObject]?: (typeof RecommenderValuesObject)[key][number];
 };
 
 export type NumberPerRecommenderObject = {

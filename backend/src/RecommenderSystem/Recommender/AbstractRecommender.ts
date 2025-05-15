@@ -1,6 +1,6 @@
 import { GamificationElements } from "../../types/GamificationElementRepository";
-import { RecommendationInputObject } from "../../types/RecommendationObjectTypes";
-import { RecommenderValues } from "../../types/RecommenderObjectTypes";
+import { RecommendationInputObject, RecommenderResults } from "../../types/RecommendationObjectTypes";
+import { RecommenderValues, RecommenderValuesObject } from "../../types/RecommenderObjectTypes";
 
 export type ResultElementProps = {
   [key in (typeof RecommenderValues)[number]]?: {
@@ -15,11 +15,16 @@ export type ResultDictonary = {
 };
 
 abstract class AbstractRecommender {
-  constructor() {
+  src: string;
+  recommenderKey: keyof typeof RecommenderValuesObject;
+
+  constructor(src: string, recommenderKey: keyof typeof RecommenderValuesObject) {
+    this.src = src;
+    this.recommenderKey = recommenderKey || "";
     this.updateAlgorithm();
   }
 
-  abstract recommend(input: RecommendationInputObject): unknown;
+  abstract recommend(input: RecommendationInputObject, key: string): RecommenderResults | undefined;
 
   abstract updateAlgorithm(): void;
 }

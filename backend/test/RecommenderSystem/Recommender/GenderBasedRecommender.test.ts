@@ -1,17 +1,17 @@
 import { assert } from "console";
-import GenderBasedRecommender from "../../../src/RecommenderSystem/Recommender/GenderBasedRecommender";
 import { LiteratureElementObject } from "../../../src/types/LiteratureElementObject";
 import JsonFileReader from "../../../src/RecommenderSystem/Helper/JsonFileReader";
 import DataNormalizer from "../../../src/RecommenderSystem/Helper/DataNormalizer";
 import DataAssembler from "../../../src/RecommenderSystem/Helper/DataAssembler";
+import StandardRecommender from "../../../src/RecommenderSystem/Recommender/StandardRecommender";
 
 // Mock the `fs` module to simulate reading a JSON file
 
 describe("Test GenderBasedRecommender update Algorithm", () => {
-  let recommender: GenderBasedRecommender;
+  let recommender: StandardRecommender;
 
   beforeEach(() => {
-    recommender = new GenderBasedRecommender();
+    recommender = new StandardRecommender("./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json", "gender");
   });
 
   afterEach(() => {

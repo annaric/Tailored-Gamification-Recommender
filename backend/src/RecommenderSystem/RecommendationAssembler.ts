@@ -8,89 +8,87 @@ import {
   RecommenderResults,
 } from "../types/RecommendationObjectTypes";
 import MeanCalculator from "./Helper/MeanCalculator";
-import GenderBasedRecommender from "./Recommender/GenderBasedRecommender";
-import LearningActivityTaskBasedRecommender from "./Recommender/LATBasedRecommender";
-import PersonalityBasedRecommender from "./Recommender/PersonalityBasedRecommender";
-import LearningStyleBasedRecommender from "./Recommender/LearningStyleBasedRecommender";
-import PlayerBasedRecommender from "./Recommender/PlayerBasedRecommender";
-import AgeBasedRecommender from "./Recommender/AgeBasedRecommender";
-import { LearningStyleKeys } from "../types/RecommenderObjectTypes";
+import StandardRecommender from "./Recommender/StandardRecommender";
 
 class RecommendationAssembler {
-  genderBasedRecommender: GenderBasedRecommender;
-  playerBasedRecommender: PlayerBasedRecommender;
-  personalityBasedRecommender: PersonalityBasedRecommender;
-  latBasedRecommender: LearningActivityTaskBasedRecommender;
-  learningStyleBasedRecommender: LearningStyleBasedRecommender;
-  ageBasedRecommender: AgeBasedRecommender;
+  recommenderList: {
+    recommender: StandardRecommender;
+    recommenderKey: string;
+  }[];
   meanCalculator: MeanCalculator;
 
   constructor() {
-    this.genderBasedRecommender = new GenderBasedRecommender();
-    this.playerBasedRecommender = new PlayerBasedRecommender();
-    this.personalityBasedRecommender = new PersonalityBasedRecommender();
-    this.latBasedRecommender = new LearningActivityTaskBasedRecommender();
-    this.learningStyleBasedRecommender = new LearningStyleBasedRecommender();
-    this.ageBasedRecommender = new AgeBasedRecommender();
+    const linkToJsonFiles = "./src/RecommenderSystem/Recommender/RecommenderData/";
+    this.recommenderList = [
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "GenderBasedRecommender.json", "gender"),
+        recommenderKey: "gender"
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "PlayerBasedRecommender.json", "player"),
+        recommenderKey: "player"
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "PersonalityBasedRecommender.json", "personality"),
+        recommenderKey: "personality"
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "LATBasedRecommender.json", "learningActivityTask"),
+        recommenderKey: "learningActivityTask"
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "AgeBasedRecommender.json", "age"),
+        recommenderKey: "age"
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "LearningStyleBasedRecommender.json", "learningStyleOfProcessingInformation"),
+        recommenderKey: "learningStyleOfProcessingInformation"
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "LearningStyleBasedRecommender.json", "learningStyleOfIntuitivity"),
+        recommenderKey: "learningStyleOfIntuitivity"
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "LearningStyleBasedRecommender.json", "learningStyleOfPerception"),
+        recommenderKey: "learningStyleOfPerception"
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "LearningStyleBasedRecommender.json", "learningStyleOfUnderstanding"),
+        recommenderKey: "learningStyleOfUnderstanding"
+      }
+    ];
     this.meanCalculator = new MeanCalculator();
   }
 
   assembleRecommendations(
     input: RecommendationInputObject,
   ): RecommendationEndResult {
-    const genderBasedRecommendation =
-      this.genderBasedRecommender.recommend(input);
-    const playerBasedRecommendation =
-      this.playerBasedRecommender.recommend(input);
-    const personalityBasedRecommendation =
-      this.personalityBasedRecommender.recommend(input);
-    const latBasedRecommendation = this.latBasedRecommender.recommend(input);
-    const learningStyleBasedRecommendation =
-      this.learningStyleBasedRecommender.recommend(input);
-    const ageBasedRecommendation = this.ageBasedRecommender.recommend(input);
     const result = new RecommendationEndResult();
+    this.recommenderList.forEach(recommenderElement => {
+      const resultPerRecommender = recommenderElement.recommender.recommend(input);
+      result.elements = result.elements.map((resultElementObject) => {
+        resultElementObject = this.addRecommenderScorestoResult(
+          resultElementObject,
+          resultPerRecommender,
+          recommenderElement.recommenderKey,
+        );
+        return resultElementObject;
+      });
+    });
 
-    result.elements = result.elements.map((element) => {
-      element = this.addRecommenderScorestoResult(
-        element,
-        genderBasedRecommendation,
-        "gender",
-      );
-      element = this.addRecommenderScorestoResult(
-        element,
-        playerBasedRecommendation,
-        "player",
-      );
-      element = this.addRecommenderScorestoResult(
-        element,
-        personalityBasedRecommendation,
-        "personality",
-      );
-      element = this.addRecommenderScorestoResult(
-        element,
-        ageBasedRecommendation,
-        "age",
-      );
-      element = this.addRecommenderScorestoResult(
-        element,
-        latBasedRecommendation,
-        "learningActivityTask",
-      );
-      if (!(learningStyleBasedRecommendation === undefined)) {
-        const learningStyleKeys = Object.keys(LearningStyleKeys) as Array<
-          keyof typeof LearningStyleKeys
-        >;
-        learningStyleKeys.forEach((learningStyle) => {
-          element = this.addRecommenderScorestoResult(
-            element,
-            learningStyleBasedRecommendation[learningStyle],
-            learningStyle,
-          );
-        });
-      }
-      element = this.calculateMeanStandardDeviation(element);
-      element = this.setOverallScoreAndStandardDeviation(element);
-      return element;
+    result.elements = result.elements.map((resultElementObject) => {
+      resultElementObject = this.calculateMeanStandardDeviation(resultElementObject);
+      resultElementObject = this.setOverallScoreAndStandardDeviation(resultElementObject);
+      return resultElementObject;
     });
 
     result.elements = result.elements.sort((a, b) => {
@@ -112,6 +110,7 @@ class RecommendationAssembler {
     const elementKey =
       adaptedElement.elementName as keyof typeof GamificationElements;
     if (!(recommendation === undefined) && recommendation[elementKey]) {
+      console.log("recommentation not undefined");
       adaptedElement.score.scores[key] = recommendation[elementKey].score;
       adaptedElement.standardDeviation.standardDeviations[key] =
         recommendation[elementKey].standardDeviation;

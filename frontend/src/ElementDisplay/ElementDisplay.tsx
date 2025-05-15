@@ -23,7 +23,7 @@ export interface ElementDisplayProps {
 
 const ElementDisplay: React.FC<ElementDisplayProps> = ({
   rank,
-  imageSrc: imageSrc,
+  imageSrc,
   elementName,
   score,
   scoreWeight,
@@ -36,12 +36,14 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
   const toggleDetails = () => setIsExpanded(!isExpanded);
   const togglePopup = () => setIsPopupVisible(!isPopupVisible);
 
+  const backendImageUrl = 'http://localhost:3050/images/' + imageSrc;
+
   return (
     <div className="element-display">
       <div className="element-row">
         <span className="rank">{rank}</span>
         <img
-          src={`/imgs/${imageSrc}`}
+          src={backendImageUrl}
           alt={elementName}
           className="element-image small"
           onClick={togglePopup}
@@ -115,7 +117,7 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
         <div className="image-popup" onClick={togglePopup}>
           <div className="popup-content">
             <img
-              src={`/imgs/${imageSrc}`}
+              src={backendImageUrl}
               alt={elementName}
               className="element-image large"
             />

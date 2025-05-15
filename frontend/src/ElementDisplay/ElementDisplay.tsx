@@ -49,8 +49,16 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
         <span className="element-name">{elementName}</span>
         <div className="score-group">
           {!(score.overallScore === undefined) && (
-            <span className="score">
-              Overall Score: {score.overallScore.toFixed(3)}
+            <span
+              className={`score ${
+              ((Number(score.overallScore.toFixed(3))) * 2) - 1 > 0.1
+                ? "score-green"
+                : ((Number(score.overallScore.toFixed(3))) * 2) - 1 < -0.1
+                ? "score-red"
+                : "score-yellow"
+              }`}
+            >
+              Overall Score: {(((Number(score.overallScore)) * 2) - 1).toFixed(3)}
             </span>
           )}
           {!(standardDeviation.overallStandardDeviation === undefined) && (
@@ -89,7 +97,7 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
                     :
                   </span>
                   <span className="standard-deviation">
-                    Score: {score.scores[key].toFixed(3) || 0}
+                    Score: {((((Number(score.scores[key])) * 2) - 1).toFixed(3)) || 0}
                   </span>
                   <span className="standard-deviation">
                     Standard Deviation:{" "}

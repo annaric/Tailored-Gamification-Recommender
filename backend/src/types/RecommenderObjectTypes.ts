@@ -9,7 +9,7 @@ export enum Recommender {
 
 export const GenderValues = ["female", "male"];
 
-export const AgeValues = ["20-29", "30-39", "<20", ">39"];
+export const AgeValues = ["<20", "20-29", "30-39",  ">39"];
 
 export const PlayerValues = [
   "achiever",

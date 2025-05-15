@@ -115,6 +115,8 @@ class RecommendationAssembler {
       adaptedElement.score.scores[key] = recommendation[elementKey].score;
       adaptedElement.standardDeviation.standardDeviations[key] =
         recommendation[elementKey].standardDeviation;
+      adaptedElement.scoreWeight.weights[key] =
+        recommendation[elementKey].scoreWeight;
     }
     return adaptedElement;
   }
@@ -140,17 +142,23 @@ class RecommendationAssembler {
   setOverallScoreAndStandardDeviation(element: GamificationElementObject) {
     const adaptedElement = element;
     if (!(Object.keys(adaptedElement.score.scores).length === 0)) {
-      const overallCalculation = this.meanCalculator.calculateMeanAndStdDev(
-        Object.values(adaptedElement.score.scores).filter(
-          (value): value is number => value !== undefined,
-        ),
-      );
+      const overallCalculation =
+        this.meanCalculator.calculateWeightedMeanAndStdDev(
+          Object.values(adaptedElement.score.scores).filter(
+            (value): value is number => value !== undefined,
+          ),
+          Object.values(adaptedElement.scoreWeight.weights).filter(
+            (value): value is number => value !== undefined,
+          ),
+        );
       adaptedElement.score.overallScore = overallCalculation.score;
       adaptedElement.standardDeviation.overallStandardDeviation =
         overallCalculation.standardDeviation;
+      adaptedElement.scoreWeight.sumOfWeights = overallCalculation.sumOfWeights;
     } else {
       adaptedElement.score.overallScore = 0;
       adaptedElement.standardDeviation.overallStandardDeviation = 0;
+      adaptedElement.scoreWeight.sumOfWeights = 0;
     }
     return adaptedElement;
   }

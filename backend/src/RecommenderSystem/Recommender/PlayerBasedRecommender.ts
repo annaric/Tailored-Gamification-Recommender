@@ -34,6 +34,7 @@ class PlayerBasedRecommender extends AbstractRecommender {
           score: ResultDictonary[key][input.player!]!.score,
           standardDeviation:
             ResultDictonary[key][input.player!]!.standardDeviation,
+          scoreWeight: ResultDictonary[key][input.player!]!.scoreWeight,
         };
       }
     });

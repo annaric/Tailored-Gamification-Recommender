@@ -9,6 +9,10 @@ export interface ElementDisplayProps {
     overallScore: number;
     scores: { [key: string]: number };
   };
+  scoreWeight: {
+    sumOfWeights: number;
+    weights: { [key: string]: number };
+  };
   standardDeviation: {
     overallStandardDeviation: number;
     meanStandardDeviation: number;
@@ -22,6 +26,7 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
   imageSrc: imageSrc,
   elementName,
   score,
+  scoreWeight,
   standardDeviation,
   details,
 }) => {
@@ -60,6 +65,11 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
               {standardDeviation.meanStandardDeviation.toFixed(3)}
             </span>
           )}
+          {scoreWeight && !(scoreWeight.sumOfWeights === undefined) && (
+            <span className="standard-deviation">
+              Number of Papers: {scoreWeight.sumOfWeights}
+            </span>
+          )}
         </div>
         <button className="dropdown-button" onClick={toggleDetails}>
           {isExpanded ? "▲" : "▼"}
@@ -82,8 +92,11 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
                     Score: {score.scores[key].toFixed(3) || 0}
                   </span>
                   <span className="standard-deviation">
-                    Standard Deviation:
+                    Standard Deviation:{" "}
                     {standardDeviation.standardDeviations[key].toFixed(3) || 0}
+                  </span>
+                  <span className="standard-deviation">
+                    Number of Papers: {scoreWeight.weights[key] || 0}
                   </span>
                 </div>
               ))}

@@ -92,12 +92,12 @@
       "maxValue": 10,
       "result": {
         "Incentive": {
-          "female": 3.7,
-          "male": 2.6
+          "female": 3.57,
+          "male": 2.56
         },
         "Progression": {
-          "female": 1.45,
-          "male": 1.35
+          "female": 1.4,
+          "male": 1.3
         },
         "Feedback": {
           "female": 2.0,
@@ -149,16 +149,16 @@
       "author": "Oliveira et al.",
       "paperType": "textuell bzw bildlich genannt (\u00dcberschneidungen bzw Pr\u00e4ferenzen - zwei bubbles); zwei versionen: considering 3/5 Elements; fett gedruckt: genderspezifisch; rest: \u00fcberschneidung. Die Berechnung des Scores ergibt sich. ob die Elemente unter den Top 3 oder Top 5 waren und ob mehrere Elemente genannt werden: Wenn in Top 3 = 2 . Top 5 = 1 (und dann jeweils einmal jedes Element in der besten Top Liste gerechnet zusammen addiert. wenn pro Gamification element mehrere elemente)",
       "resultType": "PositiveNumber",
-      "bestValue": 2,
+      "bestValue": 6,
       "minValue": 0,
-      "maxValue": 2,
+      "maxValue": 6,
       "result": {
         "Incentive": {
-          "female": 1.0,
-          "male": 0.0
+          "female": 3.0,
+          "male": 2.0
         },
         "Progression": {
-          "female": 1.5,
+          "female": 1.0,
           "male": 2.0
         },
         "Customization": {
@@ -181,12 +181,12 @@
       "maxValue": 7,
       "result": {
         "Incentive": {
-          "female": 4.0,
-          "male": 2.0
+          "female": 6.0,
+          "male": 3.0
         },
         "Progression": {
-          "female": 5.0,
-          "male": 2.0
+          "female": 3.0,
+          "male": 1.0
         },
         "Feedback": {
           "female": 2.0,
@@ -240,12 +240,12 @@
       "maxValue": 5,
       "result": {
         "Incentive": {
-          "female": 3.19,
-          "male": 3.06
+          "female": 2.935,
+          "male": 2.825
         },
         "Progression": {
-          "female": 2.66,
-          "male": 2.56
+          "female": 2.64,
+          "male": 2.53
         },
         "Immersion": {
           "female": 2.77,

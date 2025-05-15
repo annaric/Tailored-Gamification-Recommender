@@ -68,10 +68,12 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
       male: {
         score: expectedMaleScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       female: {
         score: expectedFemaleScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
     };
     // Assert that the correct functions were called and with the expected returns
@@ -129,10 +131,12 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
       male: {
         score: expectedMaleScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       female: {
         score: expectedFemaleScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
     };
     // Assert that the correct functions were called and with the expected returns
@@ -190,10 +194,12 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
       male: {
         score: expectedMaleScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       female: {
         score: expectedFemaleScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
     };
     // Assert that the correct functions were called and with the expected returns
@@ -251,10 +257,12 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
       male: {
         score: expectedMaleScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       female: {
         score: expectedFemaleScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
     };
     // Assert that the correct functions were called and with the expected returns
@@ -312,10 +320,12 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
       male: {
         score: expectedMaleScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
       female: {
         score: expectedFemaleScore,
         standardDeviation: 0,
+        scoreWeight: 1,
       },
     };
     // Assert that the correct functions were called and with the expected returns
@@ -462,5 +472,6 @@ describe("Test GenderBasedRecommender update Algorithm", () => {
       expectedFemaleTimePressureStdDev,
       5,
     );
+    expect(femaleResult?.Altruism?.scoreWeight).toBe(2);
   });
 });

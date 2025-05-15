@@ -34,6 +34,7 @@ class AgeBasedRecommender extends AbstractRecommender {
           score: ResultDictonary[key][input.age!]!.score,
           standardDeviation:
             ResultDictonary[key][input.age!]!.standardDeviation,
+          scoreWeight: ResultDictonary[key][input.age!]!.scoreWeight,
         };
       }
     });

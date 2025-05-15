@@ -153,15 +153,15 @@
         "Incentive": {
           "agreeableness": 0.0,
           "conscientiousness": 0.0,
-          "extraversion": 0.0,
-          "neuroticism": -0.169,
+          "extraversion": 0.143,
+          "neuroticism": -0.1646,
           "openness": 0.0
         },
         "Progression": {
           "agreeableness": 0.0,
           "conscientiousness": 0.1445,
-          "extraversion": 0.1555,
-          "neuroticism": -0.165,
+          "extraversion": 0.159666667,
+          "neuroticism": -0.171,
           "openness": 0.0
         },
         "Customization": {
@@ -199,16 +199,16 @@
         "Incentive": {
           "agreeableness": 1.0,
           "conscientiousness": 0.0,
-          "extraversion": 2.0,
-          "neuroticism": 4.0,
-          "openness": 0.0
+          "extraversion": 4.0,
+          "neuroticism": 5.0,
+          "openness": 1.0
         },
         "Progression": {
           "agreeableness": 0.0,
           "conscientiousness": 1.0,
-          "extraversion": 4.0,
-          "neuroticism": 3.0,
-          "openness": 1.0
+          "extraversion": 2.0,
+          "neuroticism": 2.0,
+          "openness": 0.0
         },
         "Feedback": {
           "agreeableness": 2.0,

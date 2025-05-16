@@ -127,7 +127,7 @@
       "paperType": "Mean scores of social influence strategies and group difference significance test (the bold values indicate significant difference between two groups)",
       "resultType": "Scale",
       "bestValue": 9,
-      "minValue": 0,
+      "minValue": 1,
       "maxValue": 9,
       "result": {
         "Incentive": {

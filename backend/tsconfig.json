@@ -14,5 +14,15 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "coverage",
+    "dist",
+    "tsconfig.json",
+    "package.json",
+    "package-lock.json",
+    "eslint.config.mjs",
+    "jest.config.ts"
+  ],
+  "include": ["**/*.ts", "**/*.json", "**/*.png", "public/**/*.png", "src/**/*"]
 }

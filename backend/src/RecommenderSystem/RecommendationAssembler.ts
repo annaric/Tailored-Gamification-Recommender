@@ -1,98 +1,142 @@
 import {
   GamificationElementObject,
-  GamificationElements,
+  GamificationElement,
 } from "../types/GamificationElementRepository";
 import {
   RecommendationInputObject,
   RecommendationEndResult,
   RecommenderResults,
 } from "../types/RecommendationObjectTypes";
+import { RecommenderAndValuesObject } from "../types/RecommenderObjectTypes";
 import MeanCalculator from "./Helper/MeanCalculator";
-import GenderBasedRecommender from "./Recommender/GenderBasedRecommender";
-import LearningActivityTaskBasedRecommender from "./Recommender/LATBasedRecommender";
-import PersonalityBasedRecommender from "./Recommender/PersonalityBasedRecommender";
-import LearningStyleBasedRecommender from "./Recommender/LearningStyleBasedRecommender";
-import PlayerBasedRecommender from "./Recommender/PlayerBasedRecommender";
-import AgeBasedRecommender from "./Recommender/AgeBasedRecommender";
-import { LearningStyleKeys } from "../types/RecommenderObjectTypes";
+import StandardRecommender from "./Recommender/StandardRecommender";
 
+/**
+ * The `RecommendationAssembler` class is responsible for orchestrating the recommendation process.
+ * It combines the results from multiple recommenders, calculates aggregated scores, and sorts the final recommendations.
+ *
+ */
 class RecommendationAssembler {
-  genderBasedRecommender: GenderBasedRecommender;
-  playerBasedRecommender: PlayerBasedRecommender;
-  personalityBasedRecommender: PersonalityBasedRecommender;
-  latBasedRecommender: LearningActivityTaskBasedRecommender;
-  learningStyleBasedRecommender: LearningStyleBasedRecommender;
-  ageBasedRecommender: AgeBasedRecommender;
+  /**
+   * A list of recommenders used in the recommendation process.
+   * Each recommender is paired with its corresponding key.
+   */
+  recommenderList: {
+    recommender: StandardRecommender;
+    recommenderKey: keyof typeof RecommenderAndValuesObject;
+  }[];
   meanCalculator: MeanCalculator;
 
+  /**
+   * Constructs an instance of the `RecommendationAssembler` class.
+   * Initializes the list of recommenders and the mean calculator.
+   */
   constructor() {
-    this.genderBasedRecommender = new GenderBasedRecommender();
-    this.playerBasedRecommender = new PlayerBasedRecommender();
-    this.personalityBasedRecommender = new PersonalityBasedRecommender();
-    this.latBasedRecommender = new LearningActivityTaskBasedRecommender();
-    this.learningStyleBasedRecommender = new LearningStyleBasedRecommender();
-    this.ageBasedRecommender = new AgeBasedRecommender();
+    const linkToJsonFiles =
+      "./src/RecommenderSystem/Recommender/RecommenderData/";
+    this.recommenderList = [
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "GenderBasedRecommender.json",
+          "gender",
+        ),
+        recommenderKey: "gender",
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "PlayerBasedRecommender.json",
+          "player",
+        ),
+        recommenderKey: "player",
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "PersonalityBasedRecommender.json",
+          "personality",
+        ),
+        recommenderKey: "personality",
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "LATBasedRecommender.json",
+          "learningActivityTask",
+        ),
+        recommenderKey: "learningActivityTask",
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "AgeBasedRecommender.json",
+          "age",
+        ),
+        recommenderKey: "age",
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "LearningStyleBasedRecommender.json",
+          "learningStyleOfProcessingInformation",
+        ),
+        recommenderKey: "learningStyleOfProcessingInformation",
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "LearningStyleBasedRecommender.json",
+          "learningStyleOfIntuitivity",
+        ),
+        recommenderKey: "learningStyleOfIntuitivity",
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "LearningStyleBasedRecommender.json",
+          "learningStyleOfPerception",
+        ),
+        recommenderKey: "learningStyleOfPerception",
+      },
+      {
+        recommender: new StandardRecommender(
+          linkToJsonFiles + "LearningStyleBasedRecommender.json",
+          "learningStyleOfUnderstanding",
+        ),
+        recommenderKey: "learningStyleOfUnderstanding",
+      },
+    ];
     this.meanCalculator = new MeanCalculator();
   }
 
+  /**
+   * Assembles recommendations by combining results from all recommenders.
+   * Calculates aggregated scores, standard deviations, and sorts the final recommendations.
+   * @param input - The input object given by the frontend containing a selected recommender value per recommender.
+   * @returns A `RecommendationEndResult` object containing the final recommendations that can be send to the frontend.
+   */
   assembleRecommendations(
     input: RecommendationInputObject,
   ): RecommendationEndResult {
-    const genderBasedRecommendation =
-      this.genderBasedRecommender.recommend(input);
-    const playerBasedRecommendation =
-      this.playerBasedRecommender.recommend(input);
-    const personalityBasedRecommendation =
-      this.personalityBasedRecommender.recommend(input);
-    const latBasedRecommendation = this.latBasedRecommender.recommend(input);
-    const learningStyleBasedRecommendation =
-      this.learningStyleBasedRecommender.recommend(input);
-    const ageBasedRecommendation = this.ageBasedRecommender.recommend(input);
     const result = new RecommendationEndResult();
 
-    result.elements = result.elements.map((element) => {
-      element = this.addRecommenderScorestoResult(
-        element,
-        genderBasedRecommendation,
-        "gender",
-      );
-      element = this.addRecommenderScorestoResult(
-        element,
-        playerBasedRecommendation,
-        "player",
-      );
-      element = this.addRecommenderScorestoResult(
-        element,
-        personalityBasedRecommendation,
-        "personality",
-      );
-      element = this.addRecommenderScorestoResult(
-        element,
-        ageBasedRecommendation,
-        "age",
-      );
-      element = this.addRecommenderScorestoResult(
-        element,
-        latBasedRecommendation,
-        "learningActivityTask",
-      );
-      if (!(learningStyleBasedRecommendation === undefined)) {
-        const learningStyleKeys = Object.keys(LearningStyleKeys) as Array<
-          keyof typeof LearningStyleKeys
-        >;
-        learningStyleKeys.forEach((learningStyle) => {
-          element = this.addRecommenderScorestoResult(
-            element,
-            learningStyleBasedRecommendation[learningStyle],
-            learningStyle,
-          );
-        });
-      }
-      element = this.calculateMeanStandardDeviation(element);
-      element = this.setOverallScoreAndStandardDeviation(element);
-      return element;
+    // Iterate through each recommender to get its recommendation and add its results to the final output
+    this.recommenderList.forEach((recommenderElement) => {
+      const resultPerRecommender =
+        recommenderElement.recommender.recommend(input);
+      result.elements = result.elements.map((resultElementObject) => {
+        resultElementObject = this.addRecommenderScoresToResult(
+          resultElementObject,
+          resultPerRecommender,
+          recommenderElement.recommenderKey,
+        );
+        return resultElementObject;
+      });
     });
 
+    // Calculate the score and standard deviation for each gamification element
+    result.elements = result.elements.map((resultElementObject) => {
+      resultElementObject =
+        this.calculateMeanStandardDeviation(resultElementObject);
+      resultElementObject =
+        this.setOverallScoreAndStandardDeviation(resultElementObject);
+      return resultElementObject;
+    });
+
+    // Sort the elements by their overall score in descending order
     result.elements = result.elements.sort((a, b) => {
       return b.score.overallScore - a.score.overallScore;
     });
@@ -100,7 +144,14 @@ class RecommendationAssembler {
     return result;
   }
 
-  addRecommenderScorestoResult(
+  /**
+   * Adds scores, standard deviations, and weights from a recommender to a gamification element.
+   * @param element - The gamification element in the overall result to update.
+   * @param recommendation - The recommendation results from the recommender.
+   * @param key - The key identifying the recommender.
+   * @returns The updated gamification element with added score and standard deviation to the scores and standard deviations arrays.
+   */
+  addRecommenderScoresToResult(
     element: GamificationElementObject,
     recommendation: RecommenderResults | undefined,
     key: string,
@@ -110,7 +161,7 @@ class RecommendationAssembler {
     }
     const adaptedElement = element;
     const elementKey =
-      adaptedElement.elementName as keyof typeof GamificationElements;
+      adaptedElement.elementName as keyof typeof GamificationElement;
     if (!(recommendation === undefined) && recommendation[elementKey]) {
       adaptedElement.score.scores[key] = recommendation[elementKey].score;
       adaptedElement.standardDeviation.standardDeviations[key] =
@@ -121,6 +172,11 @@ class RecommendationAssembler {
     return adaptedElement;
   }
 
+  /**
+   * Calculates the mean standard deviation of all standard deciations for a gamification element.
+   * @param element - The gamification element in the overall result to update.
+   * @returns The updated gamification element with the mean standard deviation of all standard deviations.
+   */
   calculateMeanStandardDeviation(element: GamificationElementObject) {
     const adaptedElement = element;
     if (
@@ -139,6 +195,11 @@ class RecommendationAssembler {
     return adaptedElement;
   }
 
+  /**
+   * Calculates the overall score and standard deviation for a gamification element based on the scores, standard deviations, and weights arrays.
+   * @param element - The gamification element in the overall result to update.
+   * @returns The updated gamification element with the overall score and standard deviation.
+   */
   setOverallScoreAndStandardDeviation(element: GamificationElementObject) {
     const adaptedElement = element;
     if (!(Object.keys(adaptedElement.score.scores).length === 0)) {
@@ -156,7 +217,7 @@ class RecommendationAssembler {
         overallCalculation.standardDeviation;
       adaptedElement.scoreWeight.sumOfWeights = overallCalculation.sumOfWeights;
     } else {
-      adaptedElement.score.overallScore = 0;
+      adaptedElement.score.overallScore = 0.5;
       adaptedElement.standardDeviation.overallStandardDeviation = 0;
       adaptedElement.scoreWeight.sumOfWeights = 0;
     }

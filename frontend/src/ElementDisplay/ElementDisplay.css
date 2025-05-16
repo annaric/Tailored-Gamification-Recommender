@@ -48,6 +48,18 @@
   text-align: center;
 }
 
+.score-green {
+  color: green;
+}
+
+.score-red {
+  color: red;
+}
+
+.score-yellow {
+  color: rgb(248 212 10);
+}
+
 .standard-deviation {
   color: grey;
   margin-right: 10px;

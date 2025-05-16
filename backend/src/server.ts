@@ -6,6 +6,7 @@ import {
   RecommendationInputObject,
   RecommendationEndResult,
 } from "./types/RecommendationObjectTypes";
+import path from "path";
 
 const app = express();
 const PORT: number = parseInt(process.env.PORT || "3050", 10);
@@ -13,6 +14,7 @@ const PORT: number = parseInt(process.env.PORT || "3050", 10);
 // Middleware to parse JSON
 app.use(express.json());
 app.use(cors());
+app.use("/images", express.static(path.join(__dirname, "../public/images")));
 
 const recommendationService = new RecommendationService();
 
@@ -38,6 +40,17 @@ app.get("/recommender", (req: Request, res: Response) => {
   console.log(req.body);
   const recommender = recommendationService.getRecommender();
   res.json({ recommender });
+});
+
+app.get("/api/images/:imageName", (req, res) => {
+  const imageName = req.params.imageName;
+  const imagePath = path.join(__dirname, "../public/images", imageName);
+
+  res.sendFile(imagePath, (err) => {
+    if (err) {
+      res.status(404).send("Image not found");
+    }
+  });
 });
 
 export default app;

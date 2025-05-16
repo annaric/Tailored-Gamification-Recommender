@@ -1,17 +1,20 @@
 import { assert } from "console";
-import PlayerBasedRecommender from "../../../src/RecommenderSystem/Recommender/PlayerBasedRecommender";
 import { LiteratureElementObject } from "../../../src/types/LiteratureElementObject";
 import JsonFileReader from "../../../src/RecommenderSystem/Helper/JsonFileReader";
 import DataNormalizer from "../../../src/RecommenderSystem/Helper/DataNormalizer";
 import DataAssembler from "../../../src/RecommenderSystem/Helper/DataAssembler";
+import StandardRecommender from "../../../src/RecommenderSystem/Recommender/StandardRecommender";
 
 // Mock the `fs` module to simulate reading a JSON file
 
-describe("Test PlayerBasedRecommender update Algorithm", () => {
-  let recommender: PlayerBasedRecommender;
+describe("Test StandardRecommender update Algorithm", () => {
+  let recommender: StandardRecommender;
 
   beforeEach(() => {
-    recommender = new PlayerBasedRecommender();
+    recommender = new StandardRecommender(
+      "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
+      "gender",
+    );
   });
 
   afterEach(() => {
@@ -34,12 +37,8 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
           maxValue: 7,
           result: {
             Incentive: {
-              achiever: 2,
-              disruptor: 2,
-              freeSpirit: 4,
-              philanthropist: 4,
-              player: 2,
-              socializer: 4,
+              male: 2,
+              female: 4,
             },
           },
         },
@@ -51,7 +50,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       .mockImplementation((src: string) => {
         assert(
           src ===
-            "./src/RecommenderSystem/Recommender/RecommenderData/PlayerBasedRecommender.json",
+            "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
           "The src path is not correct",
         );
         return mockReadJsonFileReturnValue.literature;
@@ -65,37 +64,17 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
 
     recommender.updateAlgorithm();
 
-    const expected2Score = 0.5 + (2 / 7) * 0.5;
-    const expected4Score = 0.5 + (4 / 7) * 0.5;
+    const expectedMaleScore = 0.5 + (2 / 7) * 0.5;
+    const expectedFemaleScore = 0.5 + (4 / 7) * 0.5;
 
     const expectedResultDictonaryValues = {
-      achiever: {
-        score: expected2Score,
+      male: {
+        score: expectedMaleScore,
         standardDeviation: 0,
         scoreWeight: 1,
       },
-      disruptor: {
-        score: expected2Score,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      freeSpirit: {
-        score: expected4Score,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      philanthropist: {
-        score: expected4Score,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      player: {
-        score: expected2Score,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      socializer: {
-        score: expected4Score,
+      female: {
+        score: expectedFemaleScore,
         standardDeviation: 0,
         scoreWeight: 1,
       },
@@ -121,12 +100,8 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
           maxValue: 1,
           result: {
             Incentive: {
-              achiever: -0.7,
-              disruptor: -0.7,
-              freeSpirit: 0.3,
-              philanthropist: 0.3,
-              player: -0.7,
-              socializer: 0.3,
+              male: -0.7,
+              female: 0.3,
             },
           },
         },
@@ -138,7 +113,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       .mockImplementation((src: string) => {
         assert(
           src ===
-            "./src/RecommenderSystem/Recommender/RecommenderData/PlayerBasedRecommender.json",
+            "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
           "The src path is not correct",
         );
         return mockReadJsonFileReturnValue.literature;
@@ -152,37 +127,17 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
 
     recommender.updateAlgorithm();
 
-    const expectedNegativeScore = (-0.7 + 1) / 2;
-    const expectedPositiveScore = (0.3 + 1) / 2;
+    const expectedMaleScore = (-0.7 + 1) / 2;
+    const expectedFemaleScore = (0.3 + 1) / 2;
 
     const expectedResultDictonaryValues = {
-      achiever: {
-        score: expectedNegativeScore,
+      male: {
+        score: expectedMaleScore,
         standardDeviation: 0,
         scoreWeight: 1,
       },
-      disruptor: {
-        score: expectedNegativeScore,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      freeSpirit: {
-        score: expectedPositiveScore,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      philanthropist: {
-        score: expectedPositiveScore,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      player: {
-        score: expectedNegativeScore,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      socializer: {
-        score: expectedPositiveScore,
+      female: {
+        score: expectedFemaleScore,
         standardDeviation: 0,
         scoreWeight: 1,
       },
@@ -208,12 +163,8 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
           maxValue: 1,
           result: {
             Incentive: {
-              achiever: 0,
-              disruptor: 1,
-              freeSpirit: 0,
-              philanthropist: 1,
-              player: 1,
-              socializer: 0,
+              male: 0,
+              female: 1,
             },
           },
         },
@@ -225,7 +176,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       .mockImplementation((src: string) => {
         assert(
           src ===
-            "./src/RecommenderSystem/Recommender/RecommenderData/PlayerBasedRecommender.json",
+            "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
           "The src path is not correct",
         );
         return mockReadJsonFileReturnValue.literature;
@@ -239,37 +190,17 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
 
     recommender.updateAlgorithm();
 
-    const expectedZeroScore = 0.5;
-    const expectedOneScore = 0.75;
+    const expectedMaleScore = 0.5;
+    const expectedFemaleScore = 0.75;
 
     const expectedResultDictonaryValues = {
-      achiever: {
-        score: expectedZeroScore,
+      male: {
+        score: expectedMaleScore,
         standardDeviation: 0,
         scoreWeight: 1,
       },
-      disruptor: {
-        score: expectedOneScore,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      freeSpirit: {
-        score: expectedZeroScore,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      philanthropist: {
-        score: expectedOneScore,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      player: {
-        score: expectedOneScore,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      socializer: {
-        score: expectedZeroScore,
+      female: {
+        score: expectedFemaleScore,
         standardDeviation: 0,
         scoreWeight: 1,
       },
@@ -295,12 +226,8 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
           maxValue: 5,
           result: {
             Incentive: {
-              achiever: 4.6,
-              disruptor: 4.6,
-              freeSpirit: 2.3,
-              philanthropist: 2.3,
-              player: 4.6,
-              socializer: 2.3,
+              male: 4.6,
+              female: 2.3,
             },
           },
         },
@@ -312,7 +239,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       .mockImplementation((src: string) => {
         assert(
           src ===
-            "./src/RecommenderSystem/Recommender/RecommenderData/PlayerBasedRecommender.json",
+            "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
           "The src path is not correct",
         );
         return mockReadJsonFileReturnValue.literature;
@@ -326,37 +253,17 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
 
     recommender.updateAlgorithm();
 
-    const expected4Score = 1 - (4.6 - 1) / (5 - 1);
-    const expected2Score = 1 - (2.3 - 1) / (5 - 1);
+    const expectedMaleScore = 1 - (4.6 - 1) / (5 - 1);
+    const expectedFemaleScore = 1 - (2.3 - 1) / (5 - 1);
 
     const expectedResultDictonaryValues = {
-      achiever: {
-        score: expected4Score,
+      male: {
+        score: expectedMaleScore,
         standardDeviation: 0,
         scoreWeight: 1,
       },
-      disruptor: {
-        score: expected4Score,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      freeSpirit: {
-        score: expected2Score,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      philanthropist: {
-        score: expected2Score,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      player: {
-        score: expected4Score,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      socializer: {
-        score: expected2Score,
+      female: {
+        score: expectedFemaleScore,
         standardDeviation: 0,
         scoreWeight: 1,
       },
@@ -382,12 +289,8 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
           maxValue: 5,
           result: {
             Incentive: {
-              achiever: 4.6,
-              disruptor: 4.6,
-              freeSpirit: 2.3,
-              philanthropist: 2.3,
-              player: 4.6,
-              socializer: 2.3,
+              male: 4.6,
+              female: 2.3,
             },
           },
         },
@@ -399,7 +302,7 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       .mockImplementation((src: string) => {
         assert(
           src ===
-            "./src/RecommenderSystem/Recommender/RecommenderData/PlayerBasedRecommender.json",
+            "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
           "The src path is not correct",
         );
         return mockReadJsonFileReturnValue.literature;
@@ -413,37 +316,17 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
 
     recommender.updateAlgorithm();
 
-    const expected4Score = (4.6 - 1) / (5 - 1);
-    const expected2Score = (2.3 - 1) / (5 - 1);
+    const expectedMaleScore = (4.6 - 1) / (5 - 1);
+    const expectedFemaleScore = (2.3 - 1) / (5 - 1);
 
     const expectedResultDictonaryValues = {
-      achiever: {
-        score: expected4Score,
+      male: {
+        score: expectedMaleScore,
         standardDeviation: 0,
         scoreWeight: 1,
       },
-      disruptor: {
-        score: expected4Score,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      freeSpirit: {
-        score: expected2Score,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      philanthropist: {
-        score: expected2Score,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      player: {
-        score: expected4Score,
-        standardDeviation: 0,
-        scoreWeight: 1,
-      },
-      socializer: {
-        score: expected2Score,
+      female: {
+        score: expectedFemaleScore,
         standardDeviation: 0,
         scoreWeight: 1,
       },
@@ -469,20 +352,12 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
           maxValue: 9,
           result: {
             Altruism: {
-              achiever: 4.6, //male 1
-              disruptor: 4.6,
-              freeSpirit: 2.3,
-              philanthropist: 2.3,
-              player: 4.6,
-              socializer: 2.3,
+              male: 4.6,
+              female: 2.3,
             },
             TimePressure: {
-              achiever: 1.8, //male 1
-              disruptor: 1.8,
-              freeSpirit: 7.4,
-              philanthropist: 7.4,
-              player: 1.8,
-              socializer: 7.4,
+              male: 1.8,
+              female: 7.4,
             },
           },
         },
@@ -496,20 +371,12 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
           maxValue: 1,
           result: {
             Altruism: {
-              achiever: 1, //male 1
-              disruptor: 1,
-              freeSpirit: 0,
-              philanthropist: 0,
-              player: 1,
-              socializer: 0,
+              male: 1,
+              female: 0,
             },
             TimePressure: {
-              achiever: 0, //male 0
-              disruptor: 0,
-              freeSpirit: 1,
-              philanthropist: 1,
-              player: 0,
-              socializer: 1,
+              male: 0,
+              female: 1,
             },
           },
         },
@@ -521,13 +388,17 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       .mockImplementation((src: string) => {
         assert(
           src ===
-            "./src/RecommenderSystem/Recommender/RecommenderData/PlayerBasedRecommender.json",
+            "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
           "The src path is not correct",
         );
         return mockReadJsonFileReturnValue.literature;
       });
 
-    const recommendSpy = jest.spyOn(recommender, "recommend");
+    recommender = new StandardRecommender(
+      "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
+      "gender",
+    );
+
     const assembleDataSpy = jest.spyOn(DataAssembler.prototype, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
       DataNormalizer.prototype,
@@ -538,77 +409,82 @@ describe("Test PlayerBasedRecommender update Algorithm", () => {
       "normalizeBinaryDataPaper",
     );
 
-    recommender.updateAlgorithm();
+    recommender = new StandardRecommender(
+      "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
+      "gender",
+    );
+    const recommendSpy = jest.spyOn(recommender, "recommend");
+
+    //recommender.updateAlgorithm();
 
     // Assert that the correct functions were called and with the expected returns
     expect(assembleDataSpy).toHaveBeenCalledTimes(2);
     expect(normalizeScaleDataPaperSpy).toHaveBeenCalledTimes(2);
     expect(normalizeBinaryDataPaper).toHaveBeenCalledTimes(2);
 
-    //Assert that recommend gives back the correct values for achiever
-    const achieverResult = recommender.recommend({ player: "achiever" });
+    //Assert that recommend gives back the correct values for male
+    const maleResult = recommender.recommend({ gender: "male" });
     expect(recommendSpy).toHaveBeenCalledTimes(1);
-    const expectedAchieverAltruismScore = (3.6 / 8 + 0.75) / 2;
-    const expectedAchieverTimePressureScore = (0.8 / 8 + 0.5) / 2;
-    const expectedAchieverAltruismStdDev = Math.sqrt(
-      (Math.pow(3.6 / 8 - expectedAchieverAltruismScore, 2) +
-        Math.pow(0.75 - expectedAchieverAltruismScore, 2)) /
+    const expectedMaleAltruismScore = (3.6 / 8 + 0.75) / 2;
+    const expectedMaleTimePressureScore = (0.8 / 8 + 0.5) / 2;
+    const expectedMaleAltruismStdDev = Math.sqrt(
+      (Math.pow(3.6 / 8 - expectedMaleAltruismScore, 2) +
+        Math.pow(0.75 - expectedMaleAltruismScore, 2)) /
         2,
     );
-    const expectedAchieverTimePressureStdDev = Math.sqrt(
-      (Math.pow(0.8 / 8 - expectedAchieverTimePressureScore, 2) +
-        Math.pow(0.5 - expectedAchieverTimePressureScore, 2)) /
+    const expectedMaleTimePressureStdDev = Math.sqrt(
+      (Math.pow(0.8 / 8 - expectedMaleTimePressureScore, 2) +
+        Math.pow(0.5 - expectedMaleTimePressureScore, 2)) /
         2,
     );
-    expect(achieverResult?.Altruism?.score).toBeCloseTo(
-      expectedAchieverAltruismScore,
+    expect(maleResult?.Altruism?.score).toBeCloseTo(
+      expectedMaleAltruismScore,
       5,
     );
-    expect(achieverResult?.Altruism?.standardDeviation).toBeCloseTo(
-      expectedAchieverAltruismStdDev,
+    expect(maleResult?.Altruism?.standardDeviation).toBeCloseTo(
+      expectedMaleAltruismStdDev,
       5,
     );
-    expect(achieverResult?.TimePressure?.score).toBeCloseTo(
-      expectedAchieverTimePressureScore,
+    expect(maleResult?.TimePressure?.score).toBeCloseTo(
+      expectedMaleTimePressureScore,
       5,
     );
-    expect(achieverResult?.TimePressure?.standardDeviation).toBeCloseTo(
-      expectedAchieverTimePressureStdDev,
+    expect(maleResult?.TimePressure?.standardDeviation).toBeCloseTo(
+      expectedMaleTimePressureStdDev,
       5,
     );
 
-    //Assert that recommend gives back the correct values for philanthropist
-    const philanthropistResult = recommender.recommend({
-      player: "philanthropist",
-    });
+    //Assert that recommend gives back the correct values for female
+    const femaleResult = recommender.recommend({ gender: "female" });
     expect(recommendSpy).toHaveBeenCalledTimes(2);
-    const expectedPhilanthropistAltruismScore = (1.3 / 8 + 0.5) / 2;
-    const expectedPhilanthropistTimePressureScore = (6.4 / 8 + 0.75) / 2;
-    const expectedPhilanthropistAltruismStdDev = Math.sqrt(
-      (Math.pow(1.3 / 8 - expectedPhilanthropistAltruismScore, 2) +
-        Math.pow(0.5 - expectedPhilanthropistAltruismScore, 2)) /
+    const expectedFemaleAltruismScore = (1.3 / 8 + 0.5) / 2;
+    const expectedFemaleTimePressureScore = (6.4 / 8 + 0.75) / 2;
+    const expectedFemaleAltruismStdDev = Math.sqrt(
+      (Math.pow(1.3 / 8 - expectedFemaleAltruismScore, 2) +
+        Math.pow(0.5 - expectedFemaleAltruismScore, 2)) /
         2,
     );
-    const expectedPhilanthropistTimePressureStdDev = Math.sqrt(
-      (Math.pow(6.4 / 8 - expectedPhilanthropistTimePressureScore, 2) +
-        Math.pow(0.75 - expectedPhilanthropistTimePressureScore, 2)) /
+    const expectedFemaleTimePressureStdDev = Math.sqrt(
+      (Math.pow(6.4 / 8 - expectedFemaleTimePressureScore, 2) +
+        Math.pow(0.75 - expectedFemaleTimePressureScore, 2)) /
         2,
     );
-    expect(philanthropistResult?.Altruism?.score).toBeCloseTo(
-      expectedPhilanthropistAltruismScore,
+    expect(femaleResult?.Altruism?.score).toBeCloseTo(
+      expectedFemaleAltruismScore,
       5,
     );
-    expect(philanthropistResult?.Altruism?.standardDeviation).toBeCloseTo(
-      expectedPhilanthropistAltruismStdDev,
+    expect(femaleResult?.Altruism?.standardDeviation).toBeCloseTo(
+      expectedFemaleAltruismStdDev,
       5,
     );
-    expect(philanthropistResult?.TimePressure?.score).toBeCloseTo(
-      expectedPhilanthropistTimePressureScore,
+    expect(femaleResult?.TimePressure?.score).toBeCloseTo(
+      expectedFemaleTimePressureScore,
       5,
     );
-    expect(philanthropistResult?.TimePressure?.standardDeviation).toBeCloseTo(
-      expectedPhilanthropistTimePressureStdDev,
+    expect(femaleResult?.TimePressure?.standardDeviation).toBeCloseTo(
+      expectedFemaleTimePressureStdDev,
       5,
     );
+    expect(femaleResult?.Altruism?.scoreWeight).toBe(2);
   });
 });

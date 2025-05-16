@@ -3,15 +3,24 @@ import { ResultElementProps } from "../Recommender/AbstractRecommender";
 import MeanCalculator from "./MeanCalculator";
 
 export default class DataAssembler {
+  /**
+   * Assembles data from an array of normalized results into a structured format.
+   * It calculates the mean, standard deviation, and score weights for each recommender value.
+   * @param resultArray - An array of normalized results, where each result is a mapping of recommender keys to their normalized values.
+   * @returns An object containing the aggregated results, including mean, standard deviation, and score weights for each recommender value.
+   */
   assembleData(
     resultArray: { [key in (typeof RecommenderValues)[number]]?: number }[],
   ): ResultElementProps {
     const resultArrayObject: {
       [key in (typeof RecommenderValues)[number]]: number[];
     } = {};
+
+    // Object to store the count of values (score weights) for each recommender key
     const scoreWeightsObject: {
       [key in (typeof RecommenderValues)[number]]: number;
     } = {};
+    // Object to store the count of values (score weights) for each recommender key
     resultArray.forEach((element) => {
       Object.keys(element).forEach((key) => {
         if (resultArrayObject[key] === undefined) {
@@ -35,6 +44,7 @@ export default class DataAssembler {
       };
     } = {};
 
+    // Iterate through the resultArrayObject to calculate mean, standard deviation, and score weights
     Object.keys(resultArrayObject).forEach((key) => {
       assembledResult[key] = meanCalculator.calculateMeanAndStdDev(
         resultArrayObject[key],

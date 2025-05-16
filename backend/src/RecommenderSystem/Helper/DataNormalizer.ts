@@ -1,4 +1,4 @@
-import { GamificationElements } from "../../types/GamificationElementRepository";
+import { GamificationElement } from "../../types/GamificationElementRepository";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import { LiteratureResultTypeEnum } from "../../types/LiteratureTypeEnum";
 import {
@@ -7,32 +7,44 @@ import {
 } from "../../types/RecommenderObjectTypes";
 
 export default class DataNormalizer {
+  /**
+   * Normalizes literature data based on the provided gamification element and recommender values to a common scale.
+   * It only normalizes the input[key][resultKeys]
+   * The normalization is done in a way that the best value is always 1 and the worst value is always 0.
+   * @param literatureInput - Array of literature elements to normalize.
+   * @param gamificationElementKey - The gamification element to normalize data for.
+   * @param resultParameter - The specific recommender values found in the input as keys to normalize. Usually the values of the recommender system triggering the normalization.
+   * @returns An array of normalized results.
+   */
   normalizeLiteratureData(
-    input: LiteratureElementObject[],
-    key: GamificationElements,
-    resultKeys: (typeof RecommenderValues)[number][],
+    literatureInput: LiteratureElementObject[],
+    gamificationElementKey: GamificationElement,
+    resultParameter: (typeof RecommenderValues)[number][],
   ) {
     const resultArray: {
       [key in (typeof RecommenderValues)[number]]?: number;
     }[] = [];
-    input.forEach((element) => {
+    // Iterate through each literature paper in the literature file.
+    literatureInput.forEach((element) => {
       if (
         element.result &&
-        element.result[key] &&
-        resultKeys.every(
-          (resultKey) => resultKey in (element.result[key] ?? {}),
+        element.result[gamificationElementKey] &&
+        resultParameter.every(
+          (resultKey) =>
+            resultKey in (element.result[gamificationElementKey] ?? {}),
         )
       ) {
         const resultInputs = element.result[
-          key
+          gamificationElementKey
         ] as RecommenderDependendLiteratureResults;
+        // Normalize the data based on the result type in the literature
         switch (element.resultType) {
           case LiteratureResultTypeEnum["PositiveNumber"]:
             resultArray.push(
               this.normalizePositiveDataPaper(
                 resultInputs,
                 element.bestValue,
-                resultKeys,
+                resultParameter,
               ),
             );
             break;
@@ -43,18 +55,18 @@ export default class DataNormalizer {
                 element.bestValue,
                 element.minValue,
                 element.maxValue,
-                resultKeys,
+                resultParameter,
               ),
             );
             break;
           case LiteratureResultTypeEnum["Coefficient"]:
             resultArray.push(
-              this.normalizeCoefficientDataPaper(resultInputs, resultKeys),
+              this.normalizeCoefficientDataPaper(resultInputs, resultParameter),
             );
             break;
           case LiteratureResultTypeEnum["Binary"]:
             resultArray.push(
-              this.normalizeBinaryDataPaper(resultInputs, resultKeys),
+              this.normalizeBinaryDataPaper(resultInputs, resultParameter),
             );
             break;
           default:
@@ -65,20 +77,28 @@ export default class DataNormalizer {
     return resultArray;
   }
 
+  /**
+   * Normalizes positive number data, such as review papers, that only return positive correlations.
+   * The normalization is done in a way that values between 0 and the best value are mapped to a range between 0.5 and 1.
+   * @param resultInput - The raw result data from the literature to normalize.
+   * @param bestValue - The value representing the best result.
+   * @param keys - The keys to iterate over in the resultInput.
+   * @returns A normalized resultInput with values between 0.5 and 1.
+   * @throws Error if the keys are found in the resultInput.
+   */
   normalizePositiveDataPaper(
-    result: RecommenderDependendLiteratureResults,
+    resultInput: RecommenderDependendLiteratureResults,
     bestValue: number,
     keys: (typeof RecommenderValues)[number][],
   ): { [key in (typeof RecommenderValues)[number]]?: number } {
-    // Normiere zwischen 0.5 und 1, wobei 1 der beste Wert ist.
-    // Sinnvoll bei Review Paper, die nur positive "Korrelationen" zurückgeben.
-    // Unterschied zu anderen Normalisierungen: der bestValue ist die Anzahl der Paper die sagen können, dass das Element gut ist für gender x
     if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
       keys.forEach((key) => {
-        if (result[key] !== undefined) {
+        if (resultInput[key] !== undefined) {
           resultElement[key] =
-            result[key] > bestValue ? 1 : 0.5 + (result[key] / bestValue) * 0.5;
+            resultInput[key] > bestValue
+              ? 1
+              : 0.5 + (resultInput[key] / bestValue) * 0.5;
         }
       });
       return resultElement;
@@ -87,29 +107,38 @@ export default class DataNormalizer {
     }
   }
 
+  /**
+   * Normalizes scale-based data, such as results of average user ratings, where the center of the scale is neutral.
+   * @param resultInput - The raw result data from the literature to normalize.
+   * @param bestValue - The value representing the best result (minValue or maxValue).
+   * @param minValue - The minimum value in the scale.
+   * @param maxValue - The maximum value in the scale.
+   * @param keys - The keys to iterate over in the resultInput.
+   * @returns A normalized resultInput with values between 0 and 1.
+   * @throws Error if the keys are found in the resultInput.
+   */
   normalizeScaleDataPaper(
-    result: RecommenderDependendLiteratureResults,
+    resultInput: RecommenderDependendLiteratureResults,
     bestValue: number,
     minValue: number,
     maxValue: number,
     keys: (typeof RecommenderValues)[number][],
   ): { [key in (typeof RecommenderValues)[number]]?: number } {
-    //Normieren zwischen 0 und 1 und schauen, dass 1 der beste Wert ist.
-    // Sinnvoll bei Scalen Paper, die den User nach Bewertung fragen zwischen mag ich garnicht und mag ich sehr.
     if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
       if (bestValue == minValue) {
+        // Invert normalization if bestValue equals minValue
         keys.forEach((key) => {
-          if (result[key] !== undefined) {
+          if (resultInput[key] !== undefined) {
             resultElement[key] =
-              1 - (result[key] - minValue) / (maxValue - minValue);
+              1 - (resultInput[key] - minValue) / (maxValue - minValue);
           }
         });
       } else {
         keys.forEach((key) => {
-          if (result[key] !== undefined) {
+          if (resultInput[key] !== undefined) {
             resultElement[key] =
-              (result[key] - minValue) / (maxValue - minValue);
+              (resultInput[key] - minValue) / (maxValue - minValue);
           }
         });
       }
@@ -119,16 +148,22 @@ export default class DataNormalizer {
     }
   }
 
+  /**
+   * Normalizes coefficient-based data, such as correlation coefficients, where the range is between -1 and 1.
+   * @param resultInput - The raw result data from the literature to normalize.
+   * @param keys - The keys to iterate over in the resultInput.
+   * @returns A shift of the correlation coefficient to a range between 0 and 1.
+   * @throws Error if the keys are found in the resultInput.
+   */
   normalizeCoefficientDataPaper(
-    result: RecommenderDependendLiteratureResults,
+    resultInput: RecommenderDependendLiteratureResults,
     keys: (typeof RecommenderValues)[number][],
   ): { [key in (typeof RecommenderValues)[number]]?: number } {
-    //Normieren zwischen 0 und 1 statt -1 und 1
     if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
       keys.forEach((key) => {
-        if (result[key] !== undefined) {
-          resultElement[key] = (result[key] + 1) / 2;
+        if (resultInput[key] !== undefined) {
+          resultElement[key] = (resultInput[key] + 1) / 2;
         }
       });
       return resultElement;
@@ -137,6 +172,13 @@ export default class DataNormalizer {
     }
   }
 
+  /**
+   * Normalizes binary data, such as presence/absence of an positive effect, where the values are either 0 or 1.
+   * @param resultInput - The raw result data from the literature to normalize.
+   * @param keys - The keys to iterate over in the resultInput.
+   * @returns A normalized resultInput with values beeing 0.5 (for 0) or 0.75 (for 1).
+   * @throws Error if the keys are found in the resultInput.
+   */
   normalizeBinaryDataPaper(
     result: RecommenderDependendLiteratureResults,
     keys: (typeof RecommenderValues)[number][],

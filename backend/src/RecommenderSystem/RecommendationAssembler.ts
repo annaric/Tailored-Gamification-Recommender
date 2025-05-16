@@ -14,7 +14,7 @@ import StandardRecommender from "./Recommender/StandardRecommender";
 /**
  * The `RecommendationAssembler` class is responsible for orchestrating the recommendation process.
  * It combines the results from multiple recommenders, calculates aggregated scores, and sorts the final recommendations.
- * 
+ *
  */
 class RecommendationAssembler {
   /**
@@ -30,55 +30,74 @@ class RecommendationAssembler {
   /**
    * Constructs an instance of the `RecommendationAssembler` class.
    * Initializes the list of recommenders and the mean calculator.
-  */
+   */
   constructor() {
-    const linkToJsonFiles = "./src/RecommenderSystem/Recommender/RecommenderData/";
+    const linkToJsonFiles =
+      "./src/RecommenderSystem/Recommender/RecommenderData/";
     this.recommenderList = [
       {
         recommender: new StandardRecommender(
-          linkToJsonFiles + "GenderBasedRecommender.json", "gender"),
-        recommenderKey: "gender"
+          linkToJsonFiles + "GenderBasedRecommender.json",
+          "gender",
+        ),
+        recommenderKey: "gender",
       },
       {
         recommender: new StandardRecommender(
-          linkToJsonFiles + "PlayerBasedRecommender.json", "player"),
-        recommenderKey: "player"
+          linkToJsonFiles + "PlayerBasedRecommender.json",
+          "player",
+        ),
+        recommenderKey: "player",
       },
       {
         recommender: new StandardRecommender(
-          linkToJsonFiles + "PersonalityBasedRecommender.json", "personality"),
-        recommenderKey: "personality"
+          linkToJsonFiles + "PersonalityBasedRecommender.json",
+          "personality",
+        ),
+        recommenderKey: "personality",
       },
       {
         recommender: new StandardRecommender(
-          linkToJsonFiles + "LATBasedRecommender.json", "learningActivityTask"),
-        recommenderKey: "learningActivityTask"
+          linkToJsonFiles + "LATBasedRecommender.json",
+          "learningActivityTask",
+        ),
+        recommenderKey: "learningActivityTask",
       },
       {
         recommender: new StandardRecommender(
-          linkToJsonFiles + "AgeBasedRecommender.json", "age"),
-        recommenderKey: "age"
+          linkToJsonFiles + "AgeBasedRecommender.json",
+          "age",
+        ),
+        recommenderKey: "age",
       },
       {
         recommender: new StandardRecommender(
-          linkToJsonFiles + "LearningStyleBasedRecommender.json", "learningStyleOfProcessingInformation"),
-        recommenderKey: "learningStyleOfProcessingInformation"
+          linkToJsonFiles + "LearningStyleBasedRecommender.json",
+          "learningStyleOfProcessingInformation",
+        ),
+        recommenderKey: "learningStyleOfProcessingInformation",
       },
       {
         recommender: new StandardRecommender(
-          linkToJsonFiles + "LearningStyleBasedRecommender.json", "learningStyleOfIntuitivity"),
-        recommenderKey: "learningStyleOfIntuitivity"
+          linkToJsonFiles + "LearningStyleBasedRecommender.json",
+          "learningStyleOfIntuitivity",
+        ),
+        recommenderKey: "learningStyleOfIntuitivity",
       },
       {
         recommender: new StandardRecommender(
-          linkToJsonFiles + "LearningStyleBasedRecommender.json", "learningStyleOfPerception"),
-        recommenderKey: "learningStyleOfPerception"
+          linkToJsonFiles + "LearningStyleBasedRecommender.json",
+          "learningStyleOfPerception",
+        ),
+        recommenderKey: "learningStyleOfPerception",
       },
       {
         recommender: new StandardRecommender(
-          linkToJsonFiles + "LearningStyleBasedRecommender.json", "learningStyleOfUnderstanding"),
-        recommenderKey: "learningStyleOfUnderstanding"
-      }
+          linkToJsonFiles + "LearningStyleBasedRecommender.json",
+          "learningStyleOfUnderstanding",
+        ),
+        recommenderKey: "learningStyleOfUnderstanding",
+      },
     ];
     this.meanCalculator = new MeanCalculator();
   }
@@ -88,15 +107,16 @@ class RecommendationAssembler {
    * Calculates aggregated scores, standard deviations, and sorts the final recommendations.
    * @param input - The input object given by the frontend containing a selected recommender value per recommender.
    * @returns A `RecommendationEndResult` object containing the final recommendations that can be send to the frontend.
-  */
+   */
   assembleRecommendations(
     input: RecommendationInputObject,
   ): RecommendationEndResult {
     const result = new RecommendationEndResult();
 
     // Iterate through each recommender to get its recommendation and add its results to the final output
-    this.recommenderList.forEach(recommenderElement => {
-      const resultPerRecommender = recommenderElement.recommender.recommend(input);
+    this.recommenderList.forEach((recommenderElement) => {
+      const resultPerRecommender =
+        recommenderElement.recommender.recommend(input);
       result.elements = result.elements.map((resultElementObject) => {
         resultElementObject = this.addRecommenderScoresToResult(
           resultElementObject,
@@ -107,10 +127,12 @@ class RecommendationAssembler {
       });
     });
 
-    // Calculate the score and standard deviation for each gamification element 
+    // Calculate the score and standard deviation for each gamification element
     result.elements = result.elements.map((resultElementObject) => {
-      resultElementObject = this.calculateMeanStandardDeviation(resultElementObject);
-      resultElementObject = this.setOverallScoreAndStandardDeviation(resultElementObject);
+      resultElementObject =
+        this.calculateMeanStandardDeviation(resultElementObject);
+      resultElementObject =
+        this.setOverallScoreAndStandardDeviation(resultElementObject);
       return resultElementObject;
     });
 

@@ -10,7 +10,7 @@ export const RecommenderAndValuesObject = {
   /**
    * Age-based recommender with possible age ranges.
    */
-  age: ["<20", "20-29", "30-39",  ">39"],
+  age: ["<20", "20-29", "30-39", ">39"],
   /**
    * Player type recommender with possible player archetypes based on Marczewski's HEXAD model.
    */
@@ -46,10 +46,7 @@ export const RecommenderAndValuesObject = {
   /**
    * Learning style recommender for processing information based on Felder and Silverman's model.
    */
-  learningStyleOfProcessingInformation: [
-    "active",
-    "reflective",
-  ],
+  learningStyleOfProcessingInformation: ["active", "reflective"],
   /**
    * Learning style recommender for intuitivity based on Felder and Silverman's model.
    */
@@ -57,18 +54,20 @@ export const RecommenderAndValuesObject = {
   /**
    * Learning style recommender for perception based on Felder and Silverman's model.
    */
-  learningStyleOfPerception: ["visual", "verbal"],  
+  learningStyleOfPerception: ["visual", "verbal"],
   /**
    * Learning style recommender for understanding based on Felder and Silverman's model.
    */
   learningStyleOfUnderstanding: ["sequential", "global"],
-}
+};
 
 /**
  * Represents a flat array of all possible recommender values.
  * Combines all values from `RecommenderAndValuesObject` into a single array.
  */
-export const RecommenderValues = Object.values(RecommenderAndValuesObject).flat();
+export const RecommenderValues = Object.values(
+  RecommenderAndValuesObject,
+).flat();
 
 /**
  * Represents the structure of recommender-dependent literature results.

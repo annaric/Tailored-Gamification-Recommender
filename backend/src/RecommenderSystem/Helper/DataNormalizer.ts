@@ -30,7 +30,8 @@ export default class DataNormalizer {
         element.result &&
         element.result[gamificationElementKey] &&
         resultParameter.every(
-          (resultKey) => resultKey in (element.result[gamificationElementKey] ?? {}),
+          (resultKey) =>
+            resultKey in (element.result[gamificationElementKey] ?? {}),
         )
       ) {
         const resultInputs = element.result[
@@ -90,12 +91,14 @@ export default class DataNormalizer {
     bestValue: number,
     keys: (typeof RecommenderValues)[number][],
   ): { [key in (typeof RecommenderValues)[number]]?: number } {
-       if (keys.length !== 0) {
+    if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
       keys.forEach((key) => {
         if (resultInput[key] !== undefined) {
           resultElement[key] =
-            resultInput[key] > bestValue ? 1 : 0.5 + (resultInput[key] / bestValue) * 0.5;
+            resultInput[key] > bestValue
+              ? 1
+              : 0.5 + (resultInput[key] / bestValue) * 0.5;
         }
       });
       return resultElement;

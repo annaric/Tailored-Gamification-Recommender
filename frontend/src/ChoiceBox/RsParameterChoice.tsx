@@ -62,7 +62,7 @@ function RsParameterChoice({
 
   return (
     <div className="rs-parameter-selection-box">
-       {/* Header section with a checkbox to enable/disable the parameter */}
+      {/* Header section with a checkbox to enable/disable the parameter */}
       <div className="rs-choice-header">
         <input
           type="checkbox"
@@ -95,7 +95,7 @@ function RsParameterChoice({
         ))}
       </div>
 
-       {/* Display the currently selected parameter value */}
+      {/* Display the currently selected parameter value */}
       <p className="rs-selected">Selected: {rsParameter || "None"}</p>
     </div>
   );

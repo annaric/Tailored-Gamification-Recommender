@@ -3,7 +3,7 @@ import { LiteratureResultTypeEnum } from "./LiteratureTypeEnum";
 import { RecommenderDependendLiteratureResults } from "./RecommenderObjectTypes";
 
 /**
- * Represents the structure of the literature element object, 
+ * Represents the structure of the literature element object,
  * which the json files in the RecommenderData folder are based on.
  */
 export class LiteratureElementObject {

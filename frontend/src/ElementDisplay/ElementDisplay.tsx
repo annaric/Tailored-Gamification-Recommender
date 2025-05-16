@@ -86,7 +86,7 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
   /**
    * Constructs the backend URL for the element's image.
    */
-  const backendImageUrl = 'http://localhost:3050/images/' + imageSrc;
+  const backendImageUrl = "http://localhost:3050/images/" + imageSrc;
 
   return (
     <div className="element-display">
@@ -105,14 +105,14 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
           {!(score.overallScore === undefined) && (
             <span
               className={`score ${
-              ((Number(score.overallScore.toFixed(3))) * 2) - 1 > 0.1
-                ? "score-green"
-                : ((Number(score.overallScore.toFixed(3))) * 2) - 1 < -0.1
-                ? "score-red"
-                : "score-yellow"
+                Number(score.overallScore.toFixed(3)) * 2 - 1 > 0.1
+                  ? "score-green"
+                  : Number(score.overallScore.toFixed(3)) * 2 - 1 < -0.1
+                    ? "score-red"
+                    : "score-yellow"
               }`}
             >
-              Overall Score: {(((Number(score.overallScore)) * 2) - 1).toFixed(3)}
+              Overall Score: {(Number(score.overallScore) * 2 - 1).toFixed(3)}
             </span>
           )}
 
@@ -159,7 +159,7 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
                     :
                   </span>
                   <span className="standard-deviation">
-                    Score: {((((Number(score.scores[key])) * 2) - 1).toFixed(3)) || 0}
+                    Score: {(Number(score.scores[key]) * 2 - 1).toFixed(3) || 0}
                   </span>
                   <span className="standard-deviation">
                     Standard Deviation:{" "}

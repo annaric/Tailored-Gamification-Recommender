@@ -11,7 +11,10 @@ describe("Test StandardRecommender update Algorithm", () => {
   let recommender: StandardRecommender;
 
   beforeEach(() => {
-    recommender = new StandardRecommender("./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json", "gender");
+    recommender = new StandardRecommender(
+      "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
+      "gender",
+    );
   });
 
   afterEach(() => {
@@ -391,8 +394,11 @@ describe("Test StandardRecommender update Algorithm", () => {
         return mockReadJsonFileReturnValue.literature;
       });
 
-    recommender = new StandardRecommender("./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json", "gender");
- 
+    recommender = new StandardRecommender(
+      "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
+      "gender",
+    );
+
     const assembleDataSpy = jest.spyOn(DataAssembler.prototype, "assembleData");
     const normalizeScaleDataPaperSpy = jest.spyOn(
       DataNormalizer.prototype,
@@ -402,8 +408,11 @@ describe("Test StandardRecommender update Algorithm", () => {
       DataNormalizer.prototype,
       "normalizeBinaryDataPaper",
     );
-    
-    recommender = new StandardRecommender("./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json", "gender");
+
+    recommender = new StandardRecommender(
+      "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
+      "gender",
+    );
     const recommendSpy = jest.spyOn(recommender, "recommend");
 
     //recommender.updateAlgorithm();

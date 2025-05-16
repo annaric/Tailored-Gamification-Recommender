@@ -48,11 +48,8 @@ export enum GamificationElementDetail {
  * Array of all gamification element keys.
  * This is useful for iterating over all gamification elements.
  */
-export const GamificationElementArray: Array<
-  keyof typeof GamificationElement
-> = Object.keys(GamificationElement) as Array<
-  keyof typeof GamificationElement
->;
+export const GamificationElementArray: Array<keyof typeof GamificationElement> =
+  Object.keys(GamificationElement) as Array<keyof typeof GamificationElement>;
 
 /**
  * Class representing a gamification element object.
@@ -87,7 +84,12 @@ export class GamificationElementObject {
     this.imageSrc = imageSrc == "" ? `${elementName}.png` : imageSrc;
     this.elementName = elementName;
     // Set the details, defaulting to the description from GamificationElementDetail if not provided
-    this.details = details == "" ? GamificationElementDetail[elementName as keyof typeof GamificationElementDetail] : details;
+    this.details =
+      details == ""
+        ? GamificationElementDetail[
+            elementName as keyof typeof GamificationElementDetail
+          ]
+        : details;
     this.score = score;
     this.standardDeviation = standardDeviation;
     this.scoreWeight = scoreWeight;

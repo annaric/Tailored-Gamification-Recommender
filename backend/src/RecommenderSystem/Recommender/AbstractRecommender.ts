@@ -1,6 +1,12 @@
 import { GamificationElement } from "../../types/GamificationElementRepository";
-import { RecommendationInputObject, RecommenderResults } from "../../types/RecommendationObjectTypes";
-import { RecommenderValues, RecommenderAndValuesObject } from "../../types/RecommenderObjectTypes";
+import {
+  RecommendationInputObject,
+  RecommenderResults,
+} from "../../types/RecommendationObjectTypes";
+import {
+  RecommenderValues,
+  RecommenderAndValuesObject,
+} from "../../types/RecommenderObjectTypes";
 
 export type ResultElementProps = {
   [key in (typeof RecommenderValues)[number]]?: {
@@ -39,7 +45,10 @@ abstract class AbstractRecommender {
    * @param src - The source file path for the recommender's data.
    * @param recommenderKey - The key identifying the recommender in the system.
    */
-  constructor(src: string, recommenderKey: keyof typeof RecommenderAndValuesObject) {
+  constructor(
+    src: string,
+    recommenderKey: keyof typeof RecommenderAndValuesObject,
+  ) {
     this.src = src;
     this.recommenderKey = recommenderKey || "";
     this.resultDictonary = this.updateAlgorithm();
@@ -51,7 +60,10 @@ abstract class AbstractRecommender {
    * @param input - The input object given by the frontend containing a selected recommender value per recommender.
    * @returns The results of the recommendation process or `undefined` if no results are generated.
    */
-  abstract recommend(input: RecommendationInputObject, key: string): RecommenderResults | undefined;
+  abstract recommend(
+    input: RecommendationInputObject,
+    key: string,
+  ): RecommenderResults | undefined;
 
   /**
    * Abstract method to update the algorithm's internal result dictionary.

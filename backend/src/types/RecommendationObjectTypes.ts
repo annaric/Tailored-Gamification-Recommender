@@ -58,7 +58,6 @@ export class RecommendationScoreObject {
   }
 }
 
-
 /**
  * Represents the score weight object for a recommendation.
  * Contains individual weights for each recommender and the sum of all weights.
@@ -83,7 +82,7 @@ export class RecommendationScoreWeightObject {
 
 /**
  * Represents the standard deviation object for a recommendation.
- * Contains individual standard deviations for each recommender, the overall standard deviation, 
+ * Contains individual standard deviations for each recommender, the overall standard deviation,
  * and the mean standard deviation of all individual standard deviations.
  */
 export class RecommendationStandardDeviationObject {

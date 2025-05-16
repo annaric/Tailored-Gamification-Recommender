@@ -24,11 +24,11 @@ function App() {
    */
   const [validRecommendation, setValidRecommendation] =
     useState<boolean>(false);
-    
+
   /**
    * State to store the user-selected parameters for the recommendation request.
    * Each key corresponds to a recommender type, and the value is the selected option.
-  */
+   */
   const [selectedParameters, setSelectedParameters] = useState<{
     [key: string]: string;
   }>({});

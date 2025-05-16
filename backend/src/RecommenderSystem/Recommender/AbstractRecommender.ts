@@ -17,16 +17,17 @@ export type ResultDictonary = {
 abstract class AbstractRecommender {
   src: string;
   recommenderKey: keyof typeof RecommenderValuesObject;
+  resultDictonary: ResultDictonary;
 
   constructor(src: string, recommenderKey: keyof typeof RecommenderValuesObject) {
     this.src = src;
     this.recommenderKey = recommenderKey || "";
-    this.updateAlgorithm();
+    this.resultDictonary = this.updateAlgorithm();
   }
 
   abstract recommend(input: RecommendationInputObject, key: string): RecommenderResults | undefined;
 
-  abstract updateAlgorithm(): void;
+  abstract updateAlgorithm(): ResultDictonary;
 }
 
 export default AbstractRecommender;

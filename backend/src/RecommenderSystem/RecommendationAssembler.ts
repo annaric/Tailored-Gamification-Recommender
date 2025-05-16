@@ -7,13 +7,14 @@ import {
   RecommendationEndResult,
   RecommenderResults,
 } from "../types/RecommendationObjectTypes";
+import { RecommenderValuesObject } from "../types/RecommenderObjectTypes";
 import MeanCalculator from "./Helper/MeanCalculator";
 import StandardRecommender from "./Recommender/StandardRecommender";
 
 class RecommendationAssembler {
   recommenderList: {
     recommender: StandardRecommender;
-    recommenderKey: string;
+    recommenderKey: keyof typeof RecommenderValuesObject;
   }[];
   meanCalculator: MeanCalculator;
 
@@ -76,7 +77,7 @@ class RecommendationAssembler {
     this.recommenderList.forEach(recommenderElement => {
       const resultPerRecommender = recommenderElement.recommender.recommend(input);
       result.elements = result.elements.map((resultElementObject) => {
-        resultElementObject = this.addRecommenderScorestoResult(
+        resultElementObject = this.addRecommenderScoresToResult(
           resultElementObject,
           resultPerRecommender,
           recommenderElement.recommenderKey,
@@ -98,7 +99,7 @@ class RecommendationAssembler {
     return result;
   }
 
-  addRecommenderScorestoResult(
+  addRecommenderScoresToResult(
     element: GamificationElementObject,
     recommendation: RecommenderResults | undefined,
     key: string,
@@ -110,7 +111,6 @@ class RecommendationAssembler {
     const elementKey =
       adaptedElement.elementName as keyof typeof GamificationElements;
     if (!(recommendation === undefined) && recommendation[elementKey]) {
-      console.log("recommentation not undefined");
       adaptedElement.score.scores[key] = recommendation[elementKey].score;
       adaptedElement.standardDeviation.standardDeviations[key] =
         recommendation[elementKey].standardDeviation;
@@ -155,7 +155,7 @@ class RecommendationAssembler {
         overallCalculation.standardDeviation;
       adaptedElement.scoreWeight.sumOfWeights = overallCalculation.sumOfWeights;
     } else {
-      adaptedElement.score.overallScore = 0;
+      adaptedElement.score.overallScore = 0.5;
       adaptedElement.standardDeviation.overallStandardDeviation = 0;
       adaptedElement.scoreWeight.sumOfWeights = 0;
     }

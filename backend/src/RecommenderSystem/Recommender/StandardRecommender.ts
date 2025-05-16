@@ -13,8 +13,7 @@ import {
   import JsonFileReader from "../Helper/JsonFileReader";
   import DataAssembler from "../Helper/DataAssembler";
   
-  const ResultDictonary: ResultDictonary = {};
-  
+ 
   class StandardRecommender extends AbstractRecommender {
     constructor(src: string, recommenderKey: keyof typeof RecommenderValuesObject) {
       super(src, recommenderKey);
@@ -25,30 +24,31 @@ import {
         console.log("input not valid");
         return undefined;
       }
-      if (ResultDictonary === undefined) {
+      if (this.resultDictonary === undefined) {
         throw new Error("Result dictionary is not defined");
       }
       const result: RecommenderResults = {};
       GamificationElementArray.forEach((key) => {
-        if (ResultDictonary[key] && ResultDictonary[key][input[this.recommenderKey]!]) {
+        if (this.resultDictonary[key] && this.resultDictonary[key][input[this.recommenderKey]!]) {
           result[key] = {
-            score: ResultDictonary[key][input[this.recommenderKey]!]!.score,
+            score: this.resultDictonary[key][input[this.recommenderKey]!]!.score,
             standardDeviation:
-              ResultDictonary[key][input[this.recommenderKey]!]!.standardDeviation,
-            scoreWeight: ResultDictonary[key][input[this.recommenderKey]!]!.scoreWeight,
+            this.resultDictonary[key][input[this.recommenderKey]!]!.standardDeviation,
+            scoreWeight: this.resultDictonary[key][input[this.recommenderKey]!]!.scoreWeight,
           };
         }
       });
       return result;
     }
   
-    updateAlgorithm() {
+    updateAlgorithm(): ResultDictonary {
       const jsonFileReader = new JsonFileReader();
       const dataNormalizer = new DataNormalizer();
       const dataAssembler = new DataAssembler();
       const recommenderBasedRecommenderData: LiteratureElementObject[] =
         jsonFileReader.readJsonFile(this.src);
-
+      const resultDictonary: ResultDictonary = {};
+      
       if (!( this.recommenderKey in RecommenderValuesObject)) {
             throw new Error(
             `Recommender key ${this.recommenderKey} is not valid. Valid keys are: ${Object.keys(
@@ -64,11 +64,12 @@ import {
           RecommenderValuesObject[this.recommenderKey],
         );
         if (resultArrayForOneElement.length !== 0) {
-          ResultDictonary[key] = dataAssembler.assembleData(
+          resultDictonary[key] = dataAssembler.assembleData(
             resultArrayForOneElement,
           );
         }
       });
+      return resultDictonary;
     }
   }
   

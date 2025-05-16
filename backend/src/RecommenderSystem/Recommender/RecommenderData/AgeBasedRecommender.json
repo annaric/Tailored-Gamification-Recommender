@@ -130,7 +130,7 @@
       "paperType": "Mean scores of social influence strategies and group difference significance test (the bold values indicate significant difference between two groups); young = age 18-24. old = age >24; artificially extended to the age groups of the recommender.",
       "resultType": "Scale",
       "bestValue": 9,
-      "minValue": 0,
+      "minValue": 1,
       "maxValue": 9,
       "result": {
         "Incentive": {

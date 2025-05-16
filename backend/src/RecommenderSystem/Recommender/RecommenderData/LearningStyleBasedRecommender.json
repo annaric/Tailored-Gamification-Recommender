@@ -7,7 +7,7 @@
       "resultType": "PositiveNumber",
       "bestValue": 2,
       "minValue": 0,
-      "maxValue": 2,
+      "maxValue": 3,
       "result": {
         "Incentive": {
           "active": 1.0,

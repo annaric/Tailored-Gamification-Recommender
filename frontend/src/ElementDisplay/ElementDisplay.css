@@ -51,11 +51,13 @@
 .score-green {
   color: green;
 }
+
 .score-red {
   color: red;
 } 
+
 .score-yellow {
-  color: rgb(248, 212, 10);
+  color: rgb(248 212 10);
 }
 
 .standard-deviation {

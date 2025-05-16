@@ -4,7 +4,11 @@ import {
   RecommendationStandardDeviationObject,
 } from "./RecommendationObjectTypes";
 
-export enum GamificationElements {
+/**
+ * Enum representing the different gamification elements that exist in the system.
+ * Each key corresponds to a gamification element, and the value is its name.
+ */
+export enum GamificationElement {
   Altruism = "Altruism",
   Assistance = "Assistance",
   Challenge = "Challenge",
@@ -20,7 +24,11 @@ export enum GamificationElements {
   VirtualEconomy = "VirtualEconomy",
 }
 
-export enum GamificationElementDetails {
+/**
+ * Enum representing detailed descriptions for each gamification element.
+ * Each key corresponds to a gamification element, and the value is its description.
+ */
+export enum GamificationElementDetail {
   Altruism = "Altruism allows you to make a meaningful contribution to other users or the app itself by sharing knowledge or items with others or helping to improve the system.",
   Assistance = "Assistance supports you in your tasks through, for example, guides, power-ups and boosters, the ability to retry a task, or free mistakes.",
   Challenge = "Challenges strategically challenge you through, for example, riddles, puzzles, difficult tasks, or so-called boss fights that test all the knowledge you have gained so far.",
@@ -36,12 +44,20 @@ export enum GamificationElementDetails {
   VirtualEconomy = "Virtual economy allows you to buy, trade, or gift virtual items using virtually earned currency.",
 }
 
+/**
+ * Array of all gamification element keys.
+ * This is useful for iterating over all gamification elements.
+ */
 export const GamificationElementArray: Array<
-  keyof typeof GamificationElements
-> = Object.keys(GamificationElements) as Array<
-  keyof typeof GamificationElements
+  keyof typeof GamificationElement
+> = Object.keys(GamificationElement) as Array<
+  keyof typeof GamificationElement
 >;
 
+/**
+ * Class representing a gamification element object.
+ * Contains properties such as the element's name, image source, details, score, standard deviation, and score weight.
+ */
 export class GamificationElementObject {
   imageSrc: string;
   elementName: string;
@@ -50,17 +66,28 @@ export class GamificationElementObject {
   standardDeviation: RecommendationStandardDeviationObject;
   scoreWeight: RecommendationScoreWeightObject;
 
+  /**
+   * Constructs an instance of the `GamificationElementObject` class.
+   * @param elementName - The name of the gamification element.
+   * @param imageSrc - The image source for the gamification element (optional).
+   * @param details - The detailed description of the gamification element (optional).
+   * @param score - The score object for the gamification element (optional).
+   * @param standardDeviation - The standard deviation object for the gamification element (optional).
+   * @param scoreWeight - The score weight object for the gamification element (optional).
+   */
   constructor(
-    imageSrc: string,
     elementName: string,
-    details: string,
+    imageSrc: string = "",
+    details: string = "",
     score: RecommendationScoreObject = new RecommendationScoreObject(),
     standardDeviation: RecommendationStandardDeviationObject = new RecommendationStandardDeviationObject(),
     scoreWeight: RecommendationScoreWeightObject = new RecommendationScoreWeightObject(),
   ) {
-    this.imageSrc = imageSrc;
+    // Set the image source, defaulting to a file named after the element if not provided
+    this.imageSrc = imageSrc == "" ? `${elementName}.png` : imageSrc;
     this.elementName = elementName;
-    this.details = details;
+    // Set the details, defaulting to the description from GamificationElementDetail if not provided
+    this.details = details == "" ? GamificationElementDetail[elementName as keyof typeof GamificationElementDetail] : details;
     this.score = score;
     this.standardDeviation = standardDeviation;
     this.scoreWeight = scoreWeight;

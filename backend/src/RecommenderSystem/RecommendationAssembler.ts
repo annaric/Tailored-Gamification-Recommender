@@ -1,23 +1,36 @@
 import {
   GamificationElementObject,
-  GamificationElements,
+  GamificationElement,
 } from "../types/GamificationElementRepository";
 import {
   RecommendationInputObject,
   RecommendationEndResult,
   RecommenderResults,
 } from "../types/RecommendationObjectTypes";
-import { RecommenderValuesObject } from "../types/RecommenderObjectTypes";
+import { RecommenderAndValuesObject } from "../types/RecommenderObjectTypes";
 import MeanCalculator from "./Helper/MeanCalculator";
 import StandardRecommender from "./Recommender/StandardRecommender";
 
+/**
+ * The `RecommendationAssembler` class is responsible for orchestrating the recommendation process.
+ * It combines the results from multiple recommenders, calculates aggregated scores, and sorts the final recommendations.
+ * 
+ */
 class RecommendationAssembler {
+  /**
+   * A list of recommenders used in the recommendation process.
+   * Each recommender is paired with its corresponding key.
+   */
   recommenderList: {
     recommender: StandardRecommender;
-    recommenderKey: keyof typeof RecommenderValuesObject;
+    recommenderKey: keyof typeof RecommenderAndValuesObject;
   }[];
   meanCalculator: MeanCalculator;
 
+  /**
+   * Constructs an instance of the `RecommendationAssembler` class.
+   * Initializes the list of recommenders and the mean calculator.
+  */
   constructor() {
     const linkToJsonFiles = "./src/RecommenderSystem/Recommender/RecommenderData/";
     this.recommenderList = [
@@ -70,10 +83,18 @@ class RecommendationAssembler {
     this.meanCalculator = new MeanCalculator();
   }
 
+  /**
+   * Assembles recommendations by combining results from all recommenders.
+   * Calculates aggregated scores, standard deviations, and sorts the final recommendations.
+   * @param input - The input object given by the frontend containing a selected recommender value per recommender.
+   * @returns A `RecommendationEndResult` object containing the final recommendations that can be send to the frontend.
+  */
   assembleRecommendations(
     input: RecommendationInputObject,
   ): RecommendationEndResult {
     const result = new RecommendationEndResult();
+
+    // Iterate through each recommender to get its recommendation and add its results to the final output
     this.recommenderList.forEach(recommenderElement => {
       const resultPerRecommender = recommenderElement.recommender.recommend(input);
       result.elements = result.elements.map((resultElementObject) => {
@@ -86,12 +107,14 @@ class RecommendationAssembler {
       });
     });
 
+    // Calculate the score and standard deviation for each gamification element 
     result.elements = result.elements.map((resultElementObject) => {
       resultElementObject = this.calculateMeanStandardDeviation(resultElementObject);
       resultElementObject = this.setOverallScoreAndStandardDeviation(resultElementObject);
       return resultElementObject;
     });
 
+    // Sort the elements by their overall score in descending order
     result.elements = result.elements.sort((a, b) => {
       return b.score.overallScore - a.score.overallScore;
     });
@@ -99,6 +122,13 @@ class RecommendationAssembler {
     return result;
   }
 
+  /**
+   * Adds scores, standard deviations, and weights from a recommender to a gamification element.
+   * @param element - The gamification element in the overall result to update.
+   * @param recommendation - The recommendation results from the recommender.
+   * @param key - The key identifying the recommender.
+   * @returns The updated gamification element with added score and standard deviation to the scores and standard deviations arrays.
+   */
   addRecommenderScoresToResult(
     element: GamificationElementObject,
     recommendation: RecommenderResults | undefined,
@@ -109,7 +139,7 @@ class RecommendationAssembler {
     }
     const adaptedElement = element;
     const elementKey =
-      adaptedElement.elementName as keyof typeof GamificationElements;
+      adaptedElement.elementName as keyof typeof GamificationElement;
     if (!(recommendation === undefined) && recommendation[elementKey]) {
       adaptedElement.score.scores[key] = recommendation[elementKey].score;
       adaptedElement.standardDeviation.standardDeviations[key] =
@@ -120,6 +150,11 @@ class RecommendationAssembler {
     return adaptedElement;
   }
 
+  /**
+   * Calculates the mean standard deviation of all standard deciations for a gamification element.
+   * @param element - The gamification element in the overall result to update.
+   * @returns The updated gamification element with the mean standard deviation of all standard deviations.
+   */
   calculateMeanStandardDeviation(element: GamificationElementObject) {
     const adaptedElement = element;
     if (
@@ -138,6 +173,11 @@ class RecommendationAssembler {
     return adaptedElement;
   }
 
+  /**
+   * Calculates the overall score and standard deviation for a gamification element based on the scores, standard deviations, and weights arrays.
+   * @param element - The gamification element in the overall result to update.
+   * @returns The updated gamification element with the overall score and standard deviation.
+   */
   setOverallScoreAndStandardDeviation(element: GamificationElementObject) {
     const adaptedElement = element;
     if (!(Object.keys(adaptedElement.score.scores).length === 0)) {

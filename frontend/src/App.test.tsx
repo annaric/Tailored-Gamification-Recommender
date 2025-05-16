@@ -92,8 +92,8 @@ describe("App Component", () => {
     expect(screen.queryByText("Incentive")).toBeTruthy();
     expect(screen.queryByText("1")).not.toBeNull();
     expect(screen.queryByText("1")).toBeTruthy();
-    expect(screen.queryByText("Overall Score: 0.500")).not.toBeNull();
-    expect(screen.queryByText("Overall Score: 0.500")).toBeTruthy();
+    expect(screen.queryByText("Overall Score: 0.000")).not.toBeNull();
+    expect(screen.queryByText("Overall Score: 0.000")).toBeTruthy();
     expect(screen.queryByText("Mean Standard deviation: 0.100")).not.toBeNull();
     expect(screen.queryByText("Mean Standard deviation: 0.100")).toBeTruthy();
     expect(

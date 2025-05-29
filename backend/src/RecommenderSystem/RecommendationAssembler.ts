@@ -3,11 +3,11 @@ import {
   GamificationElement,
 } from "../types/GamificationElementRepository";
 import {
-  RecommendationInputObject,
-  RecommendationEndResult,
+  RecommendationInputDTO,
+  RecommendationResultDTO,
   RecommenderResults,
 } from "../types/RecommendationObjectTypes";
-import { RecommenderAndValuesObject } from "../types/RecommenderObjectTypes";
+import { RecommenderAndValuesObject } from "../types/RecommenderRepository";
 import MeanCalculator from "./Helper/MeanCalculator";
 import StandardRecommender from "./Recommender/StandardRecommender";
 
@@ -109,9 +109,9 @@ class RecommendationAssembler {
    * @returns A `RecommendationEndResult` object containing the final recommendations that can be send to the frontend.
    */
   assembleRecommendations(
-    input: RecommendationInputObject,
-  ): RecommendationEndResult {
-    const result = new RecommendationEndResult();
+    input: RecommendationInputDTO,
+  ): RecommendationResultDTO {
+    const result = new RecommendationResultDTO();
 
     // Iterate through each recommender to get its recommendation and add its results to the final output
     this.recommenderList.forEach((recommenderElement) => {

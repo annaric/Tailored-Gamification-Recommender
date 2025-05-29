@@ -1,4 +1,4 @@
-import { RecommenderValues } from "../../types/RecommenderObjectTypes";
+import { RecommenderValues } from "../../types/RecommenderRepository";
 import { ResultElementProps } from "../Recommender/AbstractRecommender";
 import MeanCalculator from "./MeanCalculator";
 

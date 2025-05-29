@@ -1,5 +1,5 @@
 import {
-  RecommendationInputObject,
+  RecommendationInputDTO,
   RecommenderResults,
 } from "../../types/RecommendationObjectTypes";
 import AbstractRecommender, { ResultDictonary } from "./AbstractRecommender";
@@ -8,7 +8,7 @@ import {
   GamificationElementArray,
   GamificationElement,
 } from "../../types/GamificationElementRepository";
-import { RecommenderAndValuesObject } from "../../types/RecommenderObjectTypes";
+import { RecommenderAndValuesObject } from "../../types/RecommenderRepository";
 import DataNormalizer from "../Helper/DataNormalizer";
 import JsonFileReader from "../Helper/JsonFileReader";
 import DataAssembler from "../Helper/DataAssembler";
@@ -37,7 +37,7 @@ class StandardRecommender extends AbstractRecommender {
    * @returns A dictionary of recommendations for each gamification element, or `undefined` if input[this.recommenderKey] is not valid.
    * @throws An error if the result dictionary is not defined.
    */
-  recommend(input: RecommendationInputObject): RecommenderResults | undefined {
+  recommend(input: RecommendationInputDTO): RecommenderResults | undefined {
     if (
       !(this.recommenderKey in input) ||
       !input[this.recommenderKey] ||

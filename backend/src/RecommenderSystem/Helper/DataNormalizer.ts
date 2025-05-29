@@ -4,7 +4,7 @@ import { LiteratureResultTypeEnum } from "../../types/LiteratureTypeEnum";
 import {
   RecommenderDependendLiteratureResults,
   RecommenderValues,
-} from "../../types/RecommenderObjectTypes";
+} from "../../types/RecommenderRepository";
 
 export default class DataNormalizer {
   /**

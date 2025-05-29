@@ -6,7 +6,7 @@ import {
 import {
   RecommenderValues,
   RecommenderAndValuesObject,
-} from "./RecommenderObjectTypes";
+} from "./RecommenderRepository";
 
 /**
  * Represents the result type of each recommender.
@@ -24,7 +24,7 @@ export type RecommenderResults = {
  * Represents the input type received from the frontend.
  * Maps each recommender key to its selected value.
  */
-export type RecommendationInputObject = {
+export type RecommendationInputDTO = {
   [key in keyof typeof RecommenderAndValuesObject]?: (typeof RecommenderAndValuesObject)[key][number];
 };
 
@@ -111,7 +111,7 @@ export class RecommendationStandardDeviationObject {
  * Represents the final recommendation result.
  * Contains an array of gamification elements with their associated scores, weights, and standard deviations.
  */
-export class RecommendationEndResult {
+export class RecommendationResultDTO {
   elements: GamificationElementObject[] = [];
 
   /**

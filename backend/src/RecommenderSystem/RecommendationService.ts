@@ -1,9 +1,9 @@
 import RecommendationAssembler from "./RecommendationAssembler";
 import {
-  RecommendationInputObject,
-  RecommendationEndResult,
+  RecommendationInputDTO,
+  RecommendationResultDTO,
 } from "../types/RecommendationObjectTypes";
-import { RecommenderAndValuesObject } from "../types/RecommenderObjectTypes";
+import { RecommenderAndValuesObject } from "../types/RecommenderRepository";
 
 /**
  * The `RecommendationService` class acts as a service layer for the recommendation system.
@@ -29,7 +29,7 @@ class RecommendationService {
    * @param input - The input object containing recommendation parameters.
    * @returns A `RecommendationEndResult` object containing the final recommendations.
    */
-  recommend(input: RecommendationInputObject): RecommendationEndResult {
+  recommend(input: RecommendationInputDTO): RecommendationResultDTO {
     return this.recommendationAssembler.assembleRecommendations(input);
   }
 

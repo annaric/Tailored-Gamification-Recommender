@@ -3,8 +3,8 @@ import cors from "cors";
 import "dotenv/config";
 import RecommendationService from "./RecommenderSystem/RecommendationService";
 import {
-  RecommendationInputObject,
-  RecommendationEndResult,
+  RecommendationInputDTO,
+  RecommendationResultDTO,
 } from "./types/RecommendationObjectTypes";
 import path from "path";
 
@@ -23,7 +23,7 @@ app.listen(PORT, () => {
 });
 
 app.post("/recommendation", (req: Request, res: Response) => {
-  const input: RecommendationInputObject = req.body;
+  const input: RecommendationInputDTO = req.body;
   console.log("input", input);
 
   if (!input || Object.keys(input).length === 0) {
@@ -31,7 +31,7 @@ app.post("/recommendation", (req: Request, res: Response) => {
     res.status(400).send("Input parameter is required");
   }
 
-  const recommendation: RecommendationEndResult =
+  const recommendation: RecommendationResultDTO =
     recommendationService.recommend(input);
   res.json({ recommendation: recommendation });
 });

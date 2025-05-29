@@ -1,6 +1,6 @@
 import { GamificationElement } from "./GamificationElementRepository";
 import { LiteratureResultTypeEnum } from "./LiteratureTypeEnum";
-import { RecommenderDependendLiteratureResults } from "./RecommenderObjectTypes";
+import { RecommenderDependendLiteratureResults } from "./RecommenderRepository";
 
 /**
  * Represents the structure of the literature element object,

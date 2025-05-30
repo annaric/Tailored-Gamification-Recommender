@@ -1,259 +1,65 @@
 {
   "literature": [
     {
-      "title": "Automating Gamification Personalization to the User and Beyond",
-      "author": "Rodrigues et al.",
-      "paperType": "Descision Tree ablesen (laut paper ist gender nicht so relevant). game elemente auch nicht so im Fokus",
-      "resultType": "Binary",
-      "bestValue": 1,
-      "minValue": 0,
-      "maxValue": 1,
-      "result": {
-        "Feedback": {
-          "female": 1.0,
-          "male": 1.0
-        },
-        "Immersion": {
-          "female": 0.0,
-          "male": 1.0
-        },
-        "Competition": {
-          "female": 1.0,
-          "male": 1.0
-        },
-        "Guild": {
-          "female": 0.0,
-          "male": 1.0
-        },
-        "Altruism": {
-          "female": 0.0,
-          "male": 1.0
-        }
-      }
-    },
-    {
-      "title": "Elements of Gameful Design Emerging from User Preferences",
-      "author": "Tondello et al.",
-      "paperType": "Bivariate Correlation (how strong is the association between two variables); Values between 1 and -1. Mean",
-      "resultType": "Coefficient",
-      "bestValue": 1,
-      "minValue": -1,
-      "maxValue": 1,
-      "result": {
-        "Incentive": {
-          "female": 0.233,
-          "male": -0.112
-        },
-        "Progression": {
-          "female": 0.165,
-          "male": -0.073
-        },
-        "Customization": {
-          "female": 0.311,
-          "male": -0.136
-        },
-        "Immersion": {
-          "female": 0.369,
-          "male": -0.076
-        },
-        "Competition": {
-          "female": -0.366,
-          "male": 0.205
-        },
-        "Guild": {
-          "female": -0.366,
-          "male": 0.205
-        },
-        "Assistance": {
-          "female": 0.628,
-          "male": -0.287
-        },
-        "Challenge": {
-          "female": 0.02,
-          "male": -0.016
-        },
-        "Chance": {
-          "female": 0.02,
-          "male": -0.016
-        },
-        "Altruism": {
-          "female": -0.246,
-          "male": 0.13
-        }
-      }
-    },
-    {
-      "title": "Gamification in Education\u0096 Learners\u0092 Choice of Game Design Elements for Increased Learning Motivation (Manuscript)",
-      "author": "Maraquardt et al.",
-      "paperType": "Priorit\u00e4ten abh\u00e4ngig vom Geschlecht (Prio 1 bedeutet h\u00f6chste Pr\u00e4ferenz)",
+      "title": "Tailored Gamification",
+      "author": "Ricker",
+      "paperType": "Mean",
       "resultType": "Scale",
-      "bestValue": 1,
-      "minValue": 1,
-      "maxValue": 10,
-      "result": {
-        "Incentive": {
-          "female": 3.57,
-          "male": 2.56
-        },
-        "Progression": {
-          "female": 1.4,
-          "male": 1.3
-        },
-        "Feedback": {
-          "female": 2.0,
-          "male": 4.0
-        },
-        "Customization": {
-          "female": 10.0,
-          "male": 10.0
-        },
-        "Immersion": {
-          "female": 6.0,
-          "male": 8.0
-        },
-        "Competition": {
-          "female": 8.0,
-          "male": 7.0
-        },
-        "VirtualEconomy": {
-          "female": 9.0,
-          "male": 9.0
-        }
-      }
-    },
-    {
-      "title": "Investigation of the Persuasiveness of Social Influence in Persuasive Technology and the Effect of Age and Gender",
-      "author": "Oyibo et al.",
-      "paperType": "Mean scores of social influence strategies and group difference significance test (the bold values indicate significant difference between two groups)",
-      "resultType": "Scale",
-      "bestValue": 9,
-      "minValue": 1,
-      "maxValue": 9,
-      "result": {
-        "Incentive": {
-          "female": 6.44,
-          "male": 7.03
-        },
-        "Competition": {
-          "female": 5.43,
-          "male": 5.91
-        },
-        "Guild": {
-          "female": 5.44,
-          "male": 5.56
-        }
-      }
-    },
-    {
-      "title": "Tailored Gamification to Educational Technologies",
-      "author": "Oliveira et al.",
-      "paperType": "textuell bzw bildlich genannt (\u00dcberschneidungen bzw Pr\u00e4ferenzen - zwei bubbles); zwei versionen: considering 3/5 Elements; fett gedruckt: genderspezifisch; rest: \u00fcberschneidung. Die Berechnung des Scores ergibt sich. ob die Elemente unter den Top 3 oder Top 5 waren und ob mehrere Elemente genannt werden: Wenn in Top 3 = 2 . Top 5 = 1 (und dann jeweils einmal jedes Element in der besten Top Liste gerechnet zusammen addiert. wenn pro Gamification element mehrere elemente)",
-      "resultType": "PositiveNumber",
-      "bestValue": 6,
-      "minValue": 0,
-      "maxValue": 6,
-      "result": {
-        "Incentive": {
-          "female": 3.0,
-          "male": 2.0
-        },
-        "Progression": {
-          "female": 1.0,
-          "male": 2.0
-        },
-        "Customization": {
-          "female": 1.0,
-          "male": 2.0
-        },
-        "Competition": {
-          "female": 2.0,
-          "male": 1.0
-        }
-      }
-    },
-    {
-      "title": "Tailored gamification: A review of literature",
-      "author": "Klock et al.",
-      "paperType": "Number of Papers that suggest game element",
-      "resultType": "PositiveNumber",
-      "bestValue": 7,
-      "minValue": 0,
-      "maxValue": 7,
-      "result": {
-        "Incentive": {
-          "female": 6.0,
-          "male": 3.0
-        },
-        "Progression": {
-          "female": 3.0,
-          "male": 1.0
-        },
-        "Feedback": {
-          "female": 2.0,
-          "male": 2.0
-        },
-        "Customization": {
-          "female": 3.0,
-          "male": 2.0
-        },
-        "Immersion": {
-          "female": 1.0,
-          "male": 1.0
-        },
-        "Competition": {
-          "female": 5.0,
-          "male": 4.0
-        },
-        "Guild": {
-          "female": 2.0,
-          "male": 4.0
-        },
-        "VirtualEconomy": {
-          "female": 2.0,
-          "male": 2.0
-        },
-        "Assistance": {
-          "female": 1.0,
-          "male": 0.0
-        },
-        "Challenge": {
-          "female": 1.0,
-          "male": 1.0
-        },
-        "Chance": {
-          "female": 1.0,
-          "male": 0.0
-        },
-        "Altruism": {
-          "female": 2.0,
-          "male": 2.0
-        }
-      }
-    },
-    {
-      "title": "Using Gamification to Enhance User Motivation: The Influence of Gender and Age",
-      "author": "Jent et al.",
-      "paperType": "Tabelle mit Motivation in Prozent; Eigene Zusammenrechnung basierend  auf der Tabelle des Papers (Je niedriger der Wert. desto beliebter; very motivated bis not motivated eingeteilt wie schulnoten)",
-      "resultType": "Scale",
-      "bestValue": 1,
+      "bestValue": 5,
       "minValue": 1,
       "maxValue": 5,
       "result": {
-        "Incentive": {
-          "female": 2.935,
-          "male": 2.825
+        "Altruism": {
+          "female": 3.59,
+          "male": 3.59
         },
-        "Progression": {
-          "female": 2.64,
-          "male": 2.53
+        "Assistance": {
+          "female": 3.43,
+          "male": 3.05
         },
-        "Immersion": {
-          "female": 2.77,
-          "male": 2.72
+        "Chance": {
+          "female": 3.41,
+          "male": 3.06
+        },
+        "Challenge": {
+          "female": 4.11,
+          "male": 4.06
         },
         "Competition": {
-          "female": 3.14,
-          "male": 3.04
+          "female": 3.65,
+          "male": 3.83
+        },
+        "Guild": {
+          "female": 3.6,
+          "male": 3.53
+        },
+        "Customization": {
+          "female": 3.57,
+          "male": 3.35
+        },
+        "Feedback": {
+          "female": 3.79,
+          "male": 3.53
+        },
+        "Immersion": {
+          "female": 3.53,
+          "male": 3.5
+        },
+        "Incentive": {
+          "female": 3.91,
+          "male": 3.85
+        },
+        "Progression": {
+          "female": 4.19,
+          "male": 4.13
+        },
+        "TimePressure": {
+          "female": 2.99,
+          "male": 2.95
+        },
+        "VirtualEconomy": {
+          "female": 3.21,
+          "male": 3.33
         }
       }
     }

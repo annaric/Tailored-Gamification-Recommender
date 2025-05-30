@@ -1,144 +1,117 @@
 {
   "literature": [
     {
-      "title": "Automating Gamification Personalization to the User and Beyond",
-      "author": "Rodrigues et al.",
-      "paperType": "Tabelle 4 Auswertung (First = 1. Second = 2. Third Option = 3); 21 Elemente insgesammt im Paper. maxZahl hier:13 (wenn keine Bewertung dann 6.5)",
+      "title": "Tailored Gamification",
+      "author": "Ricker",
+      "paperType": "Mean Values",
       "resultType": "Scale",
-      "bestValue": 1,
+      "bestValue": 3,
       "minValue": 1,
-      "maxValue": 13,
+      "maxValue": 3,
       "result": {
-        "Incentive": {
-          "analyze": 1.3,
-          "apply": 1.0,
-          "create": 6.5,
-          "evaluate": 1.3,
-          "remember": 1.0,
-          "understand": 6.5
-        },
-        "Progression": {
-          "analyze": 2.0,
-          "apply": 2.3,
-          "create": 1.3,
-          "evaluate": 2.0,
-          "remember": 2.3,
-          "understand": 2.3
-        },
-        "Customization": {
-          "analyze": 6.5,
-          "apply": 6.5,
-          "create": 6.5,
-          "evaluate": 6.5,
-          "remember": 6.5,
-          "understand": 1.0
-        }
-      }
-    },
-    {
-      "title": "Mapping learning and game mechanics for serious games analysis: Mapping learning and game mechanics",
-      "author": "Arnab et al.",
-      "paperType": "Tabelle mit Game bzw Learning mechanics (eher serious games aber weitgehende \u00fcbertragung)",
-      "resultType": "Binary",
-      "bestValue": 1,
-      "minValue": 0,
-      "maxValue": 1,
-      "result": {
-        "TimePressure": {
-          "analyze": 0.0,
-          "apply": 1.0,
-          "create": 0.0,
-          "evaluate": 1.0,
-          "remember": 0.0,
-          "understand": 1.0
-        },
-        "Incentive": {
-          "analyze": 0.0,
-          "apply": 0.0,
-          "create": 0.0,
-          "evaluate": 1.0,
-          "remember": 0.0,
-          "understand": 0.0
-        },
-        "Progression": {
-          "analyze": 0.0,
-          "apply": 1.0,
-          "create": 0.0,
-          "evaluate": 0.0,
-          "remember": 0.0,
-          "understand": 0.0
-        },
-        "Feedback": {
-          "analyze": 1.0,
-          "apply": 0.0,
-          "create": 1.0,
-          "evaluate": 1.0,
-          "remember": 1.0,
-          "understand": 0.0
-        },
-        "Customization": {
-          "analyze": 0.0,
-          "apply": 0.0,
-          "create": 1.0,
-          "evaluate": 0.0,
-          "remember": 0.0,
-          "understand": 0.0
-        },
-        "Immersion": {
-          "analyze": 1.0,
-          "apply": 1.0,
-          "create": 1.0,
-          "evaluate": 0.0,
-          "remember": 1.0,
-          "understand": 1.0
-        },
-        "Competition": {
-          "analyze": 0.0,
-          "apply": 1.0,
-          "create": 0.0,
-          "evaluate": 0.0,
-          "remember": 0.0,
-          "understand": 0.0
-        },
-        "Guild": {
-          "analyze": 1.0,
-          "apply": 1.0,
-          "create": 0.0,
-          "evaluate": 1.0,
-          "remember": 1.0,
-          "understand": 0.0
-        },
-        "VirtualEconomy": {
-          "analyze": 0.0,
-          "apply": 1.0,
-          "create": 1.0,
-          "evaluate": 1.0,
-          "remember": 1.0,
-          "understand": 0.0
+        "Altruism": {
+          "analyze": 2.1489898989899,
+          "apply": 2.07901234567901,
+          "create": 2.1540404040404,
+          "evaluate": 2.30478589420655,
+          "remember": 2.09090909090909,
+          "understand": 2.19753086419753
         },
         "Assistance": {
-          "analyze": 0.0,
-          "apply": 0.0,
-          "create": 0.0,
-          "evaluate": 0.0,
-          "remember": 0.0,
-          "understand": 1.0
+          "analyze": 2.44117647058824,
+          "apply": 2.30099502487562,
+          "create": 2.38177339901478,
+          "evaluate": 2.33415233415233,
+          "remember": 2.19957081545064,
+          "understand": 2.45913461538462
         },
         "Challenge": {
-          "analyze": 0.0,
-          "apply": 0.0,
-          "create": 1.0,
-          "evaluate": 0.0,
-          "remember": 0.0,
-          "understand": 0.0
+          "analyze": 2.2039312039312,
+          "apply": 2.51842751842752,
+          "create": 2.25062034739454,
+          "evaluate": 2.03960396039604,
+          "remember": 2.45043103448276,
+          "understand": 2.2200956937799
         },
-        "Altruism": {
-          "analyze": 0.0,
-          "apply": 0.0,
-          "create": 1.0,
-          "evaluate": 0.0,
-          "remember": 0.0,
-          "understand": 0.0
+        "Competition": {
+          "analyze": 1.93366093366093,
+          "apply": 2.34782608695652,
+          "create": 2.01481481481481,
+          "evaluate": 1.83088235294118,
+          "remember": 2.21120689655172,
+          "understand": 1.88782816229117
+        },
+        "Guild": {
+          "analyze": 2.47804878048781,
+          "apply": 2.27764127764128,
+          "create": 2.28465346534653,
+          "evaluate": 2.45410628019324,
+          "remember": 2.11587982832618,
+          "understand": 2.44893111638955
+        },
+        "Feedback": {
+          "analyze": 2.51094890510949,
+          "apply": 2.47699757869249,
+          "create": 2.47160493827161,
+          "evaluate": 2.45631067961165,
+          "remember": 2.34475374732334,
+          "understand": 2.50354609929078
+        },
+        "Immersion": {
+          "analyze": 2.13432835820896,
+          "apply": 2.01237623762376,
+          "create": 2.24937655860349,
+          "evaluate": 2.00248138957816,
+          "remember": 2.0323275862069,
+          "understand": 2.25609756097561
+        },
+        "Incentive": {
+          "analyze": 2.42857142857143,
+          "apply": 2.60243902439024,
+          "create": 2.48039215686275,
+          "evaluate": 2.35941320293399,
+          "remember": 2.58686440677966,
+          "understand": 2.43942992874109
+        },
+        "Progression": {
+          "analyze": 2.65196078431373,
+          "apply": 2.69733656174334,
+          "create": 2.54814814814815,
+          "evaluate": 2.57881773399015,
+          "remember": 2.80645161290323,
+          "understand": 2.65227817745803
+        },
+        "TimePressure": {
+          "analyze": 1.46778042959427,
+          "apply": 1.82082324455206,
+          "create": 1.46973365617433,
+          "evaluate": 1.49878934624697,
+          "remember": 1.62970711297071,
+          "understand": 1.38862559241706
+        },
+        "Customization": {
+          "analyze": 2.0,
+          "apply": 2.0,
+          "create": 2.0,
+          "evaluate": 2.0,
+          "remember": 2.0,
+          "understand": 2.0
+        },
+        "VirtualEconomy": {
+          "analyze": 2.0,
+          "apply": 2.0,
+          "create": 2.0,
+          "evaluate": 2.0,
+          "remember": 2.0,
+          "understand": 2.0
+        },
+        "Chance": {
+          "analyze": 2.0,
+          "apply": 2.0,
+          "create": 2.0,
+          "evaluate": 2.0,
+          "remember": 2.0,
+          "understand": 2.0
         }
       }
     }

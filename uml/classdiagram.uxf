@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
   <help_text>Space for diagram notes</help_text>
-  <zoom_level>8</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>456</x>
-      <y>104</y>
-      <w>384</w>
-      <h>80</h>
+      <x>504</x>
+      <y>210</y>
+      <w>288</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Recomendation Service
 --
@@ -21,10 +21,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>528</x>
-      <y>24</y>
-      <w>152</w>
-      <h>24</h>
+      <x>558</x>
+      <y>150</y>
+      <w>114</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>RecommenderSystemUI</panel_attributes>
     <additional_attributes/>
@@ -32,10 +32,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>136</x>
-      <y>448</y>
-      <w>168</w>
-      <h>208</h>
+      <x>264</x>
+      <y>468</y>
+      <w>126</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 GamificationElement
@@ -58,10 +58,10 @@ Customization</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>120</x>
-      <y>184</y>
-      <w>248</w>
-      <h>40</h>
+      <x>252</x>
+      <y>270</y>
+      <w>186</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>RecommendationResultDTO
 --
@@ -73,10 +73,10 @@ Customization</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>96</x>
-      <y>296</y>
-      <w>280</w>
-      <h>112</h>
+      <x>234</x>
+      <y>354</y>
+      <w>210</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>GamificationElementObject
 --
@@ -91,10 +91,10 @@ Customization</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>496</x>
-      <y>416</y>
-      <w>272</w>
-      <h>104</h>
+      <x>522</x>
+      <y>438</y>
+      <w>258</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
 Recommender
@@ -103,31 +103,31 @@ Recommender
 - recommenderKey: RecommenderAndValuesObject
 - resultDictonary: ResultDictonary
 --
-+ recommend(): RecommenderResults
++ recommend(RecommendationInputDTO): RecommenderResults
 + updateAlgorithm(): ResultDictonary</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
-      <y>352</y>
-      <w>104</w>
-      <h>256</h>
+      <x>480</x>
+      <y>396</y>
+      <w>96</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
 m2=1..n
 creates</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;290.0;110.0;290.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;290.0;140.0;290.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>216</x>
-      <y>216</y>
-      <w>56</w>
-      <h>96</h>
+      <x>324</x>
+      <y>294</y>
+      <w>42</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
@@ -138,10 +138,10 @@ creates </panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>592</x>
-      <y>40</y>
-      <w>48</w>
-      <h>80</h>
+      <x>606</x>
+      <y>162</y>
+      <w>36</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=-
 REST</panel_attributes>
@@ -150,10 +150,10 @@ REST</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>192</y>
-      <w>136</w>
-      <h>72</h>
+      <x>432</x>
+      <y>276</y>
+      <w>102</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 creates</panel_attributes>
@@ -162,10 +162,10 @@ creates</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>424</x>
-      <y>248</y>
-      <w>456</w>
-      <h>112</h>
+      <x>480</x>
+      <y>318</y>
+      <w>342</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>RecommendationAssembler
 --
@@ -181,10 +181,10 @@ creates</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>592</x>
-      <y>176</y>
-      <w>40</w>
-      <h>88</h>
+      <x>606</x>
+      <y>264</y>
+      <w>30</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
@@ -195,10 +195,10 @@ has </panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>920</x>
-      <y>232</y>
-      <w>272</w>
-      <h>56</h>
+      <x>852</x>
+      <y>306</y>
+      <w>204</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>RecommenderRepository
 --
@@ -209,10 +209,10 @@ has </panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>832</x>
-      <y>144</y>
-      <w>368</w>
-      <h>104</h>
+      <x>786</x>
+      <y>240</y>
+      <w>276</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 gets Recommender from</panel_attributes>
@@ -221,10 +221,10 @@ gets Recommender from</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>208</x>
-      <y>400</y>
-      <w>48</w>
-      <h>64</h>
+      <x>318</x>
+      <y>432</y>
+      <w>36</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 uses</panel_attributes>
@@ -233,10 +233,10 @@ uses</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>936</x>
-      <y>408</y>
-      <w>256</w>
-      <h>136</h>
+      <x>852</x>
+      <y>504</y>
+      <w>192</w>
+      <h>102</h>
     </coordinates>
     <panel_attributes>LiteratureElementObject
 --
@@ -253,22 +253,22 @@ uses</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
-      <y>440</y>
-      <w>192</w>
-      <h>32</h>
+      <x>708</x>
+      <y>558</y>
+      <w>156</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 uses</panel_attributes>
-    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>952</x>
-      <y>96</y>
-      <w>192</w>
-      <h>40</h>
+      <x>876</x>
+      <y>204</y>
+      <w>144</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>RecommendationInputDTO
 --
@@ -278,10 +278,10 @@ uses</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>520</x>
-      <y>560</y>
-      <w>200</w>
-      <h>40</h>
+      <x>564</x>
+      <y>552</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>StandardRecommender
 --
@@ -292,10 +292,10 @@ uses</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>832</x>
-      <y>104</y>
-      <w>136</w>
-      <h>32</h>
+      <x>786</x>
+      <y>210</y>
+      <w>102</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 receives</panel_attributes>
@@ -304,22 +304,22 @@ receives</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
-      <y>512</y>
-      <w>64</w>
-      <h>64</h>
+      <x>630</x>
+      <y>510</y>
+      <w>48</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 extends</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>984</x>
-      <y>568</y>
-      <w>144</w>
-      <h>80</h>
+      <x>888</x>
+      <y>414</y>
+      <w>108</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>LiteratureResultTypeEnum
 --
@@ -332,21 +332,21 @@ Scale</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1048</x>
-      <y>536</y>
-      <w>24</w>
+      <x>936</x>
+      <y>468</y>
+      <w>18</w>
       <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>784</x>
-      <y>488</y>
-      <w>128</w>
-      <h>72</h>
+      <x>732</x>
+      <y>582</y>
+      <w>96</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>updateAlgorithm 
 builds resultDictonary 
@@ -358,13 +358,13 @@ LiteratureElementObject</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>448</y>
-      <w>24</w>
-      <h>56</h>
+      <x>774</x>
+      <y>564</y>
+      <w>18</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

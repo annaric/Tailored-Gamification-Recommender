@@ -1,6 +1,148 @@
 {
   "literature": [
     {
+      "title": "Elements of Gameful Design Emerging from User Preferences",
+      "author": "Tondello et al.",
+      "paperType": "P<0.05 = 1; p < 0.01 = 2",
+      "resultType": "PositiveNumber",
+      "bestValue": 3,
+      "minValue": 0,
+      "maxValue": 3,
+      "result": {
+        "Incentive": {
+          "achiever": 0,
+          "disruptor": 0,
+          "freeSpirit": 0,
+          "philanthropist": 0,
+          "player": 2,
+          "socializer": 0
+        },
+        "Progression": {
+          "achiever": 1,
+          "disruptor": 0,
+          "freeSpirit": 0,
+          "philanthropist": 1,
+          "player": 0,
+          "socializer": 0
+        },
+        "Immersion": {
+          "achiever": 2,
+          "disruptor": 1,
+          "freeSpirit": 2,
+          "philanthropist": 1,
+          "player": 0,
+          "socializer": 0
+        },
+        "Competition": {
+          "achiever": 2,
+          "disruptor": 0,
+          "freeSpirit": 0,
+          "philanthropist": 0,
+          "player": 2,
+          "socializer": 2
+        },
+        "Guild": {
+          "achiever": 2,
+          "disruptor": 0,
+          "freeSpirit": 0,
+          "philanthropist": 0,
+          "player": 2,
+          "socializer": 2
+        },
+        "Assistance": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 1.0
+        },
+        "Challenge": {
+          "achiever": 2.0,
+          "disruptor": 1.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 2.0,
+          "socializer": 0.0
+        },
+        "Chance": {
+          "achiever": 2.0,
+          "disruptor": 1.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 2.0,
+          "socializer": 0.0
+        },
+        "Altruism": {
+          "achiever": 1.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 2.0,
+          "player": 0.0,
+          "socializer": 2.0
+        }
+      }
+    },
+    {
+      "title": "Factors to Consider for Tailored Gamification",
+      "author": "Hallifax et al.",
+      "paperType": "P<0.05 = 1; p < 0.01 = 2",
+      "resultType": "PositiveNumber",
+      "bestValue": 3,
+      "minValue": 0,
+      "maxValue": 3,
+      "result": {
+        "Incentive": {
+          "achiever": 1,
+          "disruptor": 0,
+          "freeSpirit": 1,
+          "philanthropist": 0,
+          "player": 0,
+          "socializer": 0
+        },
+        "Progression": {
+          "achiever": 0,
+          "disruptor": 1,
+          "freeSpirit": 0,
+          "philanthropist": 0,
+          "player": 0,
+          "socializer": 1
+        },
+        "Immersion": {
+          "achiever": 0,
+          "disruptor": 0,
+          "freeSpirit": 0,
+          "philanthropist": 0,
+          "player": 0,
+          "socializer": 2
+        },
+        "Competition": {
+          "achiever": 0,
+          "disruptor": 1,
+          "freeSpirit": 0,
+          "philanthropist": 0,
+          "player": 0,
+          "socializer": 0
+        },
+        "Guild": {
+          "achiever": 0,
+          "disruptor": 0,
+          "freeSpirit": 0,
+          "philanthropist": 0,
+          "player": 0,
+          "socializer": 3
+        },
+        "VirtualEconomy": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 1.0
+        }
+      }
+    },
+    {
       "title": "Tailored gamification: A review of literature",
       "author": "Klock",
       "paperType": "Review",
@@ -26,20 +168,20 @@
           "socializer": 1
         },
         "Feedback": {
-          "achiever": 3,
-          "disruptor": 1,
-          "freeSpirit": 3,
-          "philanthropist": 1,
-          "player": 3,
-          "socializer": 3
+          "achiever": 3.0,
+          "disruptor": 1.0,
+          "freeSpirit": 3.0,
+          "philanthropist": 1.0,
+          "player": 3.0,
+          "socializer": 3.0
         },
         "Customization": {
-          "achiever": 1,
-          "disruptor": 3,
-          "freeSpirit": 4,
-          "philanthropist": 1,
-          "player": 1,
-          "socializer": 2
+          "achiever": 1.0,
+          "disruptor": 3.0,
+          "freeSpirit": 4.0,
+          "philanthropist": 1.0,
+          "player": 1.0,
+          "socializer": 2.0
         },
         "Immersion": {
           "achiever": 8,
@@ -66,44 +208,135 @@
           "socializer": 9
         },
         "VirtualEconomy": {
-          "achiever": 3,
-          "disruptor": 1,
-          "freeSpirit": 0,
-          "philanthropist": 4,
-          "player": 7,
-          "socializer": 1
+          "achiever": 3.0,
+          "disruptor": 1.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 4.0,
+          "player": 7.0,
+          "socializer": 1.0
         },
         "Assistance": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 1.0
+        },
+        "Challenge": {
+          "achiever": 5.0,
+          "disruptor": 2.0,
+          "freeSpirit": 2.0,
+          "philanthropist": 2.0,
+          "player": 2.0,
+          "socializer": 1.0
+        },
+        "Chance": {
+          "achiever": 1.0,
+          "disruptor": 1.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 1.0,
+          "socializer": 1.0
+        },
+        "Altruism": {
+          "achiever": 1.0,
+          "disruptor": 2.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 1.0,
+          "player": 1.0,
+          "socializer": 1.0
+        }
+      }
+    },
+    {
+      "title": "The Gamification User Types Hexad Scale ",
+      "author": "Tondello et al.",
+      "paperType": "P<0.05 = 1; p < 0.01 = 2",
+      "resultType": "PositiveNumber",
+      "bestValue": 3,
+      "minValue": 0,
+      "maxValue": 3,
+      "result": {
+        "Incentive": {
+          "achiever": 2,
+          "disruptor": 0,
+          "freeSpirit": 0,
+          "philanthropist": 0,
+          "player": 2,
+          "socializer": 0
+        },
+        "Progression": {
+          "achiever": 2,
+          "disruptor": 0,
+          "freeSpirit": 0,
+          "philanthropist": 0,
+          "player": 2,
+          "socializer": 0
+        },
+        "Feedback": {
+          "achiever": 2.0,
+          "disruptor": 0.0,
+          "freeSpirit": 2.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 0.0
+        },
+        "Customization": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 2.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 0.0
+        },
+        "Immersion": {
+          "achiever": 0,
+          "disruptor": 0,
+          "freeSpirit": 2,
+          "philanthropist": 0,
+          "player": 0,
+          "socializer": 0
+        },
+        "Competition": {
+          "achiever": 0,
+          "disruptor": 2,
+          "freeSpirit": 0,
+          "philanthropist": 0,
+          "player": 2,
+          "socializer": 2
+        },
+        "Guild": {
           "achiever": 0,
           "disruptor": 0,
           "freeSpirit": 0,
           "philanthropist": 0,
           "player": 0,
-          "socializer": 1
+          "socializer": 2
+        },
+        "VirtualEconomy": {
+          "achiever": 0.0,
+          "disruptor": 0.0,
+          "freeSpirit": 0.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 0.0
         },
         "Challenge": {
-          "achiever": 5,
-          "disruptor": 2,
-          "freeSpirit": 2,
-          "philanthropist": 2,
-          "player": 2,
-          "socializer": 1
-        },
-        "Chance": {
-          "achiever": 1,
-          "disruptor": 1,
-          "freeSpirit": 0,
-          "philanthropist": 0,
-          "player": 1,
-          "socializer": 1
+          "achiever": 2.0,
+          "disruptor": 2.0,
+          "freeSpirit": 2.0,
+          "philanthropist": 0.0,
+          "player": 2.0,
+          "socializer": 0.0
         },
         "Altruism": {
-          "achiever": 1,
-          "disruptor": 2,
-          "freeSpirit": 0,
-          "philanthropist": 1,
-          "player": 1,
-          "socializer": 1
+          "achiever": 0.0,
+          "disruptor": 2.0,
+          "freeSpirit": 2.0,
+          "philanthropist": 0.0,
+          "player": 0.0,
+          "socializer": 0.0
         }
       }
     }

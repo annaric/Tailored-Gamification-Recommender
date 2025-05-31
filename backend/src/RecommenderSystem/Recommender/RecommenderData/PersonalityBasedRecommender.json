@@ -1,6 +1,130 @@
 {
   "literature": [
     {
+      "title": "Elements of Gameful Design Emerging from User Preferences",
+      "author": "Tondello et al.",
+      "paperType": "P<0.05 = 1; p < 0.01 = 2",
+      "resultType": "PositiveNumber",
+      "bestValue": 3,
+      "minValue": 0,
+      "maxValue": 3,
+      "result": {
+        "Incentive": {
+          "agreeableness": 0.0,
+          "conscientiousness": 0.0,
+          "extraversion": 0.0,
+          "neuroticism": 1.0,
+          "openness": 0.0
+        },
+        "Customization": {
+          "agreeableness": 0.0,
+          "conscientiousness": 0.0,
+          "extraversion": 0.0,
+          "neuroticism": 0.0,
+          "openness": 2.0
+        },
+        "Competition": {
+          "agreeableness": 0,
+          "conscientiousness": 0,
+          "extraversion": 2,
+          "neuroticism": 0,
+          "openness": 0
+        },
+        "Guild": {
+          "agreeableness": 0.0,
+          "conscientiousness": 0.0,
+          "extraversion": 2.0,
+          "neuroticism": 0.0,
+          "openness": 0.0
+        },
+        "Assistance": {
+          "agreeableness": 0.0,
+          "conscientiousness": 0.0,
+          "extraversion": 2.0,
+          "neuroticism": 0.0,
+          "openness": 0.0
+        }
+      }
+    },
+    {
+      "title": "Factors to Consider for Tailored Gamification",
+      "author": "Hallifax et al.",
+      "paperType": "P<0.05 = 1; p < 0.01 = 2",
+      "resultType": "PositiveNumber",
+      "bestValue": 3,
+      "minValue": 0,
+      "maxValue": 3,
+      "result": {
+        "Competition": {
+          "agreeableness": 1,
+          "conscientiousness": 0,
+          "extraversion": 0,
+          "neuroticism": 0,
+          "openness": 0
+        },
+        "Guild": {
+          "agreeableness": 1.0,
+          "conscientiousness": 0.0,
+          "extraversion": 0.0,
+          "neuroticism": 0.0,
+          "openness": 1.0
+        },
+        "VirtualEconomy": {
+          "agreeableness": 0.0,
+          "conscientiousness": 1.0,
+          "extraversion": 0.0,
+          "neuroticism": 0.0,
+          "openness": 0.0
+        }
+      }
+    },
+    {
+      "title": "Personality targeted Gamification A Survey Study on Personality traits and motivational affordances",
+      "author": "Jia et al.",
+      "paperType": "P<0.05 = 1; p < 0.01 = 2",
+      "resultType": "PositiveNumber",
+      "bestValue": 3,
+      "minValue": -1,
+      "maxValue": 3,
+      "result": {
+        "Incentive": {
+          "agreeableness": 0.0,
+          "conscientiousness": 0.0,
+          "extraversion": 1.0,
+          "neuroticism": 3.0,
+          "openness": 0.0
+        },
+        "Progression": {
+          "agreeableness": 0.0,
+          "conscientiousness": 2.0,
+          "extraversion": 1.0,
+          "neuroticism": 1.0,
+          "openness": 0.0
+        },
+        "Customization": {
+          "agreeableness": 0.0,
+          "conscientiousness": 0.0,
+          "extraversion": 0.0,
+          "neuroticism": 1.0,
+          "openness": 1.0
+        },
+        "Competition": {
+          "agreeableness": 0,
+          "conscientiousness": 0,
+          "extraversion": 1,
+          "neuroticism": 0,
+          "openness": 0
+        },
+        "Challenge": {
+          "agreeableness": 1.0,
+          "conscientiousness": 0.0,
+          "extraversion": 0.0,
+          "neuroticism": 0.0,
+          "openness": 0.0
+        }
+      }
+    },
+    {
       "title": "Tailored gamification: A review of literature",
       "author": "Klock et al.",
       "paperType": "Number of Papers that suggest game element (Low and High bedeutet hohe \u00fcbereinstimmung bzw gegenteilige \u00fcbereinstimmung bsp: extroversion (high). introversion (low extroversion))",
@@ -10,39 +134,39 @@
       "maxValue": 5,
       "result": {
         "Incentive": {
-          "agreeableness": 1,
-          "conscientiousness": 0,
-          "extraversion": 4,
-          "neuroticism": 5,
-          "openness": 1
+          "agreeableness": 1.0,
+          "conscientiousness": 0.0,
+          "extraversion": 4.0,
+          "neuroticism": 5.0,
+          "openness": 1.0
         },
         "Progression": {
-          "agreeableness": 0,
-          "conscientiousness": 1,
-          "extraversion": 2,
-          "neuroticism": 2,
-          "openness": 0
+          "agreeableness": 0.0,
+          "conscientiousness": 1.0,
+          "extraversion": 2.0,
+          "neuroticism": 2.0,
+          "openness": 0.0
         },
         "Feedback": {
-          "agreeableness": 2,
-          "conscientiousness": 2,
-          "extraversion": 2,
-          "neuroticism": 0,
-          "openness": -2
+          "agreeableness": 2.0,
+          "conscientiousness": 2.0,
+          "extraversion": 2.0,
+          "neuroticism": 0.0,
+          "openness": -2.0
         },
         "Customization": {
-          "agreeableness": 1,
-          "conscientiousness": 1,
-          "extraversion": 2,
-          "neuroticism": 0,
-          "openness": 1
+          "agreeableness": 1.0,
+          "conscientiousness": 1.0,
+          "extraversion": 2.0,
+          "neuroticism": 0.0,
+          "openness": 1.0
         },
         "Immersion": {
-          "agreeableness": 0,
-          "conscientiousness": 1,
-          "extraversion": 2,
-          "neuroticism": 0,
-          "openness": 0
+          "agreeableness": 0.0,
+          "conscientiousness": 1.0,
+          "extraversion": 2.0,
+          "neuroticism": 0.0,
+          "openness": 0.0
         },
         "Competition": {
           "agreeableness": 1,
@@ -52,46 +176,46 @@
           "openness": -1
         },
         "Guild": {
-          "agreeableness": 1,
-          "conscientiousness": 0,
-          "extraversion": 1,
-          "neuroticism": 0,
-          "openness": -1
+          "agreeableness": 1.0,
+          "conscientiousness": 0.0,
+          "extraversion": 1.0,
+          "neuroticism": 0.0,
+          "openness": -1.0
         },
         "VirtualEconomy": {
-          "agreeableness": 0,
-          "conscientiousness": 0,
-          "extraversion": 0,
-          "neuroticism": 1,
-          "openness": 1
+          "agreeableness": 0.0,
+          "conscientiousness": 0.0,
+          "extraversion": 0.0,
+          "neuroticism": 1.0,
+          "openness": 1.0
         },
         "Assistance": {
-          "agreeableness": 0,
-          "conscientiousness": 0,
-          "extraversion": 1,
-          "neuroticism": 0,
-          "openness": 0
+          "agreeableness": 0.0,
+          "conscientiousness": 0.0,
+          "extraversion": 1.0,
+          "neuroticism": 0.0,
+          "openness": 0.0
         },
         "Challenge": {
-          "agreeableness": 1,
-          "conscientiousness": 0,
-          "extraversion": 0,
-          "neuroticism": 0,
-          "openness": 1
+          "agreeableness": 1.0,
+          "conscientiousness": 0.0,
+          "extraversion": 0.0,
+          "neuroticism": 0.0,
+          "openness": 1.0
         },
         "Chance": {
-          "agreeableness": 0,
-          "conscientiousness": 0,
-          "extraversion": 1,
-          "neuroticism": 0,
-          "openness": 0
+          "agreeableness": 0.0,
+          "conscientiousness": 0.0,
+          "extraversion": 1.0,
+          "neuroticism": 0.0,
+          "openness": 0.0
         },
         "Altruism": {
-          "agreeableness": 0,
-          "conscientiousness": 0,
-          "extraversion": 1,
-          "neuroticism": 0,
-          "openness": 0
+          "agreeableness": 0.0,
+          "conscientiousness": 0.0,
+          "extraversion": 1.0,
+          "neuroticism": 0.0,
+          "openness": 0.0
         }
       }
     }

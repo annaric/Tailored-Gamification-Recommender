@@ -4,3 +4,18 @@ Tailored gamification: A review of literature;Klock et al.;Number of Papers that
 Tailored gamification: A review of literature;Klock et al.;Number of Papers that suggest game element (Low and High bedeutet hohe übereinstimmung bzw gegenteilige übereinstimmung bsp: extroversion (high), introversion (low extroversion));PositiveNumber;5;-2;5;extraversion;;4;2;2;2;2;7;1;0;1;0;1;1
 Tailored gamification: A review of literature;Klock et al.;Number of Papers that suggest game element (Low and High bedeutet hohe übereinstimmung bzw gegenteilige übereinstimmung bsp: extroversion (high), introversion (low extroversion));PositiveNumber;5;-2;5;neuroticism;;5;2;0;0;0;1;0;1;0;0;0;0
 Tailored gamification: A review of literature;Klock et al.;Number of Papers that suggest game element (Low and High bedeutet hohe übereinstimmung bzw gegenteilige übereinstimmung bsp: extroversion (high), introversion (low extroversion));PositiveNumber;5;-2;5;openness;;1;0;-2;1;0;-1;-1;1;0;1;0;0
+Elements of Gameful Design Emerging from User Preferences;Tondello et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;0;3;agreeableness;;0;;;0;;0;0;;0;;;
+Elements of Gameful Design Emerging from User Preferences;Tondello et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;0;3;conscientiousness;;0;;;0;;0;0;;0;;;
+Elements of Gameful Design Emerging from User Preferences;Tondello et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;0;3;extraversion;;0;;;0;;2;2;;2;;;
+Elements of Gameful Design Emerging from User Preferences;Tondello et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;0;3;neuroticism;;1;;;0;;0;0;;0;;;
+Elements of Gameful Design Emerging from User Preferences;Tondello et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;0;3;openness;;0;;;2;;0;0;;0;;;
+Factors to Consider for Tailored Gamification;Hallifax et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;0;3;agreeableness;;;;;;;1;1;0;;;;
+Factors to Consider for Tailored Gamification;Hallifax et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;0;3;conscientiousness;;;;;;;0;0;1;;;;
+Factors to Consider for Tailored Gamification;Hallifax et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;0;3;extraversion;;;;;;;0;0;0;;;;
+Factors to Consider for Tailored Gamification;Hallifax et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;0;3;neuroticism;;;;;;;0;0;0;;;;
+Factors to Consider for Tailored Gamification;Hallifax et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;0;3;openness;;;;;;;0;1;0;;;;
+Personality targeted Gamification A Survey Study on Personality traits and motivational affordances;Jia et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;-1;3;agreeableness;;0;0;;0;;0;;;;1;;
+Personality targeted Gamification A Survey Study on Personality traits and motivational affordances;Jia et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;-1;3;conscientiousness;;0;2;;0;;0;;;;0;;
+Personality targeted Gamification A Survey Study on Personality traits and motivational affordances;Jia et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;-1;3;extraversion;;1;1;;0;;1;;;;0;;
+Personality targeted Gamification A Survey Study on Personality traits and motivational affordances;Jia et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;-1;3;neuroticism;;3;1;;1;;0;;;;0;;
+Personality targeted Gamification A Survey Study on Personality traits and motivational affordances;Jia et al.;"P<0.05 = 1; p < 0.01 = 2";PositiveNumber;3;-1;3;openness;;0;0;;1;;0;;;;0;;

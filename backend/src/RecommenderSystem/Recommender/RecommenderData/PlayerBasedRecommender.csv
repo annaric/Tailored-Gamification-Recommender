@@ -1,7 +1,7 @@
 title;author;paperType;resultType;bestValue;minValue;maxValue;parameterValue;Incentive;Competition;Customization;TimePressure;Progression;Feedback;VirtualEconomy;Guild;Assistance;Chance;Immersion;Challenge;Altruism
-TailoredGamification1;Ricker;Mean;Scale;5;1;5;achiever;3.81;3.83;3.48;3.16;4.25;3.66;3.32;3.48;3.08;3.07;3.39;4.32;3.56
-TailoredGamification1;Ricker;Mean;Scale;5;1;5;disruptor;3.68;3.68;3.37;2.58;3.53;3.68;3.16;3.68;3.05;3.16;3.37;3.32;3.68
-TailoredGamification1;Ricker;Mean;Scale;5;1;5;freeSpirit;3.97;3.72;3.54;3.0;4.16;3.66;3.49;3.57;3.31;3.34;3.6;4.11;3.75
-TailoredGamification1;Ricker;Mean;Scale;5;1;5;philanthropist;3.92;3.75;3.44;2.95;4.2;3.76;3.22;3.65;3.34;3.25;3.55;4.12;3.74
-TailoredGamification1;Ricker;Mean;Scale;5;1;5;player;4.18;3.82;3.53;3.02;4.23;3.66;3.58;3.62;3.47;3.62;3.54;4.06;3.6
-TailoredGamification1;Ricker;Mean;Scale;5;1;5;socializer;3.9;3.9;3.48;3.04;4.23;3.73;3.43;3.87;3.29;3.53;3.49;4.25;3.66
+TailoredGamification1;Ricker;Mean;Scale;5;1;5;achiever;3,82;3,81;3,33;3,26;4,22;3,82;3,13;3,43;3,09;2,95;3,37;4,32;3,51
+TailoredGamification1;Ricker;Mean;Scale;5;1;5;disruptor;2,86;3,71;3,14;2,57;3,57;3,43;3,14;3,14;3,14;2,29;3,29;3,43;3,29
+TailoredGamification1;Ricker;Mean;Scale;5;1;5;freeSpirit;3,87;3,71;3,29;3,1;4,2;3,71;3,25;3,32;3,25;2,99;3,49;4,16;3,61
+TailoredGamification1;Ricker;Mean;Scale;5;1;5;philanthropist;3,84;3,74;3,34;3,06;4,24;3,84;3,02;3,59;3,22;2,99;3,5;4,23;3,65
+TailoredGamification1;Ricker;Mean;Scale;5;1;5;player;4,03;3,92;3,2;3,19;4,27;3,72;3,36;3,42;3,31;3,33;3,48;4,3;3,33
+TailoredGamification1;Ricker;Mean;Scale;5;1;5;socializer;3,91;3,95;3,31;3,16;4,2;3,77;3,24;3,73;3,28;3,43;3,45;4,37;3,6

@@ -10,56 +10,56 @@
       "maxValue": 5,
       "result": {
         "Altruism": {
-          "female": 3.59,
-          "male": 3.59
+          "female": 3.5,
+          "male": 3.5
         },
         "Assistance": {
-          "female": 3.43,
-          "male": 3.05
+          "female": 3.41,
+          "male": 3.0
         },
         "Chance": {
-          "female": 3.41,
-          "male": 3.06
+          "female": 3.26,
+          "male": 2.85
         },
         "Challenge": {
-          "female": 4.11,
-          "male": 4.06
+          "female": 4.28,
+          "male": 4.18
         },
         "Competition": {
           "female": 3.65,
           "male": 3.83
         },
         "Guild": {
-          "female": 3.6,
-          "male": 3.53
+          "female": 3.44,
+          "male": 3.48
         },
         "Customization": {
-          "female": 3.57,
-          "male": 3.35
+          "female": 3.33,
+          "male": 3.27
         },
         "Feedback": {
-          "female": 3.79,
-          "male": 3.53
+          "female": 3.99,
+          "male": 3.66
         },
         "Immersion": {
-          "female": 3.53,
-          "male": 3.5
+          "female": 3.45,
+          "male": 3.52
         },
         "Incentive": {
-          "female": 3.91,
-          "male": 3.85
+          "female": 3.82,
+          "male": 3.87
         },
         "Progression": {
-          "female": 4.19,
-          "male": 4.13
+          "female": 4.22,
+          "male": 4.21
         },
         "TimePressure": {
-          "female": 2.99,
-          "male": 2.95
+          "female": 3.32,
+          "male": 3.03
         },
         "VirtualEconomy": {
-          "female": 3.21,
-          "male": 3.33
+          "female": 3.08,
+          "male": 3.09
         }
       }
     }

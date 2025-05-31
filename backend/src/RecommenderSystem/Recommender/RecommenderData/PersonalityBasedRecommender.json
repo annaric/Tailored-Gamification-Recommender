@@ -10,95 +10,95 @@
       "maxValue": 5,
       "result": {
         "Incentive": {
-          "agreeableness": 3.91,
-          "conscientiousness": 3.96,
-          "extraversion": 3.79,
-          "neuroticism": 3.89,
+          "agreeableness": 3.87,
+          "conscientiousness": 3.9,
+          "extraversion": 3.86,
+          "neuroticism": 3.85,
           "openness": 3.91
         },
         "Competition": {
-          "agreeableness": 3.74,
-          "conscientiousness": 3.77,
-          "extraversion": 3.85,
-          "neuroticism": 3.84,
-          "openness": 3.63
-        },
-        "Customization": {
-          "agreeableness": 3.22,
-          "conscientiousness": 3.44,
-          "extraversion": 3.31,
-          "neuroticism": 3.51,
-          "openness": 3.62
-        },
-        "TimePressure": {
-          "agreeableness": 2.87,
-          "conscientiousness": 3.17,
-          "extraversion": 2.75,
-          "neuroticism": 2.94,
-          "openness": 2.87
-        },
-        "Progression": {
-          "agreeableness": 4.21,
-          "conscientiousness": 4.16,
-          "extraversion": 4.07,
-          "neuroticism": 4.32,
-          "openness": 4.14
-        },
-        "Feedback": {
-          "agreeableness": 3.69,
-          "conscientiousness": 3.75,
-          "extraversion": 3.46,
-          "neuroticism": 3.55,
+          "agreeableness": 3.78,
+          "conscientiousness": 3.78,
+          "extraversion": 3.92,
+          "neuroticism": 3.72,
           "openness": 3.69
         },
-        "VirtualEconomy": {
-          "agreeableness": 3.15,
+        "Customization": {
+          "agreeableness": 3.08,
           "conscientiousness": 3.32,
-          "extraversion": 3.44,
-          "neuroticism": 3.32,
-          "openness": 3.35
-        },
-        "Guild": {
-          "agreeableness": 3.68,
-          "conscientiousness": 3.6,
-          "extraversion": 3.56,
-          "neuroticism": 3.6,
+          "extraversion": 3.15,
+          "neuroticism": 3.36,
           "openness": 3.49
         },
-        "Assistance": {
-          "agreeableness": 3.05,
+        "TimePressure": {
+          "agreeableness": 3.04,
+          "conscientiousness": 3.25,
+          "extraversion": 3.11,
+          "neuroticism": 3.07,
+          "openness": 3.1
+        },
+        "Progression": {
+          "agreeableness": 4.19,
+          "conscientiousness": 4.16,
+          "extraversion": 4.25,
+          "neuroticism": 4.31,
+          "openness": 4.24
+        },
+        "Feedback": {
+          "agreeableness": 3.85,
+          "conscientiousness": 3.85,
+          "extraversion": 3.79,
+          "neuroticism": 3.72,
+          "openness": 3.87
+        },
+        "VirtualEconomy": {
+          "agreeableness": 2.96,
+          "conscientiousness": 3.16,
+          "extraversion": 3.26,
+          "neuroticism": 3.18,
+          "openness": 3.2
+        },
+        "Guild": {
+          "agreeableness": 3.62,
           "conscientiousness": 3.41,
-          "extraversion": 3.15,
-          "neuroticism": 3.12,
-          "openness": 3.27
+          "extraversion": 3.42,
+          "neuroticism": 3.6,
+          "openness": 3.45
+        },
+        "Assistance": {
+          "agreeableness": 3.01,
+          "conscientiousness": 3.32,
+          "extraversion": 3.36,
+          "neuroticism": 2.94,
+          "openness": 3.18
         },
         "Chance": {
-          "agreeableness": 3.05,
-          "conscientiousness": 3.33,
-          "extraversion": 3.43,
-          "neuroticism": 3.09,
-          "openness": 3.26
+          "agreeableness": 2.88,
+          "conscientiousness": 3.19,
+          "extraversion": 3.31,
+          "neuroticism": 2.93,
+          "openness": 2.95
         },
         "Immersion": {
-          "agreeableness": 3.5,
-          "conscientiousness": 3.42,
-          "extraversion": 3.4,
-          "neuroticism": 3.57,
-          "openness": 3.63
+          "agreeableness": 3.52,
+          "conscientiousness": 3.36,
+          "extraversion": 3.47,
+          "neuroticism": 3.53,
+          "openness": 3.59
         },
         "Challenge": {
-          "agreeableness": 4.11,
-          "conscientiousness": 4.09,
-          "extraversion": 4.02,
-          "neuroticism": 4.05,
-          "openness": 4.11
+          "agreeableness": 4.29,
+          "conscientiousness": 4.15,
+          "extraversion": 4.36,
+          "neuroticism": 4.11,
+          "openness": 4.29
         },
         "Altruism": {
-          "agreeableness": 3.6,
-          "conscientiousness": 3.58,
-          "extraversion": 3.53,
-          "neuroticism": 3.51,
-          "openness": 3.66
+          "agreeableness": 3.55,
+          "conscientiousness": 3.46,
+          "extraversion": 3.44,
+          "neuroticism": 3.44,
+          "openness": 3.61
         }
       }
     }

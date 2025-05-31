@@ -32,57 +32,6 @@
       }
     },
     {
-      "title": "Elements of Gameful Design Emerging from User Preferences",
-      "author": "Tondello et al.",
-      "paperType": "Bivariate Correlation (how strong is the association between two variables); Values between 1 and -1. Mean",
-      "resultType": "Coefficient",
-      "bestValue": 1,
-      "minValue": -1,
-      "maxValue": 1,
-      "result": {
-        "Incentive": {
-          "female": 0.233,
-          "male": -0.112
-        },
-        "Progression": {
-          "female": 0.165,
-          "male": -0.073
-        },
-        "Customization": {
-          "female": 0.311,
-          "male": -0.136
-        },
-        "Immersion": {
-          "female": 0.369,
-          "male": -0.076
-        },
-        "Competition": {
-          "female": -0.366,
-          "male": 0.205
-        },
-        "Guild": {
-          "female": -0.366,
-          "male": 0.205
-        },
-        "Assistance": {
-          "female": 0.628,
-          "male": -0.287
-        },
-        "Challenge": {
-          "female": 0.02,
-          "male": -0.016
-        },
-        "Chance": {
-          "female": 0.02,
-          "male": -0.016
-        },
-        "Altruism": {
-          "female": -0.246,
-          "male": 0.13
-        }
-      }
-    },
-    {
       "title": "Gamification in Education\u0096 Learners\u0092 Choice of Game Design Elements for Increased Learning Motivation (Manuscript)",
       "author": "Maraquardt et al.",
       "paperType": "Priorit\u00e4ten abh\u00e4ngig vom Geschlecht (Prio 1 bedeutet h\u00f6chste Pr\u00e4ferenz)",

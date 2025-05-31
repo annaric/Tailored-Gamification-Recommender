@@ -1,6 +1,18 @@
 import pandas as pd
 import json
 import sys
+import numpy as np
+
+def convert_numpy_types(obj):
+    if isinstance(obj, (np.int64, np.int32)):
+        return int(obj)
+    elif isinstance(obj, (np.float64, np.float32)):
+        return float(obj)
+    elif isinstance(obj, np.bool_):
+        return bool(obj)
+    elif isinstance(obj, np.ndarray):
+        return obj.tolist()
+    return obj
 
 def csv_to_json(src_csv, output_json):
     try:
@@ -46,7 +58,7 @@ def csv_to_json(src_csv, output_json):
 
         # JSON-Datei speichern
         with open(output_json, "w") as json_file:
-            json.dump(json_data, json_file, indent=2)
+            json.dump(json_data, json_file, indent=2, default=convert_numpy_types)
         print(f"JSON-Datei erfolgreich erstellt: {output_json}")
 
     except Exception as e:

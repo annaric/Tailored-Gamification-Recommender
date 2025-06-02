@@ -6,8 +6,8 @@ addRecommenderScoresToResult()</help_text>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>306</x>
-      <y>108</y>
+      <x>486</x>
+      <y>153</y>
       <w>99</w>
       <h>36</h>
     </coordinates>
@@ -18,8 +18,8 @@ Assembler</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>594</x>
-      <y>225</y>
+      <x>774</x>
+      <y>252</y>
       <w>153</w>
       <h>36</h>
     </coordinates>
@@ -29,10 +29,10 @@ Assembler</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>342</x>
-      <y>171</y>
+      <x>522</x>
+      <y>207</y>
       <w>18</w>
-      <h>522</h>
+      <h>558</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -40,19 +40,19 @@ Assembler</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>135</y>
+      <x>522</x>
+      <y>180</y>
       <w>27</w>
-      <h>54</h>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>81</x>
-      <y>153</y>
+      <x>261</x>
+      <y>378</y>
       <w>279</w>
       <h>36</h>
     </coordinates>
@@ -63,8 +63,8 @@ recomend(RecommendationInputDTO)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
-      <y>369</y>
+      <x>531</x>
+      <y>441</y>
       <w>333</w>
       <h>36</h>
     </coordinates>
@@ -75,8 +75,8 @@ recomend(RecommendationInputDTO)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>666</x>
-      <y>252</y>
+      <x>1044</x>
+      <y>288</y>
       <w>27</w>
       <h>45</h>
     </coordinates>
@@ -86,10 +86,10 @@ recomend(RecommendationInputDTO)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>666</x>
-      <y>279</y>
+      <x>846</x>
+      <y>306</y>
       <w>18</w>
-      <h>144</h>
+      <h>189</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -97,8 +97,8 @@ recomend(RecommendationInputDTO)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
-      <y>405</y>
+      <x>531</x>
+      <y>477</y>
       <w>333</w>
       <h>36</h>
     </coordinates>
@@ -109,8 +109,8 @@ RecommenderResults</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>666</x>
-      <y>414</y>
+      <x>846</x>
+      <y>486</y>
       <w>27</w>
       <h>324</h>
     </coordinates>
@@ -120,8 +120,8 @@ RecommenderResults</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>90</x>
-      <y>666</y>
+      <x>270</x>
+      <y>738</y>
       <w>270</w>
       <h>36</h>
     </coordinates>
@@ -132,8 +132,8 @@ RecommendationResultDTO</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
-      <y>540</y>
+      <x>531</x>
+      <y>612</y>
       <w>288</w>
       <h>72</h>
     </coordinates>
@@ -144,10 +144,10 @@ calculateMeanStandardDeviation()</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>297</x>
-      <y>189</y>
+      <x>477</x>
+      <y>405</y>
       <w>576</w>
-      <h>342</h>
+      <h>198</h>
     </coordinates>
     <panel_attributes>loop</panel_attributes>
     <additional_attributes/>
@@ -155,8 +155,8 @@ calculateMeanStandardDeviation()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
-      <y>225</y>
+      <x>531</x>
+      <y>252</y>
       <w>261</w>
       <h>36</h>
     </coordinates>
@@ -167,8 +167,8 @@ create</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>675</x>
-      <y>270</y>
+      <x>855</x>
+      <y>297</y>
       <w>198</w>
       <h>72</h>
     </coordinates>
@@ -179,8 +179,8 @@ updateAlgorithm()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
-      <y>450</y>
+      <x>531</x>
+      <y>522</y>
       <w>297</w>
       <h>72</h>
     </coordinates>
@@ -191,8 +191,8 @@ addRecommenderScoresToResult()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
-      <y>612</y>
+      <x>531</x>
+      <y>684</y>
       <w>324</w>
       <h>72</h>
     </coordinates>
@@ -203,8 +203,8 @@ setOverallScoreAndStandardDeviation()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>684</y>
+      <x>522</x>
+      <y>756</y>
       <w>27</w>
       <h>45</h>
     </coordinates>
@@ -214,13 +214,59 @@ setOverallScoreAndStandardDeviation()</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>369</x>
-      <y>189</y>
+      <x>549</x>
+      <y>225</y>
       <w>252</w>
       <h>27</h>
     </coordinates>
     <panel_attributes>[for recommender in recommenderList]
 style=wordwrap</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>477</x>
+      <y>225</y>
+      <w>576</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>loop</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>549</x>
+      <y>405</y>
+      <w>252</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>[for recommender in recommenderList]
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>846</x>
+      <y>279</y>
+      <w>27</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>153</y>
+      <w>234</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+create</panel_attributes>
+    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>

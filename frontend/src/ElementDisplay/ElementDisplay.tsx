@@ -120,7 +120,9 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
           {!(standardDeviation.overallStandardDeviation === undefined) && (
             <span className="standard-deviation">
               Recommender based Standard deviation:{" "}
-              {(Number(standardDeviation.overallStandardDeviation) * 2).toFixed(3) || 0}
+              {(Number(standardDeviation.overallStandardDeviation) * 2).toFixed(
+                3,
+              ) || 0}
             </span>
           )}
 
@@ -128,7 +130,9 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
           {!(standardDeviation.meanStandardDeviation === undefined) && (
             <span className="standard-deviation">
               Mean Standard deviation:{" "}
-              {(Number(standardDeviation.meanStandardDeviation) * 2).toFixed(3) || 0}
+              {(Number(standardDeviation.meanStandardDeviation) * 2).toFixed(
+                3,
+              ) || 0}
             </span>
           )}
 
@@ -163,7 +167,9 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
                   </span>
                   <span className="standard-deviation">
                     Standard Deviation:{" "}
-                    {(Number(standardDeviation.standardDeviations[key]) * 2).toFixed(3) || 0}
+                    {(
+                      Number(standardDeviation.standardDeviations[key]) * 2
+                    ).toFixed(3) || 0}
                   </span>
                   <span className="standard-deviation">
                     Weight: {scoreWeight.weights[key] || 0}

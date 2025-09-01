@@ -59,6 +59,7 @@ export const RecommenderAndValuesObject = {
    * Learning style recommender for understanding based on Felder and Silverman's model.
    */
   learningStyleOfUnderstanding: ["sequential", "global"],
+  general: ["general"],
 };
 
 /**

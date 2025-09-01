@@ -1,0 +1,54 @@
+{
+  "literature": [
+    {
+      "title": "A Recommender System and Survey for Tailored Gamification in Digital Education",
+      "author": "Ricker",
+      "paperType": "User Study",
+      "resultType": "Scale",
+      "bestValue": 5,
+      "minValue": 1,
+      "maxValue": 5,
+      "result": {
+        "TimePressure": {
+          "general": 2.96
+        },
+        "Incentive": {
+          "general": 3.88
+        },
+        "Progression": {
+          "general": 4.16
+        },
+        "Feedback": {
+          "general": 3.64
+        },
+        "Customization": {
+          "general": 3.45
+        },
+        "Immersion": {
+          "general": 3.51
+        },
+        "Competition": {
+          "general": 3.76
+        },
+        "Guild": {
+          "general": 3.57
+        },
+        "VirtualEconomy": {
+          "general": 3.29
+        },
+        "Assistance": {
+          "general": 3.21
+        },
+        "Challenge": {
+          "general": 4.09
+        },
+        "Chance": {
+          "general": 3.22
+        },
+        "Altruism": {
+          "general": 3.59
+        }
+      }
+    }
+  ]
+}

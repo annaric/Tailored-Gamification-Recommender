@@ -40,6 +40,8 @@ abstract class AbstractRecommender {
    */
   resultDictonary: ResultDictonary;
 
+  generalRecommenderResults: RecommenderResults | undefined;
+
   /**
    * Constructs an instance of the AbstractRecommender class.
    * @param LiteratureSrc - The source file path for the recommender's data.
@@ -48,9 +50,11 @@ abstract class AbstractRecommender {
   constructor(
     LiteratureSrc: string,
     recommenderKey: keyof typeof RecommenderAndValuesObject,
+    generalRecommenderResults?: RecommenderResults,
   ) {
     this.src = LiteratureSrc;
     this.recommenderKey = recommenderKey || "";
+    this.generalRecommenderResults = generalRecommenderResults;
     this.resultDictonary = this.updateAlgorithm();
   }
 

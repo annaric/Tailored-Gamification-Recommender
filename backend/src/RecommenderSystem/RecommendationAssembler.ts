@@ -34,11 +34,16 @@ class RecommendationAssembler {
   constructor() {
     const linkToJsonFiles =
       "./src/RecommenderSystem/Recommender/RecommenderData/";
+    const generalRecommender = new StandardRecommender(
+      linkToJsonFiles + "GeneralRecommender.json",
+      "general",)
+    const generalRecommenderResults = generalRecommender.recommend({ general: "general" });
     this.recommenderList = [
       {
         recommender: new StandardRecommender(
           linkToJsonFiles + "GenderBasedRecommender.json",
           "gender",
+          generalRecommenderResults,
         ),
         recommenderKey: "gender",
       },
@@ -46,6 +51,7 @@ class RecommendationAssembler {
         recommender: new StandardRecommender(
           linkToJsonFiles + "PlayerBasedRecommender.json",
           "player",
+          generalRecommenderResults,
         ),
         recommenderKey: "player",
       },
@@ -53,6 +59,7 @@ class RecommendationAssembler {
         recommender: new StandardRecommender(
           linkToJsonFiles + "PersonalityBasedRecommender.json",
           "personality",
+          generalRecommenderResults,
         ),
         recommenderKey: "personality",
       },
@@ -60,6 +67,7 @@ class RecommendationAssembler {
         recommender: new StandardRecommender(
           linkToJsonFiles + "LATBasedRecommender.json",
           "learningActivityTask",
+          generalRecommenderResults
         ),
         recommenderKey: "learningActivityTask",
       },
@@ -67,6 +75,7 @@ class RecommendationAssembler {
         recommender: new StandardRecommender(
           linkToJsonFiles + "AgeBasedRecommender.json",
           "age",
+          generalRecommenderResults,
         ),
         recommenderKey: "age",
       },
@@ -74,6 +83,7 @@ class RecommendationAssembler {
         recommender: new StandardRecommender(
           linkToJsonFiles + "LearningStyleBasedRecommender.json",
           "learningStyleOfProcessingInformation",
+          generalRecommenderResults,
         ),
         recommenderKey: "learningStyleOfProcessingInformation",
       },
@@ -81,6 +91,7 @@ class RecommendationAssembler {
         recommender: new StandardRecommender(
           linkToJsonFiles + "LearningStyleBasedRecommender.json",
           "learningStyleOfIntuitivity",
+          generalRecommenderResults,
         ),
         recommenderKey: "learningStyleOfIntuitivity",
       },
@@ -88,6 +99,7 @@ class RecommendationAssembler {
         recommender: new StandardRecommender(
           linkToJsonFiles + "LearningStyleBasedRecommender.json",
           "learningStyleOfPerception",
+          generalRecommenderResults,
         ),
         recommenderKey: "learningStyleOfPerception",
       },
@@ -95,8 +107,13 @@ class RecommendationAssembler {
         recommender: new StandardRecommender(
           linkToJsonFiles + "LearningStyleBasedRecommender.json",
           "learningStyleOfUnderstanding",
+          generalRecommenderResults,
         ),
         recommenderKey: "learningStyleOfUnderstanding",
+      },
+      {
+        recommender: generalRecommender,
+        recommenderKey: "general",
       },
     ];
     this.meanCalculator = new MeanCalculator();

@@ -19,6 +19,7 @@ import DataAssembler from "../Helper/DataAssembler";
  * and normalizes, processes, and assembles the data into a structured format.
  */
 class StandardRecommender extends AbstractRecommender {
+  generalRecommenderResults: RecommenderResults | undefined;
   /**
    * Constructs an instance of the StandardRecommender class.
    * @param src - The source file path for the recommender's data.
@@ -27,8 +28,9 @@ class StandardRecommender extends AbstractRecommender {
   constructor(
     src: string,
     recommenderKey: keyof typeof RecommenderAndValuesObject,
+    generalRecommenderResults?: RecommenderResults,
   ) {
-    super(src, recommenderKey);
+    super(src, recommenderKey, generalRecommenderResults);
   }
 
   /**
@@ -94,13 +96,13 @@ class StandardRecommender extends AbstractRecommender {
         ).join(", ")}`,
       );
     }
-
     // Process data for each gamification element
     GamificationElementArray.forEach((key) => {
       const resultArrayForOneElement = dataNormalizer.normalizeLiteratureData(
         recommenderBasedRecommenderData,
         GamificationElement[key],
         RecommenderAndValuesObject[this.recommenderKey],
+        this.generalRecommenderResults
       );
       if (resultArrayForOneElement.length !== 0) {
         resultDictonary[key] = dataAssembler.assembleData(

@@ -135,7 +135,7 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
           {/* Display the number of papers contributing to the score */}
           {scoreWeight && !(scoreWeight.sumOfWeights === undefined) && (
             <span className="standard-deviation">
-              Number of Papers: {scoreWeight.sumOfWeights}
+              Weight: {scoreWeight.sumOfWeights}
             </span>
           )}
         </div>
@@ -166,7 +166,7 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
                     {(Number(standardDeviation.standardDeviations[key]) * 2).toFixed(3) || 0}
                   </span>
                   <span className="standard-deviation">
-                    Number of Papers: {scoreWeight.weights[key] || 0}
+                    Weight: {scoreWeight.weights[key] || 0}
                   </span>
                 </div>
               ))}

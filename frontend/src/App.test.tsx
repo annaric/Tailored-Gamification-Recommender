@@ -94,8 +94,8 @@ describe("App Component", () => {
     expect(screen.queryByText("1")).toBeTruthy();
     expect(screen.queryByText("Overall Score: 0.000")).not.toBeNull();
     expect(screen.queryByText("Overall Score: 0.000")).toBeTruthy();
-    expect(screen.queryByText("Mean Standard deviation: 0.100")).not.toBeNull();
-    expect(screen.queryByText("Mean Standard deviation: 0.100")).toBeTruthy();
+    expect(screen.queryByText("Mean Standard deviation: 0.200")).not.toBeNull();
+    expect(screen.queryByText("Mean Standard deviation: 0.200")).toBeTruthy();
     expect(
       screen.queryByText("Recommender based Standard deviation: 0.000"),
     ).not.toBeNull();

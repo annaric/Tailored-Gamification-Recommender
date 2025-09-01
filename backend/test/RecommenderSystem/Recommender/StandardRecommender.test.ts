@@ -485,6 +485,6 @@ describe("Test StandardRecommender update Algorithm", () => {
       expectedFemaleTimePressureStdDev,
       5,
     );
-    expect(femaleResult?.Altruism?.scoreWeight).toBe(2);
+    expect(femaleResult?.Altruism?.scoreWeight).toBe(1);
   });
 });

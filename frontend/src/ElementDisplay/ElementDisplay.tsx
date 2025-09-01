@@ -120,7 +120,9 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
           {!(standardDeviation.overallStandardDeviation === undefined) && (
             <span className="standard-deviation">
               Recommender based Standard deviation:{" "}
-              {standardDeviation.overallStandardDeviation.toFixed(3)}
+              {(Number(standardDeviation.overallStandardDeviation) * 2).toFixed(
+                3,
+              ) || 0}
             </span>
           )}
 
@@ -128,14 +130,16 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
           {!(standardDeviation.meanStandardDeviation === undefined) && (
             <span className="standard-deviation">
               Mean Standard deviation:{" "}
-              {standardDeviation.meanStandardDeviation.toFixed(3)}
+              {(Number(standardDeviation.meanStandardDeviation) * 2).toFixed(
+                3,
+              ) || 0}
             </span>
           )}
 
           {/* Display the number of papers contributing to the score */}
           {scoreWeight && !(scoreWeight.sumOfWeights === undefined) && (
             <span className="standard-deviation">
-              Number of Papers: {scoreWeight.sumOfWeights}
+              Weight: {scoreWeight.sumOfWeights}
             </span>
           )}
         </div>
@@ -163,10 +167,12 @@ const ElementDisplay: React.FC<ElementDisplayProps> = ({
                   </span>
                   <span className="standard-deviation">
                     Standard Deviation:{" "}
-                    {standardDeviation.standardDeviations[key].toFixed(3) || 0}
+                    {(
+                      Number(standardDeviation.standardDeviations[key]) * 2
+                    ).toFixed(3) || 0}
                   </span>
                   <span className="standard-deviation">
-                    Number of Papers: {scoreWeight.weights[key] || 0}
+                    Weight: {scoreWeight.weights[key] || 0}
                   </span>
                 </div>
               ))}

@@ -17,10 +17,6 @@ export default class DataAssembler {
     } = {};
 
     // Object to store the count of values (score weights) for each recommender key
-    const scoreWeightsObject: {
-      [key in (typeof RecommenderValues)[number]]: number;
-    } = {};
-    // Object to store the count of values (score weights) for each recommender key
     resultArray.forEach((element) => {
       Object.keys(element).forEach((key) => {
         if (resultArrayObject[key] === undefined) {
@@ -28,9 +24,6 @@ export default class DataAssembler {
         }
         if (!(element[key] === undefined)) {
           resultArrayObject[key].push(element[key]);
-          scoreWeightsObject[key] = scoreWeightsObject[key]
-            ? scoreWeightsObject[key] + 1
-            : 1;
         }
       });
     });
@@ -49,9 +42,7 @@ export default class DataAssembler {
       assembledResult[key] = meanCalculator.calculateMeanAndStdDev(
         resultArrayObject[key],
       );
-      if (scoreWeightsObject[key] !== undefined) {
-        assembledResult[key]!.scoreWeight = scoreWeightsObject[key];
-      }
+      assembledResult[key]!.scoreWeight = 1;
     });
     return assembledResult;
   }

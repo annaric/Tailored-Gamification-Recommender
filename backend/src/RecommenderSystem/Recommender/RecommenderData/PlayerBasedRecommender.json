@@ -1,6 +1,121 @@
 {
   "literature": [
     {
+      "title": "A Recommender System and Survey for Tailored Gamification in Digital Education",
+      "author": "Ricker",
+      "paperType": "User Study",
+      "resultType": "Scale",
+      "bestValue": 5.0,
+      "minValue": 1.0,
+      "maxValue": 5.0,
+      "result": {
+        "TimePressure": {
+          "achiever": 3.16,
+          "disruptor": 2.58,
+          "freeSpirit": 3.0,
+          "philanthropist": 2.95,
+          "player": 3.02,
+          "socializer": 3.04
+        },
+        "Incentive": {
+          "achiever": 3.81,
+          "disruptor": 3.68,
+          "freeSpirit": 3.97,
+          "philanthropist": 3.92,
+          "player": 4.18,
+          "socializer": 3.9
+        },
+        "Progression": {
+          "achiever": 4.25,
+          "disruptor": 3.53,
+          "freeSpirit": 4.16,
+          "philanthropist": 4.2,
+          "player": 4.23,
+          "socializer": 4.23
+        },
+        "Feedback": {
+          "achiever": 3.66,
+          "disruptor": 3.68,
+          "freeSpirit": 3.66,
+          "philanthropist": 3.76,
+          "player": 3.66,
+          "socializer": 3.73
+        },
+        "Customization": {
+          "achiever": 3.48,
+          "disruptor": 3.37,
+          "freeSpirit": 3.54,
+          "philanthropist": 3.44,
+          "player": 3.53,
+          "socializer": 3.48
+        },
+        "Immersion": {
+          "achiever": 3.39,
+          "disruptor": 3.37,
+          "freeSpirit": 3.6,
+          "philanthropist": 3.55,
+          "player": 3.54,
+          "socializer": 3.49
+        },
+        "Competition": {
+          "achiever": 3.83,
+          "disruptor": 3.68,
+          "freeSpirit": 3.72,
+          "philanthropist": 3.75,
+          "player": 3.82,
+          "socializer": 3.9
+        },
+        "Guild": {
+          "achiever": 3.48,
+          "disruptor": 3.68,
+          "freeSpirit": 3.57,
+          "philanthropist": 3.65,
+          "player": 3.62,
+          "socializer": 3.87
+        },
+        "VirtualEconomy": {
+          "achiever": 3.32,
+          "disruptor": 3.16,
+          "freeSpirit": 3.49,
+          "philanthropist": 3.22,
+          "player": 3.58,
+          "socializer": 3.43
+        },
+        "Assistance": {
+          "achiever": 3.08,
+          "disruptor": 3.05,
+          "freeSpirit": 3.31,
+          "philanthropist": 3.34,
+          "player": 3.47,
+          "socializer": 3.29
+        },
+        "Challenge": {
+          "achiever": 4.32,
+          "disruptor": 3.32,
+          "freeSpirit": 4.11,
+          "philanthropist": 4.12,
+          "player": 4.06,
+          "socializer": 4.25
+        },
+        "Chance": {
+          "achiever": 3.07,
+          "disruptor": 3.16,
+          "freeSpirit": 3.34,
+          "philanthropist": 3.25,
+          "player": 3.62,
+          "socializer": 3.53
+        },
+        "Altruism": {
+          "achiever": 3.56,
+          "disruptor": 3.68,
+          "freeSpirit": 3.75,
+          "philanthropist": 3.74,
+          "player": 3.6,
+          "socializer": 3.66
+        }
+      }
+    },
+    {
       "title": "Elements of Gameful Design Emerging from User Preferences",
       "author": "Tondello",
       "paperType": "Bivariate Correlation",

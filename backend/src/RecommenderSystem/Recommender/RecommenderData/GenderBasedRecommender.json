@@ -1,6 +1,69 @@
 {
   "literature": [
     {
+      "title": "A Recommender System and Survey for Tailored Gamification in Digital Education",
+      "author": "Ricker",
+      "paperType": "User Study",
+      "resultType": "Scale",
+      "bestValue": 5,
+      "minValue": 1,
+      "maxValue": 5,
+      "result": {
+        "TimePressure": {
+          "female": 2.99,
+          "male": 2.95
+        },
+        "Incentive": {
+          "female": 3.91,
+          "male": 3.85
+        },
+        "Progression": {
+          "female": 4.19,
+          "male": 4.13
+        },
+        "Feedback": {
+          "female": 3.79,
+          "male": 3.53
+        },
+        "Customization": {
+          "female": 3.57,
+          "male": 3.35
+        },
+        "Immersion": {
+          "female": 3.53,
+          "male": 3.5
+        },
+        "Competition": {
+          "female": 3.65,
+          "male": 3.83
+        },
+        "Guild": {
+          "female": 3.6,
+          "male": 3.53
+        },
+        "VirtualEconomy": {
+          "female": 3.21,
+          "male": 3.33
+        },
+        "Assistance": {
+          "female": 3.43,
+          "male": 3.05
+        },
+        "Challenge": {
+          "female": 4.11,
+          "male": 4.06
+        },
+        "Chance": {
+          "female": 3.41,
+          "male": 3.06
+        },
+        "Altruism": {
+          "female": 3.59,
+          "male": 3.59
+        }
+      }
+    },
+    {
       "title": "Automating Gamification Personalization to the User and Beyond",
       "author": "Rodrigues et al.",
       "paperType": "Descision Tree ablesen (laut paper ist gender nicht so relevant). game elemente auch nicht so im Fokus",

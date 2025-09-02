@@ -102,7 +102,7 @@ class StandardRecommender extends AbstractRecommender {
         recommenderBasedRecommenderData,
         GamificationElement[key],
         RecommenderAndValuesObject[this.recommenderKey],
-        this.generalRecommenderResults
+        this.generalRecommenderResults,
       );
       if (resultArrayForOneElement.length !== 0) {
         resultDictonary[key] = dataAssembler.assembleData(

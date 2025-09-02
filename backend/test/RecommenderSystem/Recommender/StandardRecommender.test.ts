@@ -27,45 +27,45 @@ describe("Test StandardRecommender update Algorithm", () => {
           maxValue: 5,
           result: {
             TimePressure: {
-              general: 3
+              general: 3,
             },
             Incentive: {
-              general: 3
+              general: 3,
             },
             Progression: {
-              general: 3
+              general: 3,
             },
             Feedback: {
-              general: 3
+              general: 3,
             },
             Customization: {
-              general: 3
+              general: 3,
             },
             Immersion: {
-              general: 3
+              general: 3,
             },
             Competition: {
-              general: 3
+              general: 3,
             },
             Guild: {
-              general: 3
+              general: 3,
             },
             VirtualEconomy: {
-              general: 3
+              general: 3,
             },
             Assistance: {
-              general: 3
+              general: 3,
             },
             Challenge: {
-              general: 3
+              general: 3,
             },
             Chance: {
-              general: 3
+              general: 3,
             },
             Altruism: {
-              general: 3
-            }
-          }
+              general: 3,
+            },
+          },
         },
       ],
     };
@@ -83,12 +83,14 @@ describe("Test StandardRecommender update Algorithm", () => {
       "./src/RecommenderSystem/Recommender/RecommenderData/GeneralRecommender.json",
       "general",
     );
-    generalRecommenderResults = generalRecommender.recommend({ general: "general" });
+    generalRecommenderResults = generalRecommender.recommend({
+      general: "general",
+    });
     recommender = new StandardRecommender(
-          "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
-          "gender",
-          generalRecommenderResults,
-        );
+      "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
+      "gender",
+      generalRecommenderResults,
+    );
   });
 
   afterEach(() => {
@@ -244,9 +246,9 @@ describe("Test StandardRecommender update Algorithm", () => {
       ],
     };
     recommender = new StandardRecommender(
-          "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
-          "gender",
-        );
+      "./src/RecommenderSystem/Recommender/RecommenderData/GenderBasedRecommender.json",
+      "gender",
+    );
     jest
       .spyOn(JsonFileReader.prototype, "readJsonFile")
       .mockImplementation((src: string) => {

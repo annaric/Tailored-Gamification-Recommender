@@ -36,8 +36,11 @@ class RecommendationAssembler {
       "./src/RecommenderSystem/Recommender/RecommenderData/";
     const generalRecommender = new StandardRecommender(
       linkToJsonFiles + "GeneralRecommender.json",
-      "general",)
-    const generalRecommenderResults = generalRecommender.recommend({ general: "general" });
+      "general",
+    );
+    const generalRecommenderResults = generalRecommender.recommend({
+      general: "general",
+    });
     this.recommenderList = [
       {
         recommender: new StandardRecommender(
@@ -67,7 +70,7 @@ class RecommendationAssembler {
         recommender: new StandardRecommender(
           linkToJsonFiles + "LATBasedRecommender.json",
           "learningActivityTask",
-          generalRecommenderResults
+          generalRecommenderResults,
         ),
         recommenderKey: "learningActivityTask",
       },

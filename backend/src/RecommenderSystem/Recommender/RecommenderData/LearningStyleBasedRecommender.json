@@ -1,6 +1,147 @@
 {
   "literature": [
     {
+      "title": "A Recommender System and Survey for Tailored Gamification in Digital Education",
+      "author": "Ricker",
+      "paperType": "User Study",
+      "resultType": "Scale",
+      "bestValue": 5,
+      "minValue": 1,
+      "maxValue": 5,
+      "result": {
+        "TimePressure": {
+          "active": 2.92,
+          "global": 2.9,
+          "intuitive": 2.87,
+          "reflective": 2.84,
+          "sensor": 2.95,
+          "sequential": 2.91,
+          "verbal": 2.77,
+          "visual": 2.93
+        },
+        "Incentive": {
+          "active": 3.9,
+          "global": 3.81,
+          "intuitive": 3.95,
+          "reflective": 3.93,
+          "sensor": 3.88,
+          "sequential": 3.96,
+          "verbal": 3.83,
+          "visual": 3.92
+        },
+        "Progression": {
+          "active": 4.24,
+          "global": 4.32,
+          "intuitive": 4.13,
+          "reflective": 4.23,
+          "sensor": 4.33,
+          "sequential": 4.18,
+          "verbal": 3.98,
+          "visual": 4.3
+        },
+        "Feedback": {
+          "active": 3.56,
+          "global": 3.68,
+          "intuitive": 3.54,
+          "reflective": 3.64,
+          "sensor": 3.65,
+          "sequential": 3.55,
+          "verbal": 3.57,
+          "visual": 3.61
+        },
+        "Customization": {
+          "active": 3.56,
+          "global": 3.35,
+          "intuitive": 3.55,
+          "reflective": 3.39,
+          "sensor": 3.39,
+          "sequential": 3.52,
+          "verbal": 3.64,
+          "visual": 3.43
+        },
+        "Immersion": {
+          "active": 3.5,
+          "global": 3.52,
+          "intuitive": 3.62,
+          "reflective": 3.55,
+          "sensor": 3.5,
+          "sequential": 3.54,
+          "verbal": 3.79,
+          "visual": 3.52
+        },
+        "Competition": {
+          "active": 4.01,
+          "global": 3.73,
+          "intuitive": 3.9,
+          "reflective": 3.58,
+          "sensor": 3.75,
+          "sequential": 3.86,
+          "verbal": 3.83,
+          "visual": 3.81
+        },
+        "Guild": {
+          "active": 3.78,
+          "global": 3.64,
+          "intuitive": 3.65,
+          "reflective": 3.35,
+          "sensor": 3.55,
+          "sequential": 3.56,
+          "verbal": 3.38,
+          "visual": 3.6
+        },
+        "VirtualEconomy": {
+          "active": 3.46,
+          "global": 3.21,
+          "intuitive": 3.52,
+          "reflective": 3.11,
+          "sensor": 3.17,
+          "sequential": 3.35,
+          "verbal": 3.43,
+          "visual": 3.28
+        },
+        "Assistance": {
+          "active": 3.21,
+          "global": 3.13,
+          "intuitive": 3.13,
+          "reflective": 3.08,
+          "sensor": 3.16,
+          "sequential": 3.16,
+          "verbal": 3.17,
+          "visual": 3.17
+        },
+        "Challenge": {
+          "active": 4.17,
+          "global": 4.29,
+          "intuitive": 4.22,
+          "reflective": 4.15,
+          "sensor": 4.16,
+          "sequential": 4.07,
+          "verbal": 4.15,
+          "visual": 4.17
+        },
+        "Chance": {
+          "active": 3.39,
+          "global": 3.11,
+          "intuitive": 3.48,
+          "reflective": 3.02,
+          "sensor": 3.07,
+          "sequential": 3.26,
+          "verbal": 3.32,
+          "visual": 3.2
+        },
+        "Altruism": {
+          "active": 3.61,
+          "global": 3.52,
+          "intuitive": 3.7,
+          "reflective": 3.45,
+          "sensor": 3.48,
+          "sequential": 3.58,
+          "verbal": 3.68,
+          "visual": 3.57
+        }
+      }
+    },
+    {
       "title": "An experimental study: personalized gamified learning based on learning style",
       "author": "Aljabali et al.",
       "paperType": "Textuell bzw Graphischer Vorschlag von game elementen (Durch literatur review)",

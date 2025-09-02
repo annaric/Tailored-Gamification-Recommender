@@ -1,6 +1,97 @@
 {
   "literature": [
     {
+      "title": "A Recommender System and Survey for Tailored Gamification in Digital Education",
+      "author": "Ricker",
+      "paperType": "User Study",
+      "resultType": "Scale",
+      "bestValue": 3,
+      "minValue": 1,
+      "maxValue": 3,
+      "result": {
+        "TimePressure": {
+          "analyze": 1.467780429594272,
+          "apply": 1.820823244552058,
+          "create": 1.4697336561743342,
+          "evaluate": 1.4987893462469737,
+          "remember": 1.6297071129707112,
+          "understand": 1.3886255924170616
+        },
+        "Incentive": {
+          "analyze": 2.4285714285714284,
+          "apply": 2.602439024390244,
+          "create": 2.480392156862745,
+          "evaluate": 2.359413202933985,
+          "remember": 2.586864406779661,
+          "understand": 2.4394299287410925
+        },
+        "Progression": {
+          "analyze": 2.6519607843137254,
+          "apply": 2.6973365617433416,
+          "create": 2.5481481481481483,
+          "evaluate": 2.578817733990148,
+          "remember": 2.806451612903226,
+          "understand": 2.652278177458033
+        },
+        "Feedback": {
+          "analyze": 2.510948905109489,
+          "apply": 2.476997578692494,
+          "create": 2.471604938271605,
+          "evaluate": 2.4563106796116503,
+          "remember": 2.3447537473233404,
+          "understand": 2.50354609929078
+        },
+        "Immersion": {
+          "analyze": 2.1343283582089554,
+          "apply": 2.012376237623762,
+          "create": 2.2493765586034917,
+          "evaluate": 2.002481389578164,
+          "remember": 2.0323275862068964,
+          "understand": 2.256097560975609
+        },
+        "Competition": {
+          "analyze": 1.9336609336609336,
+          "apply": 2.347826086956522,
+          "create": 2.0148148148148146,
+          "evaluate": 1.8308823529411764,
+          "remember": 2.211206896551724,
+          "understand": 1.8878281622911692
+        },
+        "Guild": {
+          "analyze": 2.478048780487805,
+          "apply": 2.2776412776412776,
+          "create": 2.2846534653465347,
+          "evaluate": 2.4541062801932365,
+          "remember": 2.11587982832618,
+          "understand": 2.4489311163895486
+        },
+        "Assistance": {
+          "analyze": 2.4411764705882355,
+          "apply": 2.300995024875622,
+          "create": 2.3817733990147785,
+          "evaluate": 2.3341523341523343,
+          "remember": 2.199570815450644,
+          "understand": 2.4591346153846154
+        },
+        "Challenge": {
+          "analyze": 2.203931203931204,
+          "apply": 2.518427518427518,
+          "create": 2.2506203473945408,
+          "evaluate": 2.03960396039604,
+          "remember": 2.4504310344827585,
+          "understand": 2.2200956937799043
+        },
+        "Altruism": {
+          "analyze": 2.148989898989899,
+          "apply": 2.079012345679012,
+          "create": 2.154040404040404,
+          "evaluate": 2.304785894206549,
+          "remember": 2.090909090909091,
+          "understand": 2.197530864197531
+        }
+      }
+    },
+    {
       "title": "Automating Gamification Personalization to the User and Beyond",
       "author": "Rodrigues et al.",
       "paperType": "Tabelle 4 Auswertung (First = 1. Second = 2. Third Option = 3); 21 Elemente insgesammt im Paper. maxZahl hier:13 (wenn keine Bewertung dann 6.5)",

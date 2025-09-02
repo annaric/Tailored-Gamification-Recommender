@@ -25,4 +25,5 @@ export enum LiteratureResultTypeEnum {
    * Example: User ratings on a scale from "dislike" to "like very much."
    */
   Scale = "Scale",
+  Rank = "Rank",
 }

@@ -66,6 +66,17 @@ export default class DataNormalizer {
               ),
             );
             break;
+          case LiteratureResultTypeEnum["Rank"]:
+            resultArray.push(
+              this.normalizeRankDataPaper(
+                resultInputs,
+                element.bestValue,
+                element.minValue,
+                element.maxValue,
+                resultParameter,
+              ),
+            );
+            break;
           case LiteratureResultTypeEnum["Coefficient"]:
             resultArray.push(
               this.normalizeCoefficientDataPaper(resultInputs, resultParameter, generalRecommendation),
@@ -150,6 +161,37 @@ export default class DataNormalizer {
           if (resultInput[key] !== undefined) {
             resultElement[key] =
               (resultInput[key] - minValue) / (maxValue - minValue);
+          }
+        });
+      }
+      return resultElement;
+    } else {
+      throw new Error("No keys found in result");
+    }
+  }
+
+  normalizeRankDataPaper(
+    resultInput: RecommenderDependendLiteratureResults,
+    bestValue: number,
+    minValue: number,
+    maxValue: number,
+    keys: (typeof RecommenderValues)[number][],
+  ): { [key in (typeof RecommenderValues)[number]]?: number } {
+    if (keys.length !== 0) {
+      const resultElement: RecommenderDependendLiteratureResults = {};
+      if (bestValue == minValue) {
+        // Invert normalization if bestValue equals minValue
+        keys.forEach((key) => {
+          if (resultInput[key] !== undefined) {
+            resultElement[key] =
+              0.8 - (((resultInput[key] - minValue) / (maxValue - minValue)) * 0.6);
+          }
+        });
+      } else {
+        keys.forEach((key) => {
+          if (resultInput[key] !== undefined) {
+            resultElement[key] =
+              0.2 + (((resultInput[key] - minValue) / (maxValue - minValue)) * 0.6)
           }
         });
       }

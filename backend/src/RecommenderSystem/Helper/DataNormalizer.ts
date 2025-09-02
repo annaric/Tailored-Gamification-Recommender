@@ -110,14 +110,12 @@ export default class DataNormalizer {
     keys: (typeof RecommenderValues)[number][],
     generalRecommendation?: number,
   ): { [key in (typeof RecommenderValues)[number]]?: number } {
-    if (keys.length !== 0 && generalRecommendation !== undefined) {
+    if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
+      const generalBase = generalRecommendation ? Number(generalRecommendation) : 0.5;
       keys.forEach((key) => {
         if (resultInput[key] !== undefined) {
-          resultElement[key] =
-            resultInput[key] > bestValue
-              ? 1
-              : Number(generalRecommendation) + (resultInput[key] / bestValue) * 0.5;
+          resultElement[key] = generalBase + (resultInput[key] / bestValue) * 0.5;
           if (resultElement[key]! > 1) {
             resultElement[key] = 1;
           }
@@ -213,11 +211,12 @@ export default class DataNormalizer {
     keys: (typeof RecommenderValues)[number][],
     generalRecommendation?: number,
   ): { [key in (typeof RecommenderValues)[number]]?: number } {
-    if (keys.length !== 0 && generalRecommendation !== undefined) {
+    if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
+      const generalBase = generalRecommendation ? Number(generalRecommendation) : 0.5;
       keys.forEach((key) => {
         if (resultInput[key] !== undefined) {
-          resultElement[key] = Number(generalRecommendation) + (resultInput[key] / 2);
+          resultElement[key] = generalBase + (resultInput[key] / 2);
         }
       });
       return resultElement;
@@ -238,11 +237,12 @@ export default class DataNormalizer {
     keys: (typeof RecommenderValues)[number][],
     generalRecommendation?: number,
   ): { [key in (typeof RecommenderValues)[number]]?: number } {
-    if (keys.length !== 0 && generalRecommendation !== undefined) {
+    if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
+      const generalBase = generalRecommendation ? Number(generalRecommendation) : 0.5;
       keys.forEach((key) => {
         if (result[key] !== undefined) {
-          resultElement[key] = Number(generalRecommendation) + (result[key] * 0.1);
+          resultElement[key] = generalBase + (result[key] * 0.1);
         }
       });
       return resultElement;

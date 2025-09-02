@@ -12,6 +12,9 @@ import { RecommenderAndValuesObject } from "../../types/RecommenderRepository";
 import DataNormalizer from "../Helper/DataNormalizer";
 import JsonFileReader from "../Helper/JsonFileReader";
 import DataAssembler from "../Helper/DataAssembler";
+import * as fs from "fs";
+import * as path from "path";
+
 
 /**
  * StandardRecommender is a concrete implementation of the AbstractRecommender class.
@@ -31,6 +34,7 @@ class StandardRecommender extends AbstractRecommender {
     generalRecommenderResults?: RecommenderResults,
   ) {
     super(src, recommenderKey, generalRecommenderResults);
+    this.saveResultDictionary(this.resultDictonary);
   }
 
   /**
@@ -112,6 +116,46 @@ class StandardRecommender extends AbstractRecommender {
     });
     return resultDictonary;
   }
+
+  saveResultDictionary(
+    resultDictionary: ResultDictonary
+  ): void {
+    resultDictionary = this.resultDictonary;
+    console.log(resultDictionary);
+
+    // Ordnerstruktur anlegen
+    const baseDir = path.join(__dirname, "../../../ResultDictionary", String(this.recommenderKey));
+    if (!fs.existsSync(baseDir)) {
+      fs.mkdirSync(baseDir, { recursive: true });
+    }
+
+    // CSV-Header bauen
+    const parameterValues = RecommenderAndValuesObject[this.recommenderKey];
+    let header = "GamificationElement";
+    parameterValues.forEach((param) => {
+      header += `,${param}_score,${param}_standardDev,${param}_weight`;
+    });
+
+    // CSV-Zeilen bauen
+    const rows: string[] = [header];
+    for (const gamElement of Object.keys(resultDictionary)) {
+      let row = gamElement;
+      for (const param of parameterValues) {
+        const entry = resultDictionary[gamElement as GamificationElement]?.[param];
+        if (entry) {
+          row += `,${entry.score},${entry.standardDeviation},${entry.scoreWeight}`;
+        } else {
+          row += ",,,";
+        }
+      }
+      rows.push(row);
+    }
+
+    // Datei schreiben
+    const csvPath = path.join(baseDir, "analysis_result.csv");
+    fs.writeFileSync(csvPath, rows.join("\n"), "utf8");
+  }
+
 }
 
 export default StandardRecommender;

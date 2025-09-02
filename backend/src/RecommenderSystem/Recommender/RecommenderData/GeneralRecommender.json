@@ -49,67 +49,6 @@
           "general": 3.59
         }
       }
-    },
-    {
-      "title": "Be Mindful of User Preferences:\nAn Explorative Study on Game Design Elements in Mindfulness Applications",
-      "author": "Hu et. Al",
-      "paperType": "Ranking",
-      "resultType": "Rank",
-      "bestValue": 1,
-      "minValue": 1,
-      "maxValue": 10,
-      "result": {
-        "Incentive": {
-          "general": 4.5
-        },
-        "Progression": {
-          "general": 1.23
-        },
-        "Customization": {
-          "general": 10.0
-        },
-        "Immersion": {
-          "general": 6.0
-        },
-        "Competition": {
-          "general": 9.0
-        },
-        "Guild": {
-          "general": 7.0
-        },
-        "VirtualEconomy": {
-          "general": 8.0
-        }
-      }
-    },
-    {
-      "title": "The Agony of Choice - Analyzing User Preferences regarding Gamification Elements in Learning Management Systems Completed Research Paper",
-      "author": "Schoebel et al",
-      "paperType": "Ranking",
-      "resultType": "Rank",
-      "bestValue": 1,
-      "minValue": 1,
-      "maxValue": 10,
-      "result": {
-        "TimePressure": {
-          "general": 9.0
-        },
-        "Incentive": {
-          "general": 2.5
-        },
-        "Progression": {
-          "general": 1.3
-        },
-        "Customization": {
-          "general": 8.0
-        },
-        "Competition": {
-          "general": 4.6
-        },
-        "VirtualEconomy": {
-          "general": 7.0
-        }
-      }
     }
   ]
 }

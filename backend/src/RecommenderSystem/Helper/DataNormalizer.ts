@@ -31,7 +31,7 @@ export default class DataNormalizer {
       if (
         element.result &&
         element.result[gamificationElementKey] &&
-        resultParameter.every(
+        resultParameter.some(
           (resultKey) =>
             resultKey in (element.result[gamificationElementKey] ?? {}),
         ) 

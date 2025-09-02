@@ -1,6 +1,7 @@
 import { GamificationElement } from "../../types/GamificationElementRepository";
 import { LiteratureElementObject } from "../../types/LiteratureElementObject";
 import { LiteratureResultTypeEnum } from "../../types/LiteratureTypeEnum";
+import { RecommenderResults } from "../../types/RecommendationObjectTypes";
 import {
   RecommenderDependendLiteratureResults,
   RecommenderValues,
@@ -20,6 +21,7 @@ export default class DataNormalizer {
     literatureInput: LiteratureElementObject[],
     gamificationElementKey: GamificationElement,
     resultParameter: (typeof RecommenderValues)[number][],
+    generalRecommenderResults?: RecommenderResults,
   ) {
     const resultArray: {
       [key in (typeof RecommenderValues)[number]]?: number;
@@ -29,7 +31,7 @@ export default class DataNormalizer {
       if (
         element.result &&
         element.result[gamificationElementKey] &&
-        resultParameter.every(
+        resultParameter.some(
           (resultKey) =>
             resultKey in (element.result[gamificationElementKey] ?? {}),
         )
@@ -37,6 +39,11 @@ export default class DataNormalizer {
         const resultInputs = element.result[
           gamificationElementKey
         ] as RecommenderDependendLiteratureResults;
+        let generalRecommendation = undefined;
+        if (generalRecommenderResults !== undefined) {
+          generalRecommendation =
+            generalRecommenderResults[gamificationElementKey]!.score;
+        }
         // Normalize the data based on the result type in the literature
         switch (element.resultType) {
           case LiteratureResultTypeEnum["PositiveNumber"]:
@@ -45,6 +52,7 @@ export default class DataNormalizer {
                 resultInputs,
                 element.bestValue,
                 resultParameter,
+                generalRecommendation,
               ),
             );
             break;
@@ -59,14 +67,33 @@ export default class DataNormalizer {
               ),
             );
             break;
+          case LiteratureResultTypeEnum["Rank"]:
+            resultArray.push(
+              this.normalizeRankDataPaper(
+                resultInputs,
+                element.bestValue,
+                element.minValue,
+                element.maxValue,
+                resultParameter,
+              ),
+            );
+            break;
           case LiteratureResultTypeEnum["Coefficient"]:
             resultArray.push(
-              this.normalizeCoefficientDataPaper(resultInputs, resultParameter),
+              this.normalizeCoefficientDataPaper(
+                resultInputs,
+                resultParameter,
+                generalRecommendation,
+              ),
             );
             break;
           case LiteratureResultTypeEnum["Binary"]:
             resultArray.push(
-              this.normalizeBinaryDataPaper(resultInputs, resultParameter),
+              this.normalizeBinaryDataPaper(
+                resultInputs,
+                resultParameter,
+                generalRecommendation,
+              ),
             );
             break;
           default:
@@ -90,20 +117,25 @@ export default class DataNormalizer {
     resultInput: RecommenderDependendLiteratureResults,
     bestValue: number,
     keys: (typeof RecommenderValues)[number][],
+    generalRecommendation?: number,
   ): { [key in (typeof RecommenderValues)[number]]?: number } {
     if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
+      const generalBase = generalRecommendation
+        ? Number(generalRecommendation)
+        : 0.5;
       keys.forEach((key) => {
         if (resultInput[key] !== undefined) {
           resultElement[key] =
-            resultInput[key] > bestValue
-              ? 1
-              : 0.5 + (resultInput[key] / bestValue) * 0.5;
+            generalBase + (resultInput[key] / bestValue) * 0.5;
+          if (resultElement[key]! > 1) {
+            resultElement[key] = 1;
+          }
         }
       });
       return resultElement;
     } else {
-      throw new Error("No keys found in result");
+      throw new Error("No keys or no generalRecommendation found in result");
     }
   }
 
@@ -148,6 +180,39 @@ export default class DataNormalizer {
     }
   }
 
+  normalizeRankDataPaper(
+    resultInput: RecommenderDependendLiteratureResults,
+    bestValue: number,
+    minValue: number,
+    maxValue: number,
+    keys: (typeof RecommenderValues)[number][],
+  ): { [key in (typeof RecommenderValues)[number]]?: number } {
+    if (keys.length !== 0) {
+      const resultElement: RecommenderDependendLiteratureResults = {};
+      if (bestValue == minValue) {
+        // Invert normalization if bestValue equals minValue
+        keys.forEach((key) => {
+          if (resultInput[key] !== undefined) {
+            resultElement[key] =
+              0.8 -
+              ((resultInput[key] - minValue) / (maxValue - minValue)) * 0.6;
+          }
+        });
+      } else {
+        keys.forEach((key) => {
+          if (resultInput[key] !== undefined) {
+            resultElement[key] =
+              0.2 +
+              ((resultInput[key] - minValue) / (maxValue - minValue)) * 0.6;
+          }
+        });
+      }
+      return resultElement;
+    } else {
+      throw new Error("No keys found in result");
+    }
+  }
+
   /**
    * Normalizes coefficient-based data, such as correlation coefficients, where the range is between -1 and 1.
    * @param resultInput - The raw result data from the literature to normalize.
@@ -158,17 +223,21 @@ export default class DataNormalizer {
   normalizeCoefficientDataPaper(
     resultInput: RecommenderDependendLiteratureResults,
     keys: (typeof RecommenderValues)[number][],
+    generalRecommendation?: number,
   ): { [key in (typeof RecommenderValues)[number]]?: number } {
     if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
+      const generalBase = generalRecommendation
+        ? Number(generalRecommendation)
+        : 0.5;
       keys.forEach((key) => {
         if (resultInput[key] !== undefined) {
-          resultElement[key] = (resultInput[key] + 1) / 2;
+          resultElement[key] = generalBase + resultInput[key] / 2;
         }
       });
       return resultElement;
     } else {
-      throw new Error("No keys found in result");
+      throw new Error("No keys or no generalRecommendation found in result");
     }
   }
 
@@ -182,17 +251,21 @@ export default class DataNormalizer {
   normalizeBinaryDataPaper(
     result: RecommenderDependendLiteratureResults,
     keys: (typeof RecommenderValues)[number][],
+    generalRecommendation?: number,
   ): { [key in (typeof RecommenderValues)[number]]?: number } {
     if (keys.length !== 0) {
       const resultElement: RecommenderDependendLiteratureResults = {};
+      const generalBase = generalRecommendation
+        ? Number(generalRecommendation)
+        : 0.5;
       keys.forEach((key) => {
         if (result[key] !== undefined) {
-          resultElement[key] = result[key] === 1 ? 0.75 : 0.5;
+          resultElement[key] = generalBase + result[key] * 0.1;
         }
       });
       return resultElement;
     } else {
-      throw new Error("No keys found in result");
+      throw new Error("No keys or no generalRecommendationfound in result");
     }
   }
 }

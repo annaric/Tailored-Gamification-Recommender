@@ -10,7 +10,7 @@ export const RecommenderAndValuesObject = {
   /**
    * Age-based recommender with possible age ranges.
    */
-  age: ["<20", "20-29", "30-39", ">39"],
+  age: ["8-10", "11-17", "18-28", "29-38", "39-48", "49-80"],
   /**
    * Player type recommender with possible player archetypes based on Marczewski's HEXAD model.
    */
@@ -59,6 +59,7 @@ export const RecommenderAndValuesObject = {
    * Learning style recommender for understanding based on Felder and Silverman's model.
    */
   learningStyleOfUnderstanding: ["sequential", "global"],
+  general: ["general"],
 };
 
 /**
